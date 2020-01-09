@@ -1,9 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 
-import { MonoText } from '../components/StyledText';
-
-export default function HomeScreen() {
+export default function Auth() {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -14,7 +12,7 @@ export default function HomeScreen() {
   );
 }
 
-HomeScreen.navigationOptions = {
+Auth.navigationOptions = {
   header: null,
 };
 
