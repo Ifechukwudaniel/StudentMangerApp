@@ -26,7 +26,7 @@ class Auth extends Component {
       style= {styles.container}
       >  
        <ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
-        <Login/>
+        <Login  {...this.props}/>
 
         </ImageBackground>
      </LinearGradient>

@@ -6,11 +6,14 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import BlogsScreen from '../screens/BlogsScreen';
 import AuthScreen from '../screens/AuthScreen';
+import colors from "../constants/Colors"
 
 const config = Platform.select({
-  default: {},
+  default: {
+
+  },
 });
 const AuthStack = createStackNavigator(
   {
@@ -22,7 +25,7 @@ const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
   },
-  config
+  config,
 );
 
 HomeStack.navigationOptions = {
@@ -32,8 +35,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home`
+          : 'md-home'
       }
     />
   ),
@@ -41,26 +44,38 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const BlogsStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Blogs: BlogsScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+BlogsStack.navigationOptions = {
+  tabBarLabel: 'Blog',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-paper' : 'md-paper'} />
   ),
 };
 
-LinksStack.path = '';
+BlogsStack.path = '';
 
 
 const AppStack = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  BlogsStack,
+},
+{
+  tabBarOptions:{
+    activeTintColor:"#fff",
+    showLabel:true,
+    labelStyle:{
+     color:colors.black
+    },
+    style:{
+        color:"white",
+    }
+  }
 });
 
 AppStack.path = '';

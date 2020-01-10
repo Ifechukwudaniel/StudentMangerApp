@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import {FontAwesome} from '@expo/vector-icons';
-import { TouchableHighlight, StyleSheet, Text, View } from "react-native";
+import { TouchableHighlight, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
@@ -27,16 +27,19 @@ const styles = StyleSheet.create({
 
 export default class NextArrowButton extends Component {
     render() {
+      const {
+       handleNextButton
+      } = this.props
       return (
         <View style={styles.buttonWrapper}>
-          <TouchableHighlight style={[{ opacity: 1 }, styles.button]}>
+          <TouchableOpacity onPress= {handleNextButton} style={[{ opacity: 1 }, styles.button]}>
             <FontAwesome
               name="arrow-right"
               color={colors.white}
               size={50}
               style={styles.icon}
             />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       );
     }

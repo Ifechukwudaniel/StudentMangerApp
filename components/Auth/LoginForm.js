@@ -4,6 +4,7 @@ import colors from "../../constants/Colors"
 import content from "../../constants/Content"
 import InputField from './InputField';
 import NextArrowButton from './NextArrowButton'
+import propType from 'prop-types'
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
 });
  
 class LoginForm extends Component {
+
     state={
         matricNumber:"",
         password:"",
@@ -42,7 +44,11 @@ class LoginForm extends Component {
         this.setState({password:value})
      }
 
+
     render() { 
+        const {
+            handleNextButton
+        } = this.props
         return (
            <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
                 <View style={styles.mainViewWrapper}>
@@ -72,10 +78,13 @@ class LoginForm extends Component {
                          />
                     </ScrollView>
                 </View>
-                <NextArrowButton />
+                <NextArrowButton  handleNextButton = {handleNextButton}/>
           </KeyboardAvoidingView> 
         );
     }
+}
+LoginForm.propType= {
+    handleNextButton:propType.func.isRequired
 }
  
 export default LoginForm;
