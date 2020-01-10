@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import BlogsScreen from '../screens/BlogsScreen';
 import AuthScreen from '../screens/AuthScreen';
 import colors from "../constants/Colors"
+import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
   default: {
@@ -61,9 +62,26 @@ BlogsStack.navigationOptions = {
 BlogsStack.path = '';
 
 
+const SettingsStack = createStackNavigator(
+  {
+    Blogs: SettingsScreen,
+  },
+  config
+);
+
+SettingsStack.navigationOptions = {
+  tabBarLabel: 'Settings',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'} />
+  ),
+};
+
+SettingsStack.path = '';
+
 const AppStack = createBottomTabNavigator({
   HomeStack,
   BlogsStack,
+  SettingsStack
 },
 {
   tabBarOptions:{

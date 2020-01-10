@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
     label: { 
         fontWeight: "700", 
         marginBottom: 10,
-        fontSize:25
+        fontSize:20
     },
     inputFiled: {
         borderBottomWidth: 1,
         paddingTop: 5,
         paddingBottom: 5,
-        fontSize:25
+        fontSize:18
       }    
 });
  

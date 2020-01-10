@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontWeight: "300",
         marginBottom: 40,
-        fontFamily:"faster-one"
       },
       avoidView: {
         paddingLeft: 30,

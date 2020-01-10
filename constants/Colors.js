@@ -12,7 +12,8 @@ export default {
   noticeBackground: tintColor,
   noticeText: '#fff',
   gradient0:"#2F80ED",
-  gradient1:"#BB6BD9",
+  gradient1:"#2f80ed",
+  gradient2:"#BB6BD9",
   white:"#fff",
   black :"#000"
 };

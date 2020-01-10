@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import {FontAwesome} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 import { TouchableHighlight, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import colors from "../../constants/Colors";
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
       borderRadius: 50,
       width: 60,
       height: 60,
-      backgroundColor: colors.black 
+      backgroundColor: colors.gradient2
     },
     icon: {
       marginRight: -2,
@@ -33,8 +33,8 @@ export default class NextArrowButton extends Component {
       return (
         <View style={styles.buttonWrapper}>
           <TouchableOpacity onPress= {handleNextButton} style={[{ opacity: 1 }, styles.button]}>
-            <FontAwesome
-              name="arrow-right"
+            <Ionicons
+              name={Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward'}
               color={colors.white}
               size={50}
               style={styles.icon}
