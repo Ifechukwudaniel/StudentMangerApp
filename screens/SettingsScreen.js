@@ -1,22 +1,25 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import {  Layout } from '@ui-kitten/components';
 
 export default function SettingsScreen() {
   return (
-    <ScrollView style={styles.container}>
-    
-    </ScrollView>
+    <Layout style={styles.container}>
+      <ScrollView style={styles.container}>
+      
+      </ScrollView>
+    </Layout>
   );
 }
 
 SettingsScreen.navigationOptions = {
-  title: 'Settings',
+ // title: 'Settings',
+ header:null
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
   },
 });

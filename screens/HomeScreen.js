@@ -2,12 +2,15 @@ import React from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import {  Layout } from '@ui-kitten/components';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-   
-    </View>
+    <Layout style={styles.container}>
+      <View style={styles.container}>
+    
+      </View>
+    </Layout>
   );
 }
 
@@ -19,6 +22,5 @@ HomeScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 });

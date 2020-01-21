@@ -2,8 +2,12 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Platform, StatusBar, StyleSheet, View, AppRegistry } from 'react-native';
+import { ApplicationProvider,IconRegistry } from '@ui-kitten/components';
+import { mapping, light as lightTheme, dark ,  } from '@eva-design/eva';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import {Provider} from 'react-redux';
+
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -20,10 +24,15 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
+      <>
+      <Provider store={createStoreWithMiddleware}>
+       <IconRegistry icons={EvaIconsPack}/>
+         <ApplicationProvider mapping={mapping} theme={lightTheme} >
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              <AppNavigator />
+         </ApplicationProvider>
+       </Provider>
+      </>
     );
   }
 }
@@ -55,10 +64,3 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

@@ -13,7 +13,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
   default: {
-
   },
 });
 const AuthStack = createStackNavigator(
@@ -31,14 +30,11 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
+  tabBarIcon: ({ focused }, props) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-home`
-          : 'md-home'
-      }
+      name='home-outline'
+      {...props}
     />
   ),
 };
@@ -54,8 +50,8 @@ const BlogsStack = createStackNavigator(
 
 BlogsStack.navigationOptions = {
   tabBarLabel: 'Blog',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-paper' : 'md-paper'} />
+  tabBarIcon: ({ focused }, props) => (
+    <TabBarIcon focused={focused} {...props} name='book-outline' />
   ),
 };
 
@@ -71,8 +67,8 @@ const SettingsStack = createStackNavigator(
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'} />
+  tabBarIcon: ({ focused }, props) => (
+    <TabBarIcon focused={focused} {...props} name='settings-2-outline' />
   ),
 };
 
@@ -85,13 +81,13 @@ const AppStack = createBottomTabNavigator({
 },
 {
   tabBarOptions:{
+    showLabel:false,
     activeTintColor:"#fff",
-    showLabel:true,
     labelStyle:{
-     color:colors.black
+     color:colors
     },
     style:{
-        color:"white",
+        backgroundColor:colors.white
     }
   }
 });

@@ -3,7 +3,7 @@ import {StyleSheet, View, ScrollView, Text, ImageBackground} from 'react-native'
 import {LinearGradient} from "expo-linear-gradient"
 import Colors from "../constants/Colors"
 import Login from '../components/Auth/Login'
-
+import {  Layout } from '@ui-kitten/components';
 
  
 const styles = StyleSheet.create({
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
 class Auth extends Component {
   render() { 
     return (
+      <Layout style={styles.container}>
       <LinearGradient
       colors={[Colors.gradient1, Colors.gradient0]}
       style= {styles.container}
@@ -30,6 +31,7 @@ class Auth extends Component {
 
         </ImageBackground>
      </LinearGradient>
+     </Layout>
     );
   }
 }
