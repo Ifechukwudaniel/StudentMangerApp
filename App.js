@@ -25,13 +25,11 @@ export default function App(props) {
   } else {
     return (
       <>
-      <Provider store={createStoreWithMiddleware}>
        <IconRegistry icons={EvaIconsPack}/>
          <ApplicationProvider mapping={mapping} theme={lightTheme} >
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator />
          </ApplicationProvider>
-       </Provider>
       </>
     );
   }
