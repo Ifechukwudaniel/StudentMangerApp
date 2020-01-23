@@ -13,7 +13,6 @@ export default function SettingsScreen() {
 }
 
 SettingsScreen.navigationOptions = {
- // title: 'Settings',
  header:null
 };
 

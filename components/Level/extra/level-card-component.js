@@ -1,35 +1,21 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
 import ImageOverlay  from './image-overlay-component';
 
+let colour='#424'; 
+export const LevelCard = ({ style, number, color ,_id, ...cardProps }) => {
 
-export const LevelCard = ({ style, training, ...cardProps }) => {
     return (
      <Card
       {...cardProps}
-      style={[styles.container, style]}>
-      <ImageOverlay
-        style={styles.image}
-        source={'../../../assets/images/background.png'}>
-        <Text
-          style={styles.level}
-          category='s1'
-          status='control'>
-          100
-        </Text>
+      style={[styles.container, {backgroundColor:color}, style]}>
         <Text
           style={styles.title}
           category='h2'
           status='control'>
-           test
+           {number} Level
         </Text>
-        <Button
-          style={styles.durationButton}
-          size='tiny'>
-          jjjddjdj
-        </Button>
-      </ImageOverlay>
     </Card>
     );
 }
@@ -38,21 +24,16 @@ export const LevelCard = ({ style, training, ...cardProps }) => {
 
 const styles = StyleSheet.create({
     container: {
-      height: 200,
+      height:100,
       margin:10,
-      borderRadius:8
-    },
-    image: {
-      ...StyleSheet.absoluteFillObject,
-      height: 200,
-      paddingVertical: 24,
-      paddingHorizontal: 16,
+      borderRadius:8,
     },
     level: {
       zIndex: 1,
     },
     title: {
       zIndex: 1,
+      alignItems:'center'
     },
     durationButton: {
       position: 'absolute',
@@ -60,5 +41,6 @@ const styles = StyleSheet.create({
       bottom: 16,
       borderRadius: 16,
       paddingHorizontal: 0,
+      marginTop:40
     },
   });

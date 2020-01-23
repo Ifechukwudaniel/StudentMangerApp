@@ -3,20 +3,21 @@ import {StyleSheet, View, ScrollView, Text} from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
-import Department from '../components/Department';
+import Level from '../components/Level';
+import {TopNavigationSimpleUsageShowcase} from "../components/Level/extra/navigation-component"
 
-export default function HomeScreen() {
+export default function CourseScreen() {
   return (
     <Layout style={styles.container}>
       <View style={styles.container}>
-         <Department/>
+       {/* <Level/> */}
       </View>
     </Layout>
   );
 }
 
-HomeScreen.navigationOptions = {
-  header:null
+CourseScreen.navigationOptions = {
+  header:null,
 };
 
 

@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import BlogsScreen from '../screens/BlogsScreen';
-import AuthScreen from '../screens/AuthScreen';
+import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -15,17 +15,22 @@ const config = Platform.select({
   default: {
   },
 });
-const AuthStack = createStackNavigator(
-  {
-  Auth:AuthScreen
-  }
-)
+
+const LevelStack = createStackNavigator({
+   Level: LevelScreen
+},
+{
+
+})
+
 
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
   },
-  config,
+  {
+    headerMode:'screen'
+  },
 );
 
 HomeStack.navigationOptions = {
