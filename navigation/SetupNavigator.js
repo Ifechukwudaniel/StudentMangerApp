@@ -44,10 +44,13 @@ const DepartmentStack = createStackNavigator(
 DepartmentStack.path = '';
 
 const SetupStack = createStackNavigator({
-  LevelStack,
-  DepartmentStack,
-  CourseStack
-},);
+  level:LevelStack,
+  Department:DepartmentStack,
+  Course:CourseStack
+},{
+   initialRouteName:"Department",
+   headerMode:'none'
+});
 
 SetupStack.path = '';
 

@@ -73,15 +73,17 @@ export default class Department extends Component {
   }
 
   handleSearch= ()=>{
-    alert("jdjedj")
+     this.props.navigation.navigate("Level")
   }
 
   render() {
     return (
-      <Modal presentationStyle="fullScreen">
         <View style={styles.container}>
             <View style={styles.SearchInput}>
-              <SearchInput handleChange={this.handleChange} value={this.state.searchKeyWord} />
+              <SearchInput 
+              handleChange={this.handleChange} 
+              handleSearch={this.handleSearch} 
+              value={this.state.searchKeyWord} />
             </View>
                <>
                {this.state.data.length!==0
@@ -108,7 +110,6 @@ export default class Department extends Component {
                }
               </>
         </View>
-      </Modal>
     );
   }
 }

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import LoginForm from './LoginForm';
 class Login extends Component {
     handleNextButton= ()=>{
-        this.props.navigation.navigate("Main")
+        this.props.navigation.navigate("Setup")
     }
     render() { 
         return (

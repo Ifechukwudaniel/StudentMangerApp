@@ -4,12 +4,14 @@ import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/component
 import ImageOverlay  from './image-overlay-component';
 
 let colour='#424'; 
-export const LevelCard = ({ style, number, color ,_id, ...cardProps }) => {
+export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProps}) => {
 
     return (
      <Card
       {...cardProps}
-      style={[styles.container, {backgroundColor:color}, style]}>
+      style={[styles.container, {backgroundColor:color}, style]}
+       onPress={handleClick}
+      >
         <Text
           style={styles.title}
           category='h2'

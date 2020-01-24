@@ -3,13 +3,12 @@ import {StyleSheet, View, ScrollView, Text} from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
-import Department from '../components/Department';
+import Level from '../components/Level'
 
 export default function HomeScreen() {
   return (
     <Layout style={styles.container}>
       <View style={styles.container}>
-         <Department/>
       </View>
     </Layout>
   );

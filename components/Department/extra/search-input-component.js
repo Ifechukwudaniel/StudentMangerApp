@@ -9,6 +9,7 @@ const SearchInput = ({value, handleChange, handleSearch}) => {
          inputStyle={styles.inputStyle}
          value={value}
          onChangeText={handleChange}
+         onIconPress={handleSearch}
       />
     );
 }

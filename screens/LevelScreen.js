@@ -6,11 +6,11 @@ import {  Layout } from '@ui-kitten/components';
 import Level from '../components/Level';
 import {TopNavigationSimpleUsageShowcase} from "../components/Level/extra/navigation-component"
 
-export default function LevelScreen() {
+export default function LevelScreen(props) {
   return (
     <Layout style={styles.container}>
       <View style={styles.container}>
-        <Level/>
+        <Level {...props}/>
       </View>
     </Layout>
   );

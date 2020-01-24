@@ -7,8 +7,8 @@ import Colors from '../../../constants/Colors';
 const ClipComponent = ({text, handleClipClick}) => {
     return (
         <Chip onPress={()=>handleClipClick(text)} 
-        style={styles.chipStyle} 
-        textStyle={styles.textStyle}  
+         style={styles.chipStyle} 
+         textStyle={styles.textStyle}  
          mode='outlined' >{text}</Chip>
     );
 }

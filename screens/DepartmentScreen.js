@@ -1,22 +1,25 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-
 import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
-import Level from '../components/Level';
-import {TopNavigationSimpleUsageShowcase} from "../components/Level/extra/navigation-component"
+import Department from '../components/Department';
 
-export default function DepartmentScreen() {
-  return (
-    <Layout style={styles.container}>
-      <View style={styles.container}>
-      </View>
+class DepartmentScreen extends Component {
+  render() { 
+    return (
+      <Layout style={styles.container}>
+        <View style={styles.container}>
+          <Department {...this.props} />
+        </View>
     </Layout>
-  );
+    );
+  }
 }
+ 
+export default  DepartmentScreen;
 
 DepartmentScreen.navigationOptions = {
-  header:null,
+  header:null
 };
 
 
