@@ -4,6 +4,7 @@ import {InputElement , Input, Icon, ModalPanel} from "@ui-kitten/components"
 import SearchInput from './extra/search-input-component'
 import ChipLayout from './extra/chip-layout-component'
 import Colors from '../../constants/Colors';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 
 export default class Department extends Component {
@@ -91,12 +92,19 @@ export default class Department extends Component {
                 </View>
                 <ScrollView>
                   <View style={styles.clipSelectContainer}>
-                    <ChipLayout departments={this.state.data}/>
+                    <ChipLayout 
+                      departments={this.state.data} 
+                       handleChange = {this.handleChange}
+                         handleClipClick={(value)=>this.handleChange(value)}
+                       />
                   </View>
                 </ScrollView>
                 </>
                 :
-                <Text> hwhhhw</Text>
+                  <View style={styles.errorContainer}>
+                    <MaterialIcon style={styles.errorIcon} color="#fff" name="find-in-page" size={100}/>
+                    <Text style={styles.errorText}> {this.state.searchKeyWord} is not found</Text>
+                  </View>
                }
               </>
         </View>
@@ -111,7 +119,7 @@ const styles= StyleSheet.create({
     backgroundColor:"#ff5252"
   },
   SearchInput:{
-    marginTop:70,
+    marginTop:50,
     marginLeft:20,
     marginRight:20,
     marginBottom:50
@@ -133,5 +141,19 @@ const styles= StyleSheet.create({
     justifyContent:'space-between',
     marginLeft:12,
     marginRight:12,
+  },
+  errorContainer:{
+    alignItems:"center",
+    margin:5,
+    marginTop:5
+  },
+  errorText:{
+     textAlign:'center',
+     color:Colors.white,
+     fontSize:22,
+     fontWeight:'bold',
+  },
+  errorIcon:{
+      margin:5
   }
 })

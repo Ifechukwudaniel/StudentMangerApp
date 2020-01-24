@@ -4,9 +4,12 @@ import { Chip } from 'react-native-paper';
 import Colors from '../../../constants/Colors';
 
  
-const ClipComponent = ({text}) => {
+const ClipComponent = ({text, handleClipClick}) => {
     return (
-        <Chip onPress={()=>{alert(text)}} style={styles.chipStyle} textStyle={styles.textStyle}  mode='outlined' >{text}</Chip>
+        <Chip onPress={()=>handleClipClick(text)} 
+        style={styles.chipStyle} 
+        textStyle={styles.textStyle}  
+         mode='outlined' >{text}</Chip>
     );
 }
  
