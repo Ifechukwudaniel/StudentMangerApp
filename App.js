@@ -49,6 +49,7 @@ async function loadResourcesAsync() {
       // remove this if you are not using it in your app
       'faster-one':require('./assets/fonts/FasterOne-Regular.ttf'),
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+      'Open Sans Extra-Bold': require('./assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf'),
     }),
   ]);
 }

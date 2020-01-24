@@ -2,12 +2,13 @@ import React from 'react';
 import {StyleSheet} from 'react-native'
 import {Searchbar} from 'react-native-paper'
  
-const SearchInput = () => {
+const SearchInput = ({value, handleChange, handleSearch}) => {
     return (
         <Searchbar
          placeholder="Department"
-         onIconPress={()=>{alert("bdgd")}}
          inputStyle={styles.inputStyle}
+         value={value}
+         onChangeText={handleChange}
       />
     );
 }
