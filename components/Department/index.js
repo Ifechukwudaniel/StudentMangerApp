@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Modal, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import {InputElement , Input, Icon, ModalPanel} from "@ui-kitten/components"
 import SearchInput from './extra/search-input-component'
 import ChipLayout from './extra/chip-layout-component'
@@ -60,16 +60,26 @@ export default class Department extends Component {
         "__v": 0
     }
 ]
-    state={
-      data :this.data,
-      searchKeyWord:''
-    }
+  state={
+    data :this.data,
+    searchKeyWord:''
+  }
+
+  componentDidMount(){
+    StatusBar.setBarStyle('light-content',true)
+  }
+  
   
   handleChange= (value)=>{
-    this.setState({searchKeyWord:value}, ()=>{
-      let newData=  this.data.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
-      this.setState({data:newData})
-    })
+    if (value===this.state.searchKeyWord) {
+       this.handleSearch()
+    }
+      else{
+      this.setState({searchKeyWord:value}, ()=>{
+        let newData=  this.data.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
+        this.setState({data:newData})
+      })
+    }
   }
 
   handleSearch= ()=>{

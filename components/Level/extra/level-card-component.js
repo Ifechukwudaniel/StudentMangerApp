@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
 import ImageOverlay  from './image-overlay-component';
 
@@ -7,10 +7,11 @@ let colour='#424';
 export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProps}) => {
 
     return (
+    <TouchableOpacity>
      <Card
+      onPress={handleClick}
       {...cardProps}
       style={[styles.container, {backgroundColor:color}, style]}
-       onPress={handleClick}
       >
         <Text
           style={styles.title}
@@ -19,6 +20,7 @@ export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProp
            {number} Level
         </Text>
     </Card>
+    </TouchableOpacity>
     );
 }
 

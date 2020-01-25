@@ -13,7 +13,6 @@ import AppNavigator from './navigation/AppNavigator';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
@@ -26,7 +25,7 @@ export default function App(props) {
     return (
       <>
        <IconRegistry icons={EvaIconsPack}/>
-         <ApplicationProvider mapping={mapping} theme={lightTheme} >
+         <ApplicationProvider mapping={mapping} theme={dark} >
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator />
          </ApplicationProvider>

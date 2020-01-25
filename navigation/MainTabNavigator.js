@@ -38,7 +38,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }, props) => (
     <TabBarIcon
       focused={focused}
-      name='home-outline'
+      name='home'
       {...props}
     />
   ),
@@ -56,7 +56,7 @@ const BlogsStack = createStackNavigator(
 BlogsStack.navigationOptions = {
   tabBarLabel: 'Blog',
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='book-outline' />
+    <TabBarIcon focused={focused} {...props} name='book' />
   ),
 };
 
@@ -73,7 +73,7 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='settings-2-outline' />
+    <TabBarIcon focused={focused} {...props} name='settings-2' />
   ),
 };
 
@@ -92,7 +92,7 @@ const AppStack = createBottomTabNavigator({
      color:colors
     },
     style:{
-        backgroundColor:colors.white
+        backgroundColor:colors.darkMode
     }
   }
 });
