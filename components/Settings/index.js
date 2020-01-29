@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet , StatusBar } from 'react-native';
+import { View, Text, StyleSheet, ScrollView} from 'react-native';
+import UserInfo from './extra/user-info-component';
+import DepartmentSetting from './extra/department-Setting-component';
+import {Grid,Row} from 'react-native-easy-grid'
+import LevelSetting from './extra/level-Setting-Component';
+import PaymentSetting from './extra/payment-Setting-component';
+import GetHelpSetting from './extra/GetHelp-Setting-component';
+import FeedbackSetting from './extra/Giveus-feedback-component';
  
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
  
 class Setting extends Component {
-    componentDidMount(){
-      StatusBar.setBarStyle('light-content',true)
-    }
-    
     render() { 
         return (
-            <View style={styles.container}>
-                <Text>Setting</Text>
-            </View>
+            <ScrollView>
+            <Grid style={styles.container}>
+                  <UserInfo/>
+                  <Row>
+                         <DepartmentSetting/>
+                  </Row>
+                   <Row>
+                        <LevelSetting/>
+                   </Row>
+                   <Row>
+                        <PaymentSetting/>
+                   </Row>
+                   <Row>
+                        <GetHelpSetting/>
+                   </Row>
+                   <Row>
+                        <FeedbackSetting/>
+                   </Row>
+                   
+            </Grid>
+            </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1
+    }
+});
  
 export default Setting;

@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Alert} from 'react-native'
 import { Chip } from 'react-native-paper';
 import Colors from '../../../constants/Colors';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
  
 const ClipComponent = ({text, handleClipClick}) => {
@@ -17,17 +18,17 @@ const ClipComponent = ({text, handleClipClick}) => {
 const styles = StyleSheet.create({
     chipStyle:{
          flexDirection:'column',
-         borderRadius:100,
+         borderRadius:wp("10%"),
          backgroundColor:Colors.white,
-         marginRight:10,
-         marginLeft:10,
-         marginBottom:20
+         marginRight:wp('4%'),
+         marginLeft:wp('4%'),
+         marginBottom:wp("4%")
     },
     textStyle:{
         flexDirection:'column',
-        padding:6,
+        padding:wp("2%"),
         color:'#666677',
-        fontSize:17
+        fontSize:wp("5%")
     }
 })
 export default ClipComponent;

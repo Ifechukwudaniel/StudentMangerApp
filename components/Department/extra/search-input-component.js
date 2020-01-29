@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet} from 'react-native'
 import {Searchbar} from 'react-native-paper'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
  
 const SearchInput = ({value, handleChange, handleSearch}) => {
     return (
@@ -16,9 +18,9 @@ const SearchInput = ({value, handleChange, handleSearch}) => {
 
 const styles = StyleSheet.create({
     inputStyle:{
-      width:100,
-      height:60,
-      fontSize:20
+      width:wp("8%"),
+      height:hp("7%"),
+      fontSize:wp("5%")
     }
 })
  

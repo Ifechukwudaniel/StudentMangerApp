@@ -9,7 +9,10 @@ const ImageOverLay  = (props) => {
     return (
             <ImageBackground
             {...imageBackgroundProps}
-            style={imageBackgroundStyle}>
+            style={imageBackgroundStyle}
+            source={require('../../../assets/images/splash.png')}
+            >
+             
             <View style={[StyleSheet.absoluteFill, { backgroundColor: overlayColor || DEFAULT_OVERLAY_COLOR }]}/>
             {children}
       </ImageBackground>

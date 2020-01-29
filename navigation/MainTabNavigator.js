@@ -10,27 +10,20 @@ import BlogsScreen from '../screens/BlogsScreen';
 import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import SettingsScreen from '../screens/SettingsScreen';
+import Colors from '../constants/Colors';
 
 const config = Platform.select({
   default: {
   },
 });
 
-const LevelStack = createStackNavigator({
-   Level: LevelScreen
-},
-{
-
-})
-
-
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
   },
-  {
-    headerMode:'screen'
-  },
+   {
+     headerMode:'float'
+   }
 );
 
 HomeStack.navigationOptions = {
@@ -80,9 +73,9 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const AppStack = createBottomTabNavigator({
-  HomeStack,
-  BlogsStack,
-  SettingsStack
+  Home:HomeStack,
+  Blogs:BlogsStack,
+  Settings:SettingsStack
 },
 {
   tabBarOptions:{
@@ -92,9 +85,12 @@ const AppStack = createBottomTabNavigator({
      color:colors
     },
     style:{
-        backgroundColor:colors.darkMode
-    }
-  }
+        backgroundColor:"#10131D",
+        borderColor:Colors.black,
+        borderTopColor:colors.black
+    },
+
+  },
 });
 
 AppStack.path = '';

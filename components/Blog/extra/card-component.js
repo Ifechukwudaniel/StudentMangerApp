@@ -1,25 +1,23 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
-import Ripple from 'react-native-material-ripple';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import Ripple from 'react-native-material-ripple'
 
 let colour='#424'; 
-export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProps}) => {
+export const BlogCard = ({ style, number, color ,_id, handleClick , ...cardProps}) => {
 
     return (
-    <Ripple
-     onPress= {handleClick}
-     >
+    <Ripple>
      <Card
       {...cardProps}
       style={[styles.container, {backgroundColor:color}, style]}
+      onPress= {handleClick}
       >
         <Text
           style={styles.title}
           category='h2'
           status='control'>
-           {number} Level
+           Level cwd
         </Text>
     </Card>
     </Ripple>
@@ -27,12 +25,11 @@ export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProp
 }
 
 
-
 const styles = StyleSheet.create({
     container: {
-      height: hp('13%'),
-      margin:wp('2%'),
-      borderRadius:wp('3%'),
+      height:100,
+      margin:10,
+      borderRadius:8,
     },
     level: {
       zIndex: 1,
@@ -40,5 +37,13 @@ const styles = StyleSheet.create({
     title: {
       zIndex: 1,
       alignItems:'center'
-    }
+    },
+    durationButton: {
+      position: 'absolute',
+      left: 16,
+      bottom: 16,
+      borderRadius: 16,
+      paddingHorizontal: 0,
+      marginTop:40
+    },
   });

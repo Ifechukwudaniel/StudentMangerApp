@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import {LevelCard} from './extra/level-card-component'
-import {TopNavigationSimpleUsageShowcase} from './extra/navigation-component'
 import Colors from '../../constants/Colors';
 
 
@@ -25,13 +24,13 @@ class Level extends Component {
       }
   ]
   handleClick=()=>{
-    this.props.navigation.navigate("Main")
+    console.log(this.props.navigation)
+    this.props.navigation.navigate("Home")
   }
 
   render() {
     return (
-      <View style={styles.levelContainer}>
-       <ScrollView >
+       <ScrollView style={styles.levelContainer}>
             {this.data.map((level)=>(
                  <LevelCard 
                   key={level._id} 
@@ -41,7 +40,6 @@ class Level extends Component {
                   />
             ))}
       </ScrollView>
-    </View>
     );
   }
 }
@@ -49,6 +47,7 @@ class Level extends Component {
 const styles = StyleSheet.create({
   levelContainer: {
     marginTop: 50,
+    flex:1
   }
 });
 export default Level

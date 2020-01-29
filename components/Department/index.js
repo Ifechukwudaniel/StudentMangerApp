@@ -5,6 +5,7 @@ import SearchInput from './extra/search-input-component'
 import ChipLayout from './extra/chip-layout-component'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 export default class Department extends Component {
@@ -130,10 +131,10 @@ const styles= StyleSheet.create({
     backgroundColor:"#ff5252"
   },
   SearchInput:{
-    marginTop:50,
-    marginLeft:20,
-    marginRight:20,
-    marginBottom:50
+    marginTop:hp('7%'),
+    marginLeft:wp('4%'),
+    marginRight:wp('4%'),
+    marginBottom:hp('4%')
   },
   DepartmentTextContainer:{
     marginBottom:20,
@@ -141,7 +142,7 @@ const styles= StyleSheet.create({
   },
   DepartmentText:{
       color:Colors.white,
-      fontSize:20,
+      fontSize:wp('6%'),
       fontWeight:'bold',
   },
   clipSelectContainer:{
@@ -150,8 +151,8 @@ const styles= StyleSheet.create({
     alignItems:'flex-start',
     alignContent:'space-between',
     justifyContent:'space-between',
-    marginLeft:12,
-    marginRight:12,
+    marginLeft:wp('1%'),
+    marginRight:wp('2%'),
   },
   errorContainer:{
     alignItems:"center",

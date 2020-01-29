@@ -1,12 +1,13 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import {  Layout } from '@ui-kitten/components';
+import Blog from '../components/Blog';
 
 export default function BlogsScreen() {
   return (
     <Layout style={styles.container}>
       <ScrollView style={styles.container}>
-      
+        <Blog/>
       </ScrollView>
     </Layout>
   );
