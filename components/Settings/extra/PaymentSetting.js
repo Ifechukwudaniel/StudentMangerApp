@@ -7,32 +7,37 @@ import Colors from '../../../constants/Colors';
 import Ripple from 'react-native-material-ripple';
 
 
-export default class GetHelpSetting extends Component {
+export default class PaymentSetting extends Component {
 
   render() {
     return (
       <Row style={styles.container}>
-        <Col>
-          <Text style={styles.typeText}> Get Help</Text>
-        </Col>
-        <Col style={styles.icon}>
-        <Ripple>
-           <MaterialIcon name="help-outline" color={Colors.white} size={30}/>
-        </Ripple>
-        </Col>
-      </Row>
+       <Ripple style= {{flex:1,padding:hp("1%")}}>
+            <Row style={styles.content}>
+              <Col>
+                <Text style={styles.typeText}> Payment Setting</Text>
+              </Col>
+              <Col style={styles.icon}>
+              <Ripple>
+                <MaterialIcon name="payment" color={Colors.white} size={30}/>
+              </Ripple>
+              </Col>
+            </Row>
+            </Ripple>
+      </Row>    
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-      marginLeft:wp('5%'),
-      marginRight:wp('5%'),
-       borderBottomColor:"#fff",
-       borderBottomWidth:wp("1%"),
-       paddingBottom:wp("3%"),
-       paddingTop:hp("5%")
+      marginLeft:wp('2%'),
+      marginRight:wp('2%'),
+      paddingTop:hp("3%")
+  },
+  content:{
+    borderBottomColor:"#fff",
+    borderBottomWidth:wp("1%"),
   },
   typeText:{
     textAlign:'left',

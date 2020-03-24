@@ -128,7 +128,7 @@ export default class Department extends Component {
 const styles= StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor:"#ff5252"
+    backgroundColor:Colors.tintColor
   },
   SearchInput:{
     marginTop:hp('7%'),

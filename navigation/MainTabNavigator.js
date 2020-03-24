@@ -32,6 +32,7 @@ HomeStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       name='home'
+      screenName= "Home"
       {...props}
     />
   ),
@@ -43,13 +44,15 @@ const BlogsStack = createStackNavigator(
   {
     Blogs: BlogsScreen,
   },
-  config
+  {
+    headerMode:'float'
+  }
 );
 
 BlogsStack.navigationOptions = {
   tabBarLabel: 'Blog',
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='book' />
+    <TabBarIcon focused={focused} {...props} name='book' screenName= "Blog" />
   ),
 };
 
@@ -58,7 +61,7 @@ BlogsStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Blogs: SettingsScreen,
+    Settings: SettingsScreen,
   },
   config
 );
@@ -66,7 +69,7 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='settings-2' />
+    <TabBarIcon focused={focused} {...props} name='settings-2' screenName= "Setting" />
   ),
 };
 

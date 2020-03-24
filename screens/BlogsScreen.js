@@ -15,12 +15,11 @@ export default function BlogsScreen() {
 
 BlogsScreen.navigationOptions = {
   //title: 'Blogs',
-  header:null
+  header:null,
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 15,
+    flex: 1
   },
 });

@@ -24,7 +24,6 @@ class Level extends Component {
       }
   ]
   handleClick=()=>{
-    console.log(this.props.navigation)
     this.props.navigation.navigate("Home")
   }
 
