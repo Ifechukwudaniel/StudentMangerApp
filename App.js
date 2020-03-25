@@ -60,6 +60,7 @@ async function loadResourcesAsync() {
       'Open Sans Bold': require('./assets/fonts/Open_Sans/OpenSans-Bold.ttf'),
       'Open Sans Light': require('./assets/fonts/Open_Sans/OpenSans-Light.ttf'),
       'Open Sans Regular': require('./assets/fonts/Open_Sans/OpenSans-Regular.ttf'),
+      'Itim': require('./assets/fonts/Itim-Regular.ttf')
     }),
   ]);
 }
