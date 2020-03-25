@@ -88,9 +88,9 @@ const AppStack = createBottomTabNavigator({
      color:colors
     },
     style:{
-        backgroundColor:"#10131D",
-        borderColor:Colors.black,
-        borderTopColor:colors.black
+        backgroundColor:Colors.black,
+        borderTopColor:"gray",
+        borderTopWidth:1
     },
 
   },
