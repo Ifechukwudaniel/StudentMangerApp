@@ -10,10 +10,12 @@ import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import CourseScreen from '../screens/CourseScreen';
 
+
 const config = Platform.select({
   default: {
   },
 });
+
 
 const LevelStack = createStackNavigator({
    Level: LevelScreen
@@ -46,7 +48,7 @@ DepartmentStack.path = '';
 const SetupStack = createStackNavigator({
   level:LevelStack,
   Department:DepartmentStack,
-  Course:CourseStack
+  Course:CourseStack,
 },{
    initialRouteName:"Department",
    headerMode:'none'
