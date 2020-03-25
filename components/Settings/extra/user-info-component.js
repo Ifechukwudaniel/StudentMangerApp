@@ -5,6 +5,7 @@ import Colors from '../../../constants/Colors';
 import { Avatar, Card } from '@ui-kitten/components';
 import {Row, Col} from 'react-native-easy-grid';
 import Ripple from 'react-native-material-ripple';
+import EStyleSheet from 'react-native-extended-stylesheet'
 
 
 export default class UserInfo extends Component {
@@ -25,7 +26,7 @@ export default class UserInfo extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
       marginTop:hp("5%"),
       marginLeft:wp('5%'),

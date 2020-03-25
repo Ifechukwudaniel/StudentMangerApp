@@ -3,17 +3,14 @@ import { StyleSheet, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
-let colour='#424'; 
-export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProps}) => {
-
+import EStyleSheet from 'react-native-extended-stylesheet'
+export const LevelCard = ({number,_id, handleClick}) => {
     return (
     <Ripple
      onPress= {handleClick}
      >
      <Card
-      {...cardProps}
-      style={[styles.container, {backgroundColor:color}, style]}
+      style={styles.container}
       >
         <Text
           style={styles.title}
@@ -28,11 +25,14 @@ export const LevelCard = ({ style, number, color ,_id, handleClick , ...cardProp
 
 
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
-      height: hp('13%'),
-      margin:wp('2%'),
-      borderRadius:wp('3%'),
+      height: '100rem',
+      marginTop:'20rem' ,
+      marginLeft: '10rem',
+      marginRight: '10rem',
+      borderRadius:'10rem',
+      backgroundColor:'#6919A9'
     },
     level: {
       zIndex: 1,

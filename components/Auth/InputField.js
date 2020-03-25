@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import propTypes from 'prop-types'
 import colors from '../../constants/Colors'
+import EStyleSheet from 'react-native-extended-stylesheet'
  
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
         flex: 1
     },
     label: { 
         fontWeight: "700", 
-        marginBottom: 10,
-        fontSize:20
+        marginBottom: '10rem',
+        fontSize:'20rem'
     },
     inputFiled: {
-        borderBottomWidth: 1,
+        borderWidth: 1,
         paddingTop: 5,
         paddingBottom: 5,
-        fontSize:18
+        fontSize:18,
+        borderColor:"#fff",
+        borderRadius:"4rem",
       }    
 });
  

@@ -10,7 +10,7 @@ export default function HomeScreen() {
   return (
     <Layout style={styles.container}>
       <View style={styles.container}>
-       {/* <Home/> */}
+       <Home/>
       </View>
     </Layout>
   );

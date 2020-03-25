@@ -5,6 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../../constants/Colors';
 import Ripple from 'react-native-material-ripple';
+import EStyleSheet from 'react-native-extended-stylesheet'
 
 
 export default class PaymentSetting extends Component {
@@ -29,23 +30,24 @@ export default class PaymentSetting extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   container: {
-      marginLeft:wp('2%'),
-      marginRight:wp('2%'),
-      paddingTop:hp("3%")
-  },
-  content:{
-    borderBottomColor:"#fff",
-    borderBottomWidth:wp("1%"),
-  },
-  typeText:{
-    textAlign:'left',
-    color:Colors.white,
-    fontSize:wp('5%'),
-    fontFamily:'Open Sans Regular',
-  },
-  icon:{
-    alignItems:"flex-end"
-  }
+    marginLeft:'8rem',
+    marginRight:'8rem',
+    paddingTop:'5rem',
+    marginTop: "20rem",
+},
+content:{
+  borderBottomColor:"#fff",
+  borderBottomWidth:'4rem',
+},
+typeText:{
+  textAlign:'left',
+  color:Colors.white,
+  fontSize:'20rem',
+  fontFamily:'Open Sans Regular',
+},
+icon:{
+  alignItems:"flex-end"
+}
 });

@@ -22,14 +22,7 @@ class Auth extends Component {
   render() { 
     return (
       <Layout style={styles.container}>
-      <LinearGradient
-      colors={[Colors.gradient1, Colors.gradient0]}
-      style= {styles.container}
-      >  
-       <ImageBackground source={require('../assets/images/background.png')} style={styles.backgroundImage}>
         <Login  {...this.props}/>
-        </ImageBackground>
-     </LinearGradient>
      </Layout>
     );
   }

@@ -5,25 +5,26 @@ import content from "../../constants/Content"
 import InputField from './InputField';
 import NextArrowButton from './NextArrowButton'
 import propType from 'prop-types'
+import EStylesheet from 'react-native-extended-stylesheet'
 
-const styles = StyleSheet.create({
+const styles = EStylesheet.create({
     wrapper: {
         flex: 1
     }, 
     mainViewWrapper:{
-        marginTop:70,
+        marginTop:'70rem',
         flex:1
     },
     loginHeader: {
-        fontSize: 70,
+        fontSize: '20rem',
         color: colors.white,
         fontWeight: "300",
-        marginBottom: 40,
+        marginBottom: '40rem',
       },
       avoidView: {
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingTop: 20,
+        paddingLeft: '30rem',
+        paddingRight: '30rem',
+        paddingTop: '20rem',
         flex:1
        },
 });
