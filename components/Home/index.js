@@ -56,7 +56,7 @@ class Home extends Component {
                         <Text style={styles.menuText}>  Attendance  </Text>
                       </View>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.menuItem}  onPress={()=>this.props.navigation.navigate('Blog')}>
+                  <TouchableOpacity style={styles.menuItem}  onPress={()=>this.props.navigation.navigate('Blogs')}>
                       <View style={styles.shadow}>
                         <View style={styles.menuSvg}>
                           <NewsSvg/>
