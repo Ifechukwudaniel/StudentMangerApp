@@ -6,7 +6,9 @@ export default function MaterialScreen() {
   return (
     <Layout style={styles.container}>
       <View style={styles.container}>
-        
+            <View style={{width:100, height:100, backgroundColor:'red'}}>
+
+      </View>
       </View>
     </Layout>
   );
