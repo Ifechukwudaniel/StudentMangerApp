@@ -24,9 +24,6 @@ const HeaderComponent = ({onBackPress, screenName}) => {
     );
 }
 const styles = EStyleSheet.create({
-    container:{
-     flex: 1,
-    },
     header:{
         backgroundColor: "#252525" ,
         borderBottomWidth: "0rem",
