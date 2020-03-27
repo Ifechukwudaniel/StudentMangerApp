@@ -24,12 +24,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
     },
     "description": "",
       "packagerOpts": {
         "config": "metro.config.js",
-        "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
+        "sourceExts": ["js", "jsx", "ts", "tsx", "svg","mp3"]
       }
   }
 }
