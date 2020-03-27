@@ -36,10 +36,6 @@ const styles = EStyleSheet.create({
     container:{
      flex: 1,
     },
-    header:{
-        backgroundColor: "#252525" ,
-        borderBottomWidth: "0rem",
-    },
     title:{
         fontSize: '23rem', 
         color:"#fff",
