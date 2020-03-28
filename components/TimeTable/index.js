@@ -6,15 +6,29 @@ import DateItem from './DateItem'
 import Header from '../Header'
 import { Container,  Button, Text,  } from 'native-base';
 import DateAction from './DateAction'
+import { Select } from '@ui-kitten/components';
 
 
+const data = [
+    { text: 'Personal  TimeTable' },
+    { text: ' Departmental Timetable' },
+  ];
  
 const TimeTable = ({navigation}) => {
+    const [selectedOption, setSelectedOption] = React.useState(data[0]);
     return (
         <View style={styles.container}>
         <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
          <View style={styles.content}>
+           <View style={{flexDirection:"row"}}>
            <Text style={styles.dayText}> Today </Text>
+           <Select
+                data={data}
+                selectedOption={selectedOption}
+                onSelect={setSelectedOption}
+                style= {styles.option}
+           /> 
+           </View>
             <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
                 <DateItem date={16} day={0} active/>
                 <DateItem date={17} day={1} />
@@ -48,7 +62,8 @@ const styles = EStyleSheet.create({
         fontSize: '30rem', 
         color:"#fff",
         fontFamily:"Itim", 
-        marginLeft: '30rem',
+        marginLeft: '10rem',
+        marginRight:"10rem"
     },
     scrollView:{
         marginLeft: '20rem',
@@ -58,5 +73,9 @@ const styles = EStyleSheet.create({
     eventList:{
         marginTop:'50rem',  
     },  
+    option :{
+        width:"257rem",
+        backgroundColor: "#000",
+    }
 })
 export default TimeTable;
