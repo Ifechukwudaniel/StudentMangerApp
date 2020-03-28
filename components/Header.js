@@ -6,7 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 const HeaderComponent = ({onBackPress, screenName, style}) => {
     return (
         <View style={styles.container}>
-        <Header style={styles.header}>
+        <Header  style={styles.header}>
               <StatusBar  hidden={true} barStyle='light-content' />
           <Left>
             <Button transparent onPress={()=>onBackPress()}>
@@ -27,6 +27,7 @@ const styles = EStyleSheet.create({
     header:{
         backgroundColor: "#252525" ,
         borderBottomWidth: "0rem",
+
     },
     title:{
         fontSize: '22rem', 
