@@ -13,7 +13,7 @@ export default class LevelSetting extends Component {
   render() {
     return (
     <Row style={styles.container}>
-      <Ripple style= {{flex:1,padding:hp("1%")}}>
+      <Ripple onPress= {this.props.onPress} style= {{flex:1,padding:hp("1%")}}>
         <Row style= {styles.content}>
           <Col>
                 <Text style={styles.typeText}> Level</Text>
