@@ -3,7 +3,7 @@ import {  Header, Left, Body, Right, Button, Title, Text, Icon } from 'native-ba
 import {View, StatusBar} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
  
-const HeaderComponent = ({onBackPress, screenName}) => {
+const HeaderComponent = ({onBackPress, screenName, style}) => {
     return (
         <View style={styles.container}>
         <Header style={styles.header}>
@@ -15,7 +15,7 @@ const HeaderComponent = ({onBackPress, screenName}) => {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.title}> {screenName}</Title>
+            <Title style={[styles.title, style]}> {screenName}</Title>
           </Body>
           <Right>
           </Right>
