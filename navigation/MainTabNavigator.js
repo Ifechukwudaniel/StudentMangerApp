@@ -10,6 +10,9 @@ import BlogsScreen from '../screens/BlogsScreen';
 import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import SettingsScreen from '../screens/SettingsScreen';
+import FileScreen from '../screens/FileScreen';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+
 import Colors from '../constants/Colors';
 
 const config = Platform.select({
@@ -75,10 +78,27 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const FileStack = createStackNavigator(
+  {
+    Files: FileScreen,
+  },
+  config
+);
+
+FileStack.navigationOptions = {
+  tabBarLabel: 'Downloads',
+  tabBarIcon: ({ focused }, props) => (
+    <MaterialIcon size={36} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
+  ),
+};
+
+SettingsStack.path = '';
+
 const AppStack = createBottomTabNavigator({
   Home:HomeStack,
   Blogs:BlogsStack,
-  Settings:SettingsStack
+  Settings:SettingsStack,
+  Files:FileStack
 },
 {
   tabBarOptions:{
