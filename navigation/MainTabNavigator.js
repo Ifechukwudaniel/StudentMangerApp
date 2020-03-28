@@ -92,7 +92,7 @@ FileStack.navigationOptions = {
   ),
 };
 
-SettingsStack.path = '';
+FileStack.path = '';
 
 const AppStack = createBottomTabNavigator({
   Home:HomeStack,
