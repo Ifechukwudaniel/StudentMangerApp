@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import BlogsScreen from '../screens/BlogsScreen';
+import MaterialScreen from '../screens/Home/MaterialScreen'
 import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import SettingsScreen from '../screens/SettingsScreen';
@@ -43,23 +44,23 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const BlogsStack = createStackNavigator(
+const MaterialsStack = createStackNavigator(
   {
-    Blogs: BlogsScreen,
+    Materials: MaterialScreen,
   },
   {
     headerMode:'float'
   }
 );
 
-BlogsStack.navigationOptions = {
-  tabBarLabel: 'Blog',
+MaterialsStack.navigationOptions = {
+  tabBarLabel: 'Material',
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='book' screenName= "Blog" />
+    <TabBarIcon focused={focused} {...props} name='book' screenName= "Material" />
   ),
 };
 
-BlogsStack.path = '';
+MaterialsStack.path = '';
 
 
 const SettingsStack = createStackNavigator(
@@ -96,7 +97,7 @@ FileStack.path = '';
 
 const AppStack = createBottomTabNavigator({
   Home:HomeStack,
-  Blogs:BlogsStack,
+  Material:MaterialsStack,
   Settings:SettingsStack,
   Files:FileStack
 },

@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import MaterialScreen from '../screens/Home/MaterialScreen';
+import BlogScreen from '../screens/BlogsScreen';
 import AttendanceScreen from '../screens/Home/AttendanceScreen';
 import ChatScreen from '../screens/Home/ChatScreen';
 import EventScreen from '../screens/Home/EventScreen';
@@ -19,16 +19,16 @@ const config = Platform.select({
 });
 
 
-const MaterialStack = createStackNavigator({
-   Material: MaterialScreen,
+const BlogStack = createStackNavigator({
+   Blogs: BlogScreen,
 },
 )
 
-MaterialStack.navigationOptions = {
+BlogStack.navigationOptions = {
     headerShown:false
 }
 
-MaterialStack.path = '';
+BlogStack.path = '';
 
 const AttendanceStack = createStackNavigator({
     Attendance: AttendanceScreen,
@@ -102,7 +102,7 @@ const AttendanceStack = createStackNavigator({
 
 
 const AllStack = createStackNavigator({
-  materials:MaterialStack,
+  Blogs:BlogStack,
   attendance:AttendanceStack,
   chat: ChatStack,
   event:EventStack,

@@ -7,14 +7,14 @@ import LevelSetting from './extra/LevelSetting';
 import PaymentSetting from './extra/PaymentSetting';
 import GetHelpSetting from './extra/GetHelpSetting';
 import FeedbackSetting from './extra/GiveUsFeedback';
-import Ripple from 'react-native-material-ripple';
  
  
 class Setting extends Component {
     render() { 
         return (
+           <View style={styles.container}>
             <ScrollView>
-            <Grid style={styles.container}>
+            <Grid>
                   <UserInfo/>
                   <Row>
                         <DepartmentSetting onPress= {()=>{this.props.navigation.navigate('Department')}}/>
@@ -34,6 +34,7 @@ class Setting extends Component {
                    
             </Grid>
             </ScrollView>
+            </View>
         );
     }
 }

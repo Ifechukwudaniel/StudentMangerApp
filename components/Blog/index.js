@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView } from 'react-native';
 import { BlogCard } from './extra/card-component';
+import Header from '../Header';
  
  
 class Blog extends Component {
@@ -55,7 +56,9 @@ class Blog extends Component {
     }
     render() { 
         return (
-            <View style={styles.container}>
+            <>
+            <Header screenName="Blogs"  onBackPress={()=>this.props.navigation.navigate('Home')}/>
+            <ScrollView style={styles.container}>
                {this.data.map((item)=>(
                  <BlogCard
                      onClick= {this.handlePress}
@@ -66,7 +69,8 @@ class Blog extends Component {
                     title={item.title}
                 />
                ))}
-            </View>
+            </ScrollView>
+            </>
         );
     }
 }
