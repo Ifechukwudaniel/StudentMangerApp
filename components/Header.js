@@ -29,7 +29,7 @@ const styles = EStyleSheet.create({
         borderBottomWidth: "0rem",
     },
     title:{
-        fontSize: '23rem', 
+        fontSize: '22rem', 
         color:"#fff",
         fontFamily:"Itim",
     },
