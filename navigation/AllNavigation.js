@@ -7,6 +7,10 @@ import AttendanceScreen from '../screens/Home/AttendanceScreen';
 import ChatScreen from '../screens/Home/ChatScreen';
 import EventScreen from '../screens/Home/EventScreen';
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
+import PaymentSettingScreen from '../screens/PaymentSettingScreen';
+import NotificationScreen from '../screens/Home/NotificationScreen';
+
+
 
 
 const config = Platform.select({
@@ -72,13 +76,39 @@ const AttendanceStack = createStackNavigator({
  TimeTableStack.path = '';
 
 
+ const NotificationsStack = createStackNavigator({
+    Notification: NotificationScreen,
+ },
+ )
+ 
+ NotificationsStack.navigationOptions = {
+     headerShown:false
+ }
+ 
+ NotificationsStack.path = '';
+
+
+ const PaymentSettingStack = createStackNavigator({
+    PaymentSetting: PaymentSettingScreen,
+ },
+ )
+ 
+ PaymentSettingStack.navigationOptions = {
+     headerShown:false
+ }
+ 
+ PaymentSettingStack.path = '';
+
+
 
 const AllStack = createStackNavigator({
   materials:MaterialStack,
   attendance:AttendanceStack,
   chat: ChatStack,
   event:EventStack,
-  timeTable:TimeTableStack
+  timeTable:TimeTableStack,
+  paymentSetting:PaymentSettingStack,
+  notifications: NotificationsStack
 },{
 });
 
