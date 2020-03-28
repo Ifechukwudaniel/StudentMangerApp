@@ -3,11 +3,11 @@ import { ScrollView, StyleSheet } from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import Setting from '../components/Settings';
 
-export default function SettingsScreen() {
+export default function SettingsScreen(props) {
   return (
     <Layout style={styles.container}>
       <ScrollView style={styles.container}>
-         <Setting/>
+         <Setting {...props}/>
       </ScrollView>
     </Layout>
   );

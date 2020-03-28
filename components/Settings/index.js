@@ -17,19 +17,19 @@ class Setting extends Component {
             <Grid style={styles.container}>
                   <UserInfo/>
                   <Row>
-                        <DepartmentSetting/>
+                        <DepartmentSetting onPress= {()=>{this.props.navigation.navigate('Department')}}/>
                    </Row>
                    <Row>
-                        <LevelSetting/>
+                        <LevelSetting onPress= {()=>{this.props.navigation.navigate('level')}}/>
                    </Row>
                    <Row>
-                        <PaymentSetting/>
+                        <PaymentSetting onPress= {()=>{this.props.navigation.navigate('paymentSetting')}}/>
                    </Row>
                    <Row>
-                        <GetHelpSetting/>
+                        <GetHelpSetting onPress= {()=>{}}/>
                    </Row>
                    <Row>
-                        <FeedbackSetting/>
+                        <FeedbackSetting onPress= {()=>{}}/>
                    </Row>
                    
             </Grid>
