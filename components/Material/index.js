@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView, Modal} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../Header'
@@ -9,11 +9,12 @@ import { Text } from 'native-base';
 
  
 const Material = ({navigation}) => {
+    const [showModal , setShowModal] = useState(false)
     return (
         <View style={styles.container}>
             <ScrollView style={styles.scrollView}>
                  <View>
-                    <TouchableOpacity style= {styles.materialItem}>
+                    <TouchableOpacity style= {styles.materialItem} onPress={()=>console.log("iwdjdijdwidjdidj2idj2jd2dj2id2jdi2ji2j2ji2j2ij2eij2iej2ei2e")}>
                             <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
                                 <Text style={styles.courseCode}>Csc 131</Text>
                                 <View style={styles.line}/>
@@ -33,6 +34,7 @@ const Material = ({navigation}) => {
                                 <Text style={[styles.courseTitle, {fontSize:15}]}>Posted on 1st of may</Text>
                             </LinearGradient>
                     </TouchableOpacity>
+                    <Modal visible={showModal} presentationStyle='formSheet'   />
                   </View>
             </ScrollView>
         </View>
