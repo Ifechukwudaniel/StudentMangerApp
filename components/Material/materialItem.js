@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal, TouchableHighlight, Image} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView, Modal, TouchableHighlight, Image, ActivityIndicator} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Text } from 'native-base';
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import WebView from 'react-native-webview'
 
 
  
@@ -36,7 +37,19 @@ const MaterialItem = () => {
                           </TouchableOpacity>
                            <View style={styles.content}>
                              <View style={styles.imageWrapper}>
-                                <Image style={styles.image} resizeMode='cover' source ={require('../../assets/images/imageDoc.png')}/>
+                              <WebView
+                                renderLoading={(
+                                  <ActivityIndicator
+                                    color="#009688"
+                                    size="large"
+                                    style={styles.ActivityIndicatorStyle}
+                                 />
+                                )}
+                                bounces={false}
+                                javaScriptEnabled={true}
+                                domStorageEnabled={true}
+                                useWebKit={true}
+                                source={{ uri: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
                              </View>
                              <View style={styles.description}>
                                 <Text style={styles.courseCode}>Csc 131</Text>
@@ -44,6 +57,7 @@ const MaterialItem = () => {
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>First material </Text>
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>Lectures: mr gay & mrs  bitch</Text>
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>Material Type : PDF</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Pages: 100</Text>
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>Posted on 1st of may</Text>
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>150 copies printed and delivered</Text>
                              </View>
@@ -170,6 +184,10 @@ const styles = EStyleSheet.create({
           marginRight: '40rem',
           alignContent:"center",
           justifyContent: 'center',
-      }
+      },
+      ActivityIndicatorStyle: {
+        flex: 1,
+        justifyContent: 'center',
+      },
 })
 export default MaterialItem;
