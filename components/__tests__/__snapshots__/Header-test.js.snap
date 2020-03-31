@@ -145,36 +145,3 @@ exports[`Header renders correctly 1`] = `
   </View>
 </View>
 `;
-
-exports[`renders correctly 1`] = `
-     <View>
-        <Header  style={Object {
-        {
-        "backgroundColor": "#252525" ,
-        "borderBottomWidth": "0rem",
-      }}>
-              <StatusBar  hidden={true} barStyle='light-content' />
-          <Left>
-             <Button transparent onPress={[Function]}>
-                <Icon name='arrow-back' style={Object {
-                  "color":"#fff"
-                }} />
-              <Text style={ Object {
-                "fontSize": '20rem', 
-                "color":"#fff",
-                "fontFamily":"Itim",
-              }}>Back</Text>
-             </Button>
-          </Left>
-          <Body>
-            <Title style={ Array [{
-             "fontSize": '22rem', 
-             "color":"#fff",
-             "fontFamily":"Itim",
-            }, undefined ]}> Test</Title>
-          </Body>
-          <Right>
-          </Right>
-        </Header>
-        </View>
-`;
