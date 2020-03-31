@@ -5,7 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
  
 const HeaderComponent = ({onBackPress, screenName, style, noBackButton}) => {
     return (
-        <View style={styles.container}>
+        <View>
         <Header  style={styles.header}>
               <StatusBar  hidden={true} barStyle='light-content' />
           <Left>

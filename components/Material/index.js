@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView, Modal, TouchableHighlight} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../Header'
 import { Text } from 'native-base';
-
+import Colors from '../../constants/Colors';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 
  
@@ -14,7 +15,7 @@ const Material = ({navigation}) => {
         <View style={styles.container}>
             <ScrollView style={styles.scrollView}>
                  <View>
-                    <TouchableOpacity style= {styles.materialItem} onPress={()=>console.log("iwdjdijdwidjdidj2idj2jd2dj2id2jdi2ji2j2ji2j2ij2eij2iej2ei2e")}>
+                    <TouchableOpacity style= {styles.materialItem} onPress={()=>setShowModal(true)}>
                             <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
                                 <Text style={styles.courseCode}>Csc 131</Text>
                                 <View style={styles.line}/>
@@ -34,7 +35,22 @@ const Material = ({navigation}) => {
                                 <Text style={[styles.courseTitle, {fontSize:15}]}>Posted on 1st of may</Text>
                             </LinearGradient>
                     </TouchableOpacity>
-                    <Modal visible={showModal} presentationStyle='formSheet'   />
+                    <Modal
+                      animationType='slide'
+                       transparent={true}  
+                      visible={ showModal}
+                    
+                     >
+                    <View style={styles.modal}>
+                        <View style={styles.modalView}>
+                          <TouchableOpacity onPress={()=>setShowModal(false)}>
+                             <LinearGradient style={styles.closeButton} colors={['#E82222', 'rgba(232, 34,34,0.71)']}>
+                               <MaterialIcon name="close" size={45} color={Colors.white} style={styles.icon}/>
+                             </LinearGradient>
+                          </TouchableOpacity>
+                        </View>
+                    </View>
+                     </Modal>
                   </View>
             </ScrollView>
         </View>
@@ -45,10 +61,10 @@ const styles = EStyleSheet.create({
      flex: 1,
     },
     scrollView:{
-     marginTop:"100rem"
+     marginTop:"30%"
     },
     materialItem:{
-        width:'80%',
+        width:'90%',
         height:"190rem",
         alignSelf: 'center',
         overflow: 'hidden',
@@ -81,5 +97,35 @@ const styles = EStyleSheet.create({
         backgroundColor:"#fff",
         marginTop:'2rem'
       },
+      modal:{
+        backgroundColor:'transparent',
+        flex:1,
+        justifyContent:'flex-end'
+      },
+      modalView:{
+        backgroundColor:Colors.black,
+        height:'89%',
+        borderTopLeftRadius: "100rem",
+        borderTopRightRadius: "100rem",
+        shadowColor: "#3F4141",
+        shadowOffset: {
+              width: -2.5,
+              height: -2.5,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 4,
+        elevation: 5,
+      },
+      closeButton:{
+         width:'60rem',
+         height:'60rem',
+         alignSelf: 'center',
+         marginTop: '30rem',
+         borderRadius: '30rem',
+      },
+      icon:{
+        alignSelf:'center',
+        marginTop:'5rem'
+      }
 })
 export default Material;
