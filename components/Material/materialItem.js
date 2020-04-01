@@ -35,7 +35,7 @@ const MaterialItem = () => {
                                <MaterialIcon name="close" size={40} color={Colors.white} style={styles.icon}/>
                              </LinearGradient>
                           </TouchableOpacity>
-                           <View style={styles.content}>
+                           <ScrollView style={styles.content}>
                              <View style={styles.imageWrapper}>
                               <WebView
                                 renderLoading={(
@@ -75,7 +75,7 @@ const MaterialItem = () => {
                                      <MaterialIcon name="comment" size={30} color={Colors.white} style={styles.icon}/>
                                 </TouchableOpacity>  
                              </View>
-                           </View>
+                           </ScrollView>
                         </View>
                     </View>
                      </Modal>
@@ -113,6 +113,7 @@ const styles = EStyleSheet.create({
         marginLeft: "2rem",
         lineHeight:"20rem",
         paddingTop: '4rem',
+
     },
      courseTitleText:{
         // fontSize: '25rem',

@@ -126,11 +126,13 @@ const styles = EStyleSheet.create({
     fontSize:"12rem",
     fontFamily:"Itim",
     textAlign:"center",
-    lineHeight:'25rem'
+    justifyContent:"center",
+    lineHeight:'25rem',
+    marginRight:"3rem"
   },
   menu:{
    flex: 1,
-   marginTop: '70rem',
+   marginTop: '40rem',
   },
   menuItem:{
       width:'160rem',

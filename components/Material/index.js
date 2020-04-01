@@ -5,6 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
+import Constants from 'expo-constants'
  
 const Material = () => {
     return (
@@ -37,7 +38,7 @@ const styles = EStyleSheet.create({
      flex: 1,
     },
     filterView:{
-      marginTop:'47rem',
+      marginTop:Constants.statusBarHeight+10,
       flexDirection: 'row',
       alignContent: 'center',
     },
