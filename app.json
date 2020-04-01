@@ -31,9 +31,19 @@
       }
     },
     "description": "",
-      "packagerOpts": {
-        "config": "metro.config.js",
-        "sourceExts": ["js", "jsx", "ts", "tsx", "svg","mp3"]
-      }
-  }
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "js",
+        "jsx",
+        "ts",
+        "tsx",
+        "svg",
+        "mp3"
+      ]
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "Biu Assist",
+  "name": "BiuAssist"
 }

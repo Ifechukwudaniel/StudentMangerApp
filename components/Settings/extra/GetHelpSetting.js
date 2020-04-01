@@ -46,7 +46,7 @@ typeText:{
   textAlign:'left',
   color:Colors.white,
   fontSize:'20rem',
-  fontFamily:'Open Sans Regular',
+  fontFamily:'Open Sans',
 },
 icon:{
   alignItems:"flex-end"

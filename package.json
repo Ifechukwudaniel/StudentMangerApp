@@ -1,11 +1,11 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject",
-    "test": "jest --watchAll"
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest --watchAll",
+    "lint": "eslint .",
+    "c-cache": "watchman watch-del-all && yarn start --reset-cache"
   },
   "jest": {
     "preset": "jest-expo",
@@ -27,7 +27,7 @@
     "@react-navigation/web": "~1.0.0-alpha.9",
     "@ui-kitten/components": "^4.3.2",
     "@ui-kitten/eva-icons": "^4.3.2",
-    "expo": "~36.0.0",
+    "expo": "^37.0.3",
     "expo-asset": "~8.0.0",
     "expo-av": "~8.0.0",
     "expo-constants": "~8.0.0",
@@ -40,7 +40,7 @@
     "prop-types": "^15.7.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native": "~0.61.4",
     "react-native-autocomplete-input": "^4.1.0",
     "react-native-calendars": "^1.264.0",
     "react-native-easy-grid": "^0.2.2",
@@ -55,6 +55,7 @@
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-svg": "9.13.3",
     "react-native-swiper": "^1.6.0-nightly.5",
+    "react-native-unimodules": "~0.7.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
     "react-native-webview": "^9.0.2",

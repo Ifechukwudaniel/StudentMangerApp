@@ -40,16 +40,17 @@ const styles = EStyleSheet.create({
        textAlign:'left',
        color:Colors.white,
        fontSize:wp('7%'),
-       fontFamily:'Open Sans Bold',
+       fontFamily:'Open Sans',
        fontWeight:"bold"
     },
     viewAndEdit:{
         textAlign:'center',
         color:Colors.white,
         fontSize:wp('5%'),
-        fontFamily:'Open Sans Light',
+        fontFamily:'Open Sans',
         paddingRight:wp("10%"),
-        lineHeight:hp("5%")
+        lineHeight:hp("5%"),
+        fontWeight:"300"
     },
     userImage:{
          alignContent:"center"
