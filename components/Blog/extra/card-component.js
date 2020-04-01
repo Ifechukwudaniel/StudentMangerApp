@@ -66,19 +66,20 @@ const styles = StyleSheet.create({
     },
     title:{
       fontSize:17,
-      fontFamily:"Open Sans Bold",
+      fontFamily:"Open Sans",
+      fontWeight:"bold",
       marginTop:hp("1%"),
       width:wp("90%")
     },
     date:{
       fontSize:15,
-      fontFamily:"Open Sans Regular",
+      fontFamily:"Open Sans",
       fontWeight:'bold',
       padding:hp("0.3%"),
     },
     tag:{
       fontSize:15,
-      fontFamily:"Open Sans Regular",
+      fontFamily:"Open Sans",
       textAlign:'right',
       marginLeft:wp("45%"),
       color:"#fff",
@@ -93,6 +94,5 @@ const styles = StyleSheet.create({
       width:wp("100%"),
       justifyContent:'center',
       flexWrap:'wrap',
-      //paddingBottom:hp("3%")
     }
   });
