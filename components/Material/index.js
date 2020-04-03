@@ -38,7 +38,7 @@ const styles = EStyleSheet.create({
      flex: 1,
     },
     filterView:{
-      marginTop:Constants.statusBarHeight+10,
+      marginTop:'40rem',
       flexDirection: 'row',
       alignContent: 'center',
     },

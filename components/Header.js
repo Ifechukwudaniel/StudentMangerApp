@@ -17,7 +17,7 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton}) => {
                     <Button transparent onPress={()=>onBackPress()}>
                         <Icon name='arrow-back' style={styles.icon} />
                         <Text style={styles.backText}>Back</Text>
-                        </Button>
+                     </Button>
                 </>
                 )
             }
