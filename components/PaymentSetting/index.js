@@ -10,7 +10,7 @@ import Header from '../Header'
 const PaymentSetting = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header  style={styles.headerTextStyle} screenName="Payment Setting" onBackPress= {()=>navigation.push("Settings")} />
+             <Header  style={styles.headerTextStyle} screenName="Phone Number" onBackPress= {()=>navigation.push("Settings")} />
         </View>
     );
 }

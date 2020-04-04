@@ -16,11 +16,11 @@ export default class PaymentSetting extends Component {
        <Ripple onPress= {this.props.onPress} style= {{flex:1,padding:hp("1%")}}>
             <Row style={styles.content}>
               <Col>
-                <Text style={styles.typeText}> Payment Setting</Text>
+                <Text style={styles.typeText}> Phone Number</Text>
               </Col>
               <Col style={styles.icon}>
               <Ripple>
-                <MaterialIcon name="payment" color={Colors.white} size={30}/>
+                <MaterialIcon name="phone" color={Colors.white} size={30}/>
               </Ripple>
               </Col>
             </Row>
