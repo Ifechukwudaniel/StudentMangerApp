@@ -16,12 +16,16 @@ const PhoneSetting = ({navigation}) => {
                  </View> 
                  <View style={styles.contentItem}>
                      <Text style={[styles.courseTitle]}> Parent phone number </Text>
-                      <TextInput keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View> 
                  <View style={styles.contentItem}>
                      <Text style={[styles.courseTitle]}> Guardian  phone number </Text>
-                      <TextInput keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View> 
+                 <View style={styles.contentItem}>
+                     <Text style={[styles.courseTitle]}> Next Of Kin  phone number </Text>
+                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                 </View>
                  <TouchableOpacity style={[styles.button,styles.buttonWrapper]}>
                           <LinearGradient style={styles.button} colors={['#0F9A47', '#027831']}>
                                <Text style={[styles.courseTitle, styles.buttonText]}> Submit </Text>

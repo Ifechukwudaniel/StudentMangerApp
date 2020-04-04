@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, TouchableHighlight, View, Image, ImageBackground } from 'react-native';
-import {  Text, Button } from '@ui-kitten/components';
+import { StyleSheet, TouchableOpacity, TouchableHighlight, View, Image, ImageBackground, Text } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import moment from 'moment'
@@ -15,8 +14,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
           <ImageBackground style= {styles.image} 
            source= {{uri:`${img}`}}
            resizeMode={'cover'} 
-           imageStyle= {{opacity:1}
-           }
+           imageStyle= {{opacity:1}}
            >
           </ImageBackground>
           <View style={styles.overlay} />
@@ -32,7 +30,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
           </View>
           </View>
        </View>
-         <BlogModal showModal={showModal} closeModal= {()=>setShowModal(false)}/>
+         <BlogModal showModal={showModal} image={img} closeModal= {()=>setShowModal(false)}/>
        </Ripple>
     );
 }
@@ -71,25 +69,28 @@ const styles = StyleSheet.create({
       fontFamily:"Open Sans",
       fontWeight:"bold",
       marginTop:hp("1%"),
-      width:wp("90%")
+      width:wp("90%"),
+      color:"#fff"
     },
     date:{
       fontSize:15,
       fontFamily:"Open Sans",
       fontWeight:'bold',
       padding:hp("0.3%"),
+      color:"#fff"
     },
     tag:{
       fontSize:15,
-      fontFamily:"Open Sans",
+      fontFamily:"Itim",
       textAlign:'right',
       marginLeft:wp("45%"),
-      color:"#fff",
+      color:"#FFBE04",
       padding:hp("0.2%"),
     },
     textContainer:{
       flexDirection:'row',
-      width:wp("100%")
+      width:wp("100%"),
+      color:"#fff"
     },
     titleContainer:{
       flexDirection:'column',

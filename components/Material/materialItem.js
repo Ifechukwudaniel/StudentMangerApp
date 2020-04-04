@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator} from 'react-native'
+import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator, Slider} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
-import {  Button, Icon, Textarea, CheckBox} from 'native-base';
+import {  Button, Icon, Textarea, CheckBox, Spinner } from 'native-base';
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import WebView from 'react-native-webview'
@@ -68,6 +68,7 @@ const MaterialItem = () => {
                              </View>
                              <View style={styles.action}>
                                 <TouchableOpacity style={styles.actionIcon}>
+                                     {/* <Slider  /> */}
                                     <MaterialIcon name="file-download" size={30} color={Colors.white} style={styles.icon}/>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.actionIcon} onPress= {()=>{setShowViewModal(true)}}>

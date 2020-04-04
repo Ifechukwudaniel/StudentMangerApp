@@ -13,7 +13,7 @@ export default class UserInfo extends Component {
     return (
         <Row style={styles.container}>
             <Col style= {styles.textContainer}>
-                <Text style = {styles.nameText}> Ifechukwu Daniel</Text>
+                <Text style = {styles.nameText}>Ifechukwu Daniel </Text>
                 <Text style= {styles.viewAndEdit}> View And edit </Text>       
             </Col>
             <Col style={styles.userImage}>
@@ -41,7 +41,8 @@ const styles = EStyleSheet.create({
        color:Colors.white,
        fontSize:wp('7%'),
        fontFamily:'Open Sans',
-       fontWeight:"bold"
+       fontWeight:"bold",
+      //  flexWrap: 'wrap',
     },
     viewAndEdit:{
         textAlign:'center',

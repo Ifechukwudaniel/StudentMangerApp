@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal,KeyboardAvoidingView,TextInput,TouchableHighlight, Image, ActivityIndicator} from 'react-native'
+import {View, StatusBar,Text,  TouchableOpacity, ScrollView, Modal,KeyboardAvoidingView,TextInput,TouchableHighlight, Image, ActivityIndicator} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
-import { Text, Button, Icon} from 'native-base';
+import { Button} from 'native-base';
 import Colors from '../../constants/Colors';
 import PrintSvg from '../../assets/svg/print.svg'
 import CheckBoxItem from './extra/CheckBoxItem';
+import Icon from 'react-native-vector-icons/Ionicons';
 
  
 const PrintModal = ({showModal, closeModal}) => {
@@ -20,7 +21,7 @@ const PrintModal = ({showModal, closeModal}) => {
                              <View style={styles.modalView}>
                                  <View style={styles.header}>
                                     <Button transparent onPress={()=>closeModal()}>
-                                      <Icon name='arrow-back' style={styles.iconHeader} />
+                                      <Icon size={30} name='ios-arrow-back' style={styles.iconHeader} />
                                       <Text style={styles.backText}>Back</Text>
                                     </Button>
                                     <View style={styles.printIcon}>
@@ -122,18 +123,20 @@ const styles = EStyleSheet.create({
           fontSize: '20rem', 
           color:"#fff",
           fontFamily:"Itim",
-          padding:"2rem"
+          // padding:"2rem"
+          marginBottom: '5rem',
       },
       iconHeader:{
           color:"#fff",
-          margin: '0rem',
+          marginLeft:'15rem',
+          marginRight:'5rem'
       },
       printIcon:{
         top: '-10rem',
-        marginLeft: "65rem",
+        marginLeft: "80rem",
       },
       printText:{
-        left: '-76rem',
+        left: '-80rem',
         fontSize: '18rem', 
         marginTop: "10rem",
       },

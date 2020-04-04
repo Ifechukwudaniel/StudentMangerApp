@@ -1,42 +1,62 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal,KeyboardAvoidingView,TextInput,TouchableHighlight, Image, ActivityIndicator} from 'react-native'
+import {View,  Modal, Text,ScrollView, Image, TextInput} from 'react-native'
+import Constants from 'expo-constants'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import { LinearGradient } from 'expo-linear-gradient';
-import { Text, Button, Icon} from 'native-base';
+import {  Button,Icon} from 'native-base';
 import Colors from '../../constants/Colors';
-import PrintSvg from '../../assets/svg/print.svg'
-import CheckBoxItem from './extra/CheckBoxItem';
+import CommentSvg from '../../assets/svg/comment.svg'
+import CommentItem from './extra/CommentItem';
+import IoniconsIcon from 'react-native-vector-icons/Ionicons'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import Ripple from 'react-native-material-ripple'
 
  
 const CommentModal = ({showModal, closeModal}) => {
     return (
      <>
       <Modal
-                            animationType='slide'
-                            transparent
-                            visible={showModal}
-                            >
+        animationType='slide'
+        transparent
+        visible={showModal}
+        >
                              <View  style={styles.modal}>
                              <View style={styles.modalView}>
                                  <View style={styles.header}>
                                     <Button transparent onPress={()=>closeModal()}>
-                                      <Icon name='arrow-back' style={styles.iconHeader} />
+                                      <IoniconsIcon name='ios-arrow-back' size={30} style={styles.iconHeader} />
                                       <Text style={styles.backText}>Back</Text>
                                     </Button>
                                     <View style={styles.printIcon}>
-                                        <PrintSvg/>
+                                        <CommentSvg/>
                                         <Text  style={[styles.courseTitle, styles.printText]}> Comments</Text>
                                     </View>
                                  </View>
-
+                                 <ScrollView style={styles.scrollView}>
+                                  <CommentItem/>
+                                    <CommentItem/>
+                                    <CommentItem/>
+                                 </ScrollView>
+                                 <View style={[styles.flexRow,styles.typeComment]}>
+                                    <View style={[styles.userIconWrapper, styles.flexRow]} >
+                                      <Image style={styles.userIcon} resizeMode='cover' source={require("../../assets/images/img.png")}/>
+                                      <TextInput numberOfLines={2} placeholderTextColor="#AEAEAE"  placeholder="Type your comment ...." style={styles.textInput}/>
+                                      <Ripple style={styles.commentIcon}>
+                                        <MaterialIcon  style={styles.commentIcon} size={30}  name="comment" color="#fff"/>
+                                      </Ripple>
+                                    </View>
+                                  <View>
+                                  </View>
+                                 </View>
                              </View>   
                              </View>
                           </Modal>
-       
     </>
     );
 }
 const styles = EStyleSheet.create({
+      scrollView:{
+        paddingTop:'10rem'
+      },
       courseTitle:{
           fontSize: '20rem',
           color:"#fff",
@@ -67,20 +87,22 @@ const styles = EStyleSheet.create({
         header:{
           marginTop:"52rem",
           flexDirection: 'row',
+          marginBottom: '20rem',
         },
         backText:{
           fontSize: '20rem', 
           color:"#fff",
           fontFamily:"Itim",
-          padding:"2rem"
+          marginBottom: '5rem',
       },
       iconHeader:{
           color:"#fff",
-          margin: '0rem',
+          marginLeft:'15rem',
+          marginRight:'5rem'
       },
       printIcon:{
         top: '-10rem',
-        marginLeft: "65rem",
+        marginLeft: "80rem",
       },
       printText:{
         left: '-16rem',
@@ -88,7 +110,6 @@ const styles = EStyleSheet.create({
         marginTop: "10rem",
       },
       deliveryContent:{
-      //  marginTop:"20rem",
        padding: '10rem',
       },
       contentItem:{
@@ -99,6 +120,41 @@ const styles = EStyleSheet.create({
       },
       flexColumn:{
         flexDirection:'column'
+      },
+      userIcon:{
+        alignSelf: 'center',
+        height:"40rem",
+        borderRadius: '100rem',
+        width:"40rem",
+         marginBottom:'20rem'
+      },
+      userIconWrapper:{
+        marginRight: "20rem",
+        marginLeft: "20rem",
+      },
+      typeComment:{
+        borderTopWidth:'3rem',
+        borderColor: "#AEAEAE",
+        width:"100%",
+        height:'80rem'
+      },
+      textInput:{
+        backgroundColor: "#000",
+        alignSelf: 'center',
+        height:"40rem",
+        color:"#fff",
+        fontFamily:'Itim',
+        fontSize:'17rem',
+        marginLeft : '10rem',
+        width:"75%",
+        marginBottom:'20rem'
+      },
+      commentIcon:{
+        // marginTop: '5rem',
+        borderLeftWidth: '2rem',
+        borderColor:"#fff",
+        paddingTop:"10rem",
+        paddingLeft: '3rem',
       }
 })
 export default CommentModal;
