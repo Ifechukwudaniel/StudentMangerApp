@@ -40,7 +40,10 @@ const PreviewModal = ({showModal, closeModal}) => {
                           useWebKit={true}
                           style={{ flex: viewLoad ? 1 :0 }}
                           onLoad={()=>setViewLoad(true)}
-                          onError={()=>alert("Please an error occurred, please check your connection ")}
+                          onError={()=>{
+                            alert("Please an error occurred, please check your connection ")
+                            // setViewLoad(true)
+                            }}
                           source={{ uri: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
                    </View>
                 </Modal>
