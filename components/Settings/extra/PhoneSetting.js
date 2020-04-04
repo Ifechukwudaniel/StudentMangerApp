@@ -8,7 +8,7 @@ import Ripple from 'react-native-material-ripple';
 import EStyleSheet from 'react-native-extended-stylesheet'
 
 
-export default class PaymentSetting extends Component {
+export default class PhoneSetting extends Component {
 
   render() {
     return (

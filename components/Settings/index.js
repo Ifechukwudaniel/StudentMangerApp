@@ -4,7 +4,7 @@ import UserInfo from './extra/user-info-component';
 import DepartmentSetting from './extra/DepartmentSetting';
 import {Grid,Row} from 'react-native-easy-grid'
 import LevelSetting from './extra/LevelSetting';
-import PaymentSetting from './extra/PaymentSetting';
+import PhoneSetting from './extra/PhoneSetting';
 import GetHelpSetting from './extra/GetHelpSetting';
 import FeedbackSetting from './extra/GiveUsFeedback';
  
@@ -23,7 +23,7 @@ class Setting extends Component {
                         <LevelSetting onPress= {()=>{this.props.navigation.navigate('level')}}/>
                    </Row>
                    <Row>
-                        <PaymentSetting onPress= {()=>{this.props.navigation.navigate('paymentSetting')}}/>
+                        <PhoneSetting onPress= {()=>{this.props.navigation.navigate('phoneSetting')}}/>
                    </Row>
                    <Row>
                         <GetHelpSetting onPress= {()=>{}}/>

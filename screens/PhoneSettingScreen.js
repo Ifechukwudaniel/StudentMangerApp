@@ -1,19 +1,19 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import {  Layout } from '@ui-kitten/components';
-import PaymentSetting from '../components/PaymentSetting';
+import PhoneSetting from '../components/PhoneSetting';
 
-export default function PaymentSettingScreen(props) {
+export default function PhoneSettingScreen(props) {
   return (
     <Layout style={styles.container}>
       <ScrollView style={styles.container}>
-         <PaymentSetting {...props}/>
+         <PhoneSetting {...props}/>
       </ScrollView>
     </Layout>
   );
 }
 
-PaymentSettingScreen.navigationOptions = {
+PhoneSettingScreen.navigationOptions = {
  header:null
 };
 

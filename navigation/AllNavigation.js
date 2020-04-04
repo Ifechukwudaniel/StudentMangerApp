@@ -7,7 +7,7 @@ import AttendanceScreen from '../screens/Home/AttendanceScreen';
 import ChatScreen from '../screens/Home/ChatScreen';
 import EventScreen from '../screens/Home/EventScreen';
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
-import PaymentSettingScreen from '../screens/PaymentSettingScreen';
+import PhoneSettingScreen from '../screens/PhoneSettingScreen';
 import NotificationScreen from '../screens/Home/NotificationScreen';
 
 
@@ -88,16 +88,16 @@ const AttendanceStack = createStackNavigator({
  NotificationsStack.path = '';
 
 
- const PaymentSettingStack = createStackNavigator({
-    PaymentSetting: PaymentSettingScreen,
+ const PhoneSettingStack = createStackNavigator({
+    PhoneSetting: PhoneSettingScreen,
  },
  )
  
- PaymentSettingStack.navigationOptions = {
+ PhoneSettingStack.navigationOptions = {
      headerShown:false
  }
  
- PaymentSettingStack.path = '';
+ PhoneSettingStack.path = '';
 
 
 
@@ -107,7 +107,7 @@ const AllStack = createStackNavigator({
   chat: ChatStack,
   event:EventStack,
   timeTable:TimeTableStack,
-  paymentSetting:PaymentSettingStack,
+  phoneSetting:PhoneSettingStack,
   notifications: NotificationsStack
 },{
 });
