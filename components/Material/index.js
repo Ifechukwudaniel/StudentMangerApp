@@ -6,14 +6,16 @@ import MaterialItem from './materialItem';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
 import Constants from 'expo-constants'
+import FilterModal from './FilterModal';
  
 const Material = () => {
+    const [openFilter, setOpenFilter]= useState(false)
     return (
         <View style={styles.container}>
            <StatusBar hidden/>
           <View style={styles.filterView}>
-            <TouchableOpacity style={styles.icon}>
-                 <MaterialIcon  name="filter-list" size={40} color="#fff"/>
+            <TouchableOpacity style={styles.icon} onPress={()=>setOpenFilter(true)}>
+                 <MaterialIcon  name="filter-list" size={40} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
             </TouchableOpacity>
           <View style={styles.searchView}>
               <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
@@ -22,7 +24,8 @@ const Material = () => {
               </Ripple>
           </View>
           </View>
-            <ScrollView style={styles.scrollView}>
+            <FilterModal showModal= {openFilter} closeModal= {()=>setOpenFilter(false)}/>
+            <ScrollView indicatorStyle={'white'} style={styles.scrollView}>
                <MaterialItem/>
                <MaterialItem/>
                <MaterialItem/>
