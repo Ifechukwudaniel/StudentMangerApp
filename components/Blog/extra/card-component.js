@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableHighlight, View, Image, ImageBackground } from 'react-native';
 import {  Text, Button } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import moment from 'moment'
+import BlogModal from './BlogModal';
 
 
-export const BlogCard = ({ date, tag,title, img, onClick , ...cardProps}) => {
-
+export const BlogCard = ({ date, tag,title, img}) => {
+    const  [showModal , setShowModal] = useState(false)
     return (
-      <Ripple onPress={onClick}>
+      <Ripple onPress={()=>setShowModal(true)}>
        <View>
           <ImageBackground style= {styles.image} 
            source= {{uri:`${img}`}}
@@ -31,6 +32,7 @@ export const BlogCard = ({ date, tag,title, img, onClick , ...cardProps}) => {
           </View>
           </View>
        </View>
+         <BlogModal showModal={showModal} closeModal= {()=>setShowModal(false)}/>
        </Ripple>
     );
 }

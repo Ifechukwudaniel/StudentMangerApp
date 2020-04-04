@@ -51,9 +51,6 @@ class Blog extends Component {
     componentDidMount(){
         StatusBar.setHidden(true)
     }
-    handlePress=()=>{
-        alert("jjddjxwddw")
-    }
     render() { 
         return (
             <>
