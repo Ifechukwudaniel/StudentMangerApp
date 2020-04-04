@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity,Text, ScrollView, Modal,  TextInput, ActivityIndicator} from 'react-native'
+import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import {  Button, Icon, Textarea, CheckBox} from 'native-base';
@@ -7,22 +7,15 @@ import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import WebView from 'react-native-webview'
 import PreviewModal from './PreviewModal';
-import PrintSvg from '../../assets/svg/print.svg'
-import CheckBoxItem from './extra/CheckBoxItem';
-
-
-
-const resources = {
-  file: Platform.OS === 'ios' ? 'downloadedDocument.pdf' : '/sdcard/Download/downloadedDocument.pdf',
-  url: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview',
-};
-
+import PrintModal from './PrintModal'
+import CommentModal from './CommentModal';
 
  
 const MaterialItem = () => {
     const [showModal , setShowModal] = useState(false)
     const [showViewModal , setShowViewModal] = useState(false)
     const [print, setPrint] = useState(false)
+    const [comment, setShowComment] = useState(false)
     return (
         <>
                     <TouchableOpacity style= {styles.materialItem} onPress={()=>setShowModal(true)}>
@@ -85,70 +78,14 @@ const MaterialItem = () => {
                                   }}>
                                      <MaterialIcon name="local-printshop" size={30} color={Colors.white} style={styles.icon}/>    
                                 </TouchableOpacity>  
-                                <TouchableOpacity style={styles.actionIcon}>
+                                <TouchableOpacity style={styles.actionIcon} onPress={()=>setShowComment(true)} >
                                      <MaterialIcon name="comment" size={30} color={Colors.white} style={styles.icon}/>
                                 </TouchableOpacity>  
                              </View>
                            </ScrollView>
                            <PreviewModal showModal={showViewModal}  closeModal={()=>setShowViewModal(false)}/>
-                           <Modal
-                            animationType='slide'
-                            transparent
-                            visible={print}
-                            >
-                             <View style={styles.modal}>
-                             <View style={styles.modalView}>
-                                 <View style={styles.header}>
-                                    <Button transparent onPress={()=>setPrint(false)}>
-                                      <Icon name='arrow-back' style={styles.iconHeader} />
-                                      <Text style={styles.backText}>Back</Text>
-                                    </Button>
-                                    <View style={styles.printIcon}>
-                                        <PrintSvg/>
-                                        <Text  style={[styles.courseTitle, styles.printText]}> Printing & Delivery settings</Text>
-                                    </View>
-                                 </View>
-                                 <ScrollView style={styles.deliveryContent}>
-                                     <View style={styles.contentItem}>
-                                         <Text style={[styles.courseTitle]}> Delivery Time </Text>
-                                     </View>
-                                     <View style={[styles.contentItem,styles.flexRow]}>
-                                         <Text style={[styles.courseTitle]}> Copies </Text>
-                                         <View style={[styles.flexRow,styles.copiesNumberWrapper]}>
-                                            <TouchableOpacity style={styles.plus}>
-                                                  <Text style={styles.signText}> + </Text>
-                                                </TouchableOpacity> 
-                                                <TextInput keyboardType='numeric' defaultValue={'10'}   style={styles.copiesNumber}/>  
-                                                <TouchableOpacity style={styles.minus}>
-                                                  <Text style={styles.signText}> - </Text>
-                                                </TouchableOpacity> 
-                                         </View>
-                                     </View>
-                                     <View style={[styles.contentItem,styles.flexColumn]}>
-                                         <Text style={styles.courseTitle}> Specific request </Text>
-                                          <TextInput  multiline={true} defaultValue="I would like my name to written or type in the front and last page of the material as well as my matric number"  numberOfLines={7}  style={styles.textArea} />
-                                     </View>
-                                     <View  style={[styles.contentItem,styles.flexColumn]}>
-                                         <Text style={[styles.courseTitle]}> Delivery Location </Text>
-                                         <TextInput  multiline={true} placeholder="Where should it  be delivered" placeholderTextColor="#aeaeaa"  numberOfLines={1}  style={[styles.textArea, styles.textInput]} />
-                                     </View>
-                                     <View style={[styles.contentItem,styles.flexColumn]}>
-                                         <Text style={[styles.courseTitle]}> Phone Numbers </Text>
-                                          <View>
-                                              <CheckBoxItem onCheck={()=>alert("hdwhd")} text="use my default phone number"/>
-                                              <CheckBoxItem onCheck={()=>alert("hdwhd")} text="Use a different phone number"/>
-                                          </View>
-                                     </View>
-                                     <TouchableOpacity style={[styles.button,styles.buttonWrapper]}>
-                                        <LinearGradient style={styles.button} colors={['#0F9A47', '#027831']}>
-                                           <Text style={[styles.courseTitle, styles.buttonText]}> Submit </Text>
-                                        </LinearGradient>
-                                     </TouchableOpacity>
-                                 </ScrollView>
-                             </View>
-                                 
-                             </View>
-                          </Modal>
+                           <PrintModal  showModal={print} closeModal={()=>setPrint(false)} />
+                           <CommentModal showModal={comment} closeModal={()=>setShowComment(false)}/>
                         </View>
                     </View>
                      </Modal>
@@ -197,9 +134,9 @@ const styles = EStyleSheet.create({
         paddingTop:'10rem'
     },
       modal:{
-        backgroundColor:'transparent',
+        backgroundColor:'rgba(360, 360, 360, 0.2)',
         flex:1,
-        justifyContent:'flex-end'
+        justifyContent:'flex-end',
       },
       modalView:{
         backgroundColor:Colors.black,
@@ -298,7 +235,8 @@ const styles = EStyleSheet.create({
       borderRadius:"10rem",
     },
     buttonWrapper:{
-      marginTop:"10rem"
+      marginTop:"10rem",
+      marginBottom: "300rem",
     },
     buttonText:{
       justifyContent: 'center',
