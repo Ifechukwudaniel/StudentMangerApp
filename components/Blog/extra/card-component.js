@@ -30,7 +30,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
           </View>
           </View>
        </View>
-         <BlogModal showModal={showModal} image={img} closeModal= {()=>setShowModal(false)}/>
+         <BlogModal showModal={showModal} image={img} date={date} title={title} tag={tag} closeModal= {()=>setShowModal(false)}/>
        </Ripple>
     );
 }
@@ -66,16 +66,15 @@ const styles = StyleSheet.create({
     },
     title:{
       fontSize:17,
-      fontFamily:"Open Sans",
-      fontWeight:"bold",
+      fontFamily:"Brother1816-Bold",
       marginTop:hp("1%"),
       width:wp("90%"),
       color:"#fff"
     },
     date:{
       fontSize:15,
-      fontFamily:"Open Sans",
-      fontWeight:'bold',
+      fontFamily:"Itim",
+      // fontWeight:'bold',
       padding:hp("0.3%"),
       color:"#fff"
     },
