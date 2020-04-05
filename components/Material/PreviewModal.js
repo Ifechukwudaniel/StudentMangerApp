@@ -1,12 +1,8 @@
 import React, {useState} from 'react';
 import {View, StatusBar, TouchableOpacity, ScrollView, Modal,Platform, TouchableHighlight, Image, ActivityIndicator} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import { LinearGradient } from 'expo-linear-gradient';
-import { Text} from 'native-base';
 import Colors from '../../constants/Colors';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import WebView from 'react-native-webview'
-import PDFView from 'react-native-view-pdf';
 import HeaderComponent from '../Header';
 
 
@@ -44,7 +40,7 @@ const PreviewModal = ({showModal, closeModal}) => {
                             alert("Please an error occurred, please check your connection ")
                             // setViewLoad(true)
                             }}
-                          source={{ uri: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
+                          source={{ uri:'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
                    </View>
                 </Modal>
             </>

@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {View, Text,StatusBar, TouchableOpacity, ScrollView} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { Icon } from 'native-base';
+import PreviewModal from './PreviewModal';
  
 const DownloadItem = ({last}) => {
+  const [viewLoad, setViewLoad] = useState(false)
     return (
       <View>
-          <TouchableOpacity style={[styles.downloadItem, last? styles.last: {}]}>
+          <TouchableOpacity onPress={()=>setViewLoad(true)} style={[styles.downloadItem, last? styles.last: {}]}>
             <Text style={styles.courseCode}>Csc 121</Text>
             <Text ellipsizeMode='tail' numberOfLines={1} style={styles.courseTitle}>introduction to mamatics and   physics </Text>
             <Text style={styles.courseTitle}>Second material</Text>
@@ -19,6 +21,7 @@ const DownloadItem = ({last}) => {
            <TouchableOpacity style={styles.folderIcon}>
               <Icon style={styles.icon} name="folder"/>
            </TouchableOpacity>
+           <PreviewModal showModal={viewLoad} closeModal={()=>setViewLoad(false)} />
         </View>
       </View>
     );
