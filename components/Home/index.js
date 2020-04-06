@@ -141,23 +141,23 @@ const styles = EStyleSheet.create({
       borderRadius:'30rem',
       shadowColor: "#3F4141",
       shadowOffset: {
-            width: -1.5,
-            height: -1.5,
+            width: '-1.5rem',
+            height: '-1.5rem',
       },
       shadowOpacity: 1,
-      shadowRadius: 3.84,
-      elevation: 5,
+      shadowRadius: '3.84rem',
+      elevation: '5rem',
       marginLeft: '10rem',
       marginRight:'10rem'
   },
   shadow:{
     shadowColor: "#000",
     shadowOffset: {
-        width: 3,
-        height: 3,
+        width: '3rem',
+        height: '3rem',
   },
-  shadowOpacity: 1,
-  shadowRadius: 3.84,
+  shadowOpacity: '1rem',
+  shadowRadius: '3.84rem',
   },
   menuGroup:{
     flexDirection:'row',
