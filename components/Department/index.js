@@ -22,44 +22,24 @@ export default class Department extends Component {
     },
     {
         "_id": "5e20e2bdd6f03b9ac9e42edd",
-        "name": "mathmatics & computer Scince",
+        "name": "Computer Education",
         "__v": 0
     },
     {
         "_id": "5e20f6f8d6f03b9ac9e42ede",
-        "name": "data",
+        "name": "Civic ",
         "__v": 0
     },
     {
         "_id": "5e20f702d6f03b9ac9e42edf",
-        "name": "jbjbbbb",
+        "name": "Mechanical Engineering",
         "__v": 0
     },
     {
-        "_id": "5e218bfbd6f03b9ac9e42ee0",
-        "name": "jys",
-        "__v": 0
-    },
-    {
-        "_id": "5e230fd4f787b5b46cad6e56",
-        "name": "dwdwdbwdwdwdwdqd",
-        "__v": 0
-    },
-    {
-        "_id": "5e24e4461c0275c4a5baa147",
-        "name": "mathmatics & computer Scince hhhh",
-        "__v": 0
-    },
-    {
-        "_id": "5e24e6d3d22e89c55f227c70",
-        "name": "mathmatics & computer Scince kjefjkejfwjkdw",
-        "__v": 0
-    },
-    {
-        "_id": "5e24e6f4d22e89c55f227c71",
-        "name": "GQSFQSFQSQSQS",
-        "__v": 0
-    }
+      "_id": "1212121212",
+      "name": "Law",
+      "__v": 0
+  }
 ]
   state={
     data :this.data,
