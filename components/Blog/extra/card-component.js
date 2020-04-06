@@ -21,7 +21,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
           <View style= {styles.overlayContent}>
           <View style={{padding:hp("1%"), height:hp('40%'), marginTop:hp("15%"),}}>
           <View style= {styles.textContainer}>
-             <Text style={styles.date}>{moment(date).format("MMM Do YYYY")}</Text>
+             <Text style={styles.date}>{moment(date).toNow(true) +" Ago"}</Text>
               <Text style={styles.tag}> {tag}</Text>
           </View>
           <View style= {styles.titleContainer}>

@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Header from "../Header";
 import Ripple from "react-native-material-ripple";
 import { Icon } from "native-base";
-import AttendanceItem from "./attendanceItem";
+import AttendanceItem from "./AttendanceItem";
 
 const Attendance = ({ navigation }) => {
   return (
@@ -74,7 +74,8 @@ const styles = EStyleSheet.create({
   },
   scrollView:{
     marginTop: '30rem',
-    marginBottom: "200rem",
+    paddingBottom: "200rem",
+    height:"75%"
   }
 });
 export default Attendance;
