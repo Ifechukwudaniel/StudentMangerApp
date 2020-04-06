@@ -35,12 +35,12 @@ const PreviewModal = ({showModal, closeModal}) => {
                           domStorageEnabled={true}
                           useWebKit={true}
                           style={{ flex: viewLoad ? 1 :0 }}
-                          onLoad={()=>setViewLoad(true)}
+                          onLoadEnd={()=>setViewLoad(true)}
                           onError={()=>{
                             alert("Please an error occurred, please check your connection ")
-                            // setViewLoad(true)
+                            setViewLoad(true)
                             }}
-                          source={{ uri:'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&previewt' }} />
+                          source={{ uri:'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
                    </View>
                 </Modal>
             </>
