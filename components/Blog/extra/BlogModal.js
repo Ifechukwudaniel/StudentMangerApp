@@ -31,7 +31,7 @@ const BlogModal = ({showModal, closeModal, image, tag , date , title}) => {
                   <View style={[styles.flexRow, styles.description]}>
                      <Text style={styles.tag}>{tag}</Text>
                      {/* <Icon style={styles.icon} name="time" />  */}
-                     <Text style={styles.date}>{moment(date).format("MMM Do YYYY")}</Text>
+                     <Text style={styles.date}>{ moment(date).toNow(true) +" Ago"}</Text>
                   </View>
                   <Text style={styles.title}>{title}</Text>
                   <Text style={styles.contentText}>
@@ -52,6 +52,14 @@ const styles = EStyleSheet.create({
         overflow: 'hidden',
         borderBottomRightRadius: '50rem',
         borderBottomLeftRadius: '50rem',
+        shadowColor: "#fff",
+        shadowOffset: {
+              width: '100rem',
+              height: '100rem',
+        },
+        shadowOpacity: 1,
+        shadowRadius: '0rem',
+        elevation: 5,
       },
       image:{
         width: "421rem",
