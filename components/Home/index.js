@@ -177,10 +177,3 @@ const styles = EStyleSheet.create({
 })
  
 export default Home;
-
-
-// materials:MaterialStack,
-// attendance:AttendanceStack,
-// chat: ChatStack,
-// event:EventStack,
-// timeTable:TimeTableStack
