@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import EStyleSheet from "react-native-extended-stylesheet";
-import AttendanceModal from './AttendanceModal';
-const AttendanceItem = ({last}) => {
+const AttendanceItem = ({navigation}) => {
   const [view, setOpenView] = useState(false)
   return (
-      <TouchableOpacity onPress={()=>setOpenView(true)} style={[styles.container]}>
+      <TouchableOpacity onPress={()=>navigation.push("Calender")} style={[styles.container]}>
          <View style={[styles.shadow, styles.flexRow]}>
             <View style={styles.courseGroup}>
               <Text style={styles.courseCode}>Csc 121 </Text>
@@ -23,7 +22,6 @@ const AttendanceItem = ({last}) => {
               <Text style={[styles.leftNumber, styles.absentText]}>03</Text>
               <Text style={styles.leftText}>Absent</Text>
             </View>
-            <AttendanceModal showModal={view} closeModal={()=>setOpenView(false)}/>
          </View>
       </TouchableOpacity>
   );
