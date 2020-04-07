@@ -9,6 +9,7 @@ import EventScreen from '../screens/Home/EventScreen';
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
 import PhoneSettingScreen from '../screens/PhoneSettingScreen';
 import NotificationScreen from '../screens/Home/NotificationScreen';
+import AttendanceNavigation from '../navigation/AttendanceNavigation'
 
 
 

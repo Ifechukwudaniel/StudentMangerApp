@@ -5,6 +5,7 @@ import MainTabNavigator from './MainTabNavigator';
 import AuthNavigation from './AuthNavigator';
 import SetupNavigation from './SetupNavigator';
 import AllNavigation from './AllNavigation'
+import AttendanceNavigation from './AttendanceNavigation';
 
 
 export default createAppContainer(
@@ -12,7 +13,8 @@ export default createAppContainer(
     Main: MainTabNavigator,
     Auth:AuthNavigation,
     Setup:SetupNavigation,
-    Nav:AllNavigation
+    Nav:AllNavigation,
+    AttendanceDetail: AttendanceNavigation
   },
   {
     initialRouteName:"Auth"
