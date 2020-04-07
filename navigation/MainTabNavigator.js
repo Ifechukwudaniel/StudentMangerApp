@@ -89,7 +89,7 @@ const FileStack = createStackNavigator(
 FileStack.navigationOptions = {
   tabBarLabel: 'Downloads',
   tabBarIcon: ({ focused }, props) => (
-    <MaterialIcon size={36} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
+    <MaterialIcon size={30} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
   ),
 };
 
@@ -106,7 +106,9 @@ const AppStack = createBottomTabNavigator({
     showLabel:true,
     activeTintColor:"#fff",
     labelStyle:{
-     color:colors.white
+     color:colors.white,
+     fontFamily:"itim",
+     fontSize:14
     },
     style:{
         backgroundColor:Colors.black,
