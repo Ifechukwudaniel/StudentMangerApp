@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet , View} from 'react-native';
 import {  Layout } from '@ui-kitten/components';
-import PhoneSetting from '../components/PhoneSetting';
+import PhoneSetting from '../components/Settings/PhoneSetting';
 
 export default function PhoneSettingScreen(props) {
   return (

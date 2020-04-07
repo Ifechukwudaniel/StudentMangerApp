@@ -13,7 +13,7 @@ export default function TabBarIcon(props) {
     <View>
       <Icon
         name={props.name}
-        width={wp('8%')}
+        width={wp('10%')}
         height={hp('3%')}
         fill={props.focused ? Colors.tintColor : "#ffffff"}
       />

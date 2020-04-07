@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import Header from '../Header'
-import Colors from '../../constants/Colors'
+import Header from '../../Header'
+import Colors from '../../../constants/Colors'
 import {LinearGradient} from 'expo-linear-gradient'
 
  
