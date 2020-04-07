@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
-import Downloads from '../components/Downloads';
+import Calender from '../components/Attendance/Calender';
 
 
 class CalenderScreen extends Component {
@@ -10,7 +10,7 @@ class CalenderScreen extends Component {
     return (
       <Layout style={styles.container}>
         <View style={styles.container}>
-            {/* <Downloads {...this.props}/> */}
+            <Calender  {...this.props}/>
         </View>   
     </Layout>
     );

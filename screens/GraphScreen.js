@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
-import Downloads from '../components/Downloads';
+import Graph from '../components/Attendance/Chart';
 
 
 class GraphScreen extends Component {
@@ -10,7 +10,7 @@ class GraphScreen extends Component {
     return (
       <Layout style={styles.container}>
         <View style={styles.container}>
-            {/* <Downloads {...this.props}/> */}
+            <Graph {...this.props}/>
         </View>   
     </Layout>
     );
