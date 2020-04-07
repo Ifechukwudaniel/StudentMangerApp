@@ -7,8 +7,9 @@ import { Calendar } from "react-native-calendars";
 
 const Calender = ({ navigation }) => {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
        <Header headerStyle={styles.headerStyle} onBackPress= {()=>navigation.push("attendance")}/>
+       <ScrollView>
        <View>
           <Text style={styles.courseCode}>Csc 122</Text>
           <Text style={styles.courseTitle} numberOfLines={1} ellipsizeMode='tail'>Introduction to Maths and Biology</Text>
@@ -29,21 +30,28 @@ const Calender = ({ navigation }) => {
        </View>
        <Text style={[styles.presentDescription,styles.notify]}>Please note that the semester has not yet ended , and the total number of classes for the semester in   10 </Text>
        <View style={[styles.attendanceItem, styles.calenderView]}>
-           <Calendar  theme={{
-             calendarBackground:"#252525",
-             arrowColor: '#FFF',
-             monthTextColor: '#fff',
-             textMonthFontFamily: 'Itim',
-             dayTextColor:"#fff",
-             textDayFontFamily:"Itim",
-             textDayHeaderFontFamily: 'Brother1816-Bold',
-             textDayHeaderFontSize:17,
-             textMonthFontSize:18,
-             textSectionTitleColor: '#FFF',
-             todayTextColor:"red"
-           }} />
+           <Calendar 
+              hideExtraDays
+              monthFormat='MMM yyyy'
+              theme={{
+              calendarBackground:"#252525",
+              arrowColor: '#FFF',
+              monthTextColor: '#fff',
+              textMonthFontFamily: 'Itim',
+              dayTextColor:"#fff",
+              textDayFontFamily:"Itim",
+              textDayHeaderFontFamily: 'Brother1816-Bold',
+              textDayHeaderFontSize:17,
+              textMonthFontSize:18,
+              textSectionTitleColor: '#FFF',
+              todayTextColor:"red"
+              
+
+            }} />
        </View>
-    </ScrollView>
+
+       </ScrollView>
+    </View>
   );
 };
 const styles = EStyleSheet.create({
@@ -133,6 +141,7 @@ const styles = EStyleSheet.create({
       shadowOpacity: 1,
       shadowRadius: '3.84rem',
       elevation: '5rem',
+      marginBottom: "100rem",
   }
 });
 export default Calender;
