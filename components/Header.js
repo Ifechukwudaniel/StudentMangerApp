@@ -3,10 +3,10 @@ import {  Header, Left, Body, Right, Button, Title, Text, Icon } from 'native-ba
 import {View, StatusBar} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
  
-const HeaderComponent = ({onBackPress, screenName, style, noBackButton}) => {
+const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerStyle}) => {
     return (
         <View>
-        <Header  style={styles.header}>
+        <Header  style={[styles.header, headerStyle]}>
               <StatusBar  hidden={true} barStyle='light-content' />
           <Left>
             {
@@ -35,7 +35,6 @@ const styles = EStyleSheet.create({
     header:{
         backgroundColor: "#252525" ,
         borderBottomWidth: "0rem",
-
     },
     title:{
         fontSize: '22rem', 
