@@ -22,15 +22,15 @@ const Attendance = ({ navigation }) => {
             </Ripple>
           </View>
           <ScrollView style={styles.scrollView}>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
-            <AttendanceItem/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
+            <AttendanceItem navigation={navigation}/>
           </ScrollView>
       </View>
     </View>
