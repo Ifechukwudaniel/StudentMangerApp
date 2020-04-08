@@ -22,15 +22,22 @@ const line = {
 
     const pieData = [
       {
+        name: 'Left',
+        attendance: 80,
+        color: '#fff',
+        legendFontColor: '#7F7F7F',
+        legendFontSize: 15,
+      },
+      {
         name: 'Present',
-        attendance: 70,
+        attendance: 10,
         color: '#126AF3',
         legendFontColor: '#7F7F7F',
         legendFontSize: 15,
       },
       {
         name: 'Absent',
-        attendance: 30,
+        attendance: 10,
         color: '#EA3939',
         legendFontColor: '#7F7F7F',
         legendFontSize: 15,
@@ -44,25 +51,49 @@ const Chart = ({ navigation }) => {
         <ScrollView style={styles.scrollView}>
              <Text style={styles.headerAttendance} >Csc 122 Attendance</Text>
              <View style={styles.chartView}>
-              <PieChart
+             <View style={styles.pieChartWrapper}>
+             <PieChart
                 data={pieData}
-                 width={320*rem} 
-                height={330*rem}
+                width={250*rem} 
+                height={250*rem}
                 chartConfig={{
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                    style:{
+                      flex:1
+                    }
                   }}
+                hasLegend={false}
                 accessor="attendance"
-                backgroundColor="transparent"
-
+                paddingLeft="40"
+                backgroundColor="#252525"
               />
+             </View>
+             <View style={styles.description}>
+                <View style={[styles.flexRow]}> 
+                    <View style={styles.present}/>
+                    <Text style={styles.Text}> {pieData[1].attendance}% Present</Text>
+                </View>
+                <View style={[styles.flexRow]}>
+                    <View style={styles.absent}/>
+                    <Text style={styles.Text}> {pieData[2].attendance}%  Absent</Text>
+                </View>
+             </View>
+             <View style={styles.description}>
+                <View style={[styles.flexRow]}> 
+                    <View style={[styles.present, {backgroundColor:"#fff"}]}/>
+                    <Text style={styles.Text}> {pieData[0].attendance}% Left</Text>
+                </View>
+             </View>
              </View>
              <View style={styles.chartView}>
                 <LineChart
                   data={line}
-                  width={320*rem} 
+                  width={350*rem} 
                   height={330*rem}
                   chartConfig={{
-                    backgroundColor: "red",
+                    backgroundColor: '#252525',
+                    backgroundGradientFrom: '#252525',
+                    backgroundGradientTo: '#252525',
                     decimalPlaces:0,
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
                   }}
@@ -91,7 +122,7 @@ const styles = EStyleSheet.create({
     height:"330rem",
     alignSelf:"center",
     marginTop:"20rem",
-    shadowColor: "#000",
+    shadowColor: "#3F4141",
       shadowOffset: {
             width: '0rem',
             height: '-4rem',
@@ -99,15 +130,44 @@ const styles = EStyleSheet.create({
       shadowOpacity: 1,
       shadowRadius: '3.84rem',
       elevation: '5rem',
-      backgroundColor: "#000",
+      backgroundColor: "#252525",
+      overflow: 'hidden',
+      borderRadius: '10rem',
   },
   scrollView:{
    marginBottom: '20rem',
   },
   graph:{
     height:"300rem",
-    borderRadius:"30rem",
+    marginTop:"30rem",
+    alignSelf:"center",
+    marginRight: "30rem",
+  },
+  pieChartWrapper:{
+    marginLeft:"50rem"
+  },
+  description:{
+    flexDirection: 'row',
+  },
+  Text:{
+     color:"#fff",
+     fontFamily:"Itim",
+     fontSize:"16rem"
+  },
+  present:{
+    width:'20rem',
+    backgroundColor:"#126AF3",
+    height:"20rem",
+  },
+  absent:{
+    width:'20rem',
+    backgroundColor:'#EA3939',
+    height:"20rem"
+  },
+  flexRow:{
+    flexDirection:"row",
+    marginLeft:"30rem"
   }
-
+  
 });
 export default Chart;
