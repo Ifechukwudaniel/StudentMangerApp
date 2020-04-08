@@ -148,6 +148,7 @@ const styles = EStyleSheet.create({
   },
   description:{
     flexDirection: 'row',
+    marginTop: '10rem',
   },
   Text:{
      color:"#fff",
