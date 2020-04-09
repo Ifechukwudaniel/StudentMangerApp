@@ -11,6 +11,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const entireScreenWidth = Dimensions.get('window').width;
 import AppNavigator from './navigation/AppNavigator';
 import appTheme from './theme.json'
+import store  from './Redux/store'
 
 const theme = {...dark, ...appTheme}
 
@@ -23,11 +24,13 @@ EStyleSheet.build({
 export default function App(props) {
     return (
       <>
-       <IconRegistry icons={EvaIconsPack}/>
-         <ApplicationProvider mapping={mapping} theme={theme}  >
+      <Provider store={store}>
+      <IconRegistry icons={EvaIconsPack}/>
+         <ApplicationProvider mapping={mapping} theme={theme}   >
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator />
          </ApplicationProvider>
+      </Provider>
       </>
     );
 }
