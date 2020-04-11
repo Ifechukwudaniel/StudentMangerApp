@@ -47,7 +47,7 @@ const FilterModal = ({showModal, closeModal}) => {
             </View>
             <View style={styles.filterType}>
             <Text style={[styles.filterText]}>  Sort by file Type </Text>
-             <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
+             <ScrollView style={[styles.scrollView, styles.scrollViewClass]} horizontal={true} showsHorizontalScrollIndicator={false} >
                   <ClassFilterItem active text="Study Material"/>
                   <ClassFilterItem text="Past Questions"/>
             </ScrollView>
@@ -146,6 +146,9 @@ const styles = EStyleSheet.create({
      scrollView:{
        padding:'20rem',
        paddingBottom: 0,
+     },
+     scrollViewClass:{
+      
      },
      filterType:{
     
