@@ -6,7 +6,6 @@ import Colors from '../../../constants/Colors';
 
 const CheckBoxItem = ({text, onCheck, isChecked}) => {
     const [checked, setChecked] = useState(false)
-    // console.warn(checked)
     return (
         <>
             <TouchableOpacity style={styles.flexRow}> 

@@ -24,13 +24,11 @@ EStyleSheet.build({
 export default function App(props) {
     return (
       <>
-      <Provider store={store}>
       <IconRegistry icons={EvaIconsPack}/>
          <ApplicationProvider mapping={mapping} theme={theme}   >
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <AppNavigator />
          </ApplicationProvider>
-      </Provider>
       </>
     );
 }
