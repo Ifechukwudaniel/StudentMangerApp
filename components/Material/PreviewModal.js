@@ -8,14 +8,8 @@ import HeaderComponent from '../Header';
 
 
 
-const resources = {
-  file: Platform.OS === 'ios' ? 'downloadedDocument.pdf' : '/sdcard/Download/downloadedDocument.pdf',
-  url: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview',
-};
-
-
  
-const PreviewModal = ({showModal, closeModal}) => {
+const PreviewModal = ({url ,showModal, closeModal}) => {
     const [viewLoad, setViewLoad] = useState(false)
     return (
      <>
@@ -40,7 +34,7 @@ const PreviewModal = ({showModal, closeModal}) => {
                             alert("Please an error occurred, please check your connection ")
                             setViewLoad(true)
                             }}
-                          source={{ uri:'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
+                          source={{ uri:url }} />
                    </View>
                 </Modal>
             </>

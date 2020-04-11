@@ -7,8 +7,9 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
 import Constants from 'expo-constants'
 import FilterModal from './FilterModal';
+import { ActivityIndicator } from 'react-native-paper';
  
-const Material = () => {
+const Material = ({loading}) => {
     const [openFilter, setOpenFilter]= useState(false)
     return (
         <View style={styles.container}>
@@ -26,12 +27,27 @@ const Material = () => {
           </View>
             <FilterModal showModal= {openFilter} closeModal= {()=>setOpenFilter(false)}/>
             <ScrollView indicatorStyle={'white'} style={styles.scrollView}>
-               <MaterialItem/>
-               <MaterialItem/>
-               <MaterialItem/>
-               <MaterialItem/>
-               <MaterialItem/>
-               <MaterialItem/>
+               <MaterialItem 
+               courseCode='Csc 131' 
+               courseTitle="Intro to maths and physics"
+               url="https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview"
+               lecture="mr gay & mrs  bitch"
+               materialType="PDF"
+               pages="100"
+               description="Fist material"
+               date="2020-01-30T23:19:56.577Z"
+               open={true}
+               />
+                  <MaterialItem 
+               courseCode='Csc 131' 
+               courseTitle="Intro to maths and physics"
+               url="https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview"
+               lecture="mr gay & mrs  bitch"
+               materialType="PDF"
+               pages="100"
+               description="Fist material"
+               date="2020-01-30T23:19:56.577Z"
+               />
             </ScrollView>
         </View>
     );

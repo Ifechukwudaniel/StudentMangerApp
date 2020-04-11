@@ -8,7 +8,7 @@ import {  Text,  } from 'native-base'
 const DateAction = ({active, notify, onNotifyPress,course,location, startTime, endTime }) => {
     return (
             <View style={styles.action}>
-                <LinearGradient style={styles.gradient} colors={active?['#EA3939', '#971313'] :['#0F9A47', '#027831']}>
+                <LinearGradient style={styles.gradient} colors={['#0F9A47', '#027831']}>
                        <View>
                            <Text style={styles.timeText}>{startTime}</Text>
                            <Text style={styles.timeText}>{endTime}</Text>

@@ -9,14 +9,8 @@ import {
   Slider,
 } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
-import { LinearGradient } from "expo-linear-gradient";
-import { Button, Icon, Textarea, CheckBox, Spinner } from "native-base";
 import Colors from "../../constants/Colors";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import WebView from "react-native-webview";
-import PreviewModal from "./PreviewModal";
-import PrintModal from "./PrintModal";
-import CommentModal from "./CommentModal";
 
 const MaterialItem = () => {
   return (

@@ -9,9 +9,11 @@ import WebView from 'react-native-webview'
 import PreviewModal from './PreviewModal';
 import PrintModal from './PrintModal'
 import CommentModal from './CommentModal';
+import moment from 'moment'
 
  
-const MaterialItem = () => {
+const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType , date, url, pages, printed, open  }) => {
+   let isOpen= open
     const [showModal , setShowModal] = useState(false)
     const [showViewModal , setShowViewModal] = useState(false)
     const [print, setPrint] = useState(false)
@@ -20,12 +22,12 @@ const MaterialItem = () => {
         <>
                     <TouchableOpacity style= {styles.materialItem} onPress={()=>setShowModal(true)}>
                             <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
-                                <Text style={styles.courseCode}>Csc 131</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Introduction to math and physics </Text>
-                                <Text style={styles.courseTitle}>First material </Text>
-                                <Text style={styles.courseTitle}>Lectures: mr gay & mrs  bitch</Text>
-                                <Text style={[styles.courseTitle, {fontSize:15}]}>Material Type : PDF</Text>
-                                <Text style={[styles.courseTitle, {fontSize:15}]}>Posted on 1st of may</Text>
+                                <Text style={styles.courseCode}>{courseCode}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
+                                <Text style={styles.courseTitle}>{description} </Text>
+                                <Text style={styles.courseTitle}>Lectures: {lecture}</Text>
+                                <Text style={[styles.courseTitle, {fontSize:15}]}>Material Type : {materialType}</Text>
+                                <Text style={[styles.courseTitle, {fontSize:15}]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
                             </LinearGradient>
                     </TouchableOpacity>
                     <Modal
@@ -54,17 +56,17 @@ const MaterialItem = () => {
                                 javaScriptEnabled={true}
                                 domStorageEnabled={true}
                                 useWebKit={true}
-                                source={{ uri: 'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
+                                source={{ uri:url}} />
                              </View>
                              <View style={styles.description}>
-                                <Text style={styles.courseCode}>Csc 131</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleTextModal]}>Introduction to math and physics </Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>First material </Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Lectures: mr gay & mrs  bitch</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Material Type : PDF</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Pages: 100</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Posted on 1st of may</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>150 copies printed and delivered</Text>
+                                <Text style={styles.courseCode}>{courseCode}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleTextModal]}>{courseTitle}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>{description}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Lectures: {lecture}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Material Type : {materialType}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Pages: {pages}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
+                                <Text style={[styles.courseTitle, styles.courseTitleText]}>{printed} copies printed and delivered</Text>
                              </View>
                              <View style={styles.action}>
                                 <TouchableOpacity style={styles.actionIcon}>
@@ -84,7 +86,7 @@ const MaterialItem = () => {
                                 </TouchableOpacity>  
                              </View>
                            </ScrollView>
-                           <PreviewModal showModal={showViewModal}  closeModal={()=>setShowViewModal(false)}/>
+                           <PreviewModal url={url} showModal={showViewModal}  closeModal={()=>setShowViewModal(false)}/>
                            <PrintModal  showModal={print} closeModal={()=>setPrint(false)} />
                            <CommentModal showModal={comment} closeModal={()=>setShowComment(false)}/>
                         </View>
