@@ -66,7 +66,7 @@ const styles = EStyleSheet.create({
           paddingTop: '4rem',
       },
         modal:{
-          backgroundColor:'rgba(360, 360, 360, 0.01)',
+          // backgroundColor:'rgba(360, 360, 360, 0.01)',
           flex:1,
           justifyContent:'flex-end',
         },

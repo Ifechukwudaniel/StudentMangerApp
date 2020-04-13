@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal, TouchableHighlight} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView,Platform} from 'react-native'
 import { Input} from 'native-base'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
@@ -37,6 +37,7 @@ const Material = ({loading}) => {
                description="Fist material"
                date="2020-01-30T23:19:56.577Z"
                open={true}
+               printed={10}
                />
                   <MaterialItem 
                courseCode='Csc 131' 
@@ -47,6 +48,7 @@ const Material = ({loading}) => {
                pages="100"
                description="Fist material"
                date="2020-01-30T23:19:56.577Z"
+               printed={10}
                />
             </ScrollView>
         </View>
@@ -71,7 +73,15 @@ const styles = EStyleSheet.create({
       borderWidth: '1rem',
       borderColor: "#fff",
       color:"#fff",
-      fontFamily:"Itim",
+      ...Platform.select({
+        ios:{
+          fontFamily:"Itim",
+        },
+        android:{
+          fontFamily:"itim",
+        }
+
+      }),
       alignSelf: 'flex-end',
       borderRadius: '5rem',
       marginLeft:"70rem",

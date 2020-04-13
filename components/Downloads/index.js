@@ -12,7 +12,7 @@ import DownloadItem from './downloadItem';
 const Downloads = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header style={styles.headerTextStyle}  screenName="Downloads"  noBackButton />
+             {/* <Header style={styles.headerTextStyle}  screenName="Downloads"  noBackButton /> */}
              <ScrollView style={styles.scrollView}>
                  <DownloadItem/>
                  <DownloadItem/>

@@ -38,7 +38,7 @@ const PreviewModal = ({url ,showModal, closeModal}) => {
                             alert("Please an error occurred, please check your connection ")
                             setViewLoad(true)
                             }}
-                          source={{ uri:url }} />
+                          source={{ uri:Platform.OS=='android'? `https://docs.google.com/gview?embedded=true&url=http://www.africau.edu/images/default/sample.pdf`: url}}/>
                    </View>
                 </Modal>
             </>

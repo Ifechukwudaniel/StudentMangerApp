@@ -70,13 +70,13 @@ const styles = EStyleSheet.create({
           paddingTop: '4rem',
       },
         modal:{
-          backgroundColor:'rgba(360, 360, 360, 0.1)',
+          // backgroundColor:'rgba(360, 360, 360, 0.1)',
           flex:1,
           justifyContent:'flex-end',
         },
         modalView:{
           backgroundColor:Colors.black,
-          height:'87%',
+          height:'84%',
           borderTopLeftRadius: "100rem",
           borderTopRightRadius: "100rem",
           shadowColor: "#3F4141",

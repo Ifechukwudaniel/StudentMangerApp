@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Header, Left, Body, Right, Button, Title, Text, Icon } from 'native-base'
-import {View, StatusBar} from 'react-native'
+import {View, StatusBar, Platform} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
  
 const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerStyle}) => {
@@ -16,14 +16,14 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerSt
                     <>
                     <Button transparent onPress={()=>onBackPress()}>
                         <Icon name='arrow-back' style={styles.icon} />
-                        <Text style={styles.backText}>Back</Text>
+                        { Platform.OS='ios'? <Text style={styles.backText}>Back</Text> :<> </> } 
                      </Button>
                 </>
                 )
             }
           </Left>
           <Body>
-            <Title style={[styles.title, style]}> {screenName}</Title>
+            { Platform.OS==='ios'? <Title style={[styles.title]}> {screenName}</Title>: <Title style={[styles.title]}></Title> } 
           </Body>
           <Right>
           </Right>
@@ -40,11 +40,20 @@ const styles = EStyleSheet.create({
         fontSize: '22rem', 
         color:"#fff",
         fontFamily:"Itim",
+        textAlign:'center'
     },
     backText:{
-        fontSize: '20rem', 
-        color:"#fff",
-        fontFamily:"Itim",
+        ...Platform.select({
+            ios:{
+                fontSize: '20rem', 
+                color:"#fff",
+                fontFamily:"Itim",
+
+            },
+            android:{
+              
+            }
+        })
     },
     icon:{
         color:"#fff"

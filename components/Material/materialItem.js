@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator, Slider} from 'react-native'
+import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator, Slider, TouchableHighlight} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import {  Button, Icon, Textarea, CheckBox, Spinner } from 'native-base';
@@ -21,7 +21,7 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
     const [comment, setShowComment] = useState(false)
     return (
         <>
-                    <TouchableOpacity style= {styles.materialItem} onPress={()=>setShowModal(true)}>
+                    <TouchableHighlight style= {styles.materialItem} onPress={()=>setShowModal(true)}>
                             <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
                                 <Text style={styles.courseCode}>{courseCode}</Text>
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
@@ -30,7 +30,7 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
                                 <Text style={[styles.courseTitle, {fontSize:15}]}>Material Type : {materialType}</Text>
                                 <Text style={[styles.courseTitle, {fontSize:15}]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
                             </LinearGradient>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                     <Modal
                       animationType='slide'
                       transparent={true}  
@@ -127,7 +127,15 @@ const styles = EStyleSheet.create({
     courseTitle:{
         fontSize: '20rem',
         color:"#fff",
-        fontFamily:"Itim",
+        ...Platform.select({
+          ios:{
+            fontFamily:"Itim",
+          },
+          android:{
+            fontFamily:"itim",
+          }
+  
+        }),
         marginLeft: "2rem",
         lineHeight:"20rem",
         paddingTop: '4rem',
@@ -142,13 +150,13 @@ const styles = EStyleSheet.create({
         paddingTop:'10rem'
     },
       modal:{
-        backgroundColor:'rgba(360, 360, 360, 0.2)',
+        // backgroundColor:'rgba(360, 360, 360, 0.2)',
         flex:1,
         justifyContent:'flex-end',
       },
       modalView:{
         backgroundColor:Colors.black,
-        height:'87%',
+        height:'84%',
         borderTopLeftRadius: "100rem",
         borderTopRightRadius: "100rem",
         shadowColor: "#3F4141",
