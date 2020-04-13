@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text ,TouchableOpacity, ScrollView} from 'react-native';
+import { View, Text ,TouchableOpacity, ScrollView, Platform} from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
@@ -131,8 +131,16 @@ const styles = EStyleSheet.create({
     marginRight:"3rem"
   },
   menu:{
-   flex: 1,
-   marginTop: '40rem',
+  ...Platform.select({
+    ios:{
+      flex: 1,
+      marginTop: '40rem',
+    },
+    android:{
+      flex: 1,
+      marginTop: '15rem',
+    }
+  })
   },
   menuItem:{
       width:'160rem',

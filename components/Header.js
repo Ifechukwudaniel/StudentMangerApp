@@ -16,14 +16,14 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerSt
                     <>
                     <Button transparent onPress={()=>onBackPress()}>
                         <Icon name='arrow-back' style={styles.icon} />
-                        { Platform.OS='ios'? <Text style={styles.backText}>Back</Text> :<> </> } 
+                        { Platform.OS!='android'? <Text style={styles.backText}>Back</Text> :<Text style={styles.backText}></Text>} 
                      </Button>
                 </>
                 )
             }
           </Left>
           <Body>
-            { Platform.OS==='ios'? <Title style={[styles.title]}> {screenName}</Title>: <Title style={[styles.title]}></Title> } 
+            { Platform.OS!=='android'? <Title style={[styles.title, style]}> {screenName}</Title> : <Title style={[styles.title]}></Title> } 
           </Body>
           <Right>
           </Right>
@@ -37,10 +37,17 @@ const styles = EStyleSheet.create({
         borderBottomWidth: "0rem",
     },
     title:{
-        fontSize: '22rem', 
-        color:"#fff",
-        fontFamily:"Itim",
-        textAlign:'center'
+        ...Platform.select({
+            ios:{
+                fontSize: '22rem', 
+                color:"#fff",
+                fontFamily:"Itim",
+                textAlign:'center'
+            },
+            android:{
+                  color:"transparent"
+            }
+        })
     },
     backText:{
         ...Platform.select({
@@ -48,7 +55,6 @@ const styles = EStyleSheet.create({
                 fontSize: '20rem', 
                 color:"#fff",
                 fontFamily:"Itim",
-
             },
             android:{
               
