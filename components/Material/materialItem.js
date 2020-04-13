@@ -10,6 +10,7 @@ import PreviewModal from './PreviewModal';
 import PrintModal from './PrintModal'
 import CommentModal from './CommentModal';
 import moment from 'moment'
+import WebViewError from '../error'
 
  
 const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType , date, url, pages, printed, open  }) => {
@@ -56,7 +57,11 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
                                 javaScriptEnabled={true}
                                 domStorageEnabled={true}
                                 useWebKit={true}
-                                source={{ uri:url}} />
+                                source={{ uri:url}}
+                                 renderError={()=>
+                                   <WebViewError/>
+                                 }
+                                 />
                              </View>
                              <View style={styles.description}>
                                 <Text style={styles.courseCode}>{courseCode}</Text>

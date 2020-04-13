@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text,StatusBar, TouchableOpacity, ScrollView} from 'react-native'
+import {View, Text,StatusBar, TouchableOpacity, ScrollView, TouchableHighlight, TouchableNativeFeedback} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { Icon } from 'native-base';
 import PreviewModal from './PreviewModal';
@@ -8,12 +8,14 @@ const DownloadItem = ({last}) => {
   const [viewLoad, setViewLoad] = useState(false)
     return (
       <View>
-          <TouchableOpacity onPress={()=>setViewLoad(true)} style={[styles.downloadItem, last? styles.last: {}]}>
+          <TouchableHighlight onPress={()=>setViewLoad(true)} style={[styles.downloadItem, last? styles.last: {}]}>
+          <>
             <Text style={styles.courseCode}>Csc 121</Text>
             <Text ellipsizeMode='tail' numberOfLines={1} style={styles.courseTitle}>introduction to mamatics and   physics </Text>
             <Text style={styles.courseTitle}>Second material</Text>
             <Text style={styles.courseTitle}>Pdf</Text>
-        </TouchableOpacity>
+            </>
+        </TouchableHighlight>
         <View style={[styles.flexRow, {alignSelf:"flex-end"}, styles.iconGroup]}>
            <TouchableOpacity style={styles.deleteIcon}>
               <Icon style={styles.icon} name="trash"/>

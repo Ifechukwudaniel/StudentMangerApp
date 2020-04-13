@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Modal,Platform, TouchableHighlight, Image, ActivityIndicator} from 'react-native'
+import {View,Text, Modal,Platform,  ActivityIndicator} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
 import WebView from 'react-native-webview'
@@ -34,13 +34,19 @@ const PreviewModal = ({showModal, closeModal}) => {
                           javaScriptEnabled={true}
                           domStorageEnabled={true}
                           useWebKit={true}
-                          style={{ flex: viewLoad ? 1 :0 }}
+                          style={{ flex: viewLoad ? 1 :0, backgroundColor:"#fff", justifyContent:"center" }}
                           onLoadEnd={()=>setViewLoad(true)}
+                          renderError={()=>(
+                              <View style={styles.errorView}>
+                                <Text style = {styles.errorText}>  Please this file was not found </Text>
+                              </View>
+                          )
+                          }
                           onError={()=>{
                             alert("Please an error occurred, please check your connection ")
                             setViewLoad(true)
                             }}
-                          source={{ uri:'https://www.free-ebooks.net/computer-sciences-textbooks/The-Dmmies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview' }} />
+                          source={{ uri:resources.url }} />
                    </View>
                 </Modal>
             </>
@@ -57,6 +63,20 @@ const styles = EStyleSheet.create({
       preview:{
         flex:1,
         backgroundColor:Colors.black,
+      },
+      errorView :{
+         alignSelf: 'center',
+         width:"100%",
+         height:"100%",
+         backgroundColor:"#fff",
+         marginBottom: '500rem',
+      },
+      errorText:{
+         textAlign:"center",
+         backgroundColor: 'gray',
+         color:"#fff",
+         padding: '15rem',
+         fontWeight: 'bold',
       }
 })
 export default PreviewModal;

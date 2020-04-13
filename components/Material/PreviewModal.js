@@ -4,6 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
 import WebView from 'react-native-webview'
 import HeaderComponent from '../Header';
+import WebViewError from '../error'
 
 
 
@@ -30,6 +31,9 @@ const PreviewModal = ({url ,showModal, closeModal}) => {
                           useWebKit={true}
                           style={{ flex: viewLoad ? 1 :0 }}
                           onLoadEnd={()=>setViewLoad(true)}
+                          renderError={()=>
+                                   <WebViewError/>
+                                 }
                           onError={()=>{
                             alert("Please an error occurred, please check your connection ")
                             setViewLoad(true)

@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
  
 const PrintModal = ({showModal, closeModal}) => {
+  const [copies , setCopies]  = useState(1)
     return (
      <>
       <Modal
@@ -29,7 +30,8 @@ const PrintModal = ({showModal, closeModal}) => {
                                         <Text  style={[styles.courseTitle, styles.printText]}> Printing & Delivery settings</Text>
                                     </View>
                                  </View>
-                                 <ScrollView style={styles.deliveryContent}>
+                                  <ScrollView>
+                                 <KeyboardAvoidingView style={styles.deliveryContent}>
                                      <View style={styles.contentItem}>
                                          <Text style={[styles.courseTitle]}> Delivery Time </Text>
                                           <TextInput keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>
@@ -38,11 +40,11 @@ const PrintModal = ({showModal, closeModal}) => {
                                      <View style={[styles.contentItem,styles.flexRow]}>
                                          <Text style={[styles.courseTitle]}> Copies </Text>
                                          <View style={[styles.flexRow,styles.copiesNumberWrapper]}>
-                                            <TouchableOpacity style={styles.plus}>
+                                            <TouchableOpacity onPress={()=>setCopies( Number.parseInt(copies+1))} style={styles.plus}>
                                                   <Text style={styles.signText}> + </Text>
                                                 </TouchableOpacity> 
-                                                <TextInput keyboardType='numeric' defaultValue={'10'}   style={styles.copiesNumber}/>  
-                                                <TouchableOpacity style={styles.minus}>
+                                                <TextInput onChangeText={value=>setCopies(value)} keyboardType='numeric'  value={copies.toString()}   style={styles.copiesNumber}/>  
+                                                <TouchableOpacity  onPress={()=> copies>=1? setCopies(Number.parseInt(copies-1)) : setCopies(0)} style={styles.minus}>
                                                   <Text style={styles.signText}> - </Text>
                                                 </TouchableOpacity> 
                                          </View>
@@ -67,6 +69,7 @@ const PrintModal = ({showModal, closeModal}) => {
                                            <Text style={[styles.courseTitle, styles.buttonText]}> Submit </Text>
                                         </LinearGradient>
                                      </TouchableOpacity>
+                                 </KeyboardAvoidingView>
                                  </ScrollView>
                              </View>   
                              </View>
