@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView,Platform} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView,Platform, Dimensions} from 'react-native'
 import { Input} from 'native-base'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
@@ -7,7 +7,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
 import Constants from 'expo-constants'
 import FilterModal from './FilterModal';
-import { ActivityIndicator } from 'react-native-paper';
+const  rem = Dimensions.get('window').width/360
  
 const Material = ({loading}) => {
     const [openFilter, setOpenFilter]= useState(false)
@@ -16,12 +16,12 @@ const Material = ({loading}) => {
            <StatusBar hidden/>
           <View style={styles.filterView}>
             <TouchableOpacity style={styles.icon} onPress={()=>setOpenFilter(true)}>
-                 <MaterialIcon  name="filter-list" size={40} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
+                 <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
             </TouchableOpacity>
           <View style={styles.searchView}>
               <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
               <Ripple style={styles.searchIcon}>
-                 <MaterialIcon   name="search" size={30} color="#fff"/>
+                 <MaterialIcon   name="search" size={30*rem} color="#fff"/>
               </Ripple>
           </View>
           </View>
@@ -72,6 +72,8 @@ const styles = EStyleSheet.create({
       backgroundColor: "#121212",
       borderWidth: '1rem',
       borderColor: "#fff",
+      fontSize: '15rem',
+      paddingLeft: '5rem',
       color:"#fff",
       ...Platform.select({
         ios:{
@@ -97,6 +99,7 @@ const styles = EStyleSheet.create({
        flexDirection:'row'
     },
     searchIcon:{
+        top:'3rem' ,
         left:"-5rem",
         width:"50rem",
         height:"40rem",

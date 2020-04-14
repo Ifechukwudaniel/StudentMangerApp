@@ -22,12 +22,6 @@ const TimeTable = ({navigation}) => {
          <View style={styles.content}>
            <View style={{flexDirection:"row"}}>
            <Text style={styles.dayText}> Today </Text>
-           <Select
-                data={data}
-                selectedOption={selectedOption}
-                onSelect={setSelectedOption}
-                style= {styles.option}
-           /> 
            </View>
             <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
                 <DateItem date={16} day={0} active/>

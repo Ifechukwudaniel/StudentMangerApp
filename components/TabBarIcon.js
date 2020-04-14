@@ -10,11 +10,11 @@ import {TouchableOpacity, View} from 'react-native'
 
 export default function TabBarIcon(props) {
   return (
-    <View>
+    <View style={{paddingTop:10, paddingBottom:10}}>
       <Icon
         name={props.name}
-        width={wp('10%')}
-        height={hp('3%')}
+        width={wp('15%')}
+        height={hp('4%')}
         fill={props.focused ? Colors.tintColor : "#ffffff"}
       />
     </View>

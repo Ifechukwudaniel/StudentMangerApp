@@ -54,7 +54,7 @@ const Chart = ({ navigation }) => {
              <View style={styles.pieChartWrapper}>
              <PieChart
                 data={pieData}
-                width={250*rem} 
+                width={330*rem} 
                 height={250*rem}
                 chartConfig={{
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,

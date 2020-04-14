@@ -43,7 +43,6 @@ const PreviewModal = ({showModal, closeModal}) => {
                           )
                           }
                           onError={()=>{
-                            alert("Please an error occurred, please check your connection ")
                             setViewLoad(true)
                             }}
                           source={{ uri:resources.url }} />

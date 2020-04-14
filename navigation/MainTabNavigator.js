@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform , Dimensions} from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -13,7 +13,7 @@ import colors from "../constants/Colors"
 import SettingsScreen from '../screens/SettingsScreen';
 import FileScreen from '../screens/FileScreen';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-
+const rem = Dimensions.get('window').width/380;
 import Colors from '../constants/Colors';
 
 const config = Platform.select({
@@ -89,7 +89,7 @@ const FileStack = createStackNavigator(
 FileStack.navigationOptions = {
   tabBarLabel: 'Downloads',
   tabBarIcon: ({ focused }, props) => (
-    <MaterialIcon size={30} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
+    <MaterialIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
   ),
 };
 
@@ -103,7 +103,7 @@ const AppStack = createBottomTabNavigator({
 },
 {
   tabBarOptions:{
-    showLabel:true,
+    showLabel:false,
     activeTintColor:"#fff",
     labelStyle:{
      color:colors.white,
@@ -111,8 +111,11 @@ const AppStack = createBottomTabNavigator({
      fontSize:14
     },
     style:{
-        backgroundColor:Colors.black,
-        // marginTop:10     
+        backgroundColor:'#000',
+        fontFamily: 'Itim',
+        borderColor: "#000",
+        borderWidth: 0,  
+        borderTopWidth:0
     },
 
   },

@@ -21,13 +21,13 @@ export default class Department extends Component {
         "__v": 0
     },
     {
+      "_id": "5e20f6f8d6f03b9ac9e42ede",
+      "name": "Civic ",
+      "__v": 0
+  },
+    {
         "_id": "5e20e2bdd6f03b9ac9e42edd",
         "name": "Computer Education",
-        "__v": 0
-    },
-    {
-        "_id": "5e20f6f8d6f03b9ac9e42ede",
-        "name": "Civic ",
         "__v": 0
     },
     {

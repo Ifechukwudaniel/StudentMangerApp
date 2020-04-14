@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text,StatusBar, TouchableOpacity, ScrollView, TouchableHighlight, TouchableNativeFeedback} from 'react-native'
+import {View, Text,StatusBar, TouchableOpacity, Dimensions,TouchableHighlight, TouchableNativeFeedback} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { Icon } from 'native-base';
 import PreviewModal from './PreviewModal';
- 
+const entireScreenWidth = Dimensions.get('window').width;
+
 const DownloadItem = ({last}) => {
   const [viewLoad, setViewLoad] = useState(false)
     return (
@@ -41,7 +42,7 @@ const styles = EStyleSheet.create({
     courseCode:{
        fontSize:'24rem',
        color:"#fff",
-       fontFamily:"Brother1816-bold",
+       fontFamily:"Brother1816-Bold",
        marginTop:'10rem',
        marginLeft: '13rem',
        lineHeight:'28rem',
@@ -59,6 +60,7 @@ const styles = EStyleSheet.create({
    icon:{
     color:"#fff",
     alignSelf: 'center',
+    
    },
    deleteIcon:{
      backgroundColor: "#D80404",

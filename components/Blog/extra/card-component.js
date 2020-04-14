@@ -4,6 +4,7 @@ import Ripple from 'react-native-material-ripple';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import moment from 'moment'
 import BlogModal from './BlogModal';
+import EStyleSheet from 'react-native-extended-stylesheet'
 
 
 export const BlogCard = ({ date, tag,title, img}) => {
@@ -36,7 +37,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
 }
 
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
       width:wp("100%"),
       borderRadius:8,
@@ -65,24 +66,25 @@ const styles = StyleSheet.create({
       padding:1
     },
     title:{
-      fontSize:17,
+      fontSize:'17rem',
       fontFamily:"Brother1816-Bold",
       marginTop:hp("1%"),
       width:wp("90%"),
       color:"#fff"
     },
     date:{
-      fontSize:15,
+      fontSize:'15rem',
       fontFamily:"Itim",
       // fontWeight:'bold',
       padding:hp("0.3%"),
       color:"#fff"
     },
     tag:{
-      fontSize:15,
+      fontSize:'15rem',
       fontFamily:"Itim",
+      marginLeft: '215rem',
       textAlign:'right',
-      marginLeft:wp("45%"),
+      alignSelf:'flex-end',
       color:"#FFBE04",
       padding:hp("0.2%"),
     },

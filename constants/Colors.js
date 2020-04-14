@@ -1,4 +1,4 @@
-const tintColor = '#6919A9';
+const tintColor = '#691';
 
 export default {
   tintColor,
@@ -13,7 +13,7 @@ export default {
   noticeText: '#fff',
   gradient0:"#2F80ED",
   gradient1:"#2f80ed",
-  gradient2:"#BB6BD9",
+  gradient2:"#691",
   white:"#fff",
   black :"#000",
   darkMode:"#2b3144",

@@ -54,6 +54,8 @@ const styles = EStyleSheet.create({
         fontWeight:"300"
     },
     userImage:{
-         alignContent:"center"
+         alignContent:"center",
+         width:"70rem",
+         height:"70rem"
     }
 });

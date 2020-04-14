@@ -82,6 +82,7 @@ const styles = EStyleSheet.create({
       paddingTop:"5rem",
       paddingLeft: '10rem',
       paddingRight: '5rem',
+      fontSize:'20rem'
     },
     textInput:{
       height:"30rem",

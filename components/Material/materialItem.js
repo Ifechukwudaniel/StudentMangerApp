@@ -27,8 +27,8 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
                                 <Text style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
                                 <Text style={styles.courseTitle}>{description} </Text>
                                 <Text style={styles.courseTitle}>Lectures: {lecture}</Text>
-                                <Text style={[styles.courseTitle, {fontSize:15}]}>Material Type : {materialType}</Text>
-                                <Text style={[styles.courseTitle, {fontSize:15}]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
+                                <Text style={[styles.courseTitle, styles.smallFont]}>Material Type : {materialType}</Text>
+                                <Text style={[styles.courseTitle, styles.smallFont]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
                             </LinearGradient>
                     </TouchableHighlight>
                     <Modal
@@ -132,7 +132,7 @@ const styles = EStyleSheet.create({
             fontFamily:"Itim",
           },
           android:{
-            fontFamily:"itim",
+            fontFamily:"Itim",
           }
   
         }),
@@ -150,7 +150,7 @@ const styles = EStyleSheet.create({
         paddingTop:'10rem'
     },
       modal:{
-        // backgroundColor:'rgba(360, 360, 360, 0.2)',
+        backgroundColor:'rgba(360, 360, 360, 0.2)',
         flex:1,
         justifyContent:'flex-end',
       },
@@ -314,6 +314,9 @@ const styles = EStyleSheet.create({
     },
     copiesNumberWrapper:{
       marginLeft: "70rem",
+    },
+    smallFont:{
+      fontSize:'15rem'
     }
     
 })

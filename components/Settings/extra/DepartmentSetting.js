@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {  Text,Dimensions } from 'react-native';
 import {Grid, Col, Row} from 'react-native-easy-grid'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Colors from '../../../constants/Colors';
 import Ripple from 'react-native-material-ripple';
 import EStyleSheet from 'react-native-extended-stylesheet' 
+const  rem = Dimensions.get('window').width/360
 
 
 export default class SettingList extends Component {
@@ -18,7 +19,7 @@ export default class SettingList extends Component {
                      <Text style={styles.typeText}> Department</Text>
                   </Col>
                   <Col style={styles.icon}>
-                      <MaterialIcon name="business" color={Colors.white} size={30}/>
+                      <MaterialIcon name="business" color={Colors.white} size={30*rem}/>
                   </Col>
             </Row>
         </Ripple>

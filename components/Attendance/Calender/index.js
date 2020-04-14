@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, StatusBar, TouchableOpacity, ScrollView,  Text } from "react-native";
+import { View, StatusBar, TouchableOpacity, ScrollView,  Text, Dimensions } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "../../Header";
 import { Calendar } from "react-native-calendars";
+const rem = Dimensions.get('screen').width
 
 const Calender = ({ navigation }) => {
   return (

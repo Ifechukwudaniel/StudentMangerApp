@@ -5,12 +5,14 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import {Svg, Path, SvgXml} from 'react-native-svg'
+import {Dimensions} from 'react-native'
 import  MaterialSvg from "../../assets/svg/material.svg";
 import  AttendanceSvg from "../../assets/svg/attendance.svg";
 import  ChatSvg from "../../assets/svg/chat.svg";
 import  NewsSvg from "../../assets/svg/news.svg";
 import  TimeTableSvg from "../../assets/svg/timeTable.svg";
 import  EventSvg from "../../assets/svg/event.svg";
+const  rem = Dimensions.get('window').width/360
 
 
 class Home extends Component {
@@ -20,7 +22,7 @@ class Home extends Component {
                 <View style={{flexDirection:'row'}}>
                 <Text style={styles.homeText}> Home </Text>
                      <TouchableOpacity style={styles.notifications} onPress={()=>this.props.navigation.navigate('notifications')}>
-                      <MaterialIcon style={styles.icon} size={37} color="#fff" name='notifications-active'/>
+                      <MaterialIcon style={styles.icon} size={37*rem} color="#fff" name='notifications-active'/>
                       <Svg  style={styles.svg}  > 
                          <Path style={styles.notificationsNumber} d="M28,13c0,7.18-9,7.181-14,13C10,20.946,0,20.18,0,13,8,6.417,6.268,0,14,0S21,7.946,28,13Z" fill="#fff">
                         </Path>
@@ -128,7 +130,8 @@ const styles = EStyleSheet.create({
     textAlign:"center",
     justifyContent:"center",
     lineHeight:'25rem',
-    marginRight:"3rem"
+    marginRight:"3rem",
+    color:"#000"
   },
   menu:{
   ...Platform.select({
