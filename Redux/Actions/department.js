@@ -15,7 +15,7 @@ export const getAllDepartment = (data) => {
     .then(({data})=>{
        dispatch(getAllDepartmentSuccess(data))
     })
-    .catch(({error})=>{
+    .catch((error)=>{
        dispatch(getAllDepartmentError(error))
     })
   };
@@ -33,7 +33,7 @@ const getAllDepartmentSuccess= (departments)=>({
 })
 
 const getAllDepartmentError= error=>({
-  type:GET_ALL_DEPARTMENTS_SUCCESS,
+  type:GET_ALL_DEPARTMENTS_ERROR,
   payload:{
      error
   }
