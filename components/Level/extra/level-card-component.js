@@ -30,7 +30,7 @@ const styles = EStyleSheet.create({
       marginLeft: '10rem',
       marginRight: '10rem',
       borderRadius:'10rem',
-      backgroundColor:'#691',
+      backgroundColor:'#027831',
       justifyContent: 'center',
     },
     level: {

@@ -1,73 +1,59 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, StyleSheet, ScrollView, StatusBar } from 'react-native';
-import {InputElement , Input, Icon, ModalPanel} from "@ui-kitten/components"
+import { View, Text,  StyleSheet, ScrollView, StatusBar , ActivityIndicator } from 'react-native';
 import SearchInput from './extra/search-input-component'
 import ChipLayout from './extra/chip-layout-component'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {connect} from 'react-redux'
+import {getAllDepartment, setFilterDepartments} from '../../Redux/Actions/department'
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-
-export default class Department extends Component {
-  data = [
-    {
-        "_id": "5e1b89f87bd9b9071c9d7321",
-        "name": "Computer Scince",
-        "__v": 0
-    },
-    {
-        "_id": "5e20e2a6d6f03b9ac9e42edc",
-        "name": "physics",
-        "__v": 0
-    },
-    {
-      "_id": "5e20f6f8d6f03b9ac9e42ede",
-      "name": "Civic ",
-      "__v": 0
-  },
-    {
-        "_id": "5e20e2bdd6f03b9ac9e42edd",
-        "name": "Computer Education",
-        "__v": 0
-    },
-    {
-        "_id": "5e20f702d6f03b9ac9e42edf",
-        "name": "Mechanical Engineering",
-        "__v": 0
-    },
-    {
-      "_id": "1212121212",
-      "name": "Law",
-      "__v": 0
-  }
-]
+class Department extends Component {
   state={
-    data :this.data,
-    searchKeyWord:''
+    searchKeyWord:'',
   }
 
-  componentDidMount(){
+  componentWillMount(){
     StatusBar.setBarStyle('light-content',true)
+    this.props.getAllDepartment()
   }
-  
   
   handleChange= (value)=>{
     if (value===this.state.searchKeyWord) {
        this.handleSearch()
     }
       else{
-      this.setState({searchKeyWord:value}, ()=>{
-        let newData=  this.data.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
-        this.setState({data:newData})
-      })
-    }
+            this.setState({searchKeyWord:value}, ()=>{
+              let newData=  this.props.departments.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
+              this.props.setDepartments(newData)
+            })
+      }
   }
 
   handleSearch= ()=>{
      this.props.navigation.navigate("Level")
+     console.log(this.props.filterDepartments[0])
   }
 
+
   render() {
+    const { error, loading, departments, filterDepartments } = this.props;
+    if(loading){
+      return(
+      <View style={styles.container}>
+        <View style={styles.SearchInput}>
+            <SearchInput 
+            value={this.state.searchKeyWord} />
+            <View style={styles.activityIndicatorView} >
+                 <ActivityIndicator size="large"/>
+            </View>
+        </View>
+     </View>
+      )
+    }
+
+
     return (
         <View style={styles.container}>
             <View style={styles.SearchInput}>
@@ -76,9 +62,13 @@ export default class Department extends Component {
               handleSearch={this.handleSearch} 
               value={this.state.searchKeyWord} />
             </View>
-               <>
-               {this.state.data.length!==0
+               {this.props.filterDepartments.length===0
                 ?
+                <View style={styles.errorContainer}>
+                    <MaterialIcon style={styles.errorIcon} color="#fff" name="find-in-page" size={100}/>
+                    <Text style={styles.errorText}> {this.state.searchKeyWord} is not found</Text>
+                  </View>
+                :
                 <>
                <View style={styles.DepartmentTextContainer}>
                   <Text style={styles.DepartmentText}> Available Department</Text>
@@ -86,26 +76,22 @@ export default class Department extends Component {
                 <ScrollView>
                   <View style={styles.clipSelectContainer}>
                     <ChipLayout 
-                      departments={this.state.data} 
-                       handleChange = {this.handleChange}
-                         handleClipClick={(value)=>this.handleChange(value)}
+                      departments={filterDepartments} 
+                      handleChange = {this.handleChange}
+                      handleClipClick={(value)=>this.handleChange(value)}
                        />
                   </View>
                 </ScrollView>
                 </>
-                :
-                  <View style={styles.errorContainer}>
-                    <MaterialIcon style={styles.errorIcon} color="#fff" name="find-in-page" size={100}/>
-                    <Text style={styles.errorText}> {this.state.searchKeyWord} is not found</Text>
-                  </View>
+                  
                }
-              </>
         </View>
+
     );
   }
 }
 
-const styles= StyleSheet.create({
+const styles= EStyleSheet.create({
   container:{
     flex: 1,
     backgroundColor:Colors.tintColor
@@ -147,5 +133,31 @@ const styles= StyleSheet.create({
   },
   errorIcon:{
       margin:5
-  }
+  },
+  activityIndicatorView:{
+    width:"100%",
+    height:"90%",
+    justifyContent: 'center',
+  },
 })
+
+function mapStateToProps(state) {
+  return {
+    departments: state.department.departments,
+    loading:state.department.loading,
+    filterDepartments: state.department.filterDepartments
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllDepartment:()=>{
+      dispatch(getAllDepartment())
+    },
+    setDepartments:(department)=>{
+       dispatch(setFilterDepartments(department))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Department)
