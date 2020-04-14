@@ -29,11 +29,11 @@ const styles = EStyleSheet.create({
     },
     textStyle:{
         flexDirection:'column',
-        // padding:"17rem",
+         padding:"6rem",
         color:'#666677',
         fontSize:'15rem',
         alignSelf: 'center',
-        fontWeight: 'bold',
+        fontWeight: '500',
     }
 })
 export default ClipComponent;
