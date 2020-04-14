@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { View, Text,  StyleSheet, ScrollView, StatusBar , ActivityIndicator } from 'react-native';
+import React, { Component,  } from 'react';
+import { View, Text,  ScrollView, StatusBar , ActivityIndicator, AsyncStorage } from 'react-native';
 import SearchInput from './extra/search-input-component'
 import ChipLayout from './extra/chip-layout-component'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {connect} from 'react-redux'
 import {getAllDepartment, setFilterDepartments} from '../../Redux/Actions/department'
 import EStyleSheet from 'react-native-extended-stylesheet';
-
+import _ from 'lodash'
+import {Toast} from 'native-base'
 class Department extends Component {
   state={
     searchKeyWord:'',
@@ -23,17 +23,36 @@ class Department extends Component {
     if (value===this.state.searchKeyWord) {
        this.handleSearch()
     }
-      else{
-            this.setState({searchKeyWord:value}, ()=>{
-              let newData=  this.props.departments.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
-              this.props.setDepartments(newData)
-            })
-      }
+    else{
+      this.setState({searchKeyWord:value}, ()=>{
+      let newData=  this.props.departments.filter((value)=>value.name.toLowerCase().includes(this.state.searchKeyWord.toLowerCase()))
+      this.props.setDepartments(newData)
+     })
+    }
   }
 
-  handleSearch= ()=>{
-     this.props.navigation.navigate("Level")
-     console.log(this.props.filterDepartments[0])
+  handleSearch=  ()=>{
+      const userDepartment =  _.filter(this.props.filterDepartments,{name:this.state.searchKeyWord})
+       AsyncStorage.setItem('@BIU_ASSIST:department', JSON.stringify(userDepartment[0]))
+      .then(()=>{
+        Toast.show({
+          text: `🥳 Just saved ${userDepartment[0].name} as your department`,
+          textStyle:styles.textStyle,
+          position: 'bottom',
+          type:'success',
+          duration:5000
+        })
+        this.props.navigation.navigate("Level")
+      })
+      .catch(()=>{
+        Toast.show({
+          text: "😭 An error occurred , Please select the your department",
+          position: 'bottom',
+          type:'warning',
+          duration:5000
+        })
+       
+      })
   }
 
 
@@ -53,6 +72,16 @@ class Department extends Component {
       )
     }
 
+    if(error){
+      <View style={styles.container}>
+      <View style={styles.SearchInput}>
+          <SearchInput 
+          value={this.state.searchKeyWord} />
+         
+      </View>
+   </View>
+
+    }
 
     return (
         <View style={styles.container}>
@@ -97,18 +126,18 @@ const styles= EStyleSheet.create({
     backgroundColor:Colors.tintColor
   },
   SearchInput:{
-    marginTop:hp('7%'),
-    marginLeft:wp('4%'),
-    marginRight:wp('4%'),
-    marginBottom:hp('4%')
+    marginTop:'50rem',
+    marginLeft:'20rem',
+    marginRight:'20rem',
+    marginBottom:'20rem'
   },
   DepartmentTextContainer:{
-    marginBottom:20,
-    marginLeft:20
+    marginBottom:'20rem',
+    marginLeft:'20rem'
   },
   DepartmentText:{
       color:Colors.white,
-      fontSize:wp('6%'),
+      fontSize:'20rem',
       fontWeight:'bold',
   },
   clipSelectContainer:{
@@ -117,8 +146,8 @@ const styles= EStyleSheet.create({
     alignItems:'flex-start',
     alignContent:'space-between',
     justifyContent:'space-between',
-    marginLeft:wp('1%'),
-    marginRight:wp('2%'),
+    marginLeft:'10rem',
+    marginRight:'10rem',
   },
   errorContainer:{
     alignItems:"center",
@@ -139,6 +168,9 @@ const styles= EStyleSheet.create({
     height:"90%",
     justifyContent: 'center',
   },
+  textStyle:{
+    fontSize:'14rem'
+  }
 })
 
 function mapStateToProps(state) {
