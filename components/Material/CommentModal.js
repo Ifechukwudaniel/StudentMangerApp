@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View,  Modal, Text,ScrollView, Image, TextInput} from 'react-native'
+import {View,  Modal, Text,ScrollView, Image, TextInput, Dimensions} from 'react-native'
 import Constants from 'expo-constants'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import {  Button,Icon} from 'native-base';
@@ -9,6 +9,7 @@ import CommentItem from './extra/CommentItem';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple'
+const  rem = Dimensions.get('window').width/360
 
  
 const CommentModal = ({showModal, closeModal}) => {
@@ -23,7 +24,7 @@ const CommentModal = ({showModal, closeModal}) => {
                              <View style={styles.modalView}>
                                  <View style={styles.header}>
                                     <Button transparent onPress={()=>closeModal()}>
-                                      <IoniconsIcon name='ios-arrow-back' size={30} style={styles.iconHeader} />
+                                      <IoniconsIcon name='ios-arrow-back' size={30*rem} style={styles.iconHeader} />
                                       <Text style={styles.backText}>Back</Text>
                                     </Button>
                                     <View style={styles.printIcon}>
@@ -41,7 +42,7 @@ const CommentModal = ({showModal, closeModal}) => {
                                       <Image style={styles.userIcon} resizeMode='cover' source={require("../../assets/images/img.png")}/>
                                       <TextInput numberOfLines={2} placeholderTextColor="#AEAEAE"  placeholder="Type your comment ...." style={styles.textInput}/>
                                       <Ripple style={styles.commentIcon}>
-                                        <MaterialIcon  style={styles.commentIcon} size={30}  name="comment" color="#fff"/>
+                                        <MaterialIcon  style={styles.commentIcon} size={30*rem}  name="comment" color="#fff"/>
                                       </Ripple>
                                     </View>
                                   <View>
@@ -151,7 +152,7 @@ const styles = EStyleSheet.create({
       },
       commentIcon:{
         // marginTop: '5rem',
-        borderLeftWidth: '2rem',
+        // borderLeftWidth: '2rem',
         borderColor:"#fff",
         paddingTop:"10rem",
         paddingLeft: '3rem',

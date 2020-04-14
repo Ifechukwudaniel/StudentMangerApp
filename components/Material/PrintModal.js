@@ -160,7 +160,7 @@ const styles = EStyleSheet.create({
       },
       buttonWrapper:{
         marginTop:"10rem",
-        marginBottom: "300rem",
+        // marginBottom: "300rem",
       },
       buttonText:{
         justifyContent: 'center',
@@ -186,6 +186,7 @@ const styles = EStyleSheet.create({
         paddingTop:"5rem",
         paddingLeft: '10rem',
         paddingRight: '5rem',
+        textAlignVertical: 'top'
       },
       textInput:{
         height:"30rem",

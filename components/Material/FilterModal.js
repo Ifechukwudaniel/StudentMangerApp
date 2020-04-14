@@ -141,7 +141,7 @@ const styles = EStyleSheet.create({
        fontFamily: 'Itim',
        color:"#fff",
        marginTop: '40rem',
-       fontSize:"30rem"
+       fontSize:"25rem"
      },
      scrollView:{
        padding:'20rem',

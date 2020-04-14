@@ -17,7 +17,7 @@ const FilterItem = ({active, text}) => {
  
 const styles = EStyleSheet.create({
    filterItem:{
-        width:"120rem",
+        width:"100rem",
         height:"70rem",
         borderRadius: '10rem',
         marginRight: '20rem',

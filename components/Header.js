@@ -23,7 +23,7 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerSt
             }
           </Left>
           <Body>
-            { Platform.OS!=='android'? <Title style={[styles.title, style]}> {screenName}</Title> : <Title style={[styles.title]}></Title> } 
+            { Platform.OS!=='android'? <Title style={[styles.title, style]}> {screenName}</Title> : <Title style={[styles.title]}>{screenName}</Title> } 
           </Body>
           <Right>
           </Right>
@@ -36,13 +36,16 @@ const styles = EStyleSheet.create({
         ...Platform.select({
             ios:{
                 backgroundColor: "#252525" ,
+                 borderBottomWidth: "0rem",
             },
             android:{
-                backgroundColor:'transparent'
+                backgroundColor:'#121212',
+                borderBottomWidth: '1rem',
+                borderColor: "#000",
+                borderBottomColor: "#d3d3d3",
             }
             
         }),
-        borderBottomWidth: "0rem",
     },
     title:{
         fontSize: '22rem', 
