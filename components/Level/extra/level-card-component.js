@@ -25,7 +25,7 @@ export const LevelCard = ({number,_id, handleClick}) => {
 
 const styles = EStyleSheet.create({
     container: {
-      height: '70rem',
+      height: '100rem',
       marginTop:'10rem' ,
       marginLeft: '10rem',
       marginRight: '10rem',
@@ -38,7 +38,7 @@ const styles = EStyleSheet.create({
     },
     title: {
       zIndex: 1,
-      fontSize: "20rem",
+      fontSize: "25rem",
     
     }
   });

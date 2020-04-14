@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, StyleSheet, View } from 'react-native';
+import { ScrollView, Text, StyleSheet, View, AsyncStorage } from 'react-native';
 import {LevelCard} from './extra/level-card-component'
 import Colors from '../../constants/Colors';
+import { connect } from 'react-redux'
 
 
 class Level extends Component {
+  componentWillMount(){
+    AsyncStorage.getItem("@BIU_ASSIST:department")
+    .then((department)=>{
+      const userDepartment=  JSON.parse(department)
+     console.warn(userDepartment._id)
+    })
+  }
     data=[
       {
           "_id": "5e1b8a207bd9b9071c9d7322",
@@ -49,4 +57,23 @@ const styles = StyleSheet.create({
     flex:1
   }
 });
-export default Level
+
+function mapStateToProps(state) {
+  return {
+    departments: state.department.departments,
+    loading:state.department.loading,
+    filterDepartments: state.department.filterDepartments
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllDepartment:()=>{
+      dispatch(getAllDepartment())
+    },
+    setDepartments:(department)=>{
+       dispatch(setFilterDepartments(department))
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Level)
