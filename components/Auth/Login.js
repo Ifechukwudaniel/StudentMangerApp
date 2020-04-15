@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 import LoginForm from './LoginForm';
+import Keys from '../../constants/Keys';
 class Login extends Component {
     handleNextButton= ()=>{
-        this.props.navigation.navigate("Setup")
+        AsyncStorage.getAllKeys()
+        .then(keys=>{
+            if(keys.includes(Keys.department) && keys.includes(Keys.level))
+                this.props.navigation.navigate("Home")
+            else
+               this.props.navigation.navigate("Setup")
+        })
     }
     render() { 
         return (
