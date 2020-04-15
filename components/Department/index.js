@@ -9,14 +9,15 @@ import {getAllDepartment, setFilterDepartments} from '../../Redux/Actions/depart
 import EStyleSheet from 'react-native-extended-stylesheet';
 import _ from 'lodash'
 import {Toast} from 'native-base'
+import Keys from '../../constants/Keys'
 class Department extends Component {
   state={
     searchKeyWord:'',
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     StatusBar.setBarStyle('light-content',true)
-    this.props.getAllDepartment()
+    this.props.getAllDepartment() 
   }
   
   handleChange= (value)=>{
@@ -33,7 +34,7 @@ class Department extends Component {
 
   handleSearch=  ()=>{
       const userDepartment =  _.filter(this.props.filterDepartments,{name:this.state.searchKeyWord})
-       AsyncStorage.setItem('@BIU_ASSIST:department', JSON.stringify(userDepartment[0]))
+       AsyncStorage.setItem(Keys.department, JSON.stringify(userDepartment[0]))
       .then(()=>{
         Toast.show({
           text: `🥳 Just saved ${userDepartment[0].name} as your department`,

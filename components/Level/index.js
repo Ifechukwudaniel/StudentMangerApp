@@ -1,61 +1,96 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, StyleSheet, View, AsyncStorage } from 'react-native';
+import { ScrollView, Text,  View, AsyncStorage, ActivityIndicator } from 'react-native';
 import {LevelCard} from './extra/level-card-component'
 import Colors from '../../constants/Colors';
 import { connect } from 'react-redux'
+import EStyleSheet from 'react-native-extended-stylesheet';
+import { Toast } from 'native-base';
+import Keys from '../../constants/Keys';
+
 
 
 class Level extends Component {
-  componentWillMount(){
+  state={
+    level:[],
+    loading:true
+  }
+ UNSAFE_componentWillMount(){
     AsyncStorage.getItem("@BIU_ASSIST:department")
     .then((department)=>{
       const userDepartment=  JSON.parse(department)
-     console.warn(userDepartment._id)
+     this.setState({level:userDepartment.levels, loading:false})
     })
   }
-    data=[
-      {
-          "_id": "5e1b8a207bd9b9071c9d7322",
-          "number": "400"
-      },
-      {
-          "_id": "5e1b8a2d7bd9b9071c9d7323",
-          "number": "300"
-      },
-      {
-          "_id": "5e1b8a357bd9b9071c9d7324",
-          "number": "200"
-      },
-      {
-          "_id": "5e1b8a3b7bd9b9071c9d7325",
-          "number": "100"
-      }
-  ]
-  handleClick=()=>{
-    this.props.navigation.navigate("Home")
+
+  handleClick=({number, id})=>{
+    AsyncStorage.setItem( Keys.level, JSON.stringify({number, _id:id}))
+    .then(()=>{
+      Toast.show({
+        text: `🥳 Just saved ${number} as your level`,
+        textStyle:styles.textStyle,
+        position: 'bottom',
+        type:'success',
+        duration:3000
+      })
+      this.props.navigation.navigate("Home")
+    })
+    .catch(()=>{
+      Toast.show({
+        text: "😭 An error occurred , Please select the your  level",
+        position: 'bottom',
+        type:'warning',
+        duration:3000,
+      })
+    })
   }
 
   render() {
-    return (
-       <ScrollView style={styles.levelContainer}>
-            {this.data.map((level)=>(
-                 <LevelCard 
-                  key={level._id} 
-                  number={level.number} 
-                  color={Colors.gradient0}
-                  handleClick={this.handleClick}
-                  />
-            ))}
-      </ScrollView>
-    );
+       const {loading, level, } = this.state
+       if (loading) {
+           return(
+              <View style={styles.loadingView}>
+                 <ActivityIndicator style={styles.activityIndicator} size="large"   />
+              </View>
+           )
+       }
+       if (!loading && level.length===0) {
+        return(
+           <View style={styles.loadingView}>
+              
+           </View>
+        )
+    }
+      return (
+        <ScrollView style={styles.levelContainer}>
+              {level.map((level)=>(
+                  <LevelCard 
+                    id={level._id}
+                    key={level._id} 
+                    number={level.number} 
+                    color={Colors.gradient0}
+                    handleClick={this.handleClick}
+                    />
+              ))}
+        </ScrollView>
+      );
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   levelContainer: {
-    marginTop: 50,
+    marginTop: '50rem',
     flex:1
+  },
+  loadingView:{
+    // backgroundColor: 'red',
+    width:'100%',
+    height:'100%',
+    justifyContent: 'center',
+  },
+  activityIndicator:{
+    alignSelf: 'center',
   }
+  
 });
 
 function mapStateToProps(state) {
