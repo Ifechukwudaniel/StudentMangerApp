@@ -26,7 +26,7 @@ class Level extends Component {
     AsyncStorage.setItem( Keys.level, JSON.stringify({number, _id:id}))
     .then(()=>{
       Toast.show({
-        text: `🥳 Just saved ${number} as your level`,
+        text: `🥳 Just saved ${number} level as your level`,
         textStyle:styles.textStyle,
         position: 'bottom',
         type:'success',

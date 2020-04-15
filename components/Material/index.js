@@ -5,7 +5,6 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
-import Constants from 'expo-constants'
 import FilterModal from './FilterModal';
 const  rem = Dimensions.get('window').width/360
  
