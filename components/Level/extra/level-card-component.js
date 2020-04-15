@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import EStyleSheet from 'react-native-extended-stylesheet'
-export const LevelCard = ({number,_id, handleClick}) => {
+export const LevelCard = ({number,id, handleClick}) => {
     return (
     <Ripple
-     onPress= {handleClick}
+     onPress= {()=>handleClick({number,id})}
      >
      <Card
       style={styles.container}
