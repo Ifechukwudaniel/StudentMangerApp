@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform , Easing, Animated} from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import BlogScreen from '../screens/BlogsScreen';
@@ -12,6 +12,20 @@ import NotificationScreen from '../screens/Home/NotificationScreen';
 import AttendanceNavigation from '../navigation/AttendanceNavigation'
 
 
+const transitionConfig = () => {
+   return{
+    transitionSpec: {
+        duration: 1000,
+        easing: Easing.out(Easing.poly(4)),
+        timing: Animated.timing,
+        useNativeDriver: true,
+      },
+      screenInterpolator: sceneProps => {     
+        console.log(sceneProps) 
+        return { transform: [ { translateY:10 } ] }
+      },
+   }
+  }
 
 
 const config = Platform.select({
@@ -23,6 +37,9 @@ const config = Platform.select({
 const BlogStack = createStackNavigator({
    Blogs: BlogScreen,
 },
+
+{
+}
 )
 
 BlogStack.navigationOptions = {

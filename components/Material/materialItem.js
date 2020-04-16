@@ -11,6 +11,7 @@ import PrintModal from './PrintModal'
 import CommentModal from './CommentModal';
 import moment from 'moment'
 import WebViewError from '../error'
+import constants from 'expo-constants'
 
  
 const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType , date, url, pages, printed, open  }) => {
@@ -106,7 +107,7 @@ const styles = EStyleSheet.create({
     },
     materialItem:{
         width:'90%',
-        height:"200rem",
+        height:"170rem",
         alignSelf: 'center',
         overflow: 'hidden',
         borderTopLeftRadius: '20rem',

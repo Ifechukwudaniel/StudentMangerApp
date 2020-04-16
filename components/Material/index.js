@@ -70,6 +70,7 @@ class Material extends Component{
                  materials.map((material)=>{
                    return(
                     <MaterialItem 
+                      key={material._id}
                       courseCode={material.course.courseCode} 
                       courseTitle={material.course.title}
                       url={material.file}
