@@ -73,7 +73,7 @@ const styles = EStyleSheet.create({
         },
         modalView:{
           backgroundColor:Colors.black,
-          height:'87%',
+          height:'85%',
           borderTopLeftRadius: "100rem",
           borderTopRightRadius: "100rem",
           shadowColor: "#3F4141",

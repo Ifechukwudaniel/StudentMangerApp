@@ -23,7 +23,7 @@ class Home extends Component {
                 <Text style={styles.homeText}> Home </Text>
                      <TouchableOpacity style={styles.notifications} onPress={()=>this.props.navigation.navigate('notifications')}>
                       <MaterialIcon style={styles.icon} size={37*rem} color="#fff" name='notifications-active'/>
-                      <Svg  style={styles.svg}  > 
+                      <Svg   style={styles.svg}  > 
                          <Path style={styles.notificationsNumber} d="M28,13c0,7.18-9,7.181-14,13C10,20.946,0,20.18,0,13,8,6.417,6.268,0,14,0S21,7.946,28,13Z" fill="#fff">
                         </Path>
                         <Text style={styles.notifyText}> 20 </Text>
