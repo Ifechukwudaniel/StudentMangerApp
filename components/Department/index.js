@@ -59,6 +59,7 @@ class Department extends Component {
 
   render() {
     const { error, loading, departments, filterDepartments } = this.props;
+    console.log(error, departments.length===0)
     if(loading){
       return(
       <View style={styles.container}>
@@ -73,15 +74,16 @@ class Department extends Component {
       )
     }
 
-    if(error){
+    if(error && departments.length===0){
+      return(
       <View style={styles.container}>
       <View style={styles.SearchInput}>
           <SearchInput 
           value={this.state.searchKeyWord} />
-         
+           
       </View>
    </View>
-
+   )
     }
 
     return (
@@ -178,7 +180,8 @@ function mapStateToProps(state) {
   return {
     departments: state.department.departments,
     loading:state.department.loading,
-    filterDepartments: state.department.filterDepartments
+    filterDepartments: state.department.filterDepartments,
+    error:state.department.error
   }
 }
 
