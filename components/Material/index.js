@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView,Platform, Dimensions} from 'react-native'
+import React, {useState, Component} from 'react';
+import {View, StatusBar, TouchableOpacity, ScrollView,Platform, Dimensions, ActivityIndicator} from 'react-native'
 import { Input} from 'native-base'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
@@ -7,51 +7,89 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ripple from 'react-native-material-ripple';
 import FilterModal from './FilterModal';
 const  rem = Dimensions.get('window').width/360
+import {connect} from 'react-redux'
+import { getMaterials } from '../../Redux/Actions/materials';
+
  
-const Material = ({loading}) => {
-    const [openFilter, setOpenFilter]= useState(false)
-    return (
-        <View style={styles.container}>
-           <StatusBar hidden/>
-          <View style={styles.filterView}>
-            <TouchableOpacity style={styles.icon} onPress={()=>setOpenFilter(true)}>
-                 <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
-            </TouchableOpacity>
-          <View style={styles.searchView}>
-              <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
-              <Ripple style={styles.searchIcon}>
-                 <MaterialIcon   name="search" size={30*rem} color="#fff"/>
-              </Ripple>
+class Material extends Component{
+  state= {
+    openFilter:false,
+  }
+  UNSAFE_componentWillMount(){
+    this.props.getMaterials()
+  }
+  setOpenFilter=(value)=>{ 
+    this.setState({openFilter:value})
+  }
+    render() {
+      const {openFilter}= this.state
+      const {loading, materials} = this.props
+      if(loading){
+        return(
+          <View style={styles.container}>
+             <StatusBar hidden/>
+            <View style={styles.filterView}>
+              <TouchableOpacity style={styles.icon} onPress={()=>this.setOpenFilter(true)}>
+                   <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
+              </TouchableOpacity>
+            <View style={styles.searchView}>
+                <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Ripple style={styles.searchIcon}>
+                   <MaterialIcon   name="search" size={30*rem} color="#fff"/>
+                </Ripple>
+            </View>
+            </View>
+            <>
+              <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
+              <View style={styles.loadingView}>
+                   <ActivityIndicator size="large" style={styles.activityIndicator}/>
+              </View>
+              </>
           </View>
+          
+        )
+      }
+
+      return (
+          <View style={styles.container}>
+             <StatusBar hidden/>
+            <View style={styles.filterView}>
+              <TouchableOpacity style={styles.icon} onPress={()=>this.setOpenFilter(true)}>
+                   <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
+              </TouchableOpacity>
+            <View style={styles.searchView}>
+                <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Ripple style={styles.searchIcon}>
+                   <MaterialIcon   name="search" size={30*rem} color="#fff"/>
+                </Ripple>
+            </View>
+            </View>
+              <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
+              <ScrollView indicatorStyle={'white'} style={styles.scrollView}>
+               {
+                 materials.map((material)=>{
+                   return(
+                    <MaterialItem 
+                      courseCode={material.course.courseCode} 
+                      courseTitle={material.course.title}
+                      url={material.file}
+                      lecture={material.lecturer}
+                      materialType={material.fileType}
+                      pages={material.pages}
+                      description={material.descriptionTitle}
+                      date={material.date}
+                      open={true}
+                      printed={material.printedCopies}
+                    />
+                   )
+                 }
+               )
+               }
+              </ScrollView>
           </View>
-            <FilterModal showModal= {openFilter} closeModal= {()=>setOpenFilter(false)}/>
-            <ScrollView indicatorStyle={'white'} style={styles.scrollView}>
-               <MaterialItem 
-               courseCode='Csc 131' 
-               courseTitle="Intro to maths and physics"
-               url="https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview"
-               lecture="mr gay & mrs  bitch"
-               materialType="PDF"
-               pages="100"
-               description="Fist material"
-               date="2020-01-30T23:19:56.577Z"
-               open={true}
-               printed={10}
-               />
-                  <MaterialItem 
-               courseCode='Csc 131' 
-               courseTitle="Intro to maths and physics"
-               url="https://www.free-ebooks.net/computer-sciences-textbooks/The-Dummies-Guide-to-Compiler-Design/pdf?dl&preview?dl&preview"
-               lecture="mr gay & mrs  bitch"
-               materialType="PDF"
-               pages="100"
-               description="Fist material"
-               date="2020-01-30T23:19:56.577Z"
-               printed={10}
-               />
-            </ScrollView>
-        </View>
-    );
+      );
+    }
+
 }
 const styles = EStyleSheet.create({
     container:{
@@ -109,6 +147,29 @@ const styles = EStyleSheet.create({
         borderColor: "#fff",
         borderTopRightRadius: '5rem',
         borderBottomRightRadius: '5rem',
+    },
+    loadingView:{
+      justifyContent: 'center',
+      width:"100%",
+      height:'80%'
+    },
+    activityIndicator:{
+      alignSelf: 'center',
     }
 })
-export default Material;
+function mapStateToProps(state) {
+  return {
+    materials: state.material.materials,
+    loading:state.material.loading,
+    error:state.material.error
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMaterials:()=>{
+      dispatch(getMaterials())
+    },
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Material)

@@ -24,11 +24,11 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
                     <TouchableHighlight style= {styles.materialItem} onPress={()=>setShowModal(true)}>
                             <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
                                 <Text style={styles.courseCode}>{courseCode}</Text>
-                                <Text style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
+                                <Text numberOfLines={1} lineBreakMode="tail" style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
                                 <Text style={styles.courseTitle}>{description} </Text>
                                 <Text style={styles.courseTitle}>Lectures: {lecture}</Text>
                                 <Text style={[styles.courseTitle, styles.smallFont]}>Material Type : {materialType}</Text>
-                                <Text style={[styles.courseTitle, styles.smallFont]}>Posted  {moment(date).toNow(true) +" Ago"}</Text>
+                                {/* <Text style={[styles.courseTitle, styles.smallFont]}>Posted  {moment(date).toNow(true) +" Ago"}</Text> */}
                             </LinearGradient>
                     </TouchableHighlight>
                     <Modal
@@ -134,16 +134,16 @@ const styles = EStyleSheet.create({
           android:{
             fontFamily:"Itim",
           }
-  
+       
         }),
         marginLeft: "2rem",
-        lineHeight:"20rem",
-        paddingTop: '4rem',
+        lineHeight:"25rem",
+        paddingTop: '2rem',
 
     },
      courseTitleText:{
         // fontSize: '25rem',
-        paddingTop:'10rem'
+        paddingTop:'4rem'
     },
     courseTitleTextModal:{
         fontSize: '30rem',
@@ -156,7 +156,7 @@ const styles = EStyleSheet.create({
       },
       modalView:{
         backgroundColor:Colors.black,
-        height:'84%',
+        height:'85%',
         borderTopLeftRadius: "100rem",
         borderTopRightRadius: "100rem",
         shadowColor: "#3F4141",
@@ -240,7 +240,7 @@ const styles = EStyleSheet.create({
      padding: '10rem',
     },
     contentItem:{
-      marginTop: '20rem',
+      marginTop: '10rem',
     },
     button:{
       width:"170rem",
@@ -263,45 +263,6 @@ const styles = EStyleSheet.create({
     },
     flexColumn:{
       flexDirection:'column'
-    },
-    textArea:{
-      color:"#fff",
-      borderWidth: '1rem',
-      borderColor: "#fff",
-      marginLeft: "10rem",
-      marginRight: '10rem',
-      marginTop: "6rem",
-      borderRadius: '5rem',
-      fontFamily:"Itim",
-      padding:'0rem',
-      height:"125rem",
-      paddingTop:"5rem",
-      paddingLeft: '10rem',
-      paddingRight: '5rem',
-    },
-    textInput:{
-      height:"30rem",
-    } ,
-    signText:{
-      fontSize: '20rem',
-      textAlign:"center",
-      color:Colors.white
-    },
-    plus:{
-     left:"-1rem",
-     backgroundColor:"#514A4A",
-     width:"40rem",
-     height:"28rem",
-     borderTopLeftRadius:'20rem',
-     borderBottomLeftRadius:'20rem'
-    },
-    minus:{
-      right:"-1rem",
-      backgroundColor:"#514A4A",
-      width:"40rem",
-      height:"28rem",
-      borderTopRightRadius:'20rem',
-      borderBottomRightRadius:'20rem'
     },
     copiesNumber:{
       width:"130rem",
