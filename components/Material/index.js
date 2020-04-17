@@ -1,5 +1,5 @@
 import React, {useState, Component} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView,Platform, Dimensions, ActivityIndicator} from 'react-native'
+import {View, StatusBar, TouchableOpacity, ScrollView,Platform, Dimensions, ActivityIndicator, Text} from 'react-native'
 import { Input} from 'native-base'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import MaterialItem from './materialItem';
@@ -9,20 +9,31 @@ import FilterModal from './FilterModal';
 const  rem = Dimensions.get('window').width/360
 import {connect} from 'react-redux'
 import { getMaterials, searchMaterials } from '../../Redux/Actions/materials';
+import Colors from '../../constants/Colors'
+// import AnimatedSpriteMonster from '../animations/Animation';
+import Animation from '../animations/Animation';
 
  
 class Material extends Component{
   state= {
     openFilter:false,
-    searchValue:''
+    searchValue:'',
+    searchKeyWord:''
   }
   UNSAFE_componentWillMount(){
     this.props.getMaterials()
+  }
+  handleChangeText=(value)=>{
+     this.setState({searchValue:value}, (value)=>{
+       if(this.props.searchEmpty && !this.state.searchValue)
+           this.props.getMaterials()
+     })
   }
 
   handleSearch= ()=>{
     const {searchValue} = this.state
     if(searchValue)
+     this.setState({searchKeyWord:searchValue})
      this.props.searchMaterials(this.state.searchValue)
   }
 
@@ -31,7 +42,7 @@ class Material extends Component{
   }
     render() {
       const {openFilter}= this.state
-      const {loading, materials} = this.props
+      const {loading, materials,searchEmpty, error} = this.props
       if(loading){
         return(
           <View style={styles.container}>
@@ -41,7 +52,7 @@ class Material extends Component{
                    <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
               </TouchableOpacity>
             <View style={styles.searchView}>
-                <Input onChangeText= {(value)=> this.setState({searchValue:value})} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Input  onChangeText= {this.handleChangeText} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
                 <Ripple style={styles.searchIcon}>
                    <MaterialIcon    name="search" size={30*rem} color="#fff"/>
                 </Ripple>
@@ -51,6 +62,7 @@ class Material extends Component{
               <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
               <View style={styles.loadingView}>
                    <ActivityIndicator size="large" style={styles.activityIndicator}/>
+                   {/* <Animation/> */}
               </View>
               </>
           </View>
@@ -66,7 +78,7 @@ class Material extends Component{
                    <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
               </TouchableOpacity>
             <View style={styles.searchView}>
-                <Input  onChangeText= {(value)=> this.setState({searchValue:value})} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Input  onChangeText= {this.handleChangeText} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
                 <Ripple onPress= {this.handleSearch} style={styles.searchIcon}>
                    <MaterialIcon   name="search" size={30*rem} color="#fff"/>
                 </Ripple>
@@ -99,7 +111,7 @@ class Material extends Component{
       );
     }
 
-}
+  }
 const styles = EStyleSheet.create({
     container:{
      flex: 1,
@@ -164,13 +176,30 @@ const styles = EStyleSheet.create({
     },
     activityIndicator:{
       alignSelf: 'center',
-    }
+    },
+    errorContainer:{
+      alignItems:"center",
+      margin:'5rem',
+      marginTop:'5rem',
+      height:'80%',
+      justifyContent: 'center',
+    },
+    errorText:{
+       textAlign:'center',
+       color:Colors.white,
+       fontSize:'22rem',
+       fontWeight:'bold',
+    },
+    errorIcon:{
+        margin:'5rem'
+    },
 })
 function mapStateToProps(state) {
   return {
     materials: state.material.materials,
     loading:state.material.loading,
-    error:state.material.error
+    error:state.material.error,
+    searchEmpty:state.material.searchEmpty
   }
 }
 

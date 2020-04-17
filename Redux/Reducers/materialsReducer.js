@@ -21,28 +21,32 @@ export const materialsReducer = (state = initialState, action) => {
         ...state,
         materials:[],
         loading:true,
-        error:null
+        error:null,
+        searchEmpty:false
       };
     case GET_MATERIALS_SUCCESS:
         return {
           ...state,
           materials:action.payload.materials,
           loading:false,
-          error:null
+          error:null,
+          searchEmpty:false
     };
     case GET_MATERIALS_ERROR:
       return {
         ...state,
         materials:[],
         loading:false,
-        error:action.payload.error
+        error:action.payload.error,
+        searchEmpty:false
       };
       case MATERIALS_SEARCH_BEGIN:
         return {
           ...state,
           materials:[],
           loading:true,
-          error:null
+          error:null,
+          searchEmpty:false
         };
       case MATERIALS_SEARCH_SUCCESS:
         if(action.payload.materials.length==0){
@@ -59,14 +63,16 @@ export const materialsReducer = (state = initialState, action) => {
           ...state,
           materials:action.payload.materials,
           loading:false,
-          error:null
+          error:null,
+          searchEmpty:false
         };
       case MATERIALS_SEARCH_ERROR:
           return {
             ...state,
             materials:[],
             loading:false,
-            error:action.payload.error
+            error:action.payload.error,
+            searchEmpty:false
         };
     default:
       return {...state};
