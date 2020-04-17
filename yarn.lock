@@ -5703,6 +5703,11 @@ lodash.merge@^4.6.1:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
+lodash.sample@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/lodash.sample/-/lodash.sample-4.2.1.tgz#5e4291b0c753fa1abeb0aab8fb29df1b66f07f6d"
+  integrity sha1-XkKRsMdT+hq+sKq4+ynfG2bwf20=
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -7055,10 +7060,28 @@ raf@^3.1.0:
   dependencies:
     performance-now "^2.1.0"
 
+random-string@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/random-string/-/random-string-0.1.2.tgz#2d6afb6076651316ac5b8a62d63106db31eb8d44"
+  integrity sha1-LWr7YHZlExasW4pi1jEG2zHrjUQ=
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+
+react-addons-shallow-compare@^15.5.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
+  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
+react-content-loader@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.0.4.tgz#1493491d2f6b309d281d84144a655417ea734486"
+  integrity sha512-hxv4Td1kQxFOmIUbBZ2S3HGZ/jJr28aJvM+8fndm9TmNOE7tSde7WSTL6R68aTS6qE0BA3ptcWIErrP704pQSw==
 
 react-devtools-core@^3.6.3:
   version "3.6.3"
@@ -7092,6 +7115,15 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-native-animated-sprite@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/react-native-animated-sprite/-/react-native-animated-sprite-0.11.1.tgz#bb554a2a6ba6ed0981d74ac7830b10909dab36fa"
+  integrity sha1-u1VKKmum7QmB10rHgwsQkJ2rNvo=
+  dependencies:
+    prop-types "^15.5.10"
+    random-string "^0.1.2"
+    react-addons-shallow-compare "^15.5.2"
 
 react-native-autocomplete-input@^4.1.0:
   version "4.1.0"
@@ -7779,6 +7811,11 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
+
+rn-sprite-sheet@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/rn-sprite-sheet/-/rn-sprite-sheet-1.1.6.tgz#929854bdb610d179ac24f43dbb1b345b7b199f6f"
+  integrity sha512-VN3+8uhmG9SI8MeLrBsCNEgYb+M10g7Om3sO5FSjBoY8nosk/g+BbW+65roarZOuDwae9gd+Eet4LEpeDcJPpQ==
 
 rnpm-plugin-windows@^0.5.1-0:
   version "0.5.1-0"
