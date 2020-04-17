@@ -8,16 +8,24 @@ import Ripple from 'react-native-material-ripple';
 import FilterModal from './FilterModal';
 const  rem = Dimensions.get('window').width/360
 import {connect} from 'react-redux'
-import { getMaterials } from '../../Redux/Actions/materials';
+import { getMaterials, searchMaterials } from '../../Redux/Actions/materials';
 
  
 class Material extends Component{
   state= {
     openFilter:false,
+    searchValue:''
   }
   UNSAFE_componentWillMount(){
     this.props.getMaterials()
   }
+
+  handleSearch= ()=>{
+    const {searchValue} = this.state
+    if(searchValue)
+     this.props.searchMaterials(this.state.searchValue)
+  }
+
   setOpenFilter=(value)=>{ 
     this.setState({openFilter:value})
   }
@@ -33,9 +41,9 @@ class Material extends Component{
                    <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
               </TouchableOpacity>
             <View style={styles.searchView}>
-                <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Input onChangeText= {(value)=> this.setState({searchValue:value})} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
                 <Ripple style={styles.searchIcon}>
-                   <MaterialIcon   name="search" size={30*rem} color="#fff"/>
+                   <MaterialIcon    name="search" size={30*rem} color="#fff"/>
                 </Ripple>
             </View>
             </View>
@@ -58,8 +66,8 @@ class Material extends Component{
                    <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
               </TouchableOpacity>
             <View style={styles.searchView}>
-                <Input style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
-                <Ripple style={styles.searchIcon}>
+                <Input  onChangeText= {(value)=> this.setState({searchValue:value})} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Ripple onPress= {this.handleSearch} style={styles.searchIcon}>
                    <MaterialIcon   name="search" size={30*rem} color="#fff"/>
                 </Ripple>
             </View>
@@ -170,6 +178,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getMaterials:()=>{
       dispatch(getMaterials())
+    },
+    searchMaterials:(text)=>{
+      dispatch(searchMaterials(text))
     },
   }
 }

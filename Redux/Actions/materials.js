@@ -2,6 +2,9 @@ import {
  GET_MATERIALS_BEGIN,
  GET_MATERIALS_ERROR,
  GET_MATERIALS_SUCCESS,
+ MATERIALS_SEARCH_BEGIN,
+ MATERIALS_SEARCH_ERROR,
+ MATERIALS_SEARCH_SUCCESS
  } from '../Varables';
  
  import axiosService from '../../services/axiosService';
@@ -46,3 +49,34 @@ import Keys from '../../constants/Keys';
  })
  
  
+
+ export const searchMaterials = (text) => {
+  return dispatch => {
+      dispatch(searchMaterialsBegin())
+           axios.get(`http://localhost:3000/search/material/${text}`)
+           .then(({data})=>{
+             dispatch(searchMaterialSuccess(data))
+           })
+           .catch(error=>{
+           dispatch(searchMaterialError(error))
+           })
+  };
+};
+
+ const searchMaterialsBegin= ()=>({
+  type:MATERIALS_SEARCH_BEGIN
+})
+
+const searchMaterialSuccess= (materials)=>({
+  type:MATERIALS_SEARCH_SUCCESS,
+  payload:{
+    materials,
+  }
+})
+
+const searchMaterialError= error=>({
+  type:MATERIALS_SEARCH_ERROR,
+  payload:{
+     error
+  }
+})
