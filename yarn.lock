@@ -7060,23 +7060,10 @@ raf@^3.1.0:
   dependencies:
     performance-now "^2.1.0"
 
-random-string@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/random-string/-/random-string-0.1.2.tgz#2d6afb6076651316ac5b8a62d63106db31eb8d44"
-  integrity sha1-LWr7YHZlExasW4pi1jEG2zHrjUQ=
-
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
-
-react-addons-shallow-compare@^15.5.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
-  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
-  dependencies:
-    fbjs "^0.8.4"
-    object-assign "^4.1.0"
 
 react-content-loader@^5.0.4:
   version "5.0.4"
@@ -7115,15 +7102,6 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-native-animated-sprite@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/react-native-animated-sprite/-/react-native-animated-sprite-0.11.1.tgz#bb554a2a6ba6ed0981d74ac7830b10909dab36fa"
-  integrity sha1-u1VKKmum7QmB10rHgwsQkJ2rNvo=
-  dependencies:
-    prop-types "^15.5.10"
-    random-string "^0.1.2"
-    react-addons-shallow-compare "^15.5.2"
 
 react-native-autocomplete-input@^4.1.0:
   version "4.1.0"
