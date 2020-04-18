@@ -22,7 +22,7 @@ export default class Animation extends React.Component {
     const { fps, loop, resetAfterFinish } = this.state;
 
     return (
-          <View onTouchStart={ ()=>this.play()} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View onTouchStart={ ()=>this.play()} style={{height:'40%', justifyContent: 'center', alignItems: 'center' }}>
             <SpriteSheet
               ref={ref => (this.mummy = ref)}
               source={require('./assets/dino1.png')}
