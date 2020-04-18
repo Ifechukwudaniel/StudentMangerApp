@@ -19,7 +19,7 @@ import Keys from '../../constants/Keys';
         .then((value)=>{
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
-            axios.get(`http://10.0.2.2:3000/material/${departmentId}/${levelId}`)
+            axios.get(`http://localhost:3000/material/${departmentId}/${levelId}`)
             .then(({data})=>{
               dispatch(getMaterialSuccess(data))
             })
@@ -53,7 +53,7 @@ import Keys from '../../constants/Keys';
  export const searchMaterials = (text) => {
   return dispatch => {
       dispatch(searchMaterialsBegin())
-           axios.get(`http://10.0.2.2:3000/search/material/${text}`)
+           axios.get(`http://localhost:3000/search/material/${text}`)
            .then(({data})=>{
              dispatch(searchMaterialSuccess(data))
            })

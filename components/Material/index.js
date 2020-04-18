@@ -10,8 +10,7 @@ const  rem = Dimensions.get('window').width/360
 import {connect} from 'react-redux'
 import { getMaterials, searchMaterials } from '../../Redux/Actions/materials';
 import Colors from '../../constants/Colors'
-// import AnimatedSpriteMonster from '../animations/Animation';
-import Animation from '../animations/Animation';
+import AnimationDino from '../animations/Animation';
 
  
 class Material extends Component{
@@ -32,6 +31,8 @@ class Material extends Component{
 
   handleSearch= ()=>{
     const {searchValue} = this.state
+    if(!searchValue)
+      return this.props.getMaterials()
     if(searchValue)
      this.setState({searchKeyWord:searchValue})
      this.props.searchMaterials(this.state.searchValue)
@@ -43,6 +44,35 @@ class Material extends Component{
     render() {
       const {openFilter}= this.state
       const {loading, materials,searchEmpty, error} = this.props
+
+      if(error){
+        return(
+          <View style={styles.container}>
+             <StatusBar hidden/>
+            <View style={styles.filterView}>
+              <TouchableOpacity style={styles.icon} onPress={()=>this.setOpenFilter(true)}>
+                   <MaterialIcon  name="filter-list" size={40*rem} color={ !openFilter? "#fff":"rgba(232, 34,34,0.71)"}/>
+              </TouchableOpacity>
+            <View style={styles.searchView}>
+                <Input  onChangeText= {this.handleChangeText} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
+                <Ripple onPress={this.handleSearch} style={styles.searchIcon}>
+                   <MaterialIcon    name="search" size={30*rem} color="#fff"/>
+                </Ripple>
+            </View>
+            </View>
+            <>
+              <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
+                    <AnimationDino/>
+                    <Text style={styles.noConnection}>
+                       Please check your internet connection
+                    </Text>
+              </>
+          </View>
+        )
+      }
+
+
+
       if(loading){
         return(
           <View style={styles.container}>
@@ -53,7 +83,7 @@ class Material extends Component{
               </TouchableOpacity>
             <View style={styles.searchView}>
                 <Input  onChangeText= {this.handleChangeText} value= {this.state.searchValue} style={styles.textBox} placeholder="Search for ..." placeholderTextColor="#AEAEAE"/>
-                <Ripple style={styles.searchIcon}>
+                <Ripple onPress={this.handleSearch} style={styles.searchIcon}>
                    <MaterialIcon    name="search" size={30*rem} color="#fff"/>
                 </Ripple>
             </View>
@@ -62,7 +92,6 @@ class Material extends Component{
               <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
               <View style={styles.loadingView}>
                    <ActivityIndicator size="large" style={styles.activityIndicator}/>
-                   {/* <Animation/> */}
               </View>
               </>
           </View>
@@ -87,13 +116,22 @@ class Material extends Component{
               <FilterModal showModal= {openFilter} closeModal= {()=>this.setOpenFilter(false)}/>
               <ScrollView indicatorStyle={'white'} style={styles.scrollView}>
                {
+                 materials.length===0  && searchEmpty?
+                (
+                 <View style={styles.errorContainer}>
+                    <MaterialIcon style={styles.errorIcon} color="#fff" name="find-in-page" size={100}/>
+                    <Text style={styles.errorText}> {this.state.searchKeyWord} is not found</Text>
+                  </View>
+                 )
+                 :
                  materials.map((material)=>{
                    return(
                     <MaterialItem 
                       key={material._id}
                       courseCode={material.course.courseCode} 
                       courseTitle={material.course.title}
-                      url={material.file}
+                      //url={material.file}
+                       url='https://docs.google.com/gview?embedded=true&url=https://file-examples.com/wp-content/uploads/2017/10/file-example_PDF_500_kB.pdf'
                       lecture={material.lecturer}
                       materialType={material.fileType}
                       pages={material.pages}
@@ -138,7 +176,7 @@ const styles = EStyleSheet.create({
           fontFamily:"Itim",
         },
         android:{
-          fontFamily:"itim",
+          fontFamily:"Itim",
         }
 
       }),
@@ -193,6 +231,12 @@ const styles = EStyleSheet.create({
     errorIcon:{
         margin:'5rem'
     },
+    noConnection:{
+      color:"#fff",
+       fontSize:'20rem',
+       fontFamily:'Itim',
+       textAlign:'center'
+    }
 })
 function mapStateToProps(state) {
   return {

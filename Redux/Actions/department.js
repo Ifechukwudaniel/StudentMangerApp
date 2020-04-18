@@ -11,7 +11,7 @@ let axios = axiosService.initInstance()
 export const getAllDepartment = (data) => {
   return dispatch => {
     dispatch( getAllDepartmentBegin())
-    return axios.get('http://10.0.2.2:3000/department/')
+    return axios.get('http://localhost:3000/department/')
     .then(({data})=>{
        dispatch(getAllDepartmentSuccess(data))
     })
