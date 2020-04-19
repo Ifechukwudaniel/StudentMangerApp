@@ -23,7 +23,7 @@ const MaterialItem = ({courseCode,courseTitle, description,lecture, materialType
     return (
         <>
                     <TouchableHighlight style= {styles.materialItem} onPress={()=>setShowModal(true)}>
-                            <LinearGradient style={styles.gradient} colors= {['#126FFE', '#0B4FB9']}>
+                            <LinearGradient style={styles.gradient} colors= {['#0F9A47', '#027831']}>
                                 <Text style={styles.courseCode}>{courseCode}</Text>
                                 <Text numberOfLines={1} lineBreakMode="tail" style={[styles.courseTitle, styles.courseTitleText]}>{courseTitle} </Text>
                                 <Text style={styles.courseTitle}>{description} </Text>
@@ -110,10 +110,10 @@ const styles = EStyleSheet.create({
         height:"170rem",
         alignSelf: 'center',
         overflow: 'hidden',
-        borderTopLeftRadius: '20rem',
-        borderTopRightRadius: '20rem',
-        borderBottomLeftRadius: '20rem',
-        borderBottomRightRadius: '20rem',
+        borderTopLeftRadius: '10rem',
+        borderTopRightRadius: '10rem',
+        borderBottomLeftRadius: '10rem',
+        borderBottomRightRadius: '10rem',
         marginTop: '10rem',
     },
     gradient:{

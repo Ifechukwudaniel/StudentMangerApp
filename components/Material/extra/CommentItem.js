@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Platform, Image} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../../constants/Colors';
+import { Facebook} from 'react-content-loader'
 
 const CommentItem = ({username,userImage , comment, date}) => {
     return (

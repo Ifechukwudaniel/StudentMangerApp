@@ -50,7 +50,6 @@ export default class Animation extends React.Component {
       fps: Number(fps),
       loop: loop,
       resetAfterFinish: resetAfterFinish,
-      onFinish: () => console.log('hi')
     });
   };
 

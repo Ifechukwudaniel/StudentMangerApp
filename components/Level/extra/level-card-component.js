@@ -2,12 +2,14 @@ import React from 'react';
 import { Button, Card, CardElement, CardProps, Text } from '@ui-kitten/components';
 import Ripple from 'react-native-material-ripple';
 import EStyleSheet from 'react-native-extended-stylesheet'
+import { LinearGradient } from 'expo-linear-gradient';
 export const LevelCard = ({number,id, handleClick}) => {
     return (
     <Ripple
      onPress= {()=>handleClick({number,id})}
      >
-     <Card
+     <LinearGradient
+       colors={['#0F9A47', '#027831']}
       style={styles.container}
       >
         <Text
@@ -16,7 +18,7 @@ export const LevelCard = ({number,id, handleClick}) => {
           status='control'>
            {number} Level
         </Text>
-    </Card>
+    </LinearGradient>
     </Ripple>
     );
 }
@@ -26,12 +28,12 @@ export const LevelCard = ({number,id, handleClick}) => {
 const styles = EStyleSheet.create({
     container: {
       height: '100rem',
-      marginTop:'10rem' ,
+      marginTop:'20rem' ,
       marginLeft: '10rem',
       marginRight: '10rem',
       borderRadius:'10rem',
-      backgroundColor:'#027831',
       justifyContent: 'center',
+      padding: '20rem',
     },
     level: {
       zIndex: 1,
