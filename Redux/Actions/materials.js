@@ -20,12 +20,8 @@ import Keys from '../../constants/Keys';
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
             axios.get(`http://localhost:3000/material/${departmentId}/${levelId}`)
-            .then(({data})=>{
-              dispatch(getMaterialSuccess(data))
-            })
-            .catch(error=>{
-            dispatch(getMaterialError(error))
-            })
+            .then(({data})=>setTimeout(()=>dispatch(getMaterialSuccess(data)), 2000))
+            .catch(error=>dispatch(getMaterialError(error)))
         })
    };
  };
@@ -55,7 +51,9 @@ import Keys from '../../constants/Keys';
       dispatch(searchMaterialsBegin())
            axios.get(`http://localhost:3000/search/material/${text}`)
            .then(({data})=>{
-             dispatch(searchMaterialSuccess(data))
+             setTimeout(()=>{
+              dispatch(searchMaterialSuccess(data))
+             }, 2000)
            })
            .catch(error=>{
            dispatch(searchMaterialError(error))
