@@ -7,35 +7,34 @@ import { Icon } from 'native-base';
 import moment from 'moment'
 
  
-const BlogModal = ({showModal, closeModal, image, tag , date , title}) => {
+const BlogModal = (props) => {
     return (
      <>
         <Modal
           animationType='slide'
           
-          visible={showModal} >
+          visible={props.showModal} >
             <ScrollView style={styles.container}>
             <View style={styles.imageWrapper}>
                  <ImageBackground 
-                    source= {{uri:`${image}`}}
+                    source= {{uri:`${props.image}`}}
                     style={styles.image}
                     resizeMode={'cover'} 
                     imageStyle={styles.imageStyle}
                  >
-                 <TouchableOpacity onPress={()=>closeModal()}>
+                 <TouchableOpacity onPress={()=>props.closeModal()}>
                     <Icon name='arrow-back' style={styles.backArrow}/>
                  </TouchableOpacity>
                 </ImageBackground>
               </View>
               <View style={styles.content}>
                   <View style={[styles.flexRow, styles.description]}>
-                     <Text style={styles.tag}>{tag}</Text>
+                     <Text style={styles.tag}>{props.tag}</Text>
                      {/* <Icon style={styles.icon} name="time" />  */}
-                     <Text style={styles.date}>{ moment(date).toNow(true) +" Ago"}</Text>
+                     <Text style={styles.date}>{ moment(props.date).toNow(true) +" Ago"}</Text>
                   </View>
-                  <Text style={styles.title}>{title}</Text>
-                  <Text style={styles.contentText}>
-                      Pulvinar eget dictum sollicitudin ut dui quis. Curabitur congue quis ante odio odio tincidunt metus augue urna. Lorem cursus curabitur auctor elementum quam. Pulvinar sit vel auctor feugiat quis neque turpis facilisis. Mauris porta in adipiscing semper malesuada. Tincidunt erat ac feugiat bibendum elit sed risus pretium, ullamcorper. Purus in sed feugiat urna. Non in vitae suspendisse tellus lorem dignissim. Volutpat dignissim tellus, viverra aliquet imperdiet augue id odio. Tempus neque varius platea cursus.... 
+                  <Text style={styles.title}>{props.title}</Text>
+                  <Text style={styles.contentText}>{props.content}
                   </Text>
              </View>
             </ScrollView>
