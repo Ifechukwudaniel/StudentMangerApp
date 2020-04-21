@@ -4,11 +4,13 @@ import {combineReducers} from 'redux';
 import {departmentReducer} from './departmentReducer'
 import { materialsReducer } from './materialsReducer';
 import { blogsReducer } from './blogsReducer';
+import { TimeTableReducer } from './timeTableReducer';
 
 export const allReducers = combineReducers({
   department:departmentReducer,
   fab:fabReducer,
   screen :screenReducer,
   material:materialsReducer,
-  blogs:blogsReducer
+  blogs:blogsReducer,
+  timeTable:TimeTableReducer
 });
