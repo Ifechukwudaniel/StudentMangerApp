@@ -13,7 +13,7 @@ export const getAllDepartment = (data) => {
     dispatch( getAllDepartmentBegin())
     return axios.get('http://localhost:3000/department/')
     .then(({data})=>{
-       dispatch(getAllDepartmentSuccess(data))
+      setTimeout(()=> dispatch(getAllDepartmentSuccess(data)), 1000)
     })
     .catch((error)=>{
        dispatch(getAllDepartmentError(error))

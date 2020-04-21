@@ -20,7 +20,7 @@ import Keys from '../../constants/Keys';
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
             axios.get(`http://localhost:3000/material/${departmentId}/${levelId}`)
-            .then(({data})=>setTimeout(()=>dispatch(getMaterialSuccess(data)), 2000))
+            .then(({data})=>setTimeout(()=>dispatch(getMaterialSuccess(data)), 1000))
             .catch(error=>dispatch(getMaterialError(error)))
         })
    };

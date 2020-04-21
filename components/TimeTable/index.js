@@ -20,6 +20,7 @@ class TimeTable extends Component {
       this.props.getTimeTable()  
       this.setState({timeTable:this.props.timeTable})
     }
+
     handleDateItemPress= (id)=>{
        const timeTable = this.props.timeTable
      _.map(timeTable,(data)=>{
@@ -27,11 +28,11 @@ class TimeTable extends Component {
       })
        _.find(timeTable, {_id:id}).active=true
       this.setState({timeTable:timeTable})
+      this.props.setNewTimeTable(timeTable)
     }
 
     render() { 
-        const {navigation} =this.props
-        const {timeTable} = this.state
+        const {navigation, timeTable} =this.props
         return (
             <View style={styles.container}>
             <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
