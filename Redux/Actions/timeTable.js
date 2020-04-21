@@ -4,9 +4,10 @@ import {
   GET_TIMETABLE_ERROR,
   } from '../Varables';
   
-  import axiosService from '../../services/axiosService';
+import axiosService from '../../services/axiosService';
 import { AsyncStorage } from 'react-native';
 import Keys from '../../constants/Keys';
+import moment from 'moment';
   let axios = axiosService.initInstance()
   
   export const getTimeTable = () => {
@@ -17,10 +18,15 @@ import Keys from '../../constants/Keys';
              const level=  JSON.parse(data)
              axios.get(`http://localhost:3000/timetable/${level._id}`)
               .then(({data})=>{
-                 dispatch(getTimeTableSuccess(data))
+                AsyncStorage.setItem(Keys.timeTable,JSON.stringify(data))
+                .then(()=>dispatch(getTimeTableSuccess(data)))
               })
               .catch(error=>{
-                  dispatch(getTimeTableError(error))
+                 AsyncStorage.getItem(Keys.timeTable)
+                 .then((data)=>{
+                     dispatch(getTimeTableSuccess(JSON.parse(data)))
+                 })
+                 .catch(()=> dispatch(getTimeTableError(error)))
               })
            })
     };
