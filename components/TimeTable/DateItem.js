@@ -6,9 +6,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const days= [null,'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'] 
 
-const DateItem = ({active, date, day}) => {
+const DateItem = ({active, _id,  date, day, onClick}) => {
     return (
-    <TouchableOpacity style={styles.day}>
+    <TouchableOpacity onPress = { ()=>onClick(_id)} style={styles.day}>
         <LinearGradient style={styles.day} colors={active? ['#EA3939', '#971313'] :['#126FFE', '#0B316C']}>
            <Text style={styles.dayDate}> {date} </Text>
            <Text  style={styles.dayMonth}> {days[day]} </Text>

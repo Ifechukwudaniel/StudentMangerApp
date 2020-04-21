@@ -7,17 +7,31 @@ import Header from '../Header'
 import { Container,  Button, Text,  } from 'native-base';
 import DateAction from './DateAction'
 import {connect} from 'react-redux'
-import { getTimeTable } from '../../Redux/Actions/timeTable';
+import { getTimeTable ,setTimeTableActiveDay } from '../../Redux/Actions/timeTable';
+import _ from 'lodash'
 
  
 class TimeTable extends Component {
+   state= {
+     timeTable:[]
+   }
 
     UNSAFE_componentWillMount(){
       this.props.getTimeTable()  
+      this.setState({timeTable:this.props.timeTable})
+    }
+    handleDateItemPress= (id)=>{
+       const timeTable = this.props.timeTable
+     _.map(timeTable,(data)=>{
+        return data.active=false
+      })
+       _.find(timeTable, {_id:id}).active=true
+      this.setState({timeTable:timeTable})
     }
 
     render() { 
         const {navigation} =this.props
+        const {timeTable} = this.state
         return (
             <View style={styles.container}>
             <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
@@ -26,13 +40,11 @@ class TimeTable extends Component {
                <Text style={styles.dayText}> Today </Text>
                </View>
                 <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
-                    <DateItem date={16} day={1} active/>
-                    <DateItem date={17} day={2} />
-                    <DateItem date={18} day={3} />
-                    <DateItem date={19} day={4} />
-                    <DateItem date={20} day={5} />
-                    <DateItem date={21} day={6} />
-                    <DateItem date={22} day={7} />
+                {
+                  timeTable.map(data=>(
+                    <DateItem onClick={this.handleDateItemPress} _id={data._id} date={data.date} key={data._id} day={data.weekDay} active={data.active}/>
+                  ))
+                }
                 </ScrollView>
                <ScrollView style={styles.eventList}>
                     <DateAction onNotifyPress={()=>{}} location="lecture room 3"  course="Csc 121"  startTime="8:00 am" endTime="10:00 am"/>
@@ -78,7 +90,7 @@ const styles = EStyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-      timeTable: state.timeTable.departments,
+      timeTable: state.timeTable.timeTable,
       loading:state.timeTable.loading,
       error:state.timeTable.error
     }
@@ -89,6 +101,9 @@ function mapStateToProps(state) {
       getTimeTable:()=>{
         dispatch(getTimeTable())
       },
+      setNewTimeTable:(timeTable)=>{
+        dispatch(setTimeTableActiveDay(timeTable))
+      }
     }
   }
 
