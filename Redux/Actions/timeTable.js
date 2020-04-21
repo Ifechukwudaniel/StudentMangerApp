@@ -8,7 +8,8 @@ import axiosService from '../../services/axiosService';
 import { AsyncStorage } from 'react-native';
 import Keys from '../../constants/Keys';
 import moment from 'moment';
-  let axios = axiosService.initInstance()
+let axios = axiosService.initInstance()
+import _ from 'lodash'
   
   export const getTimeTable = () => {
     return dispatch => {
@@ -19,12 +20,21 @@ import moment from 'moment';
              axios.get(`http://localhost:3000/timetable/${level._id}`)
               .then(({data})=>{
                 AsyncStorage.setItem(Keys.timeTable,JSON.stringify(data))
-                .then(()=>dispatch(getTimeTableSuccess(data)))
+                .then(()=>{
+                  dispatch(getTimeTableSuccess(data))
+
+                })
               })
               .catch(error=>{
+                 console.log(error)
                  AsyncStorage.getItem(Keys.timeTable)
                  .then((data)=>{
-                     dispatch(getTimeTableSuccess(JSON.parse(data)))
+                     console.log(moment().weekday())
+                     console.log(moment().get('weekdays'))
+                     let timeTable = JSON.parse(data)
+                     dispatch(getTimeTableSuccess(timeTable))
+                     console.log('jxjcjd')
+                    
                  })
                  .catch(()=> dispatch(getTimeTableError(error)))
               })

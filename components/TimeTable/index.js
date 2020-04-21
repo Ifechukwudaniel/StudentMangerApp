@@ -26,13 +26,13 @@ class TimeTable extends Component {
                <Text style={styles.dayText}> Today </Text>
                </View>
                 <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
-                    <DateItem date={16} day={0} active/>
-                    <DateItem date={17} day={1} />
-                    <DateItem date={18} day={2} />
-                    <DateItem date={19} day={3} />
-                    <DateItem date={20} day={4} />
-                    <DateItem date={21} day={5} />
-                    <DateItem date={22} day={6} />
+                    <DateItem date={16} day={1} active/>
+                    <DateItem date={17} day={2} />
+                    <DateItem date={18} day={3} />
+                    <DateItem date={19} day={4} />
+                    <DateItem date={20} day={5} />
+                    <DateItem date={21} day={6} />
+                    <DateItem date={22} day={7} />
                 </ScrollView>
                <ScrollView style={styles.eventList}>
                     <DateAction onNotifyPress={()=>{}} location="lecture room 3"  course="Csc 121"  startTime="8:00 am" endTime="10:00 am"/>
