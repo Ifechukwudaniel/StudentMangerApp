@@ -120,7 +120,7 @@ class Material extends Component{
                 (
                  <View style={styles.errorContainer}>
                     <MaterialIcon style={styles.errorIcon} color="#fff" name="find-in-page" size={100}/>
-                    <Text style={styles.errorText}> {this.state.searchKeyWord} is not found</Text>
+                    <Text style={styles.errorText}> {this.state.searchKeyWord}  was  not found</Text>
                   </View>
                  )
                  :

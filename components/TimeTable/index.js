@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView} from 'react-native'
+import React, {Component,} from 'react';
+import {View, StatusBar, TouchableOpacity, ScrollView, Animated} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import DateItem from './DateItem'
@@ -32,7 +32,32 @@ class TimeTable extends Component {
     }
 
     render() { 
-        const {navigation, timeTable} =this.props
+        const {navigation, timeTable, loading} =this.props
+       if(loading){
+         return (
+          <View style={styles.container}>
+          <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
+           <View style={styles.content}>
+             <View style={{flexDirection:"row"}}>
+             <Text style={styles.dayText}> Today </Text>
+             </View>
+              <Animated.ScrollView    style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
+               <DateItem  active />
+               <DateItem/>
+               <DateItem/>
+               <DateItem/>
+               <DateItem/>
+               <DateItem/>
+               <DateItem/>
+              </Animated.ScrollView>
+             <ScrollView style={styles.eventList}>
+                  <DateAction onNotifyPress={()=>{}} location="lecture room 3"  course="Csc 121"  startTime="8:00 am" endTime="10:00 am"/>
+                  <DateAction active={true} notify={true} onNotifyPress={()=>alert("dkd")} location="lecture room 1"  course="Csc 123"  startTime="10:00 am" endTime="12:00 am" />
+             </ScrollView>
+           </View>
+          </View>
+         )
+       }
         return (
             <View style={styles.container}>
             <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
@@ -40,13 +65,13 @@ class TimeTable extends Component {
                <View style={{flexDirection:"row"}}>
                <Text style={styles.dayText}> Today </Text>
                </View>
-                <ScrollView style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
+                <Animated.ScrollView    style={styles.scrollView} horizontal={true} showsHorizontalScrollIndicator={false} >
                 {
                   timeTable.map(data=>(
-                    <DateItem onClick={this.handleDateItemPress} _id={data._id} date={data.date} key={data._id} day={data.weekDay} active={data.active}/>
+                    <DateItem  onClick={this.handleDateItemPress} _id={data._id} date={data.date} key={data._id} day={data.weekDay} active={data.active}/>
                   ))
                 }
-                </ScrollView>
+                </Animated.ScrollView>
                <ScrollView style={styles.eventList}>
                     <DateAction onNotifyPress={()=>{}} location="lecture room 3"  course="Csc 121"  startTime="8:00 am" endTime="10:00 am"/>
                     <DateAction active={true} notify={true} onNotifyPress={()=>alert("dkd")} location="lecture room 1"  course="Csc 123"  startTime="10:00 am" endTime="12:00 am" />
