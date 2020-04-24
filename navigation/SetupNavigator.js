@@ -9,6 +9,7 @@ import DepartmentScreen from '../screens/DepartmentScreen';
 import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
 import CourseScreen from '../screens/CourseScreen';
+import { fromLeft, zoomIn } from 'react-navigation-transitions';
 
 
 const config = Platform.select({
@@ -20,7 +21,9 @@ const config = Platform.select({
 const LevelStack = createStackNavigator({
    Level: LevelScreen
 },
-config
+{
+  transitionConfig:()=>zoomIn()
+}
 )
 LevelStack.path = '';
 
@@ -51,7 +54,8 @@ const SetupStack = createStackNavigator({
   Course:CourseStack,
 },{
    initialRouteName:"Department",
-   headerMode:'none'
+   headerMode:'none',
+   transitionConfig:()=>zoomIn()
 });
 
 SetupStack.path = '';

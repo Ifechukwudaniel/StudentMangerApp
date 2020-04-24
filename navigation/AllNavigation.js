@@ -10,23 +10,7 @@ import TimeTableScreen from '../screens/Home/TimeTableScreen';
 import PhoneSettingScreen from '../screens/PhoneSettingScreen';
 import NotificationScreen from '../screens/Home/NotificationScreen';
 import AttendanceNavigation from '../navigation/AttendanceNavigation'
-
-
-const transitionConfig = () => {
-   return{
-    transitionSpec: {
-        duration: 1000,
-        easing: Easing.out(Easing.poly(4)),
-        timing: Animated.timing,
-        useNativeDriver: true,
-      },
-      screenInterpolator: sceneProps => {     
-        console.log(sceneProps) 
-        return { transform: [ { translateY:10 } ] }
-      },
-   }
-  }
-
+import {fromBottom, fromRight} from 'react-navigation-transitions'
 
 const config = Platform.select({
   default: {
@@ -37,8 +21,8 @@ const config = Platform.select({
 const BlogStack = createStackNavigator({
    Blogs: BlogScreen,
 },
-
 {
+  transitionConfig:()=>fromBottom()
 }
 )
 
@@ -128,6 +112,7 @@ const AllStack = createStackNavigator({
   phoneSetting:PhoneSettingStack,
   notifications: NotificationsStack
 },{
+  transitionConfig:()=>fromBottom()
 });
 
 AllStack.path = '';

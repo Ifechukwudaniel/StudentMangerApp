@@ -9,6 +9,7 @@ const initialState = {
   timeTable: [],
   loading:true,
   error:null,
+  loadingAction:true
 };
 
 export const TimeTableReducer = (state = initialState, action) => {

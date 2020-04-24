@@ -8,6 +8,7 @@ import moment from 'moment'
 
  
 const BlogModal = (props) => {
+  console.log(props)
     return (
      <>
         <Modal
@@ -34,7 +35,7 @@ const BlogModal = (props) => {
                      <Text style={styles.date}>{ moment(props.date).toNow(true) +" Ago"}</Text>
                   </View>
                   <Text style={styles.title}>{props.title}</Text>
-                  <Text style={styles.contentText}>{props.content}
+                  <Text style={styles.contentText}>{props.con}
                   </Text>
              </View>
             </ScrollView>

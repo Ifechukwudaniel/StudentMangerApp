@@ -15,9 +15,11 @@ import FileScreen from '../screens/FileScreen';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 const rem = Dimensions.get('window').width/380;
 import Colors from '../constants/Colors';
+import {fromRight} from 'react-navigation-transitions'
 
 const config = Platform.select({
   default: {
+    transitionConfig:()=>fromRight()
   },
 });
 
@@ -26,7 +28,8 @@ const HomeStack = createStackNavigator(
     Home: HomeScreen,
   },
    {
-     headerMode:'float'
+     headerMode:'float',
+     transitionConfig:()=>fromRight()
    }
 );
 
@@ -105,6 +108,7 @@ const AppStack = createBottomTabNavigator({
   tabBarOptions:{
     showLabel:false,
     activeTintColor:"#fff",
+    animationEnabled:false,
     labelStyle:{
      color:colors.white,
      fontFamily:"itim",
@@ -116,7 +120,7 @@ const AppStack = createBottomTabNavigator({
         borderColor: "#000",
         borderWidth: 0,  
         borderTopWidth:0
-    }
+    },
   },
 });
 
