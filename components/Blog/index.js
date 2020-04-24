@@ -41,6 +41,7 @@ class Blog extends Component {
                     item={item}
                     img={item.image}
                     title={item.title}
+                    content={item.content}
                 />
                  )
                }

@@ -7,7 +7,7 @@ import BlogModal from './BlogModal';
 import EStyleSheet from 'react-native-extended-stylesheet'
 
 
-export const BlogCard = ({ date, tag,title, img}) => {
+export const BlogCard = ({ date, tag,title, img, content}) => {
     const  [showModal , setShowModal] = useState(false)
     return (
       <Ripple onPress={()=>setShowModal(true)}>
@@ -31,7 +31,7 @@ export const BlogCard = ({ date, tag,title, img}) => {
           </View>
           </View>
        </View>
-         <BlogModal showModal={showModal} image={img} date={date} title={title} tag={tag} closeModal= {()=>setShowModal(false)}/>
+         <BlogModal content={content} showModal={showModal} image={img} date={date} title={title} tag={tag} closeModal= {()=>setShowModal(false)}/>
        </Ripple>
     );
 }

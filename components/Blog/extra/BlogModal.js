@@ -35,7 +35,7 @@ const BlogModal = (props) => {
                      <Text style={styles.date}>{ moment(props.date).toNow(true) +" Ago"}</Text>
                   </View>
                   <Text style={styles.title}>{props.title}</Text>
-                  <Text style={styles.contentText}>{props.con}
+                  <Text style={styles.contentText}>{props.content}
                   </Text>
              </View>
             </ScrollView>
