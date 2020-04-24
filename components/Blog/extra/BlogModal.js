@@ -8,7 +8,6 @@ import moment from 'moment'
 
  
 const BlogModal = (props) => {
-  console.log(props)
     return (
      <>
         <Modal
