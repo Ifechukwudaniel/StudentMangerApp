@@ -12,7 +12,6 @@ class Blog extends Component {
     UNSAFE_componentWillMount(){
         StatusBar.setHidden(true)
         this.props.getBlogs()
-        console.log(this.props.blogs)
     }
     render() { 
       const {loading} = this.props
@@ -31,7 +30,6 @@ class Blog extends Component {
             <Header screenName="Blogs"  onBackPress={()=>this.props.navigation.navigate('Home')}/>
             <ScrollView style={styles.container}>
                {this.props.blogs.map((item)=>{
-                  console.log(item.content)
                  return(
                  <BlogCard
                     onClick= {this.handlePress}
