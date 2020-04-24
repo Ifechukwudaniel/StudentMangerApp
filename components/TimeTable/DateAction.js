@@ -18,9 +18,6 @@ const DateAction = ({active, notify, onNotifyPress,course,location, startTime, e
                            <Text style={[styles.timeText, styles.classText]}>{course}</Text>
                            <Text style={[styles.timeText, styles.classPlace]}>{location}</Text>
                        </View>
-                       <View>
-                           <NotifyButton notify={notify} onNotifyPress={onNotifyPress}/>
-                       </View>
                 </LinearGradient>
             </View>
     );
