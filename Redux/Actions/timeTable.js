@@ -3,6 +3,9 @@ import {
   GET_TIMETABLE_SUCCESS,
   GET_TIMETABLE_ERROR,
   SET_TIMETABLE_DAY_ACTIVE,
+  SET_TIMETABLE_DAYACTION,
+  SET_DATE,
+  SET_TIMETABLE_DAYACTION_START
   } from '../Varables';
   
 import axiosService from '../../services/axiosService';
@@ -23,7 +26,12 @@ import util from '../../util';
               .then(({data})=>{
                 AsyncStorage.setItem(Keys.timeTable,JSON.stringify(data))
                 .then(()=>{
-                  dispatch(getTimeTableSuccess(util.convertTimeTable(data)))
+                   const newTimeTable = util.convertTimeTable(data)
+                   const todayAction=  _.find(newTimeTable,{active:true}).dayActions
+                   setTimeout(()=>{
+                       dispatch(getTimeTableSuccess(newTimeTable))
+                       dispatch(setDayActions(todayAction))
+                   }, 2000)
                 })
               })
               .catch(error=>{
@@ -31,7 +39,7 @@ import util from '../../util';
                  AsyncStorage.getItem(Keys.timeTable)
                  .then((data)=>{
                      let timeTable = JSON.parse(data)
-                     dispatch(getTimeTableSuccess(util.convertTimeTable(timeTable)))
+                     setTimeout(()=> dispatch(getTimeTableSuccess(util.convertTimeTable(timeTable))), 2000)
                  })
                  .catch(()=> dispatch(getTimeTableError(error)))
               })
@@ -63,3 +71,23 @@ import util from '../../util';
        timeTable,
     }
   })
+
+
+  export const setDayActions= dayActions=>({
+    type:SET_TIMETABLE_DAYACTION,
+    payload:{
+       dayActions,
+    }
+  })
+
+  export const setDayActionsStart= ()=>({
+    type:SET_TIMETABLE_DAYACTION_START,
+  })
+
+  export const setDate= date=>({
+    type:SET_DATE,
+    payload:{
+       date,
+    }
+  })
+

@@ -7,7 +7,7 @@ import Header from '../Header'
 import { Container,  Button, Text,  } from 'native-base';
 import DateAction from './DateAction'
 import {connect} from 'react-redux'
-import { getTimeTable ,setTimeTableActiveDay } from '../../Redux/Actions/timeTable';
+import { getTimeTable ,setTimeTableActiveDay, setDayActions, setDayActionsStart } from '../../Redux/Actions/timeTable';
 import _ from 'lodash'
 
  
@@ -22,21 +22,30 @@ class TimeTable extends Component {
     }
 
     handleDateItemPress= (id)=>{
-       const timeTable = this.props.timeTable
+  
+      const timeTable = this.props.timeTable
      _.map(timeTable,(data)=>{
         return data.active=false
       })
        _.find(timeTable, {_id:id}).active=true
       this.setState({timeTable:timeTable})
+      this.props.setDayActionsStart()
       this.props.setNewTimeTable(timeTable)
+       setTimeout(()=>{
+        this.props.setDayActions(_.find(timeTable, {active:true}).dayActions)
+       },1000)
     }
 
     renderDate=(timeTable)=>timeTable.map(data=>(
       <DateItem  onClick={this.handleDateItemPress} _id={data._id} date={data.date} key={data._id} day={data.weekDay} active={data.active}/>
     ))
 
+    renderDateAction= (dateAction)=>dateAction.map(data=>(
+       <DateAction onNotifyPress={()=>{}} key={data._id}  course={data.course.courseCode} location="lectur room 1" startTime={data.startTime} endTime={data.endTime} />
+    ))
+
     render() { 
-        const {navigation, timeTable, loading} =this.props
+        const {navigation, timeTable, loading, loadingAction, dayActions} =this.props
        if(loading){
          return (
           <View style={styles.container}>
@@ -74,8 +83,13 @@ class TimeTable extends Component {
                 }
                 </Animated.ScrollView>
                <ScrollView style={styles.eventList}>
-                    <DateAction onNotifyPress={()=>{}} location="lecture room 3"  course="Csc 121"  startTime="8:00 am" endTime="10:00 am"/>
-                    <DateAction active={true} notify={true} onNotifyPress={()=>alert("dkd")} location="lecture room 1"  course="Csc 123"  startTime="10:00 am" endTime="12:00 am" />
+                 {
+                  loadingAction
+                  ?
+                  (<ActivityIndicator size="large"/> )
+                  :
+                  this.renderDateAction(dayActions)
+                 }
                </ScrollView>
              </View>
             </View>
@@ -120,7 +134,9 @@ function mapStateToProps(state) {
       timeTable: state.timeTable.timeTable,
       loading:state.timeTable.loading,
       error:state.timeTable.error,
-
+      dayActions:state.timeTable.dayActions,
+      loadingAction:state.timeTable.loadingAction,
+      date:state.timeTable.date
     }
   }
   
@@ -131,6 +147,12 @@ function mapStateToProps(state) {
       },
       setNewTimeTable:(timeTable)=>{
         dispatch(setTimeTableActiveDay(timeTable))
+      },
+      setDayActions: (actions)=>{
+        dispatch(setDayActions(actions))
+      },
+      setDayActionsStart:()=>{
+        dispatch(setDayActionsStart())
       }
     }
   }
