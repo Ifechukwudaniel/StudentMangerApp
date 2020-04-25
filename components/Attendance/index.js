@@ -16,7 +16,7 @@ const Attendance = ({ navigation }) => {
       />
       <View>
           <View style={styles.searchWrapper} >
-            <TextInput  defaultValue="bwbdw" placeholder="Search for...." placeholderTextColor="#AEAEAE" style={styles.searchText}/>
+            <TextInput   placeholder="Search for...." placeholderTextColor="#AEAEAE" style={styles.searchText}/>
             <Ripple style={styles.iconWrapper}>
                 <Icon style={styles.icon} name="search"/>
             </Ripple>
