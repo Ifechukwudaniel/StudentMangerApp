@@ -18,7 +18,7 @@ const  rem = Dimensions.get('window').width/360
 class Home extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={{flexDirection:'row'}}>
                 <Text style={styles.homeText}> Home </Text>
                      <TouchableOpacity style={styles.notifications} onPress={()=>this.props.navigation.navigate('notifications')}>
@@ -30,7 +30,7 @@ class Home extends Component {
                       </Svg>
                     </TouchableOpacity>
               </View>
-              <ScrollView style={styles.menu}>
+              <View style={styles.menu}>
                <View style={styles.menuGroup}>
                 <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('Materials')}>
                       <View style={styles.shadow}>
@@ -85,8 +85,8 @@ class Home extends Component {
                       </View>
                   </TouchableOpacity>
                </View>
-              </ScrollView>
-            </View>
+              </View>
+            </ScrollView>
         )
   }
 }
@@ -94,7 +94,7 @@ class Home extends Component {
 const styles = EStyleSheet.create({
   container :{
       flex:1,
-      marginTop: '70rem',
+      marginTop: '50rem',
       marginLeft: '10rem',
       marginRight: "10rem",
   },

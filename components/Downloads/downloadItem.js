@@ -48,7 +48,7 @@ const styles = EStyleSheet.create({
        lineHeight:'28rem',
     },
     courseTitle:{
-      fontSize:'18rem',
+      fontSize:'16rem',
       color:"#fff",
       fontFamily:"Itim",
       marginLeft: '13rem',
