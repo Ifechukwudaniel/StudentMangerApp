@@ -28,7 +28,7 @@ const styles = EStyleSheet.create({
     height:'96rem',
     backgroundColor: "#252525",
     borderRadius:'10rem',
-    shadowColor: "#3F4141",
+    shadowColor: "#000",
     shadowOffset: {
           width: '0rem',
           height: '-4rem',

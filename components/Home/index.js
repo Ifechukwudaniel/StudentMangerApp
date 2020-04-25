@@ -150,7 +150,7 @@ const styles = EStyleSheet.create({
       height:'161rem',
       backgroundColor: "#252525",
       borderRadius:'30rem',
-      shadowColor: "#3F4141",
+      shadowColor: "#000",
       shadowOffset: {
             width: '-1.5rem',
             height: '-1.5rem',
