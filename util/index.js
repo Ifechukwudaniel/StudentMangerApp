@@ -15,7 +15,6 @@ import _ from 'lodash'
      return sortedDate
  }
 
-
 export default {
   convertTimeTable
 }
