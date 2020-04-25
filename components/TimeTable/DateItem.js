@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 
-const days= [null,'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'] 
+const days= ["Sun",'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'] 
 
 const DateItem = ({active, _id,  date, day, onClick}) => {
     return (
