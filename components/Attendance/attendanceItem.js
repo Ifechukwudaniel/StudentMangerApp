@@ -11,10 +11,6 @@ const AttendanceItem = ({navigation}) => {
               <Text style={styles.courseTitle}  ellipsizeMode='tail' numberOfLines={1} >introduction to maths and physic </Text>
             </View>
             <View style={styles.left}>
-              <Text style={styles.leftNumber}>00</Text>
-              <Text style={styles.leftText}>Left</Text>
-            </View>
-            <View style={styles.left}>
               <Text style={[styles.leftNumber, styles.presentText]}>07</Text>
               <Text style={[styles.leftText]}>Present</Text>
             </View>
@@ -65,7 +61,7 @@ const styles = EStyleSheet.create({
     color:"#fff",
     fontFamily: 'Itim',
     fontSize: '16rem',
-    width:'150rem'
+    width:'190rem'
   },
   courseGroup:{
     marginLeft: '18rem',
