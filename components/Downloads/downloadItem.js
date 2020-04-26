@@ -33,7 +33,7 @@ const styles = EStyleSheet.create({
     downloadItem:{
      height:"110rem",
      width:"100%",
-     backgroundColor: "#126AF3",
+     backgroundColor: "#252525",
      marginTop: '10rem',
     },
     flexRow:{
