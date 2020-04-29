@@ -9,7 +9,7 @@ const rem = Dimensions.get('screen').width
 const Calender = ({ navigation }) => {
   return (
     <View style={styles.container}>
-       <Header headerStyle={styles.headerStyle} onBackPress= {()=>navigation.push("attendance")}/>
+       <Header headerStyle={styles.headerStyle} onBackPress= {()=>navigation.navigate("attendance")}/>
        <ScrollView>
        <View>
           <Text style={styles.courseCode}>Csc 122</Text>
@@ -86,7 +86,7 @@ const styles = EStyleSheet.create({
       height:'100rem',
       backgroundColor: "#252525",
       borderRadius:'10rem',
-      shadowColor: "#3F4141",
+      shadowColor: "#000",
       shadowOffset: {
             width: '-1.5rem',
             height: '-1.5rem',
@@ -134,7 +134,7 @@ const styles = EStyleSheet.create({
     height:"330rem",
     alignSelf:"center",
     marginTop:"20rem",
-    shadowColor: "#3F4141",
+    shadowColor: "#000",
       shadowOffset: {
             width: '0rem',
             height: '-4rem',

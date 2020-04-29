@@ -4,7 +4,7 @@ import EStyleSheet from "react-native-extended-stylesheet";
 const AttendanceItem = ({navigation}) => {
   const [view, setOpenView] = useState(false)
   return (
-      <TouchableOpacity onPress={()=>navigation.push("Calender")} style={[styles.container]}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Calender")} style={[styles.container]}>
          <View style={[styles.shadow, styles.flexRow]}>
             <View style={styles.courseGroup}>
               <Text style={styles.courseCode}>Csc 121 </Text>

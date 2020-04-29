@@ -47,7 +47,7 @@ const line = {
 const Chart = ({ navigation }) => {
   return (
     <View style={styles.container}>
-        <Header headerStyle={styles.headerStyle} onBackPress= {()=>navigation.push("attendance")}/>
+        <Header headerStyle={styles.headerStyle} onBackPress= {()=>navigation.navigate("attendance")}/>
         <ScrollView style={styles.scrollView}>
              <Text style={styles.headerAttendance} >Csc 122 Attendance</Text>
              <View style={styles.chartView}>
