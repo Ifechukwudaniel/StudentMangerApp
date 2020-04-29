@@ -16,24 +16,13 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 const rem = Dimensions.get('window').width/380;
 import Colors from '../constants/Colors';
 import {fromRight} from 'react-navigation-transitions'
+import AllNavigation from './AllNavigation'
+import SetupNavigation from './SetupNavigator';
+import AttendanceNavigation from './AttendanceNavigation'
 
-const config = Platform.select({
-  default: {
-    transitionConfig:()=>fromRight()
-  },
-});
 
-const HomeStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-  },
-   {
-     headerMode:'float',
-     transitionConfig:()=>fromRight()
-   }
-);
 
-HomeStack.navigationOptions = {
+HomeScreen.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }, props) => (
     <TabBarIcon
@@ -45,70 +34,48 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+HomeScreen.path = '';
 
-const MaterialsStack = createStackNavigator(
-  {
-    Materials: MaterialScreen,
-  },
-  {
-    headerMode:'float'
-  }
-);
 
-MaterialsStack.navigationOptions = {
+MaterialScreen.navigationOptions = {
   tabBarLabel: 'Material',
   tabBarIcon: ({ focused }, props) => (
     <TabBarIcon focused={focused} {...props} name='book' screenName= "Material" />
   ),
 };
 
-MaterialsStack.path = '';
+MaterialScreen.path = '';
 
 
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
+SettingsScreen.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }, props) => (
     <TabBarIcon focused={focused} {...props} name='settings-2' screenName= "Setting" />
   ),
 };
 
-SettingsStack.path = '';
+SettingsScreen.path = '';
 
-const FileStack = createStackNavigator(
-  {
-    Files: FileScreen,
-  },
-  config
-);
 
-FileStack.navigationOptions = {
+FileScreen.navigationOptions = {
   tabBarLabel: 'Downloads',
   tabBarIcon: ({ focused }, props) => (
-    <MaterialIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
+    <MaterialIcon size={40*rem} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
   ),
 };
 
-FileStack.path = '';
+FileScreen.path = '';
 
 const AppStack = createBottomTabNavigator({
-  Home:HomeStack,
-  Material:MaterialsStack,
-  Settings:SettingsStack,
-  Files:FileStack
+  Home:HomeScreen,
+  Material:MaterialScreen,
+  Settings:SettingsScreen,
+  Files:FileScreen
 },
 {
   tabBarOptions:{
     showLabel:false,
-    activeTintColor:"#fff",
-    animationEnabled:false,
+    animationEnabled:true,
     labelStyle:{
      color:colors.white,
      fontFamily:"itim",
@@ -126,4 +93,15 @@ const AppStack = createBottomTabNavigator({
 
 AppStack.path = '';
 
-export default AppStack;
+
+const MainAppStack = createStackNavigator({
+   AppStack:AppStack,
+   AllNavigation:AllNavigation,
+   Setup:SetupNavigation,
+   AttendanceDetail: AttendanceNavigation
+}, {
+  transitionConfig :()=>fromRight(),
+  headerMode:'none'
+})
+
+export default MainAppStack;
