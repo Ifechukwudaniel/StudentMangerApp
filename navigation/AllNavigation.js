@@ -12,107 +12,16 @@ import NotificationScreen from '../screens/Home/NotificationScreen';
 import AttendanceNavigation from '../navigation/AttendanceNavigation'
 import {fromBottom, fromRight} from 'react-navigation-transitions'
 
-const config = Platform.select({
-  default: {
-  },
-});
-
-
-const BlogStack = createStackNavigator({
-   Blogs: BlogScreen,
-},
-{
-  transitionConfig:()=>fromBottom()
-}
-)
-
-BlogStack.navigationOptions = {
-    headerShown:false
-}
-
-BlogStack.path = '';
-
-const AttendanceStack = createStackNavigator({
-    Attendance: AttendanceScreen,
- },
- )
- 
- AttendanceStack.navigationOptions = {
-     headerShown:false
- }
- 
- AttendanceStack.path = '';
-
-
- const ChatStack = createStackNavigator({
-    Chat: ChatScreen,
- },
- )
- 
- ChatStack.navigationOptions = {
-     headerShown:false
- }
- 
- ChatStack.path = '';
-
- const EventStack = createStackNavigator({
-    Event: EventScreen,
- },
- )
- 
- EventStack.navigationOptions = {
-     headerShown:false
- }
- 
- EventStack.path = '';
-
- const TimeTableStack = createStackNavigator({
-    TimeTable: TimeTableScreen,
- },
- )
- 
- TimeTableStack.navigationOptions = {
-     headerShown:false
- }
- 
- TimeTableStack.path = '';
-
-
- const NotificationsStack = createStackNavigator({
-    Notification: NotificationScreen,
- },
- )
- 
- NotificationsStack.navigationOptions = {
-     headerShown:false
- }
- 
- NotificationsStack.path = '';
-
-
- const PhoneSettingStack = createStackNavigator({
-    PhoneSetting: PhoneSettingScreen,
- },
- )
- 
- PhoneSettingStack.navigationOptions = {
-     headerShown:false
- }
- 
- PhoneSettingStack.path = '';
-
-
-
 const AllStack = createStackNavigator({
-  Blogs:BlogStack,
-  attendance:AttendanceStack,
-  chat: ChatStack,
+  Blogs:BlogScreen,
+  attendance:AttendanceScreen,
+  chat: ChatScreen,
   event:EventStack,
-  timeTable:TimeTableStack,
-  phoneSetting:PhoneSettingStack,
-  notifications: NotificationsStack
+  timeTable:TimeTableScreen,
+  phoneSetting:PhoneSettingScreen,
+  notifications: NotificationScreen,
 },{
-  transitionConfig:()=>fromBottom()
+ 
 });
 
 AllStack.path = '';
