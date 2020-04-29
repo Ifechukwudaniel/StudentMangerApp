@@ -5,6 +5,7 @@ import MainTabNavigator from './MainTabNavigator';
 import AuthNavigation from './AuthNavigator';
 import SetupNavigation from './SetupNavigator';
 import AllNavigation from './AllNavigation';
+import AttendanceNavigation from './AttendanceNavigation';
 
 
 export default createAppContainer(

@@ -16,7 +16,7 @@ const AllStack = createStackNavigator({
   Blogs:BlogScreen,
   attendance:AttendanceScreen,
   chat: ChatScreen,
-  event:EventStack,
+  event:EventScreen,
   timeTable:TimeTableScreen,
   phoneSetting:PhoneSettingScreen,
   notifications: NotificationScreen,

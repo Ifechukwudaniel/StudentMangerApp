@@ -1,16 +1,14 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-import {Icon} from 'native-base'
-import TabBarIcon from '../components/TabBarIcon';
 import colors from "../constants/Colors"
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Colors from '../constants/Colors';
 import CalenderScreen from '../screens/CalenderScreen';
 import GraphScreen from '../screens/GraphScreen';
+const rem = Dimensions.get('window').width/380;
 
 const config = Platform.select({
   default: {
@@ -27,7 +25,7 @@ const CalenderStack = createStackNavigator(
 CalenderStack.navigationOptions = {
   tabBarLabel: 'Calender',
   tabBarIcon: ({ focused }, props) => (
-    <MaterialCommunityIcon size={30} color={focused ? Colors.tintColor :"#fff"} name="calendar-blank"/>
+    <MaterialCommunityIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="calendar-blank"/>
   ),
 };
 
@@ -43,7 +41,7 @@ const GraphStack = createStackNavigator(
 GraphStack.navigationOptions = {
   tabBarLabel: 'Graph',
   tabBarIcon: ({ focused }, props) => (
-    <MaterialIcon size={30} color={focused ? Colors.tintColor :"#fff"} name="show-chart"/>
+    <MaterialIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="show-chart"/>
   ),
 };
 
@@ -64,7 +62,9 @@ const AttendanceNav = createBottomTabNavigator({
     },
     style:{
         backgroundColor:Colors.black,
-        // marginTop:10     
+        borderColor:Colors.black,
+        borderWidth: 0,  
+        borderTopWidth:0
     },
 
   },
