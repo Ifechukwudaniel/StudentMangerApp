@@ -33,7 +33,7 @@ class Home extends Component {
               </View>
               <View style={styles.menu}>
                <View style={styles.menuGroup}>
-                <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('Materials')}>
+                <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('Material')}>
                       <View style={styles.shadow}>
                         <View style={styles.menuSvg}>
                           <MaterialSvg />
