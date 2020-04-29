@@ -12,7 +12,7 @@ const Attendance = ({ navigation }) => {
     <View style={styles.container}>
       <Header
         screenName="Attendance"
-        onBackPress={() => navigation.push("Home")}
+        onBackPress={() => navigation.navigate("Home")}
       />
       <View>
           <View style={styles.searchWrapper} >

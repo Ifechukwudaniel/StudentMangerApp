@@ -9,6 +9,7 @@ import DateAction from './DateAction'
 import {connect} from 'react-redux'
 import { getTimeTable ,setTimeTableActiveDay, setDayActions, setDayActionsStart } from '../../Redux/Actions/timeTable';
 import _ from 'lodash'
+import Animatable from 'react-native-animatable'
 
  
 class TimeTable extends Component {
@@ -49,7 +50,7 @@ class TimeTable extends Component {
        if(loading){
          return (
           <View style={styles.container}>
-          <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
+          <Header  screenName="Time Table" onBackPress= {()=>navigation.navigate("Home")} />
            <View style={styles.content}>
              <View style={{flexDirection:"row"}}>
              <Text style={styles.dayText}> Today </Text>
@@ -72,7 +73,7 @@ class TimeTable extends Component {
        }
         return (
             <View style={styles.container}>
-            <Header  screenName="Time Table" onBackPress= {()=>navigation.push("Home")} />
+            <Header  screenName="Time Table" onBackPress= {()=>navigation.navigate("Home")} />
              <View style={styles.content}>
                <View style={{flexDirection:"row"}}>
                <Text style={styles.dayText}> Today </Text>

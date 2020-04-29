@@ -11,7 +11,7 @@ import { Text,  } from 'native-base';
 const Notifications = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header style={styles.headerTextStyle}  screenName="Notifications" onBackPress= {()=>navigation.push("Home")} />
+             <Header style={styles.headerTextStyle}  screenName="Notifications" onBackPress= {()=>navigation.navigate("Home")} />
         </View>
     );
 }

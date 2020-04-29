@@ -9,7 +9,7 @@ import {LinearGradient} from 'expo-linear-gradient'
 const PhoneSetting = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header  style={styles.headerTextStyle} screenName="Phone Number" onBackPress= {()=>navigation.push("Settings")} />
+             <Header  style={styles.headerTextStyle} screenName="Phone Number" onBackPress= {()=>navigation.navigate("Settings")} />
              <View style={styles.contentItem}>
                      <Text style={[styles.courseTitle]}> Personal phone number </Text>
                       <TextInput keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     

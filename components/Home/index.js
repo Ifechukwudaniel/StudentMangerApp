@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text ,TouchableOpacity, ScrollView, Platform} from 'react-native';
-import Ripple from 'react-native-material-ripple';
+import { View, Text ,TouchableOpacity, ScrollView, Platform,Dimensions} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import {Svg, Path, SvgXml} from 'react-native-svg'
-import {Dimensions} from 'react-native'
+import {Svg, Path} from 'react-native-svg'
 import  MaterialSvg from "../../assets/svg/material.svg";
 import  AttendanceSvg from "../../assets/svg/attendance.svg";
 import  ChatSvg from "../../assets/svg/chat.svg";
 import  NewsSvg from "../../assets/svg/news.svg";
 import  TimeTableSvg from "../../assets/svg/timeTable.svg";
 import  EventSvg from "../../assets/svg/event.svg";
+import {Header} from  'native-base'
 const  rem = Dimensions.get('window').width/360
 
 
 class Home extends Component {
     render() {
         return (
+          <>
+           {/* <Header/> */}
             <ScrollView style={styles.container}>
                 <View style={{flexDirection:'row'}}>
                 <Text style={styles.homeText}> Home </Text>
@@ -87,6 +88,7 @@ class Home extends Component {
                </View>
               </View>
             </ScrollView>
+          </>
         )
   }
 }

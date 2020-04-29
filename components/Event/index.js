@@ -11,7 +11,7 @@ import { Text,  } from 'native-base';
 const Event = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header  screenName="Events" onBackPress= {()=>navigation.push("Home")} />
+             <Header  screenName="Events" onBackPress= {()=>navigation.navigate("Home")} />
         </View>
     );
 }
