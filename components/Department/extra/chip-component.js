@@ -34,6 +34,7 @@ const styles = EStyleSheet.create({
         fontSize:'15rem',
         alignSelf: 'center',
         fontWeight: '500',
+         fontFamily: 'itim',
     }
 })
 export default ClipComponent;

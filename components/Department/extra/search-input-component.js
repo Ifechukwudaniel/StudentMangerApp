@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     inputStyle:{
       width:wp("8%"),
       height:hp("7%"),
-      fontSize:wp("5%")
+      fontSize:wp("5%"),
+      fontFamily:'itim'
     }
 })
  

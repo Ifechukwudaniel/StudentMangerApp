@@ -18,8 +18,7 @@ const AllStack = createStackNavigator({
   chat: ChatScreen,
   event:EventScreen,
   timeTable:TimeTableScreen,
-  phoneSetting:PhoneSettingScreen,
-  notifications: NotificationScreen,
+  phoneSetting:PhoneSettingScreen
 },{
  
 });

@@ -142,6 +142,7 @@ const styles= EStyleSheet.create({
       color:Colors.white,
       fontSize:'20rem',
       fontWeight:'bold',
+      fontFamily: 'itim',
   },
   clipSelectContainer:{
     flexDirection:'row',

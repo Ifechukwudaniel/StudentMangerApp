@@ -11,7 +11,7 @@ import { Text,  } from 'native-base';
 const Notifications = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header style={styles.headerTextStyle}  screenName="Notifications" onBackPress= {()=>navigation.navigate("Home")} />
+             <Header style={styles.headerTextStyle} headerStyle={{backgroundColor:'transparent'}}  closeButton={true}  noBackButton={true}  screenName="Notifications" onBackPress= {()=>navigation.navigate("Home")} />
         </View>
     );
 }

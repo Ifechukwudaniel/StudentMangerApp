@@ -15,14 +15,23 @@ import FileScreen from '../screens/FileScreen';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 const rem = Dimensions.get('window').width/380;
 import Colors from '../constants/Colors';
-import {fromRight} from 'react-navigation-transitions'
+import {fromRight, fromBottom} from 'react-navigation-transitions'
 import AllNavigation from './AllNavigation'
 import SetupNavigation from './SetupNavigator';
 import AttendanceNavigation from './AttendanceNavigation'
+import NotificationScreen from '../screens/Home/NotificationScreen';
 
 
 
-HomeScreen.navigationOptions = {
+ const HomeStack  = createStackNavigator({
+  Home:HomeScreen,
+  notifications: NotificationScreen,
+ }, {
+   transitionConfig:()=>fromBottom()
+ })
+
+
+HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }, props) => (
     <TabBarIcon
@@ -67,7 +76,7 @@ FileScreen.navigationOptions = {
 FileScreen.path = '';
 
 const AppStack = createBottomTabNavigator({
-  Home:HomeScreen,
+  Home:HomeStack,
   Material:MaterialScreen,
   Settings:SettingsScreen,
   Files:FileScreen
@@ -100,7 +109,7 @@ const MainAppStack = createStackNavigator({
    Setup:SetupNavigation,
    AttendanceDetail: AttendanceNavigation
 }, {
-  transitionConfig :()=>fromRight(),
+  transitionConfig :()=>fromRight(700),
   headerMode:'none'
 })
 

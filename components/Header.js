@@ -3,7 +3,7 @@ import {  Header, Left, Body, Right, Button, Title, Text, Icon } from 'native-ba
 import {View, StatusBar, Platform} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
  
-const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerStyle}) => {
+const HeaderComponent = ({onBackPress, screenName, style, noBackButton, closeButton, headerStyle}) => {
     return (
         <View>
         <Header  style={[styles.header, headerStyle]}>
@@ -20,6 +20,25 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, headerSt
                      </Button>
                 </>
                 )
+               
+            }
+            {
+                !closeButton?(
+                    <View/>  
+                ):(
+                    <>
+                    <Button transparent onPress={()=>onBackPress()}>
+                        { Platform.OS!='android'? <Text style={styles.backText}>Close </Text> :
+                         (
+                              <>
+                            <Icon name='arrow-back' style={styles.icon} />
+                             <Text style={styles.backText}></Text>
+                             </>
+                        )} 
+                     </Button>
+                </>
+                )
+            
             }
           </Left>
           <Body>
