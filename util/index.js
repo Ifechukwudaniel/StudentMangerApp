@@ -1,6 +1,5 @@
 import moment from 'moment'
 import _ from 'lodash'
-
  const convertTimeTable = (timeTable) =>{
    var count = 0
       _.find(timeTable, {weekDay:moment().weekday()}).active = true
@@ -15,6 +14,20 @@ import _ from 'lodash'
      return sortedDate
  }
 
+ const getCurrentDay = (timeTable)=>{
+   console.log(timeTable)
+   if(timeTable){
+      if(_.find(timeTable,{active:true,weekDay:moment().weekday()}))
+        return "Today"
+      if(_.find(timeTable,{active:true,weekDay:moment().weekday()+1}) )
+        return "Tomorrow"
+      if( _.find(timeTable,{active:true}).weekDay==0  && _.findIndex(timeTable, {weekDay:6}) ==0)
+       return "Tomorrow"
+      return moment.weekdays()[_.find(timeTable,{active:true}).weekDay]
+   }
+   return "Today"
+ }
 export default {
-  convertTimeTable
+  convertTimeTable,
+  getCurrentDay
 }
