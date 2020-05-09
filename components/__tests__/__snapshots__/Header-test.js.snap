@@ -101,6 +101,7 @@ exports[`Header renders correctly 1`] = `
             Back
           </Text>
         </View>
+        <View />
       </View>
       <View
         style={

@@ -15,6 +15,7 @@ export default createAppContainer(
     AttendanceDetail: AttendanceNavigation
   },
   {
-    initialRouteName:"Auth"
+    initialRouteName:"Auth",
+    
   })
 );

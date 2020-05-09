@@ -7,7 +7,7 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, closeBut
     return (
         <View>
         <Header  style={[styles.header, headerStyle]}>
-              <StatusBar  hidden={true} barStyle='light-content' />
+              <StatusBar  barStyle='light-content' />
           <Left>
             {
                 noBackButton?(

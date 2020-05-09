@@ -46,7 +46,7 @@ class TimeTable extends Component {
       if(dateAction.length ==0){
          return (
            <>
-           <Image   resizeMode={'contain'}  style={styles.noContentGif}  defaultSource={require('../../assets/images/dance.gif')} source={require('../../assets/images/dance.gif')}/>
+           <Image   resizeMode={'contain'}  style={styles.noContentGif}  defaultSource={require('../../assets/images/dance1.gif')} source={require('../../assets/images/dance1.gif')}/>
            <Text style={styles.noContentText}> {util.getCurrentDay(this.props.timeTable)==("Tomorrow") || util.getCurrentDay(this.props.timeTable)==("Today")  ? ` No lecture ${util.getCurrentDay(this.props.timeTable)} ` : `No lecture on ${util.getCurrentDay(this.props.timeTable)}`} </Text>
            </> 
          )

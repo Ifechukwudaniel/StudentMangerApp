@@ -95,7 +95,8 @@ const styles = EStyleSheet.create({
         fontFamily:"Itim",
         width:'138rem',
         color:"#fff",
-        lineHeight:'22rem'
+        lineHeight:'22rem',
+        marginLeft: '50rem',
       },
       description:{
         marginTop:'15rem',
@@ -108,7 +109,7 @@ const styles = EStyleSheet.create({
         width:'360rem',
         color:"#fff",
         marginLeft:"15rem",
-        lineHeight:"28rem"
+        lineHeight:"36rem"
       },
       icon:{
         color:"#fff",

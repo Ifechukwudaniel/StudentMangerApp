@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text ,TouchableOpacity, ScrollView, Platform,Dimensions} from 'react-native';
+import { View, Text ,TouchableOpacity, ScrollView, Platform,Dimensions, StatusBar} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Colors from '../../constants/Colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
@@ -20,6 +20,7 @@ class Home extends Component {
           <>
            {/* <Header/> */}
             <ScrollView style={styles.container}>
+             <StatusBar hidden={false} barStyle="light-content"/>
                 <View style={{flexDirection:'row'}}>
                 <Text style={styles.homeText}> Home </Text>
                      <TouchableOpacity style={styles.notifications} onPress={()=>this.props.navigation.navigate('notifications')}>

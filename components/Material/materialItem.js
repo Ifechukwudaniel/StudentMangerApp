@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator, Slider, TouchableHighlight} from 'react-native'
+import {View, TouchableOpacity,Text, ScrollView, Modal,  ActivityIndicator, TouchableHighlight, Platform} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import {  Button, Icon, Textarea, CheckBox, Spinner } from 'native-base';

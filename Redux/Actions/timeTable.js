@@ -31,7 +31,7 @@ import util from '../../util';
                    setTimeout(()=>{
                        dispatch(getTimeTableSuccess(newTimeTable))
                        dispatch(setDayActions(todayAction))
-                   }, 2000)
+                   },1000)
                 })
               })
               .catch(error=>{
@@ -39,7 +39,7 @@ import util from '../../util';
                  AsyncStorage.getItem(Keys.timeTable)
                  .then((data)=>{
                      let timeTable = JSON.parse(data)
-                     setTimeout(()=> dispatch(getTimeTableSuccess(util.convertTimeTable(timeTable))), 2000)
+                     setTimeout(()=> dispatch(getTimeTableSuccess(util.convertTimeTable(timeTable))), 1000)
                  })
                  .catch(()=> dispatch(getTimeTableError(error)))
               })

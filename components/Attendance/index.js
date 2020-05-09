@@ -26,11 +26,6 @@ const Attendance = ({ navigation }) => {
             <AttendanceItem navigation={navigation}/>
             <AttendanceItem navigation={navigation}/>
             <AttendanceItem navigation={navigation}/>
-            <AttendanceItem navigation={navigation}/>
-            <AttendanceItem navigation={navigation}/>
-            <AttendanceItem navigation={navigation}/>
-            <AttendanceItem navigation={navigation}/>
-            <AttendanceItem navigation={navigation}/>
           </ScrollView>
       </View>
     </View>

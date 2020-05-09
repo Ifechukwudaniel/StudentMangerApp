@@ -160,7 +160,7 @@ const styles = EStyleSheet.create({
       alignContent: 'center',
     },
     scrollView:{
-     marginTop:"16%"
+     marginTop:"10%"
     },
     textBox:{
       width:"60%",
