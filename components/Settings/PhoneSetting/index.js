@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import Header from '../../Header'
 import Colors from '../../../constants/Colors'
@@ -15,18 +15,18 @@ const PhoneSetting = ({navigation}) => {
                       <TextInput keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View> 
                  <View style={styles.contentItem}>
-                     <Text style={[styles.courseTitle]}> Parent phone number </Text>
-                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                     <Text style={[styles.courseTitle]}> Parent phone number bgh  </Text>
+                      <TextInput placeholder="optional" placeholderTextColor="#d3d3d3" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View> 
                  <View style={styles.contentItem}>
                      <Text style={[styles.courseTitle]}> Guardian  phone number </Text>
-                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                      <TextInput placeholder="optional" placeholderTextColor="#d3d3d3" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View> 
                  <View style={styles.contentItem}>
                      <Text style={[styles.courseTitle]}> Next Of Kin  phone number </Text>
-                      <TextInput placeholder="optional" placeholderTextColor="#fff" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
+                      <TextInput placeholder="optional" placeholderTextColor="#d3d3d3" keyboardType="numeric" style={[styles.textArea,styles.textInput]}/>     
                  </View>
-                 <TouchableOpacity style={[styles.button,styles.buttonWrapper]}>
+                 <TouchableOpacity onPress={()=>Alert.prompt("kkssk")} style={[styles.button,styles.buttonWrapper]}>
                           <LinearGradient style={styles.button} colors={['#0F9A47', '#027831']}>
                                <Text style={[styles.courseTitle, styles.buttonText]}> Submit </Text>
                       </LinearGradient>
