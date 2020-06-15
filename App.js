@@ -10,6 +10,7 @@ const entireScreenWidth = Dimensions.get('window').width;
 import AppNavigator from './navigation/AppNavigator';
 import appTheme from './theme.json'
 import {store} from './Redux/store'
+import FlashMessage from "react-native-flash-message";
 
 const theme = {...dark, ...appTheme}
 
@@ -27,8 +28,8 @@ export default function App(props) {
         <IconRegistry icons={EvaIconsPack}/>
         <StatusBar hidden={false} barStyle="light-content" />
           <ApplicationProvider mapping={mapping} theme={theme}   >
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
                 <AppNavigator />
+                <FlashMessage position="top" /> 
           </ApplicationProvider>
         </Root>
       </Provider>

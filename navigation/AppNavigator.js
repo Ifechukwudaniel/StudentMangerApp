@@ -6,12 +6,13 @@ import AuthNavigation from './AuthNavigator';
 import SetupNavigation from './SetupNavigator';
 import AllNavigation from './AllNavigation';
 import AttendanceNavigation from './AttendanceNavigation';
+import AuthScreen from '../screens/AuthScreen'
 
 
 export default createAppContainer(
   createSwitchNavigator({
     Main: MainTabNavigator,
-    Auth:AuthNavigation,
+    Auth:AuthScreen,
     AttendanceDetail: AttendanceNavigation
   },
   {

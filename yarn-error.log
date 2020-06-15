@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add react-native-image-picker
+  /usr/local/bin/node /usr/local/bin/yarn run ios
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
   1.17.3
@@ -14,8 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+  Error: ENOSPC: no space left on device, write
 
 npm manifest: 
   {
@@ -74,6 +73,7 @@ npm manifest:
       "react-native-extended-stylesheet": "^0.12.0",
       "react-native-gesture-handler": "~1.5.0",
       "react-native-image-overlay": "^0.1.2",
+      "react-native-image-picker": "^2.3.1",
       "react-native-material-ripple": "^0.9.1",
       "react-native-modals": "^0.19.9",
       "react-native-paper": "^3.5.0",
@@ -7300,6 +7300,11 @@ Lockfile:
     integrity sha512-0bM8Zc8/GZWvvbGccADPmw1onhE9ZVrq/brOSoNIoJU0Kp+8G7lJ2w5+7Us3wIVKHi6Syji/KNypS91svCH8gA==
     dependencies:
       prop-types "^15.6.1"
+  
+  react-native-image-picker@^2.3.1:
+    version "2.3.1"
+    resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.3.1.tgz#1977b65e07793d2c0b2d1976fb675c5f75ad7f11"
+    integrity sha512-c/a2h7/T7yBo5KlNQhcSn4xf4+6Li6LfJ59+GZT1ZzzWrj/6X8DiJ/TJBOlOZMC5tJriZKuRkWSsr74k6z+brw==
   
   react-native-iphone-x-helper@^1.0.3:
     version "1.2.1"

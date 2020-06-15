@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "../constants/Colors";
-import Login from "../components/Auth/Login";
+import AuthComponent from "../components/Auth/Index";
 import { Layout } from "@ui-kitten/components";
 
 const styles = StyleSheet.create({
@@ -26,7 +26,7 @@ class Auth extends Component {
   render() {
     return (
       <Layout style={styles.container}>
-        <Login {...this.props} />
+        <AuthComponent {...this.props} />
       </Layout>
     );
   }

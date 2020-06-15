@@ -5,6 +5,24 @@
       location = "group:BiuAssist.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:BiuAssist/AppDelegate.h">
+   </FileRef>
+   <FileRef
+      location = "group:BiuAssist/AppDelegate.m">
+   </FileRef>
+   <FileRef
+      location = "group:BiuAssist/Base.lproj">
+   </FileRef>
+   <FileRef
+      location = "group:BiuAssist/Images.xcassets">
+   </FileRef>
+   <FileRef
+      location = "group:BiuAssist/Info.plist">
+   </FileRef>
+   <FileRef
+      location = "group:BiuAssist/main.m">
+   </FileRef>
+   <FileRef
       location = "group:Pods">
    </FileRef>
    <FileRef

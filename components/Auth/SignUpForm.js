@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform,TouchableOpacity} from 'react-native';
+import {TouchableOpacity,View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform} from 'react-native';
 import EStylesheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
+import Logo from '../../assets/svg/logo.svg'
 import {Icon} from 'native-base'
 import Drag from '../../assets/svg/drag.svg'
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380;
 import  { showMessage } from "react-native-flash-message";
-import { Button } from 'native-base';
+
 
 const styles = EStylesheet.create({
       wrapper:{
-       flex:1,
+       flex:1
       },
       logoImage:{
          alignSelf: 'center',
@@ -155,7 +156,7 @@ const styles = EStylesheet.create({
       }
 });
  
-class LoginForm extends Component {
+class SignUpForm extends Component {
     state={
         matricNumber:"",
         password:"",
@@ -178,7 +179,7 @@ class LoginForm extends Component {
     keyboardWillShow = (event) => {
         Animated.timing(this.state.logoSize,{
           toValue:1,
-          duration:Platform.OS==="ios"?  event.duration : 700,
+          duration:Platform.OS==="ios"?  event.duration : 500,
           easing:Easing.ease,
           useNativeDriver:true
         }).start()
@@ -187,7 +188,7 @@ class LoginForm extends Component {
     keyboardWillHide = (event) => {
       Animated.timing(this.state.logoSize,{
         toValue:0,
-        duration:Platform.OS==="ios"?  event.duration : 700,
+        duration:Platform.OS==="ios"?  event.duration : 500,
         easing:Easing.ease,
         useNativeDriver:true
       }).start()
@@ -247,6 +248,7 @@ class LoginForm extends Component {
         return (
           <GestureRecognizer
           style={styles.wrapper}
+          
           onSwipe={(gestures)=>{
             const {SWIPE_UP} =  swipeDirections;
               this.handleSlidUp()
@@ -306,7 +308,7 @@ class LoginForm extends Component {
                               outputRange:[1,0]
                             })
                           }
-                        ]} >Login </Animated.Text>
+                        ]} >Sign Up</Animated.Text>
 
                       </Animated.View>
                     <Animated.View   style={[styles.form, styles.viewTwo, {
@@ -322,14 +324,14 @@ class LoginForm extends Component {
                     }]}>
                           <TextInput onChangeText= {this.handleMatricNumber} placeholderTextColor="#fff" style={styles.textInput} placeholder='Matric No'/>
                           <TextInput onChangeText={this.handlePassword} secureTextEntry={true}  placeholderTextColor='#fff' style={styles.textInput} placeholder="Password"/>
-                          <TouchableOpacity>
-                                <Text  style={styles.forgotPassword}> Forget Password ? <Icon  style={styles.icon} type="FontAwesome5" name="hand-point-up" /></Text>
+                          <TouchableOpacity onPress={()=>this.props.changeForm()} >
+                                <Text onPress={()=>this.props.changeForm()} style={styles.forgotPassword}> Already have an account ? <Icon  style={styles.icon} type="FontAwesome5" name="hand-point-up" /></Text>
                           </TouchableOpacity>
                       </Animated.View>
                       <View style={[styles.drag,styles.viewThree]}
                       >
                            <Drag style={{alignSelf:"center"}}/>
-                           <Text style={styles.swipeText}> Swipe up to Login</Text>
+                           <Text style={styles.swipeText}> Swipe up to Register</Text>
                       </View>
                       <Modal visible={this.state.scroll} presentationStyle="fullScreen" animationType="slide" >
                         <View  style={styles.modal}>
@@ -351,4 +353,4 @@ class LoginForm extends Component {
     }
 }
  
-export default LoginForm;
+export default SignUpForm;
