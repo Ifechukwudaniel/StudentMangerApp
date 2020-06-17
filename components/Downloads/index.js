@@ -12,30 +12,12 @@ import DownloadItem from './downloadItem';
 const Downloads = ({navigation}) => {
     return (
         <View style={styles.container}>
-             {/* <Header style={styles.headerTextStyle}  screenName="Downloads"  noBackButton /> */}
-             <ScrollView style={styles.scrollView}>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem/>
-                 <DownloadItem last/>
-             </ScrollView>
         </View>
     );
 }
 const styles = EStyleSheet.create({
     container:{
      flex: 1,
-    },
-    headerTextStyle:{
-        width:"200rem"
-    },
-    scrollView:{
-       paddingTop: "50rem",
-       paddingBottom: '50rem',
     }
 })
 export default Downloads;

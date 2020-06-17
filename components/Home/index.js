@@ -1,193 +1,68 @@
-import React, { Component } from 'react';
-import { View, Text ,TouchableOpacity, ScrollView, Platform,Dimensions, StatusBar} from 'react-native';
+import React, { useState } from 'react';
+import { View,TextInput, TouchableOpacity, Dimensions} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
-import Colors from '../../constants/Colors';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import {Svg, Path} from 'react-native-svg'
-import  MaterialSvg from "../../assets/svg/material.svg";
-import  AttendanceSvg from "../../assets/svg/attendance.svg";
-import  ChatSvg from "../../assets/svg/chat.svg";
-import  NewsSvg from "../../assets/svg/news.svg";
-import  TimeTableSvg from "../../assets/svg/timeTable.svg";
-import  EventSvg from "../../assets/svg/event.svg";
-import {Header} from  'native-base'
-const  rem = Dimensions.get('window').width/360
+import Header from '../Header'
+import HandOutItem from '../Handout/HandOutItem.js';
+import BlockIcon from '../../assets/svg/BlockIcon.svg'
+import ListIcon from '../../assets/svg/ListIcon.svg'
+const entireScreenWidth = Dimensions.get('window').width;
+const rem = entireScreenWidth/380
 
 
-class Home extends Component {
-    render() {
+const Home = () => {
+  const [blockList, setBlockList] = useState(true)
+  const [bulletList, setBulletList] = useState(false)
         return (
-          <>
-           {/* <Header/> */}
-            <ScrollView style={styles.container}>
-             <StatusBar hidden={false} barStyle="light-content"/>
-                <View style={{flexDirection:'row'}}>
-                <Text style={styles.homeText}> Home </Text>
-                     <TouchableOpacity style={styles.notifications} onPress={()=>this.props.navigation.navigate('notifications')}>
-                      <MaterialIcon style={styles.icon} size={37*rem} color="#fff" name='notifications-active'/>
-                      <Svg   style={styles.svg}  > 
-                         <Path style={styles.notificationsNumber} d="M28,13c0,7.18-9,7.181-14,13C10,20.946,0,20.18,0,13,8,6.417,6.268,0,14,0S21,7.946,28,13Z" fill="#fff">
-                        </Path>
-                        <Text style={styles.notifyText}> 20 </Text>
-                      </Svg>
-                    </TouchableOpacity>
-              </View>
-              <View style={styles.menu}>
-               <View style={styles.menuGroup}>
-                <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('Material')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <MaterialSvg />
-                        </View>
-                        <Text style={styles.menuText}>  Materials </Text>
-                      </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('timeTable')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <TimeTableSvg/>
-                        </View>
-                        <Text style={styles.menuText}>  Time Table </Text>
-                      </View>
-                  </TouchableOpacity>
-               </View>
-               <View style={styles.menuGroup}>
-                <TouchableOpacity style={styles.menuItem}  onPress={()=>this.props.navigation.navigate('attendance')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <AttendanceSvg/>
-                        </View>
-                        <Text style={styles.menuText}>  Attendance  </Text>
-                      </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.menuItem}  onPress={()=>this.props.navigation.navigate('Blogs')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <NewsSvg/>
-                        </View>
-                        <Text style={styles.menuText}>  latest Gist  </Text>
-                      </View>
-                  </TouchableOpacity>
-               </View>
-               <View style={styles.menuGroup}>
-                <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('chat')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <ChatSvg />
-                        </View>
-                        <Text style={styles.menuText} >  Chat </Text>
-                      </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.menuItem} onPress={()=>this.props.navigation.navigate('event')}>
-                      <View style={styles.shadow}>
-                        <View style={styles.menuSvg}>
-                          <EventSvg/>
-                        </View>
-                        <Text style={styles.menuText}>  Events </Text>
-                      </View>
-                  </TouchableOpacity>
-               </View>
-              </View>
-            </ScrollView>
-          </>
+         <View style={styles.container}>
+            <Header/>
+            <View>
+                <TextInput  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
+            </View>
+            <View style={styles.listTypes}>
+                 <TouchableOpacity onPress={()=>{
+                   !blockList ?   setBlockList(true) : setBulletList(false)
+                 }} style={styles.listTypesItem}>
+                    <BlockIcon width={30*rem} height={30*rem} style={{opacity:blockList?1: 0.4}}/>
+                 </TouchableOpacity>
+                 <TouchableOpacity onPress={()=>{
+                     !bulletList ?   setBulletList(true) : setBlockList(false)
+                 }} style={styles.listTypesItem}>
+                    <ListIcon width={30*rem} height={30*rem} style={{opacity:bulletList ? 1: 0.4}}/>
+                 </TouchableOpacity>
+            </View>
+            <HandOutItem/>
+         </View>
         )
   }
-}
 
 const styles = EStyleSheet.create({
   container :{
-      flex:1,
-      marginTop: '50rem',
-      marginLeft: '10rem',
-      marginRight: "10rem",
+      flex:1
   },
-  homeText:{
-      color:Colors.white,
-      fontSize:"36rem",
-      fontFamily:"Itim",
-      marginLeft: "20rem",
+  searchBox:{
+      height:'20rem',
+      backgroundColor: "rgba(254,254,255,0.07)",
+      marginLeft: '15rem',
+      marginRight: '15rem',
+      marginTop:'23rem',
+      height:'60rem',
+      borderRadius: '5rem',
+      fontSize: '18rem',
+      color:"#fff",
+      paddingLeft: "20rem",
   },
-  notifications:{
-     marginLeft: '150rem',
-     justifyContent: 'center',
-     flexDirection:'row'
-  },
-  icon:{
-      marginTop: '5rem',
-  },
-  svg:{
-     width:"28rem",
-     height:'26rem'  
-  },
-  notificationsNumber:{
-      backgroundColor: Colors.white,
-      height:'30rem',
-      width:'40rem',
-  },
-  notificationsNumberText:{
-     textAlign:'center'
-  },
-  notifyText:{
-    fontSize:"12rem",
-    fontFamily:"Itim",
-    textAlign:"center",
-    justifyContent:"center",
-    lineHeight:'25rem',
-    marginRight:"3rem",
-    color:"#000"
-  },
-  menu:{
-  ...Platform.select({
-    ios:{
-      flex: 1,
-      marginTop: '40rem',
-    },
-    android:{
-      flex: 1,
-      marginTop: '15rem',
-    }
-  })
-  },
-  menuItem:{
-      width:'160rem',
-      height:'161rem',
-      backgroundColor: "#252525",
-      borderRadius:'30rem',
-      shadowColor: "#000",
-      shadowOffset: {
-            width: '-1.5rem',
-            height: '-1.5rem',
-      },
-      shadowOpacity: 1,
-      shadowRadius: '3.84rem',
-      elevation: '5rem',
-      marginLeft: '10rem',
-      marginRight:'10rem'
-  },
-  shadow:{
-    shadowColor: "#000",
-    shadowOffset: {
-        width: '3rem',
-        height: '3rem',
-  },
-  shadowOpacity: '1rem',
-  shadowRadius: '3.84rem',
-  },
-  menuGroup:{
-    flexDirection:'row',
-    marginTop: '20rem',
-  },
-  menuSvg:{
-    alignSelf: 'center',
-    marginTop:'30rem'
-  },
-  menuText:{
-    fontSize:"20rem",
-    fontFamily:"Itim",
-    textAlign:"center",
-    lineHeight:'25rem',
-    color:Colors.white
-  }
+   listTypes:{
+     flexDirection: 'row',
+     flexWrap: 'wrap',
+     marginLeft:'15rem',
+     marginTop:'10rem'
+   },
+   listTypesItem:{
+      backgroundColor:"rgba(255,252,252,0.07)",
+      margin: '2rem',
+      marginRight:'7rem',
+      borderRadius:'2rem'
+   }
 })
  
 export default Home;
