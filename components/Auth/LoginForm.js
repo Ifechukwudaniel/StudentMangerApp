@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import {View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform,TouchableOpacity} from 'react-native';
 import EStylesheet from 'react-native-extended-stylesheet'
-import { LinearGradient } from 'expo-linear-gradient';
 import {Icon} from 'native-base'
 import Drag from '../../assets/svg/drag.svg'
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380;
 import  { showMessage } from "react-native-flash-message";
-import { Button } from 'native-base';
-
+import * as Animatable from 'react-native-animatable';
 const styles = EStylesheet.create({
       wrapper:{
        flex:1,
@@ -166,12 +164,13 @@ class LoginForm extends Component {
         logoSize: new Animated.Value(0),
         parentYPosition:0
     }
-    componentWillMount () {
+    
+    UNSAFE_componentWillMount () {
       this.keyboardWillShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardWillShow);
       this.keyboardWillHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardWillHide);
     }
   
-    componentWillUnmount() {
+    UNSAFE_componentWillUnmount() {
       this.keyboardWillShowSub.remove();
       this.keyboardWillHideSub.remove();
     }
@@ -218,25 +217,29 @@ class LoginForm extends Component {
         },500)
      }
 
+     goHome= ()=>{
+      this.props.goToHome()
+    }
+
     handleSlidUp= ()=>{
      const {matricNumber, password}= this.state;
-      if (matricNumber.length<5) {
-          showMessage({
-            type: "danger",backgroundColor:"#FF3051",icon:"danger", 
-            message:"Matric Number is to short",
-            titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
-          }); 
-          return
-      }
-      if (password.length===0) {
-        showMessage({
-          type: "danger",backgroundColor:"#FF3051", icon:"danger",
-          message:"Password cannot be empty",
-          titleStyle:{textAlign:"center"},
-          textStyle:{textAlign:"center"},
-        }); 
-        return 
-      }                                                                                                                                        
+      // if (matricNumber.length<5) {
+      //     showMessage({
+      //       type: "danger",backgroundColor:"#FF3051",icon:"danger", 
+      //       message:"Matric Number is to short",
+      //       titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
+      //     }); 
+      //     return
+      // }
+      // if (password.length===0) {
+      //   showMessage({
+      //     type: "danger",backgroundColor:"#FF3051", icon:"danger",
+      //     message:"Password cannot be empty",
+      //     titleStyle:{textAlign:"center"},
+      //     textStyle:{textAlign:"center"},
+      //   }); 
+      //   return 
+      // }                                                                                                                                        
       this.setState({scroll:true})
     }
 
@@ -336,10 +339,10 @@ class LoginForm extends Component {
                             <View style={styles.welcomeTextView}>
                                 <Text style={styles.welcomeText}>Welcome Back  <Icon  type="AntDesign" style={{color:"#46EC74", fontSize:20}} name="check"/> </Text>
                             </View>
-                            <View style={styles.userProfile}>
-                                 <Image style={styles.userImage} source={require('../../assets/images/image.jpeg')} resizeMode="cover"/>
+                            <TouchableOpacity onPress={this.goHome} style={styles.userProfile}>
+                                 <Image  style={styles.userImage} source={require('../../assets/images/image.jpeg')} resizeMode="cover"/>
                                  <Text style={styles.userName}> Ifechukwu Daniel </Text>
-                            </View>
+                            </TouchableOpacity>
                              <View style={styles.loading}>
                                <Text style={styles.loadingText}> {this.state.loadingText}</Text>
                              </View>

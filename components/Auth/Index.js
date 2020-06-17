@@ -26,14 +26,8 @@ class Auth extends Component {
        form:0,
        loading:false
     }
-    handleNextButton= ()=>{
-        AsyncStorage.getAllKeys()
-        .then(keys=>{
-            if(keys.includes(Keys.department) && keys.includes(Keys.level))
-                this.props.navigation.navigate("Home")
-            else
-               this.props.navigation.navigate("Setup")
-        })
+    handleHome= ()=>{
+       this.props.navigation.navigate("Home")
     }
 
     changeForm= ()=>{
@@ -49,10 +43,10 @@ class Auth extends Component {
             return <Loading/>
         }
          if(form===0 &&!loading){
-             return <SignUpForm  changeForm= {this.changeForm}/> 
+             return <SignUpForm goToHome={this.handleHome}  changeForm= {this.changeForm}/> 
          } 
          if(form==1 && !loading){
-             return <LoginForm  changeForm= {this.changeForm}/>
+             return <LoginForm goToHome={this.handleHome} changeForm= {this.changeForm}/>
          }
     }
     render() { 

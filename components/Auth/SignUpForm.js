@@ -167,16 +167,18 @@ class SignUpForm extends Component {
         logoSize: new Animated.Value(0),
         parentYPosition:0
     }
-    componentWillMount () {
+    UNSAFE_componentWillMount(){
+      console.warn(this.props)
       this.keyboardWillShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardWillShow);
       this.keyboardWillHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardWillHide);
     }
-  
-    componentWillUnmount() {
+
+    UNSAFE_componentWillUnmount() {
       this.keyboardWillShowSub.remove();
       this.keyboardWillHideSub.remove();
     }
     keyboardWillShow = (event) => {
+       console.warn(this.props)
         Animated.timing(this.state.logoSize,{
           toValue:1,
           duration:Platform.OS==="ios"?  event.duration : 500,
@@ -218,26 +220,30 @@ class SignUpForm extends Component {
            }
         },500)
      }
+     
+     goHome= ()=>{
+      this.props.goToHome()
+     }
 
     handleSlidUp= ()=>{
      const {matricNumber, password}= this.state;
-      if (matricNumber.length<5) {
-          showMessage({
-            type: "danger",backgroundColor:"#FF3051",icon:"danger", 
-            message:"Matric Number is to short",
-            titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
-          }); 
-          return
-      }
-      if (password.length===0) {
-        showMessage({
-          type: "danger",backgroundColor:"#FF3051", icon:"danger",
-          message:"Password cannot be empty",
-          titleStyle:{textAlign:"center"},
-          textStyle:{textAlign:"center"},
-        }); 
-        return 
-      }                                                                                                                                        
+      // if (matricNumber.length<5) {
+      //     showMessage({
+      //       type: "danger",backgroundColor:"#FF3051",icon:"danger", 
+      //       message:"Matric Number is to short",
+      //       titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
+      //     }); 
+      //     return
+      // }
+      // if (password.length===0) {
+      //   showMessage({
+      //     type: "danger",backgroundColor:"#FF3051", icon:"danger",
+      //     message:"Password cannot be empty",
+      //     titleStyle:{textAlign:"center"},
+      //     textStyle:{textAlign:"center"},
+      //   }); 
+      //   return 
+      // }                                                                                                                                        
       this.setState({scroll:true})
     }
 
@@ -333,15 +339,15 @@ class SignUpForm extends Component {
                            <Drag style={{alignSelf:"center"}}/>
                            <Text style={styles.swipeText}> Swipe up to Register</Text>
                       </View>
-                      <Modal visible={this.state.scroll} presentationStyle="fullScreen" animationType="slide" >
+                      <Modal  visible={this.state.scroll} presentationStyle="fullScreen" animationType="slide" >
                         <View  style={styles.modal}>
                             <View style={styles.welcomeTextView}>
                                 <Text style={styles.welcomeText}>Welcome Back  <Icon  type="AntDesign" style={{color:"#46EC74", fontSize:20}} name="check"/> </Text>
                             </View>
-                            <View style={styles.userProfile}>
+                            <TouchableOpacity onPress={this.goHome} style={styles.userProfile}>
                                  <Image style={styles.userImage} source={require('../../assets/images/image.jpeg')} resizeMode="cover"/>
                                  <Text style={styles.userName}> Ifechukwu Daniel </Text>
-                            </View>
+                            </TouchableOpacity>
                              <View style={styles.loading}>
                                <Text style={styles.loadingText}> {this.state.loadingText}</Text>
                              </View>
