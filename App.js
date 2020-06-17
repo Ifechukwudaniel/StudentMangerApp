@@ -11,6 +11,7 @@ import AppNavigator from './navigation/AppNavigator';
 import appTheme from './theme.json'
 import {store} from './Redux/store'
 import FlashMessage from "react-native-flash-message";
+const rem = entireScreenWidth/380
 
 const theme = {...dark, ...appTheme}
 
