@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView } from 'react-native';
-import { BlogCard } from './extra/card-component';
-import Header from '../Header';
+import { View, Text, StyleSheet, StatusBar} from 'react-native';
 import { getBlogs } from '../../Redux/Actions/blogs';
 import {connect} from 'react-redux'
-import ContentLoader,{Facebook,Rect} from 'react-content-loader/native'
  
-class Blog extends Component {
+class Post extends Component {
 
     UNSAFE_componentWillMount(){
         StatusBar.setHidden(true)
@@ -15,11 +12,9 @@ class Blog extends Component {
     render() { 
       const {loading} = this.props
         return (
-            <>
             <View>
-              
+               
             </View>
-            </>
         );
     }
 }
@@ -46,4 +41,4 @@ function mapStateToProps(state) {
       },
     }
   }
-  export default connect(mapStateToProps, mapDispatchToProps)(Blog)
+  export default connect(mapStateToProps, mapDispatchToProps)(Post)

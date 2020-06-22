@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import {View, StatusBar, TouchableOpacity, ScrollView} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import { LinearGradient } from 'expo-linear-gradient';
-import Header from '../Header'
 import { Text,  } from 'native-base';
-import DownloadItem from './downloadItem';
 
 
 

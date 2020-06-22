@@ -1,15 +1,10 @@
 import React, {Component,} from 'react';
-import {View, StatusBar, TouchableOpacity, ScrollView, Animated, ActivityIndicator, Image} from 'react-native'
+import {View} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
-import { LinearGradient } from 'expo-linear-gradient';
-import DateItem from './DateItem'
-import Header from '../Header'
-import { Container,  Button, Text,  } from 'native-base';
-import DateAction from './DateAction'
+
 import {connect} from 'react-redux'
 import { getTimeTable ,setTimeTableActiveDay, setDayActions, setDayActionsStart } from '../../Redux/Actions/timeTable';
 import _ from 'lodash'
-import Animatable from 'react-native-animatable'
 import util from '../../util';
 
  

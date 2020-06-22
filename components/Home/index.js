@@ -1,36 +1,47 @@
-import React, { useState } from 'react';
-import { View,TextInput, TouchableOpacity, Dimensions} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
-import Header from '../Header'
-import HandOutItem from '../Handout/HandOutItem.js';
 import BlockIcon from '../../assets/svg/BlockIcon.svg'
 import ListIcon from '../../assets/svg/ListIcon.svg'
+import HandOuListItem from '../Handout/HandOutListItem';
+import ShowAllSvg from '../../assets/svg/showAll.svg'
+import { Left, Right } from 'native-base';
+import ActivityItem from '../Activity/ActivityItem';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
 
 const Home = () => {
-  const [blockList, setBlockList] = useState(true)
-  const [bulletList, setBulletList] = useState(false)
+  const [blockList, setBlockList] = useState(false)
+  const [bulletList, setBulletList] = useState(true)
         return (
          <View style={styles.container}>
-            <Header/>
             <View>
                 <TextInput  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
             </View>
             <View style={styles.listTypes}>
-                 <TouchableOpacity onPress={()=>{
-                   !blockList ?   setBlockList(true) : setBulletList(false)
-                 }} style={styles.listTypesItem}>
-                    <BlockIcon width={30*rem} height={30*rem} style={{opacity:blockList?1: 0.4}}/>
+                 <TouchableOpacity  style={[styles.listTypesItem, {opacity:0.2}]}>
+                 <Animated.View>
+                 <BlockIcon width={30*rem} height={30*rem}/>
+                 </Animated.View>
                  </TouchableOpacity>
-                 <TouchableOpacity onPress={()=>{
-                     !bulletList ?   setBulletList(true) : setBlockList(false)
-                 }} style={styles.listTypesItem}>
-                    <ListIcon width={30*rem} height={30*rem} style={{opacity:bulletList ? 1: 0.4}}/>
+                 <TouchableOpacity  style={styles.listTypesItem}>
+                    <ListIcon width={30*rem} height={30*rem}/>
                  </TouchableOpacity>
             </View>
-            <HandOutItem/>
+            <View style={styles.HandOuSlideView}>
+                <Left>
+                  <Text style={styles.handText} > Hand-outs</Text>
+                </Left>
+                <Right>
+                <TouchableOpacity style={[styles.showAllSvg, { alignSelf:'flex-end'}]} >
+                      <ShowAllSvg/>
+                 </TouchableOpacity>
+                </Right>
+            </View>
+            <ActivityItem time="07:00" activityType={0} courseCode="Mth 111"/>
+            <ActivityItem time="08:00" activityType={1} courseCode="MTH 222"/>
+            <ActivityItem time="09:00"  activityType={2} courseCode="MTH 321"/>
          </View>
         )
   }
@@ -62,7 +73,22 @@ const styles = EStyleSheet.create({
       margin: '2rem',
       marginRight:'7rem',
       borderRadius:'2rem'
+   },
+   HandOuSlideView:{
+     flexDirection: 'row',
+    //  height:'25rem'
+   },
+   handText:{
+     color:"#fff",
+     marginTop:'20rem',
+     marginLeft: '20rem',
+   },
+   showAllSvg:{
+    justifyContent: 'flex-end',
+    marginRight: '20rem',
+    marginTop:'20rem',
    }
+
 })
  
 export default Home;
