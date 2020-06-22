@@ -6,9 +6,6 @@ import Setting from '../components/Settings';
 export default function SettingsScreen(props) {
   return (
     <Layout style={styles.container}>
-      <ScrollView style={styles.container}>
-         <Setting {...props}/>
-      </ScrollView>
     </Layout>
   );
 }

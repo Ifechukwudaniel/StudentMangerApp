@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
 import Graph from '../components/Attendance/Chart';
 

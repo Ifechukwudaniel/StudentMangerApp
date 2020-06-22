@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
 import Level from '../components/Level'
 import Home from '../components/Home';
+import HeaderComponent from '../components/Header';
 
 class HomeScreen extends Component {
   render() { 
@@ -20,7 +20,7 @@ class HomeScreen extends Component {
 export default HomeScreen;
 
 HomeScreen.navigationOptions = {
-  header:null,
+  header:<HeaderComponent screenName="HOME"/>
 };
 
 

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-import { MonoText } from '../components/StyledText';
+// import { MonoText } from '../components/StyledText';
 import {  Layout } from '@ui-kitten/components';
 import Downloads from '../components/Downloads';
 
