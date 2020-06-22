@@ -6,7 +6,7 @@ import HandBugger from '../assets/svg/handBugger.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const HeaderComponent = ({onBackPress, screenName, style, noBackButton, closeButton, headerStyle}) => {
+const HeaderComponent = ({screenName}) => {
     return (
        <Header transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
@@ -16,7 +16,7 @@ const HeaderComponent = ({onBackPress, screenName, style, noBackButton, closeBut
             </Button>
           </Left>
           <Body style={{flex:1}}>
-            <Title style={styles.textStyle}>HOME</Title>
+            <Title style={styles.textStyle}>{screenName}</Title>
           </Body>
           <Right style={{flex:1}}>
             <Button transparent>
