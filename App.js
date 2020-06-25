@@ -6,11 +6,11 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import {Root} from 'native-base'
 import {Provider} from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
-const entireScreenWidth = Dimensions.get('window').width;
 import AppNavigator from './navigation/AppNavigator';
 import appTheme from './theme.json'
 import {store} from './Redux/store'
 import FlashMessage from "react-native-flash-message";
+const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
 const theme = {...dark, ...appTheme}
