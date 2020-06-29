@@ -12,8 +12,7 @@ import AuthScreen from '../screens/AuthScreen'
 export default createAppContainer(
   createSwitchNavigator({
     Main: MainTabNavigator,
-    Auth:AuthScreen,
-    AttendanceDetail: AttendanceNavigation
+    Auth:AuthScreen
   },
   {
     initialRouteName:"Auth",
