@@ -6,17 +6,18 @@ import HandBugger from '../assets/svg/handBugger.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const HeaderComponent = ({screenName}) => {
+const HeaderComponent = (props) => {
+        console.log(props)
     return (
        <Header transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
           <Left style={{flex:1}}>
-            <Button transparent>
+            <Button onPress={()=>props.navigation.openDrawer()} transparent>
               <HandBugger width={30*rem} height={30*rem}/>
             </Button>
           </Left>
           <Body style={{flex:1}}>
-            <Title style={styles.textStyle}>{screenName}</Title>
+            <Title style={styles.textStyle}>{props.screenName}</Title>
           </Body>
           <Right style={{flex:1}}>
             <Button transparent>

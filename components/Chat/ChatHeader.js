@@ -7,18 +7,18 @@ import Setting from '../../assets/svg/setting.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const ChatHeader = ({onBackPress, screenName, style, noBackButton, closeButton, headerStyle}) => {
+const ChatHeader = (props) => {
     return (
        <Header hasSegment transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
           <Left>
-            <Button transparent>
+            <Button onPress={()=>props.navigation.openDrawer()}ui  transparent>
               <HandBugger width={30*rem} height={30*rem}/>
             </Button>
           </Left>
           <Body>
             <Segment    style={{backgroundColor:"#0c0c0c", borderWidth:0}}>
-              <TouchableOpacity style={styles.buttonStyleNotActive}>
+              <TouchableOpacity  onPress={()=>props.navigation.navigate('Post')} style={styles.buttonStyleNotActive}>
                  <Text style={styles.buttonText}>Posts</Text>
               </TouchableOpacity>
               <TouchableOpacity  style={styles.buttonStyle}>

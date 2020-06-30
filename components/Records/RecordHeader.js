@@ -1,28 +1,28 @@
 import React from 'react';
-import {  Header, Left, Body, Right, Button, Icon, Segment, Drawer } from 'native-base'
-import {Image, StatusBar, Dimensions, Text, TouchableOpacity} from 'react-native'
+import {  Header, Left, Body, Right, Button, Icon, Segment  } from 'native-base'
+import {Image, StatusBar, Dimensions, Text} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../../assets/svg/handBugger.svg' 
 import Setting from '../../assets/svg/setting.svg'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const PostsHeader = (props) => {
-  console.log(props)
+const RecordHeader = ({onBackPress, screenName, style, noBackButton, closeButton, headerStyle}) => {
     return (
        <Header hasSegment transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
           <Left>
-            <Button onPress={()=>props.navigation.openDrawer()} transparent>
+            <Button transparent>
               <HandBugger width={30*rem} height={30*rem}/>
             </Button>
           </Left>
           <Body>
             <Segment    style={{backgroundColor:"#0c0c0c", borderWidth:0}}>
-              <TouchableOpacity style={styles.buttonStyle}>
+              <TouchableOpacity style={styles.buttonStyleNotActive}>
                  <Text style={styles.buttonText}>Posts</Text>
               </TouchableOpacity>
-              <TouchableOpacity  onPress={()=>props.navigation.navigate('Chat')} style={styles.buttonStyleNotActive}>
+              <TouchableOpacity  style={styles.buttonStyle}>
                 <Text style={styles.buttonText}>Messages</Text>
               </TouchableOpacity>
             </Segment>
@@ -94,4 +94,4 @@ const styles = EStyleSheet.create({
   fontSize: '15rem',
 },
 })
-export default PostsHeader;
+export default RecordHeader;
