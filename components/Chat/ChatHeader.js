@@ -27,7 +27,7 @@ const ChatHeader = (props) => {
             </Segment>
           </Body>
           <Right>
-            <Button transparent>
+            <Button onPress={()=> props.navigation.navigate('Settings')} transparent>
                <Setting width={20*rem} height={25*rem}/>
             </Button>
           </Right>
