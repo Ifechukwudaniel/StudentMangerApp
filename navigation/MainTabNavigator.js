@@ -1,116 +1,183 @@
 import React from 'react';
-import { Platform , Dimensions} from 'react-native';
+import {  Dimensions, Text, View} from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-
-import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import BlogsScreen from '../screens/BlogsScreen';
-import MaterialScreen from '../screens/Home/MaterialScreen'
-import LevelScreen from '../screens/LevelScreen';
-import colors from "../constants/Colors"
-import SettingsScreen from '../screens/SettingsScreen';
-import FileScreen from '../screens/FileScreen';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 const rem = Dimensions.get('window').width/380;
-import Colors from '../constants/Colors';
-import {fromRight, fromBottom} from 'react-navigation-transitions'
 import AllNavigation from './AllNavigation'
 import SetupNavigation from './SetupNavigator';
 import AttendanceNavigation from './AttendanceNavigation'
-import NotificationScreen from '../screens/Home/NotificationScreen';
-
+import Speedometer from '../assets/svg/speedometer.svg';
+import People from '../assets/svg/people.svg';
+import Productivity from '../assets/svg/productivity.svg';
+import Register from '../assets/svg/register.svg';
+import TimeSketchScreen from '../screens/TimeSketchScreen';
+import RecordScreen from '../screens/RecordScreen';
+import AddDocumentScreen from '../screens/AddDocumentScreen';
+import PlusTabBarIcon from '../components/PlusTabBarIcon';
+import SettingsScreen from '../screens/SettingsScreen';
+import ChatScreen from '../screens/ChatScreen';
+import PostsScreen from '../screens/PostsScreen';
+import { createSwitchNavigator, } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 
  const HomeStack  = createStackNavigator({
   Home:HomeScreen,
-  notifications: NotificationScreen,
+  Settings:SettingsScreen
  }, {
-   transitionConfig:()=>fromBottom()
+  //  transitionConfig:()=>fromBottom()
  })
 
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel:({focused, })=>(
+    <Text style={{
+     color: focused?"#FF912C":"transparent",
+     fontSize:11,
+     fontWeight:'bold',
+     textAlign:"center",
+     paddingTop:5
+    }}> LOCAL</Text>
+  ),
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon
-      focused={focused}
-      name='home'
-      screenName= "Home"
-      {...props}
-    />
+    <Speedometer width={45*rem} height={40*rem}/>
   ),
 };
 
 HomeScreen.path = '';
 
 
-MaterialScreen.navigationOptions = {
-  tabBarLabel: 'Material',
+TimeSketchScreen.navigationOptions = {
+  tabBarLabel:({focused, })=>(
+    <Text style={{
+     color: focused?"#FF912C":"transparent",
+     fontSize:11,
+     fontWeight:'bold',
+     textAlign:"center",
+     paddingTop:5
+    }}> Time Sketch</Text>
+  ),
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='book' screenName= "Material" />
+    <Productivity  width={35*rem} height={35*rem}/>
   ),
 };
 
-MaterialScreen.path = '';
+TimeSketchScreen.path = '';
 
 
-SettingsScreen.navigationOptions = {
-  tabBarLabel: 'Settings',
+const ConversationStack  = createSwitchNavigator({
+  Post:PostsScreen,
+  Chat:ChatScreen,
+ }, {
+  
+ })
+
+
+ConversationStack.navigationOptions = {
+  tabBarLabel:({focused, })=>(
+    <Text style={{
+     color: focused?"#FF912C":"transparent",
+     fontSize:11,
+     fontWeight:'bold',
+     textAlign:"center",
+     paddingTop:5
+    }}> Conversation</Text>
+  ),
   tabBarIcon: ({ focused }, props) => (
-    <TabBarIcon focused={focused} {...props} name='settings-2' screenName= "Setting" />
+   <People  width={35*rem} height={35*rem} style={{marginTop:10*rem}}/>
   ),
 };
 
-SettingsScreen.path = '';
+ConversationStack.path = '';
 
 
-FileScreen.navigationOptions = {
-  tabBarLabel: 'Downloads',
+RecordScreen.navigationOptions = {
+  tabBarLabel:({focused, })=>(
+    <Text style={{
+     color: focused?"#FF912C":"transparent",
+     fontSize:11,
+     fontWeight:'bold',
+     textAlign:"center",
+     paddingTop:5
+    }}> Records</Text>
+  ),
   tabBarIcon: ({ focused }, props) => (
-    <MaterialIcon size={40*rem} color={focused ? Colors.tintColor :"#fff"} name="file-download"/>
+   <Register  width={35*rem} height={35*rem}/>
   ),
 };
 
-FileScreen.path = '';
+RecordScreen.path = '';
 
-const AppStack = createBottomTabNavigator({
+AddDocumentScreen.navigationOptions = {
+  tabBarOnPress:(e)=>{
+    console.log(e)
+  },
+  tabBarLabel:({focused, })=>(
+    <Text style={{
+     color: focused?"#FF912C":"transparent",
+     fontSize:10,
+     fontWeight:'bold',
+     textAlign:"center",
+     paddingTop:5
+    }}> </Text>
+  ),
+  tabBarIcon: ({ focused }, props) => (
+     <PlusTabBarIcon/>
+  ),
+};
+
+AddDocumentScreen.path = '';
+
+const AppStack = 
+createBottomTabNavigator({
   Home:HomeStack,
-  Material:MaterialScreen,
-  Settings:SettingsScreen,
-  Files:FileScreen
+  TimeSketch:TimeSketchScreen,
+  AddDocument:AddDocumentScreen,
+  Conversation:ConversationStack,
+  Record:RecordScreen
 },
 {
   tabBarOptions:{
-    showLabel:false,
+    lazy: false,
+    showLabel:true,
     animationEnabled:true,
     labelStyle:{
-     color:colors.white,
-     fontFamily:"itim",
-     fontSize:14
+     color:"#FF912C",
+     fontSize:14,
+     fontWeight:"bold"
     },
     style:{
-        backgroundColor:'#000',
+        backgroundColor:'#0C0C0E',
         fontFamily: 'Itim',
         borderColor: "#000",
         borderWidth: 0,  
-        borderTopWidth:0
+        borderTopWidth:1,
+        borderTopColor:"#0C0C0E",
+        zIndex:1,
+        elevation:2,
+        paddingTop:10,
+        // height:60*rem
     },
   },
 });
 
 AppStack.path = '';
 
-
 const MainAppStack = createStackNavigator({
-   AppStack:AppStack,
-   AllNavigation:AllNavigation,
-   Setup:SetupNavigation,
-   AttendanceDetail: AttendanceNavigation
+  AppStack:AppStack,
+  AllNavigation:AllNavigation,
+  Setup:SetupNavigation,
+  AttendanceDetail: AttendanceNavigation
 }, {
-  transitionConfig :()=>fromRight(700),
-  headerMode:'none'
+ headerMode:'none'
 })
 
-export default MainAppStack;
+
+const  MainDrawer = createDrawerNavigator({
+   mainStack: MainAppStack
+}, {
+
+})
+
+export default MainDrawer;

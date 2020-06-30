@@ -4,7 +4,7 @@ import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 
-import TabBarIcon from '../components/TabBarIcon';
+// import TabBarIcon from '../components/TabBarIcon';
 import DepartmentScreen from '../screens/DepartmentScreen';
 import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
