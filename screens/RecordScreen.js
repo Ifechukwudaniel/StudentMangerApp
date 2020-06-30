@@ -6,7 +6,7 @@ import HeaderComponent from '../components/Header';
 export default function RecordScreen(props) {
   return (
     <Layout style={styles.container}>
-       <HeaderComponent screenName="Record"/>
+       <HeaderComponent {...props} screenName="Record"/>
     </Layout>
   );
 }
