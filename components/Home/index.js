@@ -3,10 +3,10 @@ import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated} from 'rea
 import EStyleSheet from 'react-native-extended-stylesheet'
 import BlockIcon from '../../assets/svg/BlockIcon.svg'
 import ListIcon from '../../assets/svg/ListIcon.svg'
-import HandOuListItem from '../Handout/HandOutListItem';
 import ShowAllSvg from '../../assets/svg/showAll.svg'
 import { Left, Right } from 'native-base';
-import ActivityItem from '../Activity/ActivityItem';
+import AttendanceListItem from '../Attendance/AttendanceListItem';
+import Setting from '../Settings';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
@@ -39,9 +39,6 @@ const Home = () => {
                  </TouchableOpacity>
                 </Right>
             </View>
-            <ActivityItem time="07:00" activityType={0} courseCode="Mth 111"/>
-            <ActivityItem time="08:00" activityType={1} courseCode="MTH 222"/>
-            <ActivityItem time="09:00"  activityType={2} courseCode="MTH 321"/>
          </View>
         )
   }

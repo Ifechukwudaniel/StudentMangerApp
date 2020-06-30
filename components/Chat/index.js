@@ -11,7 +11,7 @@ import { Text,  } from 'native-base';
 const Chat = ({navigation}) => {
     return (
         <View style={styles.container}>
-             <Header  screenName="Chat" onBackPress= {()=>navigation.navigate("Home")} />
+             
         </View>
     );
 }
