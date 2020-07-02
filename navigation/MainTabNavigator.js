@@ -22,7 +22,7 @@ import { createSwitchNavigator, } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 
- const HomeStack  = createStackNavigator({
+ const HomeStack  = createSwitchNavigator({
   Home:HomeScreen,
   Settings:SettingsScreen
  }, {

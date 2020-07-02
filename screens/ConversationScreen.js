@@ -7,13 +7,13 @@ import PostsHeader from '../components/Posts/PostHeaader'
 export default function ConversationScreen(props) {
   return (
     <Layout style={styles.container}>
-      <PostsHeader/>
+      <PostsHeader {...props}/>
     </Layout>
   );
 }
 
 ConversationScreen.navigationOptions = {
- header:(<PostsHeader/>)
+ header:null
 };
 
 const styles = StyleSheet.create({
