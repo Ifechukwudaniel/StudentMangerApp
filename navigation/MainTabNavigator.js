@@ -177,7 +177,7 @@ const MainAppStack = createStackNavigator({
 const  MainDrawer = createDrawerNavigator({
    mainStack: MainAppStack
 }, {
-
+ 
 })
 
 export default MainDrawer;
