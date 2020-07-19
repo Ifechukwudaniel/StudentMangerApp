@@ -8,7 +8,7 @@ export default function SettingsScreen(props) {
   return (
     <Layout style={styles.container}>
     <HeaderComponent {...props}  screenName={"SETTINGS"} />
-      <Setting/>
+      <Setting {...props}/>
     </Layout>
   );
 }
