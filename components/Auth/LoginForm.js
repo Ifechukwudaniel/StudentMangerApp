@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform,TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform,TouchableOpacity, AsyncStorage} from 'react-native';
 import EStylesheet from 'react-native-extended-stylesheet'
 import {Icon} from 'native-base'
 import Drag from '../../assets/svg/drag.svg'
@@ -8,6 +8,7 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380;
 import  { showMessage } from "react-native-flash-message";
 import * as Animatable from 'react-native-animatable';
+import Keys from '../../constants/Keys';
 const styles = EStylesheet.create({
       wrapper:{
        flex:1,
@@ -16,7 +17,7 @@ const styles = EStylesheet.create({
          alignSelf: 'center',
          position: "relative",
          marginTop:'100rem',
-         height:'180rem',
+         height:'200rem',
          width:'180rem',
          marginBottom: '40rem',
       },
@@ -218,32 +219,38 @@ class LoginForm extends Component {
      }
 
      goHome= ()=>{
-      this.props.goToHome()
+      AsyncStorage.setItem(Keys.department,JSON.stringify({_id:'5e8e31f8e1a20dca09a7fef4'}))
+      .then(()=>{
+        AsyncStorage.setItem(Keys.level,JSON.stringify({_id:"5e8e320de1a20dca09a7fef5"}))
+        .then(()=>{
+          this.props.goToHome()
+        })
+      })
     }
 
     handleSlidUp= ()=>{
      const {matricNumber, password}= this.state;
-      // if (matricNumber.length<5) {
-      //     showMessage({
-      //       type: "danger",backgroundColor:"#FF3051",icon:"danger", 
-      //       message:"Matric Number is to short",
-      //       titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
-      //     }); 
-      //     return
-      // }
-      // if (password.length===0) {
-      //   showMessage({
-      //     type: "danger",backgroundColor:"#FF3051", icon:"danger",
-      //     message:"Password cannot be empty",
-      //     titleStyle:{textAlign:"center"},
-      //     textStyle:{textAlign:"center"},
-      //   }); 
-      //   return 
-      // }                                                                                                                                        
+      if (matricNumber.length<5) {
+          showMessage({
+            type: "danger",backgroundColor:"#FF3051",icon:"danger", 
+            message:"Matric Number is to short",
+            titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
+          }); 
+          return
+      }
+      if (password.length===0) {
+        showMessage({
+          type: "danger",backgroundColor:"#FF3051", icon:"danger",
+          message:"Password cannot be empty",
+          titleStyle:{textAlign:"center"},
+          textStyle:{textAlign:"center"},
+        }); 
+        return 
+      }                                                                                                                                        
       this.setState({scroll:true})
+
     }
 
-    
 
 
     render() { 
@@ -301,7 +308,7 @@ class LoginForm extends Component {
                          })
                       }]}>
                       <Animated.Image  style={[styles.logoImage,{
-                        }]} resizeMode="cover" source={ require('../../assets/images/Logo/Logo.png')}/>
+                        }]} resizeMode="contain"  source={ require('../../assets/images/Logo/Logo.png')}/>
                           <Animated.Text style={[styles.loginText, 
                           {
                             opacity:this.state.logoSize.interpolate({

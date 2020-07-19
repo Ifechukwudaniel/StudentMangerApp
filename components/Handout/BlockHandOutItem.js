@@ -4,12 +4,13 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import { WebView } from 'react-native-webview';
 import {ActivityIndicator} from 'react-native-paper'
 import {showMessage} from 'react-native-flash-message'
-const BlockHandOutItem = () => {
+const BlockHandOutItem = (props) => {
   const [loading,setLoading] = useState(true)
+  console.log( props)
   return (
     <TouchableOpacity style={styles.handOutItem}>
       <WebView
-      source={{ uri: 'https://docs.google.com/gview?embedded=true&url=https://www.learningcontainer.com/wp-content/uploads/2019/09/sample-pdf-with-images.pdf' }}
+      source={{ uri: `${props.file}` }}
       style={[styles.pdfViewStyle, {}]}
       startInLoadingState={true}
       domStorageEnabled={true}
@@ -39,9 +40,9 @@ const BlockHandOutItem = () => {
         )
       }
       />
-      <Text style={[styles.textStyle,styles.courseCode]}> MTH 121</Text>
-      <Text style={styles.textStyle}> simple calculus technics and stuff </Text>
-      <Text style={[styles.textStyle, styles.postedBy]}> By: D%D</Text>
+      <Text style={[styles.textStyle,styles.courseCode]}>{props.course.courseCode}</Text>
+      <Text style={styles.textStyle}> {props.course.title} </Text>
+      <Text style={[styles.textStyle, styles.postedBy]}> By:{props.lecturer}</Text>
     </TouchableOpacity>
   );
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TouchableOpacity,View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform} from 'react-native';
+import {TouchableOpacity,View, Text, TextInput, Modal,Image,Keyboard, Dimensions, Animated, Easing, Platform, AsyncStorage} from 'react-native';
 import EStylesheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import Logo from '../../assets/svg/logo.svg'
@@ -9,6 +9,7 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380;
 import  { showMessage } from "react-native-flash-message";
+import Keys from '../../constants/Keys';
 
 
 const styles = EStylesheet.create({
@@ -17,7 +18,6 @@ const styles = EStylesheet.create({
       },
       logoImage:{
          alignSelf: 'center',
-         position: "relative",
          marginTop:'100rem',
          height:'180rem',
          width:'180rem',
@@ -168,7 +168,6 @@ class SignUpForm extends Component {
         parentYPosition:0
     }
     UNSAFE_componentWillMount(){
-      console.warn(this.props)
       this.keyboardWillShowSub = Keyboard.addListener("keyboardDidShow", this.keyboardWillShow);
       this.keyboardWillHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardWillHide);
     }
@@ -222,28 +221,34 @@ class SignUpForm extends Component {
      }
      
      goHome= ()=>{
-      this.props.goToHome()
+      AsyncStorage.setItem(Keys.department,JSON.stringify({_id:'5e8e31f8e1a20dca09a7fef4'}))
+      .then(()=>{
+        AsyncStorage.setItem(Keys.level,JSON.stringify({_id:"5e8e320de1a20dca09a7fef5"}))
+        .then(()=>{
+          this.props.goToHome()
+        })
+      })
      }
 
     handleSlidUp= ()=>{
-     const {matricNumber, password}= this.state;
-      // if (matricNumber.length<5) {
-      //     showMessage({
-      //       type: "danger",backgroundColor:"#FF3051",icon:"danger", 
-      //       message:"Matric Number is to short",
-      //       titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
-      //     }); 
-      //     return
-      // }
-      // if (password.length===0) {
-      //   showMessage({
-      //     type: "danger",backgroundColor:"#FF3051", icon:"danger",
-      //     message:"Password cannot be empty",
-      //     titleStyle:{textAlign:"center"},
-      //     textStyle:{textAlign:"center"},
-      //   }); 
-      //   return 
-      // }                                                                                                                                        
+    //  const {matricNumber, password}= this.state;
+    //   if (matricNumber.length<5) {
+    //       showMessage({
+    //         type: "danger",backgroundColor:"#FF3051",icon:"danger", 
+    //         message:"Matric Number is to short",
+    //         titleStyle:{textAlign:"center"}, textStyle:{textAlign:"center"}
+    //       }); 
+    //       return
+    //   }
+    //   if (password.length===0) {
+    //     showMessage({
+    //       type: "danger",backgroundColor:"#FF3051", icon:"danger",
+    //       message:"Password cannot be empty",
+    //       titleStyle:{textAlign:"center"},
+    //       textStyle:{textAlign:"center"},
+    //     }); 
+    //     return 
+    //   }                                                                                                                                        
       this.setState({scroll:true})
     }
 
@@ -306,7 +311,7 @@ class SignUpForm extends Component {
                          })
                       }]}>
                       <Animated.Image  style={[styles.logoImage,{
-                        }]} resizeMode="cover" source={ require('../../assets/images/Logo/Logo.png')}/>
+                        }]} resizeMode="contain" source={ require('../../assets/images/Logo/Logo.png')}/>
                           <Animated.Text style={[styles.loginText, 
                           {
                             opacity:this.state.logoSize.interpolate({

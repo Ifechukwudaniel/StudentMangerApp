@@ -13,10 +13,7 @@ class Material extends Component{
     searchValue:'',
     searchKeyWord:''
   }
-  UNSAFE_componentWillMount(){
-    this.props.getMaterials()
-  }
- 
+
     render() {
       const {openFilter}= this.state
       const {loading, materials,searchEmpty, error} = this.props

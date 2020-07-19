@@ -1,96 +1,66 @@
 import React, { useState } from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import {TouchableOpacity, View, Text, Dimensions} from 'react-native';
 import EStyleSheet from "react-native-extended-stylesheet";
-const AttendanceItem = ({navigation}) => {
+import Check from '../../assets/svg/check.svg'
+import Close from '../../assets/svg/close.svg'
+import moment from 'moment';
+const entireScreenWidth = Dimensions.get('window').width;
+const rem = entireScreenWidth/380
+
+const AttendanceItem = ({navigation, date , timeStart, timeEnd , attended}) => {
   const [view, setOpenView] = useState(false)
   return (
-      <TouchableOpacity onPress={()=>navigation.navigate("Calender")} style={[styles.container]}>
-         <View style={[styles.shadow, styles.flexRow]}>
-            <View style={styles.courseGroup}>
-              <Text style={styles.courseCode}>Csc 121 </Text>
-              <Text style={styles.courseTitle}  ellipsizeMode='tail' numberOfLines={1} >introduction to maths and physic </Text>
-            </View>
-            <View style={styles.left}>
-              <Text style={[styles.leftNumber, styles.presentText]}>07</Text>
-              <Text style={[styles.leftText]}>Present</Text>
-            </View>
-            <View style={styles.left}>
-              <Text style={[styles.leftNumber, styles.absentText]}>03</Text>
-              <Text style={styles.leftText}>Absent</Text>
-            </View>
-         </View>
-      </TouchableOpacity>
+      <View  style={styles.container}>
+        <View style={styles.left} >
+            <Text style={styles.date}> {moment(date).format('DD/MM/YYYY')}</Text>
+        </View>
+        <View style={styles.center}>
+           <Text style={styles.contentText}> {timeStart} - {timeEnd}</Text>
+        </View>
+        <View style={styles.right}>
+           { attended? <Check  style={styles.svg}/> :    <Close style={styles.svg}/> }
+       </View>
+      </View>
   );
 }
 const styles = EStyleSheet.create({
-  container: {
-    width:'350rem',
-    height:'96rem',
-    backgroundColor: "#252525",
-    borderRadius:'10rem',
-    shadowColor: "#000",
-    shadowOffset: {
-          width: '0rem',
-          height: '-4rem',
-    },
-    shadowOpacity: '1rem',
-    shadowRadius: '3.84rem',
-    elevation: 5,
+  container:{
+    width:'95%',
+    height:'80rem',
+    flexDirection:'row',
+    marginBottom: '10rem',
     alignSelf: 'center',
-    marginTop: '30rem',
-  },
-  shadow:{
-    shadowColor: "#000",
-    shadowOffset: {
-        width: '10rem',
-        height: '3rem',
-  },
-  shadowOpacity: 1,
-  shadowRadius: '3.84rem',
-  flex: 1,
-  },
-  flexRow:{
-    flexDirection: 'row',
-  },
-  courseCode:{
-    color:"#fff",
-    fontFamily: 'Brother1816-Bold',
-    fontSize: '24rem',
-  },
-  courseTitle:{
-    color:"#fff",
-    fontFamily: 'Itim',
-    fontSize: '16rem',
-    width:'190rem'
-  },
-  courseGroup:{
-    marginLeft: '18rem',
-    marginTop:'20rem'
   },
   left:{
-   marginTop:"10rem",
-   marginLeft:"7rem",
-   width:"50rem"
+    backgroundColor:' rgba(107, 105, 105, 0.11);',
+    width:'30%'
   },
-  leftNumber:{
-    color:"#fff",
-    fontFamily: 'American Typewriter',
+  center:{
+   width:'50%',
+   backgroundColor:'rgba(255, 251, 251, 0.04);'
+  },
+  right:{
+    backgroundColor:'rgba(196, 196, 196, 0.09)',
+    width:'20%',
+    justifyContent: 'center',
+  },
+  date:{
+     color:'#FF912C',
+     fontWeight: 'bold',
+     fontSize:'12rem',
+     lineHeight:'70rem',
+     textAlign:'center'
+  },
+  contentText:{
+    color:'rgba(255, 254, 254, 0.73)',
     fontWeight: 'bold',
-    fontSize: '33rem',
-    width:'170rem'
+    fontSize:'14rem',
+    lineHeight:'70rem',
+    textAlign:'center',
   },
-  leftText:{
-    color:"#fff",
-    fontFamily: 'Itim',
-    marginTop:'5rem',
-    textAlign:"center",
-    width:"47rem",
-  },
-  presentText:{
-    color:"#126AF3"
-  },
-  absentText:{
-    color:"#EA3939"
+  svg:{
+   alignSelf:'center',
+   width:'100rem'
   }
 });
  

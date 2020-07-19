@@ -5,6 +5,7 @@ import {departmentReducer} from './departmentReducer'
 import { materialsReducer } from './materialsReducer';
 import { blogsReducer } from './blogsReducer';
 import { TimeTableReducer } from './timeTableReducer';
+import { attendanceReducer } from './attendanceReducer.';
 
 export const allReducers = combineReducers({
   department:departmentReducer,
@@ -12,5 +13,6 @@ export const allReducers = combineReducers({
   screen :screenReducer,
   material:materialsReducer,
   blogs:blogsReducer,
-  timeTable:TimeTableReducer
+  timeTable:TimeTableReducer,
+  attendance:attendanceReducer
 });

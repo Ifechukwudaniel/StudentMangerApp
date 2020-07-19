@@ -2,20 +2,18 @@ import React from 'react';
 import { ScrollView,View, StyleSheet } from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import PostsHeader from '../components/Posts/PostHeaader';
-import Posts from '../components/Posts';
+import PostItem from '../components/Posts/PostItem';
 
-export default function PostsScreen(props) {
+export default function PostsItemScreen(props) {
   return (
     <Layout style={styles.container}>
-      <View style={styles.container}>
-       <PostsHeader {...props}/>
-       <Posts {...props}/>
-      </View>
+       <PostsHeader back backScreen = "Post" {...props}/>
+      <PostItem {...props}/>
     </Layout>
   );
 }
 
-PostsScreen.navigationOptions = {
+PostsItemScreen.navigationOptions = {
   header:null
 };
 

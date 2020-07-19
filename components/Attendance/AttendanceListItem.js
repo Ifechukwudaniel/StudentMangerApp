@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import EStyleSheet from "react-native-extended-stylesheet";
-const AttendanceListItem = ({present , absent ,courseCode}) => {
+const AttendanceListItem = ({ id, present , absent ,courseCode , navigation, attendance}) => {
   return (
-      <TouchableOpacity  style={styles.container}>
+      <TouchableOpacity  onPress= {()=>navigation.navigate("RecordItem",attendance)} style={styles.container}>
        <View style={styles.courseCodeView}>
          <Text style={styles.courseCode}>   {courseCode} </Text>
        </View> 
@@ -27,7 +27,8 @@ const styles = EStyleSheet.create({
       width:'100%',
       backgroundColor: " rgba(255, 255, 255, 0.1)",
       height:'80rem',
-      flexDirection:'row'
+      flexDirection:'row',
+      marginTop: '10rem',
     },
     courseCodeView:{
       width:'30%',
@@ -41,11 +42,11 @@ const styles = EStyleSheet.create({
       fontWeight:'500'
     },
     presentBar:{
-      height:'50rem',
+      height:'40rem',
       backgroundColor:"#5DDA80"
     },
     absentBar:{
-      height:'50rem',
+      height:'40rem',
       backgroundColor:'#FF7B79'
     },
     barsWrapper:{

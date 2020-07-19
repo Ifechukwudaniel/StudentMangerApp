@@ -17,6 +17,7 @@ import Keys from '../../constants/Keys';
        dispatch(getMaterialsBegin())
         AsyncStorage.multiGet([Keys.department, Keys.level])
         .then((value)=>{
+          console.log(value)
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
             axios.get(`http://localhost:3000/material/${departmentId}/${levelId}`)

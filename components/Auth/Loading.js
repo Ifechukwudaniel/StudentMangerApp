@@ -129,7 +129,7 @@ class Loading extends Component {
                       <Animated.View 
                        style={[styles.viewOne]}>
                       <Animated.Image  style={[styles.logoImage,{
-                        }]} resizeMode="cover" source={ require('../../assets/images/Logo/Logo.png')}/>
+                        }]} resizeMode="contain" source={ require('../../assets/images/Logo/Logo.png')}/>
                       </Animated.View>
                     <Animated.View   style={[styles.form, styles.viewTwo]}>
                             <ActivityIndicator style={[styles.spinner]} color="#C4C4C4" size="large"/>

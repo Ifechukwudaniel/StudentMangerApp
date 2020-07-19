@@ -6,7 +6,7 @@ import colors from "../constants/Colors"
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Colors from '../constants/Colors';
-import CalenderScreen from '../screens/CalenderScreen';
+// import CalenderScreen from '../screens/TimeTableScreen';
 import GraphScreen from '../screens/GraphScreen';
 const rem = Dimensions.get('window').width/380;
 
@@ -15,21 +15,21 @@ const config = Platform.select({
   },
 });
 
-const CalenderStack = createStackNavigator(
-  {
-    Calender: CalenderScreen,
-  },
-  config
-);
+// const CalenderStack = createStackNavigator(
+//   {
+//     Calender: CalenderScreen,
+//   },
+//   config
+// );
 
-CalenderStack.navigationOptions = {
-  tabBarLabel: 'Calender',
-  tabBarIcon: ({ focused }, props) => (
-    <MaterialCommunityIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="calendar-blank"/>
-  ),
-};
+// CalenderStack.navigationOptions = {
+//   tabBarLabel: 'Calender',
+//   tabBarIcon: ({ focused }, props) => (
+//     <MaterialCommunityIcon size={30*rem} color={focused ? Colors.tintColor :"#fff"} name="calendar-blank"/>
+//   ),
+// };
 
-CalenderStack.path = '';
+// CalenderStack.path = '';
 
 const GraphStack = createStackNavigator(
   {
@@ -48,7 +48,6 @@ GraphStack.navigationOptions = {
 GraphStack.path = '';
 
 const AttendanceNav = createBottomTabNavigator({
-   Calender:CalenderStack,
    Graph:GraphStack,
 },
 {

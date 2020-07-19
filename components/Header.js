@@ -7,7 +7,7 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
 const HeaderComponent = (props) => {
-        console.log(props)
+  console.log(props.navigation)
     return (
        <Header transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
@@ -16,13 +16,19 @@ const HeaderComponent = (props) => {
               <HandBugger width={30*rem} height={30*rem}/>
             </Button>
           </Left>
-          <Body style={{flex:1}}>
+          <Body  style={{flex:1}}>
             <Title style={styles.textStyle}>{props.screenName}</Title>
           </Body>
           <Right style={{flex:1}}>
-            <Button transparent>
-                <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
+            { !props.back ?   
+            <Button  onPress={()=>props.navigation.navigate('Settings')}   transparent>
+              <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
             </Button>
+            : 
+            <Button  onPress={()=>props.navigation.navigate(props.backScreen)}   transparent>
+               <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>
+            </Button>
+            }
           </Right>
        </Header>
     );

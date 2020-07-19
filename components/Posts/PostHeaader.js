@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Header, Left, Body, Right, Button, Icon, Segment, Drawer } from 'native-base'
+import {  Header, Left, Body, Right, Button, Icon, Segment,  } from 'native-base'
 import {Image, StatusBar, Dimensions, Text, TouchableOpacity} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../../assets/svg/handBugger.svg' 
@@ -28,9 +28,16 @@ const PostsHeader = (props) => {
             </Segment>
           </Body>
           <Right>
+          {
+            !props.back ? 
             <Button onPress={()=> props.navigation.navigate('Settings')}  transparent>
                <Setting width={20*rem} height={25*rem}/>
             </Button>
+            :
+            <Button onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
+            <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>  
+            </Button>
+          }
           </Right>
        </Header>
     );

@@ -2,13 +2,14 @@ import React from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import TimeTable from '../../components/TimeTable'
+import HeaderComponent from '../../components/Header';
+import Calender from '../../components/Attendance/Calender';
 
 export default function TimeTableScreen(props) {
   return (
     <Layout style={styles.container}>
-      <View style={styles.container}>
-         <TimeTable {...props}/>
-      </View>
+      <HeaderComponent {...props}  screenName={"TIMETABLE"} />
+      <Calender/>
     </Layout>
   );
 }

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View,  StyleSheet, Image, Text, ScrollView, Switch, Dimensions} from 'react-native';
+import { View,  StyleSheet, Image, Text, ScrollView, Switch, Dimensions, AsyncStorage} from 'react-native';
 import ExtendedStyleSheet from 'react-native-extended-stylesheet'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 // import { Switch } from 'react-native-switch';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import Exit from '../../assets/svg/exit.svg'
+import { connect } from 'react-redux'
+
 
 class Setting extends Component {
   state={
@@ -62,7 +64,10 @@ class Setting extends Component {
                             <Text  style={styles.locationText}> 100</Text>
                         </View>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.logOutButton}>
+                      <TouchableOpacity onPress={()=>{
+                        AsyncStorage.clear()
+                        this.props.navigation.navigate('Auth')
+                      }} style={styles.logOutButton}>
                             <Text style={styles.logOutText}>  LOG OUT  <Exit/> </Text>
                       </TouchableOpacity>
                   </View>
@@ -139,4 +144,18 @@ const styles = ExtendedStyleSheet.create({
     }
 });
  
-export default Setting;
+
+function mapStateToProps(state) {
+  return {
+    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getBlogs:()=>{
+      dispatch(getBlogs())
+    },
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Setting)

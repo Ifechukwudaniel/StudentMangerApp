@@ -32,11 +32,12 @@ const PurchaseItem = ({type, name, orderCode,date, id, location,deliveryStatus,d
 
 const styles = EStyleSheet.create({
   purchaseItem:{
-    width:'90%',
+    width:'97%',
     height:' 363rem',
     backgroundColor: "rgba(255, 255, 255, 0.04)",
     alignSelf: 'center',
-    borderRadius:'3rem'
+    borderRadius:'3rem',
+    marginTop: '20rem',
   },
   purchaseTop:{
    flexDirection: 'row',
