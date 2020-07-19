@@ -8,15 +8,16 @@ import Chat from '../../assets/svg/chat.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const PostListItem = () => {
+const PostListItem = (props) => {
+
   return (
      <View style={styles.postItem}>
-     <TouchableOpacity>
-        <Image  resizeMode='cover' style={styles.postImage} source={require('../../assets/images/post.png')}/>
+     <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
+        <Image  resizeMode='cover' style={styles.postImage} source={{url:props.image}}/>
      </TouchableOpacity>
         <View>
-          <TouchableOpacity>
-             <Text style={styles.postTitle} >Things people say and do are the thing we do and say: By the heart of people #autogen</Text>
+          <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
+             <Text style={styles.postTitle} >{props.title}</Text>
           </TouchableOpacity>
           <View style={styles.actionList}>
               <View style={styles.action}>
@@ -31,10 +32,10 @@ const PostListItem = () => {
                  <Dislike width={20*rem} height={20*rem} style={styles.actionIcon}/>
                  <Text style={styles.actionCount}>12920</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.action}>
+              <View style={styles.action}>
                  <Chat width={20*rem} height={20*rem} style={styles.actionIcon}/>
                  <Text style={styles.actionCount}>12920</Text>
-              </TouchableOpacity>
+              </View>
           </View>
         </View>
      </View>
@@ -44,11 +45,12 @@ const PostListItem = () => {
 const styles =  EStyleSheet.create({
  postItem:{
    width:'90%',
-   height:"370rem",
+   height:"340rem",
    backgroundColor:"rgba(255, 252, 252, 0.04)",
    alignSelf: 'center',
    borderRadius: '8rem',
    padding: '10rem',
+   marginTop:'20rem'
  },
  postImage :{
    width:'300rem',

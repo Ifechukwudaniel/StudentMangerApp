@@ -9,13 +9,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const PostItem = () => {
+const PostItem = (props) => {
+   const {title, content, image} = props.navigation.state.params.data
   return (
      <ScrollView>
      <View style={styles.postItem}>
-        <Image  resizeMode='cover' style={styles.postImage} source={require('../../assets/images/post.png')}/>
+        <Image  resizeMode='cover' style={styles.postImage} source={{uri:image}}/>
         <View>
-             <Text style={styles.postTitle} >Things people say and do are the thing we do and say: By the heart of people #autogen</Text>
+             <Text style={styles.postTitle} >{title}</Text>
           <View style={styles.actionList}>
               <View style={styles.action}>
                  <Views width={25*rem} height={25*rem} style={styles.actionIcon}/>
@@ -36,7 +37,7 @@ const PostItem = () => {
           </View>
           <View style={styles.postWrapper}>
              <Text style={styles.postContent}>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisi turpis nibh arcu id arcu libero. Volutpat hendrerit nulla mauris porta. Vel turpis netus diam, fringilla blandit ullamcorper integer urna, fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisi turpis nibh arcu id arcu libero. Volutpat hendrerit nulla mauris porta. Vel turpis netus diam, fringilla blandit ullamcorper integer urna, fermentum.
+                {content}
              </Text>
           </View>
         </View>
