@@ -14,7 +14,7 @@ const PostItem = (props) => {
   return (
      <ScrollView>
      <View style={styles.postItem}>
-        <Image  resizeMode='cover' style={styles.postImage} source={{uri:image}}/>
+        <Image defaultSource= {require('../../assets/images/preloaded.png')} resizeMode='cover' style={styles.postImage} source={{uri:image}}/>
         <View>
              <Text style={styles.postTitle} >{title}</Text>
           <View style={styles.actionList}>
