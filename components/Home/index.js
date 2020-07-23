@@ -51,19 +51,6 @@ class Home extends Component {
               <View>
                   <TextInput onChangeText={(value)=>this.props.searchMaterials(value)}  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
               </View>
-              {/* <View style={styles.listTypes}>
-                  <TouchableOpacity  onPress={()=>this.setState({listTypeBlock:true,listTypeList:false})}  style={[styles.listTypesItem]}>
-                  <Animated.View>
-                    <BlockIcon width={30*rem} height={30*rem}/>
-                  </Animated.View>
-
-                  </TouchableOpacity>
-                  <TouchableOpacity  onPress={()=>this.setState({listTypeList:true, listTypeBlock:false})} style={[styles.listTypesItem]}>
-                    <Animated.View>
-                      <ListIcon width={30*rem} height={30*rem}/>
-                    </Animated.View>
-                  </TouchableOpacity>
-              </View> */}
               <View style={styles.HandOuSlideView}>
                   <Left>
                     <Text style={styles.handText} > Hand-outs</Text>
