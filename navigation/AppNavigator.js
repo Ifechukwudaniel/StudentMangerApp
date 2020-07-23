@@ -12,10 +12,11 @@ import AuthScreen from '../screens/AuthScreen'
 export default createAppContainer(
   createSwitchNavigator({
     Main: MainTabNavigator,
-    Auth:AuthScreen
+    Auth:AuthScreen,
+    Setup:SetupNavigation
   },
   {
-    initialRouteName:"Auth",
+    initialRouteName:"Setup",
     
   })
 );
