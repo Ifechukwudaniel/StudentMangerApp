@@ -18,7 +18,7 @@ const styles = EStylesheet.create({
          position: "relative",
          marginTop:'100rem',
          height:'200rem',
-         width:'180rem',
+         width:'280rem',
          marginBottom: '40rem',
       },
       '@media (min-height: 500) and (max-height: 700)': {

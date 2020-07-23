@@ -23,8 +23,8 @@ const styles = EStylesheet.create({
          alignSelf: 'center',
          position: "relative",
          marginTop:'100rem',
-         height:'180rem',
-         width:'180rem',
+         height:'200rem',
+         width:'200rem',
          marginBottom: '70rem',
       },
       '@media (min-height: 500) and (max-height: 700)': {

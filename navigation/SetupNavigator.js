@@ -6,10 +6,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 // import TabBarIcon from '../components/TabBarIcon';
 import DepartmentScreen from '../screens/DepartmentScreen';
-import LevelScreen from '../screens/LevelScreen';
 import colors from "../constants/Colors"
-import CourseScreen from '../screens/CourseScreen';
-import {fromRight, zoomIn } from 'react-navigation-transitions';
+import IntroScreen from '../screens/IntroScreen';
 
 
 const config = Platform.select({
@@ -18,42 +16,19 @@ const config = Platform.select({
 });
 
 
-const LevelStack = createStackNavigator({
-   Level: LevelScreen
+const IntroStack = createStackNavigator({
+   Intro:IntroScreen
 },
 {
-  transitionConfig:()=>zoomIn()
 }
 )
-LevelStack.path = '';
+IntroStack.path = '';
 
-
-const CourseStack = createStackNavigator(
-  {
-    Course: CourseScreen ,
-  },
-  config
-);
-
-
-CourseStack.path = '';
-
-
-const DepartmentStack = createStackNavigator(
-  {
-    Department: DepartmentScreen,
-  },
-  config
-);
-
-DepartmentStack.path = '';
 
 const SetupStack = createStackNavigator({
-  level:LevelStack,
-  Department:DepartmentStack,
-  Course:CourseStack,
+  intro:IntroStack,
 },{
-   initialRouteName:"Department",
+   initialRouteName:"intro",
    headerMode:'none',
 });
 
