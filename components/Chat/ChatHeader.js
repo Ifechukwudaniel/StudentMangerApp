@@ -10,7 +10,7 @@ const rem = entireScreenWidth/380
 const ChatHeader = (props) => {
     return (
        <Header hasSegment transparent  style={styles.header}>
-        <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
+        <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
           <Left>
             <Button onPress={()=>props.navigation.openDrawer()}ui  transparent>
               <HandBugger width={30*rem} height={30*rem}/>

@@ -9,7 +9,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
  
 class Post extends Component {
     UNSAFE_componentWillMount(){
-        StatusBar.setHidden(true)
+        // StatusBar.setHidden(true)
         this.props.getBlogs()
     }
     render() { 

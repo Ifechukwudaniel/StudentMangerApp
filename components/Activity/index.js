@@ -52,7 +52,7 @@ class Activity extends Component {
   ]
 
     UNSAFE_componentWillMount(){
-        StatusBar.setHidden(true)
+        // StatusBar.setHidden(true)
         this.props.getBlogs()
     }
     state={
