@@ -7399,7 +7399,7 @@ prompts@^2.3.0:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@*, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.7.x:
+prop-types@*, prop-types@15.7.2, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.7.x:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -7495,6 +7495,14 @@ range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+
+react-addons-shallow-compare@15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
+  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
 
 react-content-loader@^5.0.4:
   version "5.0.4"
@@ -7670,13 +7678,6 @@ react-native-lightbox@^0.8.1:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-material-ripple@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.9.1.tgz#db1ad9dd7cf97011e4cd8475ae2041ade0f891cb"
-  integrity sha512-dHjARdKoGD3LXwPh2TkURabywM5BfdpKc/AHplJTfBMalhVZ2bc7iJoJmNhNnmT/TZ+B3szL6uV1mO7Pv8zNeA==
-  dependencies:
-    prop-types "^15.5.10"
-
 react-native-modal@^11.5.6:
   version "11.5.6"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.5.6.tgz#bb25a78c35a5e24f45de060e5f64284397d38a87"
@@ -7753,6 +7754,14 @@ react-native-screens@2.0.0-alpha.12:
   integrity sha512-tOxHGQUN83MTmQB4ghoQkibqOdGiX4JQEmeyEv96MKWO/x8T2PJv84ECUos9hD3blPRQwVwSpAid1PPPhrVEaw==
   dependencies:
     debounce "^1.2.0"
+
+react-native-snap-carousel@^4.0.0-beta.5:
+  version "4.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-4.0.0-beta.5.tgz#b9d0520ad480cf6f6b2c7611b27958b6cdafb4fa"
+  integrity sha512-bMW9JGMFijfD41XiNspxKZp3BThaTmUlMWdOtV8AAhXvTyQsb9JB23xzE7NXotnuSLhbfISoKO56AUxCoejNxw==
+  dependencies:
+    prop-types "15.7.2"
+    react-addons-shallow-compare "15.6.2"
 
 react-native-svg-transformer@^0.14.3:
   version "0.14.3"
@@ -7856,6 +7865,13 @@ react-native-webview@^9.0.2:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
     rnpm-plugin-windows "^0.5.1-0"
+
+react-native-youtube@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-youtube/-/react-native-youtube-2.0.1.tgz#1b6275ca2c1db8e13539a59ccfda8ae8479b1590"
+  integrity sha512-CVzJyynKoEEMXHv/Nx+s8HdovnfVIZs0DIUjWUQsgEd+kbBubXJZTguCKj4WigI8SI1LJ0thF8SEGbdqW8oJkw==
+  dependencies:
+    prop-types "^15.5.0"
 
 react-native@~0.61.4:
   version "0.61.5"
@@ -8312,11 +8328,6 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
-
-rn-sprite-sheet@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/rn-sprite-sheet/-/rn-sprite-sheet-1.1.6.tgz#929854bdb610d179ac24f43dbb1b345b7b199f6f"
-  integrity sha512-VN3+8uhmG9SI8MeLrBsCNEgYb+M10g7Om3sO5FSjBoY8nosk/g+BbW+65roarZOuDwae9gd+Eet4LEpeDcJPpQ==
 
 rn-tooltip@^2.0.0:
   version "2.0.0"
