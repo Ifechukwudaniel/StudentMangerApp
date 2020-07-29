@@ -6,29 +6,29 @@ import HandBugger from '../assets/svg/handBugger.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const HeaderComponent = (props) => {
+const GuestHeader = (props) => {
   console.log(props.navigation)
     return (
        <Header transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
           <Left style={{flex:1}}>
-            <Button onPress={()=>props.navigation.openDrawer()} transparent>
-              <HandBugger width={30*rem} height={30*rem}/>
+          { !props.back ?   
+            <Button     transparent>
+              {/* <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/> */}
             </Button>
+            : 
+            <Button  onPress={()=>props.navigation.goBack()}   transparent>
+               <Icon style={{color:'#FF912C', fontSize:30}} type="FontAwesome5"  name="arrow-left"/>
+            </Button>
+            }
           </Left>
           <Body  style={{flex:1}}>
             <Title style={styles.textStyle}>{props.screenName}</Title>
           </Body>
           <Right style={{flex:1}}>
-            { !props.back ?   
-            <Button  onPress={()=>props.navigation.navigate('Settings')}   transparent>
-              <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
+            <Button  onPress={()=>alert()}   transparent>
+               <Icon style={{color:'#FFF'}} type="Ionicons"  name="notifications"/>
             </Button>
-            : 
-            <Button  onPress={()=>props.navigation.navigate(props.backScreen)}   transparent>
-               <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>
-            </Button>
-            }
           </Right>
        </Header>
     );
@@ -58,4 +58,4 @@ const styles = EStyleSheet.create({
         justifyContent: 'center',
     }
 })
-export default HeaderComponent;
+export default GuestHeader;
