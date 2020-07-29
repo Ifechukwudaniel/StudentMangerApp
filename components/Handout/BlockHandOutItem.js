@@ -49,9 +49,17 @@ const BlockHandOutItem = (props) => {
       <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
           <View style={styles.modalPdf}>
             <HandOutHeader courseCode={props.course.courseCode} closeModal= {()=>setModal(false)}/>
-            <View style= {{flex:1, backgroundColor:'#fff'}}>
-
-            </View>
+            <WebView
+                  source={{ uri: `${props.file}` }}
+                  style={{flex:1}}
+                  renderLoading={
+                  ()=>(
+                    <View style={{flex:1, backgroundColor:'red'}}>
+                        <ActivityIndicator style={[styles.spinner]} color="#FF912C" size="large"/>
+                    </View>
+                  )
+                  }
+              />
           </View>
       </Modal>
     </TouchableOpacity>
