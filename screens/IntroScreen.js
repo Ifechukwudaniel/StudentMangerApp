@@ -12,7 +12,7 @@ export default function IntroScreen(props) {
                <LinearGradient colors={['rgba(15,15,15,0.56)','rgba(15,15,18,0.96)', 'rgba(15,15,18,1)']} style={styles.gradient}>
                    <Image resizeMode="contain" style={styles.image} source={require('../assets/images/Logo/Logo.png')} /> 
                    <Text style={styles.text}> Welcome to APP let’s get you started  </Text>
-                   <TouchableOpacity style={styles.buttonStyle}>
+                   <TouchableOpacity onPress = {()=>props.navigation.navigate("guestHome")} style={styles.buttonStyle}>
                        <Text style={styles.buttonText}> as a GUEST </Text>
                    </TouchableOpacity>
                    <TouchableOpacity onPress = {()=>props.navigation.navigate("Auth")} style={[styles.buttonStyle, {backgroundColor:"#242426"}]}>
