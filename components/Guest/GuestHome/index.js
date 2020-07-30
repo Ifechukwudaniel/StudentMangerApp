@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions, ActivityIndicator, TextInput } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import YouTube from 'react-native-youtube';
 
@@ -11,20 +11,28 @@ import Guidelines from '../../../assets/svg/guilelines.svg'
 import Rules from '../../../assets/svg/rules.svg'
 import Visit from '../../../assets/svg/visit.svg'
 import GuestHeader from '../../../components/GuestHeader';
+import { CarouselComponent } from '../../Carousel';
+const {width } =Dimensions.get("window")
+import RBSheet from "react-native-raw-bottom-sheet";
+const entireScreenWidth = Dimensions.get('window').width;
+const rem = entireScreenWidth/380
+
 
  
 const styles = EStyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   video:{
-    width:'95%',
+    width:width-40,
     height:'209rem',
     alignSelf: 'center',
-    marginTop: '20rem',
     borderRadius: '10rem',
+    backgroundColor:'red'
+  },
+  videoWrapper:{
     marginBottom: '20rem',
-    // backgroundColor:'red'
+    marginTop: '20rem',
   },
   text:{
    color:'#fff',
@@ -37,6 +45,7 @@ const styles = EStyleSheet.create({
   innerView:{
     paddingLeft: '3rem',
     paddingRight: '3rem',
+    paddingBottom:'40rem'
   },
   menuList :{
      width:'95%',
@@ -73,7 +82,7 @@ const styles = EStyleSheet.create({
   },
   dollar:{
     fontSize:'50rem',
-    color:"#FFBCBC",
+    color:"#Fff",
     fontWeight: 'bold',
   },
   bottomText:{
@@ -81,6 +90,43 @@ const styles = EStyleSheet.create({
     marginTop: '30rem',
     marginLeft: '10rem',
     // textAlign:'center'
+  },
+  textInput:{
+   color:"rgba(255, 255, 255, 0.93)",
+   fontSize:'16rem',
+   marginTop:'15rem',
+   fontWeight: 'bold',
+  },
+  inputGroup:{
+    alignSelf: 'center',
+    backgroundColor:' rgba(196, 196, 196, 0.4)',
+    width:'90%',
+    height:'55rem',
+    marginTop:"20rem",
+    borderRadius:'8rem',
+    paddingLeft:'10rem',
+  },
+  buttonList:{
+     flexDirection: 'row',
+     height:'100rem',
+     width:'90%',
+     justifyContent: 'space-between',
+    marginTop: '20rem',
+    alignSelf: 'center',
+  },
+  button:{
+     width:'150rem',
+     height:'50rem',
+     backgroundColor:'#FF912C',
+     borderRadius: '10rem',
+     justifyContent: 'center',
+  },
+  buttonText:{
+    alignSelf: 'center',
+    color:"rgba(255, 255, 255, 0.93)",
+    fontSize:'16rem',
+    fontWeight: 'bold',
+    textTransform:'capitalize'
   }
 });
  
@@ -90,10 +136,14 @@ class GuestHome  extends Component {
       <View style={styles.container}>
          <GuestHeader screenName="HOME"  {...this.props}  back={true} />
         <ScrollView style={styles.innerView}>
+        <View style={styles.videoWrapper}>
+        <View style={styles.video}>
            <YouTube
-             videoId="PdHo5DelsJQ" loop 
+                videoId="PdHo5DelsJQ" loop 
              style={styles.video}
              />
+        </View>
+        </View>
              <Text style={styles.text}>  What would you like to know  </Text>
             <View style = {styles.menuList}>
                 <TouchableOpacity onPress= {()=>this.props.navigation.navigate('guestHistory')} style={styles.menuItem}>
@@ -114,7 +164,7 @@ class GuestHome  extends Component {
                     </View>
                     <Text style={styles.menuItemText}> calender </Text>
                </TouchableOpacity>
-               <TouchableOpacity style={styles.menuItem}>
+               <TouchableOpacity onPress={()=>this.RBSheetSupport.open()} style={styles.menuItem}>
                <View style={[styles.menuItemImage, {backgroundColor:'rgba(170, 237, 189, 0.35)'}]}>
                       <Support style={styles.imageSvg}/>
                     </View>
@@ -140,7 +190,7 @@ class GuestHome  extends Component {
                     </View>
                     <Text style={styles.menuItemText}> rules </Text>
                </TouchableOpacity>
-               <TouchableOpacity style={styles.menuItem}>
+               <TouchableOpacity onPress={()=>this.RBSheet.open()} style={styles.menuItem}>
                <View style={[styles.menuItemImage, {backgroundColor:'#FF912C'}]}>
                        <Visit style ={styles.imageSvg}/>
                     </View>
@@ -148,7 +198,53 @@ class GuestHome  extends Component {
                </TouchableOpacity>
             </View>
             <Text style={[styles.text, styles.bottomText]}>QUICKLY VIEWS AROUND BEnson Idahosa university </Text>
-            
+            <CarouselComponent/>
+            <CarouselComponent/>
+            <RBSheet
+            closeOnDragDown
+               ref={ref => {
+                  this.RBSheet = ref;
+                }}
+               height={350*rem}
+              openDuration={250}
+              customStyles={{
+              container: {
+                backgroundColor:'#1E1E1E'
+              }
+              }}
+            >
+            <View style={styles.inputGroup}>
+              <TextInput placeholder="Your Mail Address" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
+            </View>
+            <View style={styles.inputGroup}>
+             <TextInput placeholder="Phone Number" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
+             </View>
+             <View style={styles.inputGroup}>
+             <TextInput multiline placeholder="Purpose Of Visit" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
+            </View>
+           <View style={styles.buttonList}>
+              <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonText}> SEnd AS SMS  </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonText}> SEND as EmAIL  </Text>
+              </TouchableOpacity>
+           </View>
+        </RBSheet>  
+        <RBSheet
+            closeOnDragDown
+               ref={ref => {
+                  this.RBSheetSupport = ref;
+                }}
+               height={150*rem}
+              openDuration={250}
+              customStyles={{
+              container: {
+                backgroundColor:'#1E1E1E'
+              }
+              }}
+            >
+        </RBSheet>  
         </ScrollView>
       </View>
     );
