@@ -50,15 +50,20 @@ import Keys from '../../constants/Keys';
  export const searchMaterials = (text) => {
   return dispatch => {
       dispatch(searchMaterialsBegin())
-           axios.get(`http://localhost:3000/search/material/${text}`)
-           .then(({data})=>{
-             setTimeout(()=>{
-              dispatch(searchMaterialSuccess(data))
-             }, 2000)
-           })
-           .catch(error=>{
-           dispatch(searchMaterialError(error))
-           })
+           text ==""?()=>{
+                getMaterials()
+           }: ()=>{
+            axios.get(`http://localhost:3000/search/material/${text}`)
+            .then(({data})=>{
+              setTimeout(()=>{
+                 console.log(data)
+               dispatch(searchMaterialSuccess(data))
+              }, 2000)
+            })
+            .catch(error=>{
+            dispatch(searchMaterialError(error))
+            })
+           }
   };
 };
 

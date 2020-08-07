@@ -4,7 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import BlockIcon from '../../assets/svg/BlockIcon.svg'
 import ListIcon from '../../assets/svg/ListIcon.svg'
 import ShowAllSvg from '../../assets/svg/showAll.svg'
-import { Left, Right } from 'native-base';
+import { Left, Right, Icon } from 'native-base';
 import AttendanceListItem from '../Attendance/AttendanceListItem';
 import Setting from '../Settings';
 const entireScreenWidth = Dimensions.get('window').width;
@@ -14,6 +14,7 @@ import { getMaterials, searchMaterials } from '../../Redux/Actions/materials';
 import {ActivityIndicator} from 'react-native-paper'
 import HandOuListItem from '../Handout/HandOutListItem';
 import BlockHandOutItem from '../Handout/BlockHandOutItem';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 
 class Home extends Component {
@@ -22,7 +23,7 @@ class Home extends Component {
     searchValue:'',
     searchKeyWord:'',
     listTypeBlock:false,
-    listTypeList:true
+    listTypeList:true,
   }
 
   UNSAFE_componentWillMount(){
@@ -37,8 +38,14 @@ class Home extends Component {
       <FlatList
       data={materials}
       style={{marginBottom:100}}
-      renderItem ={(data)=>(<BlockHandOutItem  navigation= {this.props.navigation} {...data.item}/>)}
+      renderItem ={(data)=>(<HandOuListItem  navigation= {this.props.navigation} {...data.item}/>)}
       keyExtractor={item=>item._id}
+      numColumns={2}
+      onScroll= {
+        ()=>{
+          
+        }
+      }
    />
     )
   }
@@ -48,20 +55,36 @@ class Home extends Component {
           const {loading, materials,searchEmpty, error} = this.props
           return (
           <View style={styles.container}>
-              <View>
-                  <TextInput onChangeText={(value)=>this.props.searchMaterials(value)}  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
-              </View>
-              <View style={styles.HandOuSlideView}>
+              <Animated.View style={{overflow:1}}>
+                 <TextInput onChangeText={(value)=>this.props.searchMaterials(value)}  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
+              </Animated.View>
+              <Animated.View style={styles.HandOuSlideView}>
                   <Left>
                     <Text style={styles.handText} > Hand-outs</Text>
                   </Left>
-                  <Right>
-                  <TouchableOpacity style={[styles.showAllSvg, { alignSelf:'flex-end'}]} >
-                        <ShowAllSvg/>
+                  <Right style={styles.rightIcon}>
+                  {/* <TouchableOpacity style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
+                        <Icon style={styles.font} type="FontAwesome5"  name="search"/>
+                  </TouchableOpacity> */}
+                  <TouchableOpacity onPress={()=>this.RBSheetListType.open()} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
+                        <BlockIcon/>
                   </TouchableOpacity>
+                  <RBSheet
+                  closeOnDragDown
+                  ref={ref => {
+                  this.RBSheetListType = ref;
+                   }}
+                   height={200*rem}
+                   openDuration={250}
+                  customStyles={{
+                   container: {
+                    backgroundColor:'#0C0C0E'
+                    }
+                   }}>
+ 
+                  </RBSheet>
                   </Right>
-
-              </View>
+              </Animated.View>
               <View style={styles.containerView}>
                   {this.renderHandouts(loading, materials)}
               </View>
@@ -80,8 +103,16 @@ const styles = EStyleSheet.create({
     color:"#FF912C",
     
   },
+  GridViewBlockStyle: {
+    justifyContent: 'center',
+    flex:1,
+    alignItems: 'center',
+    height: 100,
+    margin: 5,
+    backgroundColor: '#00BCD4'
+   
+  },
   searchBox:{
-      height:'15rem',
       backgroundColor: "rgba(254,254,255,0.07)",
       marginLeft: '15rem',
       marginRight: '15rem',
@@ -114,9 +145,20 @@ const styles = EStyleSheet.create({
    },
    showAllSvg:{
     justifyContent: 'flex-end',
-    marginRight: '20rem',
+    marginRight: '10rem',
     marginTop:'10rem',
-   }
+   },
+   rightIcon:{
+     flexDirection: 'row',
+     justifyContent: 'flex-end',
+   },
+   font:{
+    color:'#FF912C',
+    fontSize:'22rem',
+  },
+  searchBar:{
+   
+  }
 
 })
 function mapStateToProps(state) {

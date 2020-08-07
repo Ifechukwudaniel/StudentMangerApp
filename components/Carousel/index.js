@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Modal } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Modal, Platform } from 'react-native';
 import Carousel , { ParallaxImage } from 'react-native-snap-carousel';
 import EStyleSheet from 'react-native-extended-stylesheet';
 const { width: screenWidth } = Dimensions.get('window')

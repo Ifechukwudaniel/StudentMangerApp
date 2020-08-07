@@ -18,12 +18,8 @@ const PostItem = (props) => {
         <View>
              <Text style={styles.postTitle} >{title}</Text>
           <View style={styles.actionList}>
-              <View style={styles.action}>
-                 <Views width={25*rem} height={25*rem} style={styles.actionIcon}/>
-                 <Text style={styles.actionCount}>12925</Text>
-              </View>
               <TouchableOpacity style={styles.action}>
-                 <Like width={25*rem} height={25*rem} style={styles.actionIcon}/>
+                 <Like color="rgba(254, 254, 254, 0.56);" width={25*rem} height={25*rem} style={styles.actionIcon}/>
                  <Text style={styles.actionCount}>12925</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.action}>
@@ -83,7 +79,8 @@ const styles =  EStyleSheet.create({
  actionIcon:{
   alignSelf:'center',
   width:'30rem',
-  height:'30rem'
+  height:'30rem',
+
  },
  actionCount:{
    color:'rgba(254, 254, 254, 0.56);'

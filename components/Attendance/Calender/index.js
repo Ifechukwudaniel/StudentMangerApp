@@ -141,7 +141,7 @@ const styles = EStyleSheet.create({
     flexDirection: 'row',
   },
   timeTableDay:{
-     width:'15%'
+     width:'25%'
   },
  timeTableContent:{
    flexDirection: 'row',

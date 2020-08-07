@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {  Header, Left, Body, Right, Button, Title, Text, Icon, } from 'native-base'
 import {Dimensions, View, TouchableOpacity} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
@@ -6,14 +6,28 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import Plus from '../assets/svg/plus.svg'
 import Modal from 'react-native-modal';
+import RBSheet from 'react-native-raw-bottom-sheet';
+
+
 const PlusTabBarIcon = ({}) => {
-  const [modal,openModal] = useState(false)
+  const  RBSheetAdd = useRef(null)
     return (
       <View>
-       
-         <TouchableOpacity onPress={()=>openModal(!modal)}>
+         <TouchableOpacity onPress={()=>RBSheetAdd.current.open()}>
            <Plus/>
          </TouchableOpacity>
+         <RBSheet
+             closeOnDragDown
+               ref={RBSheetAdd}
+               height={300*rem}
+              openDuration={250}
+              customStyles={{
+              container: {
+                backgroundColor:'#1E1E1E'
+              }
+              }}>
+           
+         </RBSheet>
       </View>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Dimensions, Text, View, Image,ScrollView, ImageBackground, Animated, Easing} from 'react-native';
+import {  Dimensions, Text, View, Image,ScrollView, ImageBackground, Animated, Easing, TouchableOpacity} from 'react-native';
 import { createStackNavigator ,} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import HomeScreen from '../screens/HomeScreen';
@@ -32,8 +32,8 @@ import Files from '../assets/svg/FilesTab.svg'
 import Shop from '../assets/svg/shop.svg'
 import Settings from '../assets/svg/settingTab.svg'
 import TimeTable from '../assets/svg/Clock.svg'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
+import Transition from 'react-navigation-transitions'
 
  const HomeStack  = createSwitchNavigator({
   Home:HomeScreen,
@@ -86,9 +86,26 @@ TimeSketchScreen.navigationOptions = {
 TimeSketchScreen.path = '';
 
 
-const ConversationStack  = createStackNavigator({
+const PostStack  = createStackNavigator({
   Post:PostsScreen,
   PostItem:PostsItemScreen,
+ }, {
+  transitionConfig : () => ({
+    transitionSpec: {
+      duration: 0,
+      timing: Animated.timing,
+      easing: Easing.step0,
+    },
+  }),
+ })
+ PostStack.navigationOptions = {
+  header:null
+};
+
+ PostStack.path = '';
+
+const ConversationStack  = createStackNavigator({
+  Post:PostStack,
   Chat:ChatScreen,
  }, {
   transitionConfig : () => ({

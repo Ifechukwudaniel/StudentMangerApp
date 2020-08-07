@@ -10,12 +10,16 @@ import Departments from '../../../assets/svg/departments.svg'
 import Guidelines from '../../../assets/svg/guilelines.svg'
 import Rules from '../../../assets/svg/rules.svg'
 import Visit from '../../../assets/svg/visit.svg'
+import Email from '../../../assets/svg/email.svg'
+import Phone from '../../../assets/svg/phone.svg'
 import GuestHeader from '../../../components/GuestHeader';
 import { CarouselComponent } from '../../Carousel';
 const {width } =Dimensions.get("window")
 import RBSheet from "react-native-raw-bottom-sheet";
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
+import SendSMS from 'react-native-sms'
+import { sendEmail } from '../../../util';
 
 
  
@@ -75,7 +79,7 @@ const styles = EStyleSheet.create({
     marginTop: '5rem',
     textTransform:'uppercase',
     fontWeight:'bold',
-    fontSize:'11rem'
+    fontSize:'11.4rem'
   },
   imageSvg:{
     alignSelf: 'center',
@@ -86,7 +90,7 @@ const styles = EStyleSheet.create({
     fontWeight: 'bold',
   },
   bottomText:{
-    fontSize: '13rem',
+    fontSize: '14rem',
     marginTop: '30rem',
     marginLeft: '10rem',
     // textAlign:'center'
@@ -131,6 +135,36 @@ const styles = EStyleSheet.create({
 });
  
 class GuestHome  extends Component {
+  state={
+    email:'',
+    phone:'',
+    visitPurpose:''
+  }
+
+ sendSms=()=>{
+    SendSMS.send({
+      body: 'Please follow https://aboutreact.com',
+      recipients: ['0123456789'],
+      successTypes: ['sent', 'queued'],
+  }).then((data)=>{
+     console.log(data)
+  })
+  .catch((e)=>{
+     console.log(e)
+  });
+  } 
+
+  sendEmailMain=()=>{
+    sendEmail(
+      'test@gmail.com',
+      'Greeting!',
+      'I think you are fucked up how many letters you get.'
+    ).then(() => {
+        console.log('Our email successful provided to device mail ');
+    })
+    .catch((err)=>console.log(err))
+  }
+
   render() { 
     return (
       <View style={styles.container}>
@@ -152,11 +186,11 @@ class GuestHome  extends Component {
                     </View>
                     <Text style={styles.menuItemText}> History </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.menuItem]}>
+                <TouchableOpacity  onPress= {()=>this.props.navigation.navigate('guestTuition')} style={[styles.menuItem]}>
                 <View style={[styles.menuItemImage,{backgroundColor:': rgba(255, 163, 163, 0.17)'}]}>
                   <Text style={[styles.imageSvg, styles.dollar]}> $ </Text>       
                 </View>
-                <Text style={styles.menuItemText}> tuition </Text>
+                <Text style={styles.menuItemText}> Tuition </Text>
                </TouchableOpacity>
                <TouchableOpacity style={styles.menuItem}>
                <View style={[styles.menuItemImage, {backgroundColor:'rgba(255, 226, 188, 0.29)'}]}>
@@ -214,7 +248,7 @@ class GuestHome  extends Component {
               }}
             >
             <View style={styles.inputGroup}>
-              <TextInput placeholder="Your Mail Address" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
+              <TextInput placeholder="Your Mail Address" title="" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
             </View>
             <View style={styles.inputGroup}>
              <TextInput placeholder="Phone Number" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
@@ -223,10 +257,14 @@ class GuestHome  extends Component {
              <TextInput multiline placeholder="Purpose Of Visit" placeholderTextColor=" rgba(255, 255, 255, 0.73)" style={styles.textInput}/>
             </View>
            <View style={styles.buttonList}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={()=>{
+                   this.sendSms()  
+              }} style={styles.button}>
                   <Text style={styles.buttonText}> SEnd AS SMS  </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                  onPress={()=>this.sendEmailMain()}
+               style={styles.button}>
                   <Text style={styles.buttonText}> SEND as EmAIL  </Text>
               </TouchableOpacity>
            </View>
@@ -236,7 +274,7 @@ class GuestHome  extends Component {
                ref={ref => {
                   this.RBSheetSupport = ref;
                 }}
-               height={150*rem}
+               height={170*rem}
               openDuration={250}
               customStyles={{
               container: {
@@ -244,6 +282,20 @@ class GuestHome  extends Component {
               }
               }}
             >
+             <View style = {[styles.menuList, {justifyContent:'space-around'}]}>
+             <TouchableOpacity onPress= {()=>{}} style={styles.menuItem}>
+                    <View style={[styles.menuItemImage, {backgroundColor:'#268237'}]}>
+                      <Email style={styles.imageSvg}/>
+                    </View>
+                    <Text style={styles.menuItemText}> SEND A MAIL  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress= {()=>{}} style={[styles.menuItem]}>
+                    <View style={[styles.menuItemImage, {backgroundColor:' rgba(93, 218, 128, 0.32)'}]}>
+                      <Phone style={styles.imageSvg}/>
+                    </View>
+                    <Text style={styles.menuItemText}> call </Text>
+                </TouchableOpacity>
+             </View>
         </RBSheet>  
         </ScrollView>
       </View>

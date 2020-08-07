@@ -15,11 +15,11 @@ const HandOutHeader = (props) => {
               <Text style={styles.handOutCourseCode}> {props.courseCode} Handout </Text>
            </View>
           <View style={styles.headerBottom}>
-              <TouchableOpacity style ={styles.buttonAction} >
+              <TouchableOpacity onPress={()=>props.openDownloads()} style ={styles.buttonAction} >
                   <Icon style={styles.fontButton} type="FontAwesome5"  name="file-download"/>
                   <Text style={styles.text}> Download </Text>
               </TouchableOpacity>
-              <TouchableOpacity style ={styles.buttonAction} >
+              <TouchableOpacity  onPress={()=>props.openOrders()} style ={styles.buttonAction} >
                   <Icon style={styles.fontButton} type="FontAwesome5"  name="shopping-cart"/>
                   <Text style={styles.text}> Order </Text>
               </TouchableOpacity>

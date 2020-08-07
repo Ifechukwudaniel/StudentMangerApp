@@ -7,7 +7,6 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
 const HeaderComponent = (props) => {
-  console.log(props.navigation)
     return (
        <Header transparent  style={styles.header}>
         <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>

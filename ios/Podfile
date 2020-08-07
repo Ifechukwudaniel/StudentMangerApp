@@ -17,6 +17,7 @@ target 'BiuAssist' do
   pod 'React-RCTActionSheet', :path => "#{rnPrefix}/Libraries/ActionSheetIOS"
   pod 'React-RCTAnimation', :path => "#{rnPrefix}/Libraries/NativeAnimation"
   pod 'React-RCTBlob', :path => "#{rnPrefix}/Libraries/Blob"
+  pod 'React-ART', :path => "#{rnPrefix}/Libraries/ART"
   pod 'React-RCTImage', :path => "#{rnPrefix}/Libraries/Image"
   pod 'React-RCTLinking', :path => "#{rnPrefix}/Libraries/LinkingIOS"
   pod 'React-RCTNetwork', :path => "#{rnPrefix}/Libraries/Network"
@@ -42,4 +43,5 @@ target 'BiuAssist' do
 
   # react-native-cli autolinking
   use_native_modules!
+
 end
