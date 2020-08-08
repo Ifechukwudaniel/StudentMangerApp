@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useRef, useImperativeHandle, forwardRef} from 'react';
 import {  Header, Left, Body, Right, Button, Title, Text, Icon,  } from 'native-base'
-import {Image, StatusBar, Dimensions, Animated} from 'react-native'
+import {Image, StatusBar, Dimensions, Animated, Platform, Easing} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../assets/svg/handBugger.svg' 
 const entireScreenWidth = Dimensions.get('window').width;
@@ -14,7 +14,12 @@ const HeaderComponent = forwardRef((props, ref)=> {
     useEffect(()=>{
       Animated.timing(value, {
           toValue: animation? 1 : 0,
-          duration: 150,
+           easing:Easing.bounce,
+          duration: Platform.select({
+            ios:150,
+            android:50 
+          }),
+          useNativeDriver:true
       }).start()
   }, [animation])
    
