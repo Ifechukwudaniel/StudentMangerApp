@@ -7,7 +7,7 @@ import HeaderComponent from '../components/Header';
 export default function SettingsScreen(props) {
   return (
     <Layout style={styles.container}>
-    <HeaderComponent {...props}  screenName={"SETTINGS"} />
+    <HeaderComponent {...props}  back screenName={"SETTINGS"} />
       <Setting {...props}/>
     </Layout>
   );

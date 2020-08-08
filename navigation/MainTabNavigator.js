@@ -218,7 +218,7 @@ createBottomTabNavigator({
         zIndex:1,
         elevation:2,
         paddingTop:10,
-        // height:60*rem
+        height:60*rem
     },
   },
   defaultNavigationOptions: ({ navigation }) => ({
@@ -256,8 +256,7 @@ const  MainDrawer = createDrawerNavigator({
         <LinearGradient style={styles.gradient} colors={['rgba(0,0,0,1)', '#0C0C0E']}>
            <ImageBackground style={styles.image} resizeMode="cover" source={require('../assets/images/drawerimage.png')}>
             <LinearGradient style={styles.gradient} colors={['rgba(0,0,0,0.1)', '#0C0C0E']}>
-                <Image style={styles.logo} resizeMode="cover" source={require('../assets/images/Logo/Logo.png')}/>
-                <Text style={styles.motto}> Rising star: motto </Text>
+                <Image style={styles.logo} resizeMode='contain' source={require('../assets/images/Logo/Logo.png')}/>
             </LinearGradient>
            </ImageBackground>
         </LinearGradient>
@@ -340,8 +339,8 @@ const styles = EStyleSheet.create({
      flex: 70,
   },
   logo:{
-     width:'100rem',
-     height:'100rem',
+     width:'170rem',
+     height:'170rem',
      alignSelf: 'center',
   },
   motto:{

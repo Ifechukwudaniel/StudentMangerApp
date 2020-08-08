@@ -7,13 +7,13 @@ import Dislike from '../../assets/svg/dislike.svg'
 import Chat from '../../assets/svg/chat.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
-
+import FastImage from 'react-native-fast-image';
 const PostListItem = (props) => {
-
+    const {image} = props
   return (
      <View style={styles.postItem}>
      <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
-        <Image defaultSource= {require('../../assets/images/preloaded.png')} resizeMode='cover' style={styles.postImage} source={{url:props.image}}/>
+        <FastImage  resizeMode={FastImage.resizeMode.cover} style={styles.postImage} source={{url:image,  priority: FastImage.priority.high}}/>
      </TouchableOpacity>
         <View>
           <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>

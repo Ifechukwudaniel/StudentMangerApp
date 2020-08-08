@@ -30,5 +30,6 @@ export const SET_DATE="SET_DATE"
 
 export  const url = Platform.select({
   ios:"localhost",
-  android:'10.0.2.2'
+  android:'192.168.43.179',
+  // android:'10.0.2.2'
 })
