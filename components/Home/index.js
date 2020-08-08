@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated, FlatList} from 'react-native';
+import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated, FlatList, Easing} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import BlockIcon from '../../assets/svg/BlockIcon.svg'
 import ListIcon from '../../assets/svg/ListIcon.svg'
@@ -87,9 +87,19 @@ class Home extends Component {
      renderItem ={(data)=>(<BlockHandOutItem navigation= {this.props.navigation} {...data.item}/>)}
      keyExtractor={item=>item._id}
      numColumns={1}
-     onScrollEndDrag= {
-       ()=>{
-        this.props.header.current.toggleHeader()
+     onScrollBeginDrag= {
+       (event)=>{
+        var currentOffset = event.nativeEvent.contentOffset.y;
+        var direction = currentOffset > this.offset ? 'down' : 'up';
+        this.offset = currentOffset;
+        if(direction==="up"){
+          this.animateSlideUp()
+          this.props.header.current.animateUp()
+        }
+        if(direction==="down"){
+          this.animateSlideDown()
+          this.props.header.current.animateDown()
+        }
        }
      }
   />
@@ -101,6 +111,11 @@ class Home extends Component {
     Animated.timing(this.state.value, {
       toValue: this.state.animation? 1 : 0,
       duration: 150,
+      easing:Easing.ease,
+      duration: Platform.select({
+        ios:150,
+        android:50 
+      }),
   }).start()
   })
  }
@@ -162,7 +177,7 @@ class Home extends Component {
                   }
                 ]
               }]}>
-                  {this.renderHandouts(loading, materials)}
+                  {this.renderHandoutsBlock(loading, materials)}
               </Animated.View>
           </View>
         )

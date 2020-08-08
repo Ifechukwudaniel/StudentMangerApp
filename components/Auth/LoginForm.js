@@ -336,11 +336,21 @@ class LoginForm extends Component {
                                 <Text  style={styles.forgotPassword}> Forget Password ? <Icon  style={styles.icon} type="FontAwesome5" name="hand-point-up" /></Text>
                           </TouchableOpacity>
                       </Animated.View>
-                      <View style={[styles.drag,styles.viewThree]}
-                      >
-                           <Drag style={{alignSelf:"center"}}/>
-                           <Text style={styles.swipeText}> Swipe up to Login</Text>
-                      </View>
+                      {
+                           Platform.OS==="ios"?
+                            (
+                              <View style={[styles.drag,styles.viewThree]} >
+                                <Drag style={{alignSelf:"center"}}/>
+                               <Text style={styles.swipeText}> Swipe up to Register</Text>
+                             </View>
+                            )
+                            :(
+                             <TouchableOpacity>
+                              <Text> SignUp </Text>
+                             </TouchableOpacity>
+
+                            )
+                        }
                       <Modal visible={this.state.scroll} presentationStyle="fullScreen" animationType="slide" >
                         <View  style={styles.modal}>
                             <View style={styles.welcomeTextView}>

@@ -4,6 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet'
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../Header'
 import { Text,  } from 'native-base';
+import GroupItem from './GroupItem';
 
 
 
@@ -11,44 +12,12 @@ import { Text,  } from 'native-base';
 const Chat = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <View style={styles.people}>
-              <Text style={styles.text}>
-                   People You May Know
-              </Text>
-               <ScrollView pagingEnabled horizontal={true}  style={styles.userImageGroup}>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/1.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/2.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/3.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/4.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/5.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.userImage}>
-                        <Image style={styles.userImage} source={require('../../assets/images/Login.png')}/>
-                    </TouchableOpacity>
-               </ScrollView>
-            </View>
             <View style={styles.previousChat}>
-                <Text style={styles.text}>
-                     Messages
-                </Text>
                 <View style={styles.messageView}>
-                   <TouchableOpacity>
-                        <View>
-                           <Image style={styles.userImage} source={require('../../assets/images/Group.png')} />
-                        </View>
-                        <View>
-
-                        </View>
-                   </TouchableOpacity>
+                <GroupItem/>
+                <GroupItem/>
+                <GroupItem/>
+                <GroupItem/>
                 </View>
             </View>
         </View>
@@ -87,8 +56,8 @@ userImage:{
 messageView:{
     width:'100%',
     height:'100%',
-    backgroundColor: ' rgba(255, 253, 253, 0.06);',
-    marginTop: '20rem',
-}
+    backgroundColor: 'rgba(255,255,255,0.07);',
+    marginTop: '4rem',
+},
 })
 export default Chat;
