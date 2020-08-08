@@ -34,10 +34,32 @@ class Home extends Component {
     this.props.getMaterials()
   }
 
-  renderHandouts=(loading, materials)=>{
+  renderHandouts=(loading, materials, error, searchEmpty)=>{
      if(loading){
        return   <ActivityIndicator   style={[styles.spinner]} color="#FF912C"  size="large"/>
      }
+
+     if(error){
+       return (
+         <View style={[{justifyContent:'center'}]}>
+           <View style={styles.errorMessage}>
+                <Text style={styles.errorText}>  Can't Connect to Server</Text>
+                <TouchableOpacity onPress= {()=>this.props.getMaterials()}>
+                    <Text style={styles.retry}> Retry</Text>
+                </TouchableOpacity>
+           </View>
+         </View>
+       )
+     }
+
+     if(searchEmpty){
+      return (
+        <View style={[styles.container]}>
+
+        </View>
+      )
+    }
+
     return (
       <FlatList
       data={materials}
@@ -45,7 +67,7 @@ class Home extends Component {
       renderItem ={(data)=>(<HandOuListItem  navigation= {this.props.navigation} {...data.item}/>)}
       keyExtractor={item=>item._id}
       numColumns={2}
-      onScrollBeginDrag= {
+      onScroll= {
        (event)=>{
         // this.props.header.current.toggleHeader()
         // this.animateSlide()
@@ -53,12 +75,12 @@ class Home extends Component {
         var direction = currentOffset > this.offset ? 'down' : 'up';
         this.offset = currentOffset;
         if(direction==="up"){
-          this.animateSlideUp()
-          this.props.header.current.animateUp()
+          // this.animateSlideUp()
+          // this.props.header.current.animateUp()
         }
         if(direction==="down"){
-          this.animateSlideDown()
-          this.props.header.current.animateDown()
+          // this.animateSlideDown()
+          // this.props.header.current.animateDown()
         }
        }
      }
@@ -76,7 +98,7 @@ class Home extends Component {
     outputRange: [0*rem, -30*rem],  
   })
 
-  renderHandoutsBlock=(loading, materials)=>{
+  renderHandoutsBlock=(loading, materials, error, searchEmpty)=>{
     if(loading){
       return   <ActivityIndicator   style={[styles.spinner]} color="#FF912C"  size="large"/>
     }
@@ -87,7 +109,7 @@ class Home extends Component {
      renderItem ={(data)=>(<BlockHandOutItem navigation= {this.props.navigation} {...data.item}/>)}
      keyExtractor={item=>item._id}
      numColumns={1}
-     onScrollBeginDrag= {
+     onScrollEndDrag= {
        (event)=>{
         var currentOffset = event.nativeEvent.contentOffset.y;
         var direction = currentOffset > this.offset ? 'down' : 'up';
@@ -124,7 +146,10 @@ class Home extends Component {
   this.setState({animation:false}, ()=>{
     Animated.timing(this.state.value, {
       toValue: this.state.animation? 1 : 0,
-      duration: 200,
+      duration: Platform.select({
+        ios:150,
+        android:50 
+      }),
   }).start()
   })
  }
@@ -177,7 +202,7 @@ class Home extends Component {
                   }
                 ]
               }]}>
-                  {this.renderHandoutsBlock(loading, materials)}
+                  {this.renderHandouts(loading, materials, error, searchEmpty)}
               </Animated.View>
           </View>
         )
@@ -229,11 +254,6 @@ const styles = EStyleSheet.create({
    HandOuSlideView:{
      flexDirection: 'row',
      height:'50rem'
-    //  transform:[
-    //    {
-    //      translateY:-60
-    //    }
-    //  ]
    },
    handText:{
      color:"#fff",
@@ -253,14 +273,26 @@ const styles = EStyleSheet.create({
     color:'#FF912C',
     fontSize:'22rem',
   },
-//  materialList:{
-//    transform:[
-//      {
-//        translateY:-30
-//      }
-//     ]
-//  }
-
+  errorText:{
+    color:"#fff",
+    alignSelf: 'center',
+    fontSize: '17rem',
+    // fontWeight: 'bold',x
+    marginTop: '10rem',
+    letterSpacing: 1.3,
+  },
+  errorMessage:{
+    width:'100%',
+    height:'80%',
+    justifyContent: 'center',
+  },
+  retry:{
+    color:"rgba(255,255,255,0.7)",
+    alignSelf: 'center',
+    fontSize: '13rem',
+    marginTop: '13rem',
+    letterSpacing: 1.3,
+  }
 })
 function mapStateToProps(state) {
   return {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StatusBar, ScrollView, FlatList, Animated, Dimensions, Easing} from 'react-native';
+import { View, Text, StatusBar, ScrollView, FlatList, Animated, Dimensions, Easing,TouchableOpacity } from 'react-native';
 import { getBlogs } from '../../Redux/Actions/blogs';
 import {connect} from 'react-redux'
 import {ActivityIndicator} from 'react-native-paper'
@@ -67,25 +67,39 @@ class Post extends Component {
                var direction = currentOffset > this.offset ? 'down' : 'up';
                this.offset = currentOffset;
                if(direction==="up"){
-                 this.props.header.current.animateUp()
-                 this.animateSlideUp()
+                //  this.props.header.current.animateUp()
+                //  this.animateSlideUp()
                }
               if(direction==="down"){
-                this.props.header.current.animateDown()
-                this.animateSlideDown()
+                // this.props.header.current.animateDown()
+                // this.animateSlideDown()
               }
             }}/>
      )}
 
 
     render() { 
-      const {loading} = this.props
+      const {loading, error, blogs} = this.props
+
       if(loading){
          return (
            <View style={styles.container}>
               <ActivityIndicator   style={[styles.spinner]} color="#FF912C"  size="large"/>
            </View>
          )
+        }
+
+        if(error){
+          return (
+            <View style={[{justifyContent:'center'}]}>
+              <View style={styles.errorMessage}>
+                   <Text style={styles.errorText}>  Can't Connect to Server</Text>
+                   <TouchableOpacity onPress= {()=>this.props.getBlogs()}>
+                       <Text style={styles.retry}> Retry</Text>
+                   </TouchableOpacity>
+              </View>
+            </View>
+          )
         }
 
        return (
@@ -110,6 +124,26 @@ const styles = EStyleSheet.create({
     spinner:{
       alignSelf:'center',
       color:"#FF912C",
+    },
+    errorText:{
+      color:"#fff",
+      alignSelf: 'center',
+      fontSize: '17rem',
+      // fontWeight: 'bold',x
+      marginTop: '10rem',
+      letterSpacing: 1.3,
+    },
+    errorMessage:{
+      width:'100%',
+      height:'80%',
+      justifyContent: 'center',
+    },
+    retry:{
+      color:"rgba(255,255,255,0.7)",
+      alignSelf: 'center',
+      fontSize: '13rem',
+      marginTop: '13rem',
+      letterSpacing: 1.3,
     }
 });
  

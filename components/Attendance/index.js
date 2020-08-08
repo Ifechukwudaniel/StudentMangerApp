@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StatusBar, ScrollView, FlatList} from 'react-native';
+import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity} from 'react-native';
 import { getAttendance } from '../../Redux/Actions/attendance';
 import {connect} from 'react-redux'
 import {ActivityIndicator} from 'react-native-paper'
@@ -13,7 +13,7 @@ class Attendance extends Component {
         this.props.getAttendance()
     }
     render() { 
-      const {loading} = this.props
+      const {loading, error} = this.props
       if(loading){
          return (
            <View style={styles.container}>
@@ -21,6 +21,20 @@ class Attendance extends Component {
            </View>
          )
         }
+
+        if(error){
+          return (
+            <View style={[{justifyContent:'center'}]}>
+            <View style={styles.errorMessage}>
+                 <Text style={styles.errorText}>  Can't Connect to Server</Text>
+                 <TouchableOpacity onPress= {()=>this.props.getAttendance()}>
+                     <Text style={styles.retry}> Retry</Text>
+                 </TouchableOpacity>
+            </View>
+          </View>
+          )
+         }
+
        return (
           <View style={styles.attendance}>
             <FlatList
@@ -44,6 +58,26 @@ const styles = EStyleSheet.create({
     },
     attendance:{
       marginTop:'30rem'
+    },
+    errorText:{
+      color:"#fff",
+      alignSelf: 'center',
+      fontSize: '17rem',
+      // fontWeight: 'bold',x
+      marginTop: '10rem',
+      letterSpacing: 1.3,
+    },
+    errorMessage:{
+      width:'100%',
+      height:'80%',
+      justifyContent: 'center',
+    },
+    retry:{
+      color:"rgba(255,255,255,0.7)",
+      alignSelf: 'center',
+      fontSize: '13rem',
+      marginTop: '13rem',
+      letterSpacing: 1.3,
     }
 });
  
