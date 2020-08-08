@@ -1,17 +1,56 @@
-import React from 'react';
+import React, {forwardRef,useImperativeHandle, useState, useEffect} from 'react';
 import {  Header, Left, Body, Right, Button, Icon, Segment,  } from 'native-base'
-import {Image, StatusBar, Dimensions, Text, TouchableOpacity} from 'react-native'
+import {Image, StatusBar, Dimensions, Text, TouchableOpacity, Animated, Easing} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../../assets/svg/handBugger.svg' 
 import Setting from '../../assets/svg/setting.svg'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const PostsHeader = (props) => {
-  console.log(props)
-    return (
-       <Header hasSegment transparent  style={styles.header}>
-        <StatusBar backgroundColor="transparent" hidden={true} barStyle="light-content"/>
+
+
+const PostsHeader = forwardRef((props, ref)=> {
+  const [animation, setAnimation] = useState(false)
+  const [value] = useState(new Animated.Value(0))
+ 
+  useEffect(()=>{
+    Animated.timing(value, {
+        toValue: animation? 1 : 0,
+         easing:Easing.bounce,
+        duration: Platform.select({
+          ios:150,
+          android:50 
+        }),
+        useNativeDriver:true
+    }).start()
+}, [animation])
+ 
+const height = value.interpolate({
+  inputRange: [0, 1],
+  outputRange: [0*rem, -110*rem],  
+})
+ 
+useImperativeHandle(ref, () => {
+   return {
+    animateUp(){
+      setAnimation(true)  
+    },
+    animateDown(){
+      setAnimation(false)  
+    }
+   }
+});
+
+  return (
+     <Animated.View style={{
+       transform:[
+         {
+           translateY:height
+         }
+       ]
+     }}>
+      <Header hasSegment transparent  style={styles.header}>
+        <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
           <Left>
             <Button onPress={()=>props.navigation.openDrawer()} transparent>
               <HandBugger width={30*rem} height={30*rem}/>
@@ -40,8 +79,11 @@ const PostsHeader = (props) => {
           }
           </Right>
        </Header>
-    );
-}
+     </Animated.View>
+  );
+})
+
+
 const styles = EStyleSheet.create({
     header:{
        backgroundColor: "#0C0C0E",
