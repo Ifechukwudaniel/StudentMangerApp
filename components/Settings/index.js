@@ -12,12 +12,40 @@ import ImagePicker from 'react-native-image-picker'
 
 class Setting extends Component {
   state={
-    allowNotification:true
+    allowNotification:true,
+    avatarSource:''
   }
+   options = {
+    title: 'Select An Image',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images',
+    },
+  };
+  
+  showImagePicker= ()=>{
+    ImagePicker.showImagePicker(this.options, (response) => {
+      console.log('Response = ', response);
+    
+      if (response.didCancel) {
+        
+      } else if (response.error) {
+        
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+        this.setState({
+          avatarSource: source,
+        });
+      }
+    });
+  }
+
     render() { 
         return (
               <ScrollView style={styles.container} >
-                  <TouchableOpacity onPress={()=>ImagePicker.showImagePicker()} style={styles.userDescription}>
+                  <TouchableOpacity onPress={this.showImagePicker} style={styles.userDescription}>
                       <Image source={require('../../assets/images/image.jpeg')} style={styles.userImage}/>
                       <Text style={styles.userText}>  Daniel </Text>
                   </TouchableOpacity>
