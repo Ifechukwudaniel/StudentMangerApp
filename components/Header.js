@@ -66,7 +66,7 @@ const HeaderComponent = forwardRef((props, ref)=> {
               <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
             </Button>
             : 
-            <Button  onPress={()=>props.navigation.navigate(props.backScreen)}   transparent>
+            <Button  onPress={()=>props.navigation.navigate(props.backScreen ? props.backScreen :'Home' )}   transparent>
                <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>
             </Button>
             }
