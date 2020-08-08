@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View,  StyleSheet, Image, Text, ScrollView, Switch, Dimensions, AsyncStorage} from 'react-native';
+import { View,  StyleSheet, Image, Text, ScrollView, Switch, Dimensions, AsyncStorage, ImagePickerIOS} from 'react-native';
 import ExtendedStyleSheet from 'react-native-extended-stylesheet'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native-gesture-handler';
 // import { Switch } from 'react-native-switch';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import Exit from '../../assets/svg/exit.svg'
 import { connect } from 'react-redux'
+import ImagePicker from 'react-native-image-picker'
 
 
 class Setting extends Component {
@@ -16,10 +17,10 @@ class Setting extends Component {
     render() { 
         return (
               <ScrollView style={styles.container} >
-                  <View style={styles.userDescription}>
+                  <TouchableOpacity onPress={()=>ImagePicker.showImagePicker()} style={styles.userDescription}>
                       <Image source={require('../../assets/images/image.jpeg')} style={styles.userImage}/>
                       <Text style={styles.userText}>  Daniel </Text>
-                  </View>
+                  </TouchableOpacity>
                   <View style={styles.userSetting}>
                       <View style={styles.settingItem}>
                         <Text style={styles.settingText}>  Allow Notification </Text>

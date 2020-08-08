@@ -44,4 +44,6 @@ target 'BiuAssist' do
   # react-native-cli autolinking
   use_native_modules!
 
+  pod 'RNPDF', :path => '../node_modules/react-native-view-pdf'
+
 end

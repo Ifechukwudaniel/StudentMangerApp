@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions, ActivityIndicator, TextInput } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import YouTube from 'react-native-youtube';
+import YouTube from 'react-native-youtube-iframe';
 
 import History from  '../../../assets/svg/history.svg';
 import UniCalender from '../../../assets/svg/uim_calender.svg'
@@ -173,12 +173,15 @@ class GuestHome  extends Component {
         <View style={styles.videoWrapper}>
         <View style={styles.video}>
            <YouTube
-                videoId="PdHo5DelsJQ" loop 
-             style={styles.video}
+                videoId={"PdHo5DelsJQ"} 
+                loop 
+                height={300}
+                width={400}
+               style={styles.video}
              />
         </View>
         </View>
-             <Text style={styles.text}>  What would you like to know  </Text>
+             <Text style={styles.text}>What would you like to know  </Text>
             <View style = {styles.menuList}>
                 <TouchableOpacity onPress= {()=>this.props.navigation.navigate('guestHistory')} style={styles.menuItem}>
                     <View style={styles.menuItemImage}>

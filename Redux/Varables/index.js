@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 export const CHANGE_SCREEN = 'CHANGE_SCREEN';
 export const GET_ALL_DEPARTMENTS_BEGIN = 'GET_ALL_DEPARTMENTS_BEGIN'
 export const GET_ALL_DEPARTMENTS_ERROR = 'GET_ALL_DEPARTMENTS_ERROR'
@@ -25,3 +27,8 @@ export const SET_TIMETABLE_DAY_ACTIVE= 'SET_TIMETABLE_DAY_ACTIVE'
 export const SET_TIMETABLE_DAYACTION="SET_TIMETABLE_DAYACTION"
 export const SET_TIMETABLE_DAYACTION_START="SET_TIMETABLE_DAYACTION_START"
 export const SET_DATE="SET_DATE"
+
+export  const url = Platform.select({
+  ios:"localhost",
+  android:'10.0.2.2'
+})

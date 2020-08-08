@@ -99,7 +99,8 @@ const PostStack  = createStackNavigator({
   }),
  })
  PostStack.navigationOptions = {
-  header:null
+  header:null,
+  tabBarVisible: false,
 };
 
  PostStack.path = '';
@@ -220,6 +221,16 @@ createBottomTabNavigator({
         // height:60*rem
     },
   },
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarOnPress: ({ navigation, defaultHandler }) => {
+      if (
+        navigation.state.routeName === "Conversation" ||
+        navigation.state.routeName === "Third"
+      ) {
+        defaultHandler()
+      }
+      defaultHandler();
+    }})
 });
 
 AppStack.path = '';

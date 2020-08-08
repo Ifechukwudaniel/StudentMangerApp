@@ -10,6 +10,7 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
+import BookSvg from '../../assets/svg/Book.svg'
 
 
 const BlockHandOutItem = (props) => {
@@ -36,38 +37,9 @@ const BlockHandOutItem = (props) => {
  }
   return (
     <TouchableOpacity onPress= {()=>setModal(true)} style={styles.handOutItem}>
-      <WebView
-      source={{ uri: `${props.file}` }}
-      style={[styles.pdfViewStyle, {}]}
-      startInLoadingState={true}
-      domStorageEnabled={true}
-      javaScriptEnabled={true}
-      startInLoadingState
-      renderLoading={
-        ()=>(
-               <ActivityIndicator style={[styles.spinner]} color="#C4C4C4" size="large"/>
-        )
-      }
-      onError={
-        ()=>{
-           showMessage({
-             icon:'warning',
-             backgroundColor:"#FF912C",
-             message:"Your network is slow"
-           })
-        }
-      }  
-
-      renderError={
-        ()=>(
-          <View style={styles.WebViewError}>
-             <View style={styles.spinner}>
-                 
-            </View> 
-          </View>
-        )
-      }
-      />
+       <View style={styles.BookSvg}>
+        <BookSvg width={100*rem} height={120*rem}/>
+     </View>
       <Text style={[styles.textStyle,styles.courseCode]}>{props.course.courseCode}</Text>
       <Text style={styles.textStyle}> {props.course.title} </Text>
       <Text style={[styles.textStyle, styles.postedBy]}> By:{props.lecturer}</Text>
@@ -165,8 +137,8 @@ const BlockHandOutItem = (props) => {
  
 const styles = EStyleSheet.create({
   handOutItem:{
-    width:"360rem",
-    height:"300rem",
+    width:"340rem",
+    height:"250rem",
     backgroundColor:"rgba(66,89,133,0.07)",
     alignSelf: 'center',
     borderRadius:'10rem',
@@ -175,6 +147,10 @@ const styles = EStyleSheet.create({
     elevation:10,
     borderWidth: '1rem',
     borderColor:'rgba(66,89,133,0.29)'
+  },
+  BookSvg:{
+    alignSelf:"center",
+    margin: '17rem',
   },
    pdfViewStyle:{
     width:"340rem",

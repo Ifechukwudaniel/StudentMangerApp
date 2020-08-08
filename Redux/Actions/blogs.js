@@ -2,6 +2,7 @@ import {
   GET_BLOGS_BEGIN,
   GET_BLOGS_ERROR,
   GET_BLOGS_SUCCESS,
+  url
   } from '../Varables';
   
   import axiosService from '../../services/axiosService';
@@ -10,7 +11,7 @@ import {
   export const getBlogs = () => {
     return dispatch => {
         dispatch(getBlogsBegin())
-             axios.get("http://localhost:3000/blog/")
+             axios.get(`http://${url}:3000/blog/`)
              .then(({data})=>{
                 setTimeout(()=> dispatch(getBlogsSuccess(data)), 2000)
              })

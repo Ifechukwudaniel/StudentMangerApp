@@ -4,7 +4,8 @@ import {
  GET_MATERIALS_SUCCESS,
  MATERIALS_SEARCH_BEGIN,
  MATERIALS_SEARCH_ERROR,
- MATERIALS_SEARCH_SUCCESS
+ MATERIALS_SEARCH_SUCCESS,
+ url
  } from '../Varables';
  
  import axiosService from '../../services/axiosService';
@@ -20,7 +21,7 @@ import Keys from '../../constants/Keys';
           console.log(value)
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
-            axios.get(`http://localhost:3000/material/${departmentId}/${levelId}`)
+            axios.get(`http://${url}:3000/material/${departmentId}/${levelId}`)
             .then(({data})=>setTimeout(()=>dispatch(getMaterialSuccess(data)), 1000))
             .catch(error=>dispatch(getMaterialError(error)))
         })
@@ -53,7 +54,7 @@ import Keys from '../../constants/Keys';
            text ==""?()=>{
                 getMaterials()
            }: ()=>{
-            axios.get(`http://localhost:3000/search/material/${text}`)
+            axios.get(`http://${url}:3000/search/material/${text}`)
             .then(({data})=>{
               setTimeout(()=>{
                  console.log(data)

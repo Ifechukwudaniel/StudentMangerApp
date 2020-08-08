@@ -6,6 +6,7 @@ import {
   SET_TIMETABLE_DAYACTION,
   SET_DATE,
   SET_TIMETABLE_DAYACTION_START
+  ,url
   } from '../Varables';
   
 import axiosService from '../../services/axiosService';
@@ -22,7 +23,7 @@ import util from '../../util';
            AsyncStorage.getItem(Keys.level)
            .then((data)=>{
              const level=  JSON.parse(data)
-             axios.get(`http://localhost:3000/timetable/${level._id}`)
+             axios.get(`http://${url}:3000/timetable/${level._id}`)
               .then(({data})=>{
                 AsyncStorage.setItem(Keys.timeTable,JSON.stringify(data))
                 .then(()=>{

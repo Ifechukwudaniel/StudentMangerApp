@@ -2,7 +2,8 @@ import {
  GET_ALL_DEPARTMENTS_BEGIN,
  GET_ALL_DEPARTMENTS_SUCCESS,
  GET_ALL_DEPARTMENTS_ERROR,
- SET_FILTER_DEPARTMENTS
+ SET_FILTER_DEPARTMENTS,
+ url
 } from '../Varables';
 
 import axiosService from '../../services/axiosService';
@@ -11,7 +12,7 @@ let axios = axiosService.initInstance()
 export const getAllDepartment = (data) => {
   return dispatch => {
     dispatch( getAllDepartmentBegin())
-    return axios.get('http://localhost:3000/department/')
+    return axios.get(`http://${url}:3000/department/`)
     .then(({data})=>{
       setTimeout(()=> dispatch(getAllDepartmentSuccess(data)), 1000)
     })

@@ -24,7 +24,11 @@ class Home extends Component {
     searchKeyWord:'',
     listTypeBlock:false,
     listTypeList:true,
+    animation:false,
+    value:new Animated.Value(0)
   }
+
+  offset= 0
 
   UNSAFE_componentWillMount(){
     this.props.getMaterials()
@@ -37,35 +41,101 @@ class Home extends Component {
     return (
       <FlatList
       data={materials}
-      style={{marginBottom:100}}
+      style={styles.materialList}
       renderItem ={(data)=>(<HandOuListItem  navigation= {this.props.navigation} {...data.item}/>)}
       keyExtractor={item=>item._id}
       numColumns={2}
-      onScroll= {
-        ()=>{
-          
+      onScrollBeginDrag= {
+       (event)=>{
+        // this.props.header.current.toggleHeader()
+        // this.animateSlide()
+        var currentOffset = event.nativeEvent.contentOffset.y;
+        var direction = currentOffset > this.offset ? 'down' : 'up';
+        this.offset = currentOffset;
+        if(direction==="up"){
+          this.animateSlideUp()
+          this.props.header.current.animateUp()
         }
-      }
+        if(direction==="down"){
+          this.animateSlideDown()
+          this.props.header.current.animateDown()
+        }
+       }
+     }
    />
     )
   }
+
+   heightFirst = this.state.value.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0*rem, -60*rem],  
+  })
+
+  heightSecond = this.state.value.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0*rem, -30*rem],  
+  })
+
+  renderHandoutsBlock=(loading, materials)=>{
+    if(loading){
+      return   <ActivityIndicator   style={[styles.spinner]} color="#FF912C"  size="large"/>
+    }
+   return (
+     <FlatList
+     data={materials}
+     style={styles.materialList}
+     renderItem ={(data)=>(<BlockHandOutItem navigation= {this.props.navigation} {...data.item}/>)}
+     keyExtractor={item=>item._id}
+     numColumns={1}
+     onScrollEndDrag= {
+       ()=>{
+        this.props.header.current.toggleHeader()
+       }
+     }
+  />
+   )
+ }
+
+ animateSlideUp = ()=> {
+  this.setState({animation:true}, ()=>{
+    Animated.timing(this.state.value, {
+      toValue: this.state.animation? 1 : 0,
+      duration: 150,
+  }).start()
+  })
+ }
+
+ animateSlideDown = ()=> {
+  this.setState({animation:false}, ()=>{
+    Animated.timing(this.state.value, {
+      toValue: this.state.animation? 1 : 0,
+      duration: 200,
+  }).start()
+  })
+ }
 
  render(){
           const {openFilter}= this.state
           const {loading, materials,searchEmpty, error} = this.props
           return (
           <View style={styles.container}>
-              <Animated.View style={{overflow:1}}>
+              {/* <Animated.View style={{overflow:1}}>
                  <TextInput onChangeText={(value)=>this.props.searchMaterials(value)}  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
-              </Animated.View>
-              <Animated.View style={styles.HandOuSlideView}>
+              </Animated.View> */}
+              <Animated.View style={[styles.HandOuSlideView, {
+                transform:[
+                  {
+                    translateY:this.heightFirst
+                  }
+                ]
+              }]}>
                   <Left>
                     <Text style={styles.handText} > Hand-outs</Text>
                   </Left>
                   <Right style={styles.rightIcon}>
-                  {/* <TouchableOpacity style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
+                  <TouchableOpacity  style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
                         <Icon style={styles.font} type="FontAwesome5"  name="search"/>
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
                   <TouchableOpacity onPress={()=>this.RBSheetListType.open()} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
                         <BlockIcon/>
                   </TouchableOpacity>
@@ -85,9 +155,15 @@ class Home extends Component {
                   </RBSheet>
                   </Right>
               </Animated.View>
-              <View style={styles.containerView}>
+              <Animated.View style={[styles.containerView,{
+                transform:[
+                  {
+                    translateY:this.heightSecond
+                  }
+                ]
+              }]}>
                   {this.renderHandouts(loading, materials)}
-              </View>
+              </Animated.View>
           </View>
         )
       }
@@ -137,6 +213,12 @@ const styles = EStyleSheet.create({
    },
    HandOuSlideView:{
      flexDirection: 'row',
+     height:'50rem'
+    //  transform:[
+    //    {
+    //      translateY:-60
+    //    }
+    //  ]
    },
    handText:{
      color:"#fff",
@@ -156,9 +238,13 @@ const styles = EStyleSheet.create({
     color:'#FF912C',
     fontSize:'22rem',
   },
-  searchBar:{
-   
-  }
+//  materialList:{
+//    transform:[
+//      {
+//        translateY:-30
+//      }
+//     ]
+//  }
 
 })
 function mapStateToProps(state) {

@@ -1,7 +1,8 @@
 import {
   GET_ATTENDANCE_BEGIN,
   GET_ATTENDANCE_ERROR,
-  GET_ATTENDANCE_SUCCESS
+  GET_ATTENDANCE_SUCCESS,
+  url
   } from '../Varables';
   
   import axiosService from '../../services/axiosService';
@@ -10,7 +11,7 @@ import {
   export const getAttendance = () => {
     return dispatch => {
         dispatch(getAttendanceBegin())
-             axios.get("http://localhost:3000/attendance/")
+             axios.get(`http://${url}:3000/attendance/`)
              .then(({data})=>{
                 setTimeout(()=> dispatch(getAttendanceSuccess(data)), 2000)
              })

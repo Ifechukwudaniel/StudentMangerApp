@@ -1,22 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, useRef} from 'react';
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import Level from '../components/Level'
 import Home from '../components/Home';
 import HeaderComponent from '../components/Header';
 
-class HomeScreen extends Component {
-  render() { 
-    
+const  HomeScreen = (props)=>{
+  const headerRef = useRef();
     return (
       <Layout style={styles.container}>
       <View style={styles.container}>
-         <HeaderComponent {...this.props} screenName="HOME"/>
-         <Home {...this.props}/>
+         <HeaderComponent  ref= {headerRef} {...props} screenName="HOME"/>
+         <Home header= {headerRef} {...props}/>
       </View>
     </Layout>
     );
-  }
 }
  
 export default HomeScreen;

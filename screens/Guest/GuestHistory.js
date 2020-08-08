@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Modal, Text} from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import GuestHeader from '../../components/GuestHeader';
-import YouTube from 'react-native-youtube';
+import YouTube from 'react-native-youtube-iframe';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default function GuestHistoryScreen(props) {
@@ -13,6 +13,8 @@ export default function GuestHistoryScreen(props) {
            <YouTube
             videoId="-vXoVFfzhEQ"
              loop 
+             height={300}
+             width={400}
             style={styles.video}
           />
           <Text style={styles.text}>
@@ -38,7 +40,7 @@ const styles = EStyleSheet.create({
     marginTop: '20rem',
     borderRadius: '10rem',
     marginBottom: '20rem',
-    // backgroundColor:'red'
+    backgroundColor:'red'
   },
   text:{
     color:'rgba(255, 255, 255, 0.75)',
