@@ -1,14 +1,48 @@
-import React from 'react';
+import React,{useState, useEffect, useRef, useImperativeHandle, forwardRef} from 'react';
 import {  Header, Left, Body, Right, Button, Title, Text, Icon,  } from 'native-base'
-import {Image, StatusBar, Dimensions} from 'react-native'
+import {Image, StatusBar, Dimensions, Animated} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../assets/svg/handBugger.svg' 
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 
-const HeaderComponent = (props) => {
+
+const HeaderComponent = forwardRef((props, ref)=> {
+    const [animation, setAnimation] = useState(false)
+    const [value] = useState(new Animated.Value(0))
+   
+    useEffect(()=>{
+      Animated.timing(value, {
+          toValue: animation? 1 : 0,
+          duration: 150,
+      }).start()
+  }, [animation])
+   
+  const height = value.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0*rem, -110*rem],  
+  })
+   
+  useImperativeHandle(ref, () => {
+     return {
+      animateUp(){
+        setAnimation(true)  
+      },
+      animateDown(){
+        setAnimation(false)  
+      }
+     }
+  });
+
     return (
-       <Header transparent  style={styles.header}>
+       <Animated.View style={{
+         transform:[
+           {
+             translateY:height
+           }
+         ]
+       }}>
+       <Header transparent  style={[styles.header]}>
         <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
           <Left style={{flex:1}}>
             <Button onPress={()=>props.navigation.openDrawer()} transparent>
@@ -20,7 +54,10 @@ const HeaderComponent = (props) => {
           </Body>
           <Right style={{flex:1}}>
             { !props.back ?   
-            <Button  onPress={()=>props.navigation.navigate('Settings')}   transparent>
+            <Button  onPress={()=>{
+          //    setAnimation(true)
+            props.navigation.navigate('Settings')
+            }}   transparent>
               <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
             </Button>
             : 
@@ -30,8 +67,11 @@ const HeaderComponent = (props) => {
             }
           </Right>
        </Header>
+       </Animated.View>
     );
-}
+})
+
+
 const styles = EStyleSheet.create({
     header:{
        backgroundColor: "#0C0C0E",
@@ -40,7 +80,10 @@ const styles = EStyleSheet.create({
        paddingLeft: '20rem',
        height:"90rem",
        borderWidth:'0rem',
-       borderColor:'#0c0c0e'
+       borderColor:'#0c0c0e',
+      //  transform:[{
+      //    translateY:-200
+      //  }]
     },
     userImage:{
         height: '50rem',
