@@ -9,7 +9,7 @@ export default function ChatScreen(props) {
     <Layout style={styles.container}>
       <View style={styles.container}>
         <ChatHeader {...props}/>
-        <Chat/>
+        <Chat {...props} />
       </View>
     </Layout>
   );
