@@ -49,8 +49,7 @@ useImperativeHandle(ref, () => {
          }
        ]
      }}>
-      <Header hasSegment transparent  style={styles.header}>
-        <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
+      <Header  style={styles.header}>
           <Left>
             <Button onPress={()=>props.navigation.openDrawer()} transparent>
               <HandBugger width={30*rem} height={30*rem}/>
