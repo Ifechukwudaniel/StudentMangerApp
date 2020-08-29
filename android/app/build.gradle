@@ -162,6 +162,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 dependencies {
+    implementation project(':react-native-navigation-bar-color')
     implementation project(':react-native-fast-image')
     implementation project(':react-native-view-pdf')
     implementation fileTree(dir: "libs", include: ["*.jar"])

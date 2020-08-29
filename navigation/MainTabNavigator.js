@@ -34,6 +34,7 @@ import Settings from '../assets/svg/settingTab.svg'
 import TimeTable from '../assets/svg/Clock.svg'
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
 import Transition from 'react-navigation-transitions'
+import ChatGroupScreen from '../screens/ChatGroupScreen';
 
  const HomeStack  = createSwitchNavigator({
   Home:HomeScreen,
@@ -57,11 +58,11 @@ HomeStack.navigationOptions = {
      fontSize:11,
      fontWeight:'bold',
      textAlign:"center",
-     paddingTop:5
+     paddingTop:7
     }}> LOCAL</Text>
   ),
   tabBarIcon: ({ focused }, props) => (
-    <Speedometer width={45*rem} height={40*rem}/>
+    <Speedometer  style={{opacity:focused? 1: 0.8}} width={ focused?40*rem :35*rem} height={ focused? 40*rem :35*rem}/>
   ),
 };
 
@@ -75,11 +76,11 @@ TimeSketchScreen.navigationOptions = {
      fontSize:11,
      fontWeight:'bold',
      textAlign:"center",
-     paddingTop:5
+     paddingTop:7
     }}> Time Sketch</Text>
   ),
   tabBarIcon: ({ focused }, props) => (
-    <Productivity  width={35*rem} height={35*rem}/>
+    <Productivity  style={{opacity:focused? 1: 0.8}} width={ focused?40*rem :35*rem} height={ focused? 40*rem :35*rem}/>
   ),
 };
 
@@ -105,9 +106,30 @@ const PostStack  = createStackNavigator({
 
  PostStack.path = '';
 
+
+const ChatStack  = createStackNavigator({
+  Chat:ChatScreen,
+  ChatGroup:ChatGroupScreen,
+ }, {
+  transitionConfig : () => ({
+    transitionSpec: {
+      duration: 0,
+      timing: Animated.timing,
+      easing: Easing.step0,
+    },
+  }),
+ })
+
+ ChatStack.navigationOptions = {
+  header:null,
+  tabBarVisible: false,
+};
+
+ ChatStack.path = '';
+
 const ConversationStack  = createStackNavigator({
   Post:PostStack,
-  Chat:ChatScreen,
+  Chat:ChatStack,
  }, {
   transitionConfig : () => ({
     transitionSpec: {
@@ -127,11 +149,11 @@ ConversationStack.navigationOptions = {
      fontSize:11,
      fontWeight:'bold',
      textAlign:"center",
-     paddingTop:5
+     paddingTop:7
     }}> Conversation</Text>
   ),
   tabBarIcon: ({ focused }, props) => (
-   <People  width={35*rem} height={35*rem} style={{marginTop:10*rem}}/>
+   <People   style={{opacity:focused? 1: 0.8, marginTop:9*rem}} width={ focused?40*rem :37*rem} height={ focused? 40*rem :37*rem} />
   ),
 };
 
@@ -160,11 +182,11 @@ RecordStack.navigationOptions = {
      fontSize:11,
      fontWeight:'bold',
      textAlign:"center",
-     paddingTop:5
+     paddingTop:7
     }}> Records</Text>
   ),
   tabBarIcon: ({ focused }, props) => (
-   <Register  width={35*rem} height={35*rem}/>
+   <Register style={{opacity:focused? 1: 0.7}}  width={ focused?40*rem :35*rem} height={ focused? 40*rem :35*rem}/>
   ),
 };
 
@@ -216,7 +238,6 @@ createBottomTabNavigator({
         borderTopWidth:1,
         borderTopColor:"#0C0C0E",
         zIndex:1,
-        elevation:2,
         paddingTop:10,
         height:60*rem
     },

@@ -53,13 +53,13 @@ const BlockHandOutItem = (props) => {
                   renderLoading={
                   ()=>(
                     <View style={styles.mainLoading}>
-                       
+                        <Progress.Circle animated showsText  color={'#FF912C'} style={styles.loading} progress={0.4} size={60*rem} />
                     </View>
                   )
                   }
                   renderError={
                     ()=>(
-                    <View style={styles.mainError}>
+                   <View style={styles.mainError}>
                          
                   </View>
                   )
@@ -211,12 +211,10 @@ const styles = EStyleSheet.create({
  mainError:{
     width:'100%',
     height:'100%',
-    backgroundColor:'red'
  },
  mainLoading:{
   width:'100%',
-  height:'100%',
-  backgroundColor:'blue'
+  height:'100%'
  },
  downloader:{
    alignSelf: 'center',

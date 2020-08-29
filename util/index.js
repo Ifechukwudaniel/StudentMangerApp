@@ -59,7 +59,17 @@ export async function sendEmail(to, subject, body, options = {}) {
    }
    return "Today"
  }
+
+ export  const snapshotToArray =(snapshot) => {
+  var returnArr = [];
+  snapshot.forEach((data, i)=>{
+    returnArr.push(({...data.val(), key: data.key}))
+  })
+  return returnArr;
+};
+
 export default {
   convertTimeTable,
-  getCurrentDay
+  getCurrentDay,
+  snapshotToArray
 }

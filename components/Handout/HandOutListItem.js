@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {TouchableOpacity, Text, View, Modal, Dimensions, TextInput} from 'react-native';
+import {TouchableOpacity, Text, View, Modal, Dimensions, TextInput, StatusBar} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import { WebView } from 'react-native-webview';
 import {ActivityIndicator} from 'react-native-paper'
@@ -8,6 +8,7 @@ import HandOutHeader from './HandOutHeader';
 import RBSheet from 'react-native-raw-bottom-sheet';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
+import { Icon } from 'native-base'
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
@@ -41,7 +42,7 @@ const HandOuListItem = (props) => {
         <BookSvg width={130*rem} height={130*rem}/>
      </View>
       <Text style={[styles.textStyle,styles.courseCode]}> {props.course.courseCode}</Text>
-      <Text style={[styles.textStyle, styles.description]}>{props.course.title}</Text>
+      <Text numberOfLines={1} allowFontScaling  style={[styles.textStyle, styles.description]}>{props.course.title}</Text>
       <Text style={[styles.textStyle, styles.postedBy]}> By: {props.lecturer}</Text>
       <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
           <View style={styles.modalPdf}>
@@ -53,16 +54,23 @@ const HandOuListItem = (props) => {
                   renderLoading={
                   ()=>(
                     <View style={styles.mainLoading}>
-                       
+                         <Progress.CircleSnail  color={'#FF912C'} style={styles.loader} size={100*rem} />
                     </View>
                   )
                   }
                   renderError={
-                    ()=>(
-                    <View style={styles.mainError}>
-                         
+                    (props)=>{
+                  return ( <View style={styles.mainError}>
+                            <View style={styles.errorHead}>
+                              <Text style={styles.textError}> Please an error occured</Text>
+                           </View> 
+                           <View>
+                               
+                              <Text style={styles.errorMessage}> Please check your internet connection </Text>
+                           </View>
                   </View>
                   )
+                    }
                   }
               />
           </View>
@@ -226,12 +234,13 @@ const styles = EStyleSheet.create({
  mainError:{
     width:'100%',
     height:'100%',
-    backgroundColor:'red'
+    backgroundColor:'#fff',
  },
  mainLoading:{
   width:'100%',
   height:'100%',
-  backgroundColor:'blue'
+  backgroundColor:'#fff',
+  justifyContent: 'center',
  },
  downloader:{
    alignSelf: 'center',
@@ -283,6 +292,27 @@ const styles = EStyleSheet.create({
  },
  addButton :{
    backgroundColor:'#18181D'
+ },
+ loader:{
+  alignSelf: 'center',
+ },
+ errorHead:{
+   width:'100%',
+   height:'60rem',
+   backgroundColor: '#d3d3d3',
+   justifyContent: 'center',
+ },
+ textError:{
+   alignSelf: 'center',
+   fontWeight: 'bold',
+   fontSize: '22rem',
+   color:'red'
+ },
+ errorMessage:{
+   textAlign:'center',
+   fontSize:'20rem',
+   color:'#FF912c',
+   fontWeight: 'bold',
  }
 })
  

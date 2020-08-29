@@ -1,12 +1,14 @@
 import React, {useState, useRef} from 'react';
 import {  Header, Left, Body, Right, Button, Title, Text, Icon, } from 'native-base'
-import {Dimensions, View, TouchableOpacity} from 'react-native'
+import {Dimensions, View, TouchableOpacity, AsyncStorage} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import Plus from '../assets/svg/plus.svg'
 import Modal from 'react-native-modal';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import firebase from '../firebase'
+import Keys from '../constants/Keys';
 
 
 const PlusTabBarIcon = ({}) => {
@@ -26,7 +28,29 @@ const PlusTabBarIcon = ({}) => {
                 backgroundColor:'#1E1E1E'
               }
               }}>
-           
+            <TouchableOpacity onPress= { ()=>{
+              AsyncStorage.getItem(Keys.department)
+              .then(value=>{
+                 firebase.database().ref().child('groups').push({
+                   name: "HOW the World Works",
+                   image : "https://cdn.pixabay.com/photo/2016/07/27/01/36/basketball-1544370__480.jpg",
+                   description:'hwswhswhs jwdjwjdwjds dwdhwdhwd',
+                   department:JSON.parse(value)._id
+             })
+             .then(()=>{
+                alert("creatred a new group")
+             })
+             .catch((err)=>{
+               console.log(err)
+             })
+              })
+              .catch(err=>{
+                console.log(err)
+              })
+            }
+            } style={styles.addGroup}>
+                <Text> Add group</Text>
+            </TouchableOpacity>
          </RBSheet>
       </View>
     );
@@ -54,6 +78,12 @@ const styles = EStyleSheet.create({
         alignSelf: 'center',
         paddingTop:0,
         justifyContent: 'center',
+    },
+    addGroup:{
+       alignSelf:'center',
+       width:'100rem',
+       backgroundColor:'red',
+       height:'30rem'
     }
 })
 export default PlusTabBarIcon;

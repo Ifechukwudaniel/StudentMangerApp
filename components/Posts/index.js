@@ -49,7 +49,7 @@ class Post extends Component {
       toValue: this.state.animation? 1 : 0,
       duration: Platform.select({
         ios:150,
-        android:50 
+        android:50
       }),
   }).start()
   })
@@ -61,6 +61,8 @@ class Post extends Component {
            data={this.props.blogs}
            renderItem ={(data)=>(<PostListItem navigation= {this.props.navigation} {...data.item}/>)}
            keyExtractor={item=>item._id}
+           removeClippedSubViews={true}
+           scrollEventThrottle={16}
            onScrollEndDrag={
              (event)=>{
                var currentOffset = event.nativeEvent.contentOffset.y;

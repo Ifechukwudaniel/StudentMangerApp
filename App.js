@@ -12,6 +12,7 @@ import {store} from './Redux/store'
 import FlashMessage from "react-native-flash-message";
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 const theme = {...dark, ...appTheme}
 
@@ -20,14 +21,27 @@ EStyleSheet.build({
   $rem: entireScreenWidth / 380,
 });
 
+ const example = async () => {
+  try{
+    if (Platform.OS == 'android') {
+      const response = await changeNavigationBarColor('#0C0C0E');
+      console.log(response)// {success: true}
+      }
+  }catch(e){
+      console.log(e)// {success: false}
+  }
+
+};
+
 
 export default function App(props) {
+  example()
     return (
       <>
        <Provider store={store}>
        <Root>
         <IconRegistry icons={EvaIconsPack}/>
-        <StatusBar hidden={false} barStyle="light-content" />
+        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
           <ApplicationProvider mapping={mapping} theme={theme}   >
                 <AppNavigator />
                 <FlashMessage position="top" /> 

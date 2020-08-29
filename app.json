@@ -30,6 +30,12 @@
         ]
       }
     },
+    "android":{
+      "androidNavigationBar": {
+       "visible": true,
+       "backgroundColor":"red"
+     }
+    },
     "description": "",
     "packagerOpts": {
       "config": "metro.config.js",

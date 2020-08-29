@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Header, Left, Body, Right, Button, Icon, Segment, Drawer } from 'native-base'
-import {Image, StatusBar, Dimensions, Text, TouchableOpacity} from 'react-native'
+import {Image,  Dimensions, Text, TouchableOpacity, StatusBar} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../../assets/svg/handBugger.svg' 
 import Setting from '../../assets/svg/setting.svg'
@@ -9,15 +9,22 @@ const rem = entireScreenWidth/380
 
 const ChatHeader = (props) => {
     return (
-       <Header hasSegment transparent  style={styles.header}>
-        <StatusBar backgroundColor="transparent" hidden={false} barStyle="light-content"/>
+       <Header transparent  style={styles.header}>
+        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
           <Left>
             <Button onPress={()=>props.navigation.openDrawer()}ui  transparent>
               <HandBugger width={30*rem} height={30*rem}/>
             </Button>
           </Left>
           <Body>
-            <Segment    style={{backgroundColor:"#0c0c0c", borderWidth:0}}>
+          {
+            props.chat ? 
+            (
+              <Text numberOfLines={1} style={styles.groupName}> How the world works sddsdssdsddsd </Text>
+            )
+            :
+            (
+              <Segment    style={{backgroundColor:"#0c0c0c", borderWidth:0}}>
               <TouchableOpacity  onPress={()=>props.navigation.navigate('Post')} style={styles.buttonStyleNotActive}>
                  <Text style={styles.buttonText}>Posts</Text>
               </TouchableOpacity>
@@ -25,11 +32,22 @@ const ChatHeader = (props) => {
                 <Text style={styles.buttonText}>Messages</Text>
               </TouchableOpacity>
             </Segment>
+             )
+          }
           </Body>
           <Right>
-            <Button onPress={()=> props.navigation.navigate('Settings')} transparent>
+          {
+            !props.back ? 
+            <Button onPress={()=> 
+                  props.navigation.navigate('Settings')
+            }  transparent>
                <Setting width={20*rem} height={25*rem}/>
             </Button>
+            :
+            <Button onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
+            <Icon style={{color:'#FF912C', fontSize:25*rem}} type="FontAwesome5"  name="arrow-left"/>  
+            </Button>
+          }
           </Right>
        </Header>
     );
@@ -91,6 +109,13 @@ const styles = EStyleSheet.create({
   color:'#7C7B7C',
   marginTop: '10rem',
   fontSize: '15rem',
+},
+groupName:{
+  color: '#fff',
+  fontSize: '17rem',
+  fontWeight: 'bold',
+  flexWrap: "wrap",
+  lineHeight:'20rem'
 },
 })
 export default ChatHeader;

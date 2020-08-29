@@ -9,7 +9,6 @@ import AttendanceListItem from './AttendanceListItem';
  
 class Attendance extends Component {
     UNSAFE_componentWillMount(){
-        StatusBar.setHidden(true)
         this.props.getAttendance()
     }
     render() { 

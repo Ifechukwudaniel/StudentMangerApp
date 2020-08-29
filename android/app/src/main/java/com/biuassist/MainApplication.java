@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.thebylito.navigationbarcolor.NavigationBarColorPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.rumax.reactnative.pdfviewer.PDFViewPackage;
 import com.facebook.react.ReactNativeHost;

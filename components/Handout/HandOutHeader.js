@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Header, Left , Button, Icon, Body, Right} from 'native-base'
-import {Dimensions, Text, View, TouchableOpacity} from 'react-native'
+import {Dimensions, Text, View, TouchableOpacity, StatusBar} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
@@ -8,6 +8,7 @@ const rem = entireScreenWidth/380
 const HandOutHeader = (props) => {
     return (
        <Header  transparent  style={[styles.header]}>
+        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
            <View style={styles.headerTop}>
              <TouchableOpacity onPress = {()=>props.closeModal()} style= {styles.button}   transparent>
                <Icon style={styles.font} type="FontAwesome5"  name="arrow-left"/>

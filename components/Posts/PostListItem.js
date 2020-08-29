@@ -13,7 +13,7 @@ const PostListItem = (props) => {
   return (
      <View style={styles.postItem}>
      <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
-        <FastImage  resizeMode={FastImage.resizeMode.cover} style={styles.postImage} source={{url:image,  priority: FastImage.priority.high}}/>
+        <Image defaultSource= {require('../../assets/images/preloaded.png')}  resizeMode={FastImage.resizeMode.cover} style={styles.postImage} source={{url:image,  priority: FastImage.priority.high}}/>
      </TouchableOpacity>
         <View>
           <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>

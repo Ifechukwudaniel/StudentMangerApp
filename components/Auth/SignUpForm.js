@@ -349,7 +349,7 @@ class SignUpForm extends Component {
                             )
                             :(
                              <TouchableOpacity>
-                                <Text> SignUp </Text>
+                                {/* <Text> SignUp </Text> */}
                              </TouchableOpacity>
                             )
                         }

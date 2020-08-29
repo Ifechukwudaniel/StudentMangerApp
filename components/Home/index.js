@@ -17,12 +17,12 @@ import BlockHandOutItem from '../Handout/BlockHandOutItem';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 
+
 class Home extends Component {
   state= {
     openFilter:false,
     searchValue:'',
     searchKeyWord:'',
-    listTypeBlock:false,
     listTypeList:true,
     animation:false,
     value:new Animated.Value(0)
@@ -62,10 +62,13 @@ class Home extends Component {
 
     return (
       <FlatList
+      key={'h'}
       data={materials}
       style={styles.materialList}
       renderItem ={(data)=>(<HandOuListItem  navigation= {this.props.navigation} {...data.item}/>)}
       keyExtractor={item=>item._id}
+      removeClippedSubViews={true}
+      scrollEventThrottle={16}
       numColumns={2}
       onScroll= {
        (event)=>{
@@ -104,6 +107,7 @@ class Home extends Component {
     }
    return (
      <FlatList
+     key={'d'}
      data={materials}
      style={styles.materialList}
      renderItem ={(data)=>(<BlockHandOutItem navigation= {this.props.navigation} {...data.item}/>)}
@@ -132,7 +136,6 @@ class Home extends Component {
   this.setState({animation:true}, ()=>{
     Animated.timing(this.state.value, {
       toValue: this.state.animation? 1 : 0,
-      duration: 150,
       easing:Easing.ease,
       duration: Platform.select({
         ios:150,
@@ -191,7 +194,12 @@ class Home extends Component {
                     backgroundColor:'#0C0C0E'
                     }
                    }}>
- 
+                      <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:true})}>
+
+                      </TouchableOpacity>
+                      <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:false})} >
+
+                      </TouchableOpacity>
                   </RBSheet>
                   </Right>
               </Animated.View>
@@ -202,7 +210,10 @@ class Home extends Component {
                   }
                 ]
               }]}>
-                  {this.renderHandouts(loading, materials, error, searchEmpty)}
+                  { this.state.listTypeList ?     this.renderHandouts(loading, materials, error, searchEmpty)
+                   :
+                    this.renderHandoutsBlock(loading,materials,error)
+                  }
               </Animated.View>
           </View>
         )
@@ -292,6 +303,12 @@ const styles = EStyleSheet.create({
     fontSize: '13rem',
     marginTop: '13rem',
     letterSpacing: 1.3,
+  },
+  listTypes:{
+     height:'70rem',
+     width:'100%',
+     borderBottomWidth: '2rem',
+     borderColor: 'rgba(255,255,255,0.4)',
   }
 })
 function mapStateToProps(state) {

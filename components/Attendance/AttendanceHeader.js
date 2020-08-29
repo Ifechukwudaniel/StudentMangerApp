@@ -13,7 +13,7 @@ const AttendanceHeader = ({title , courseCode}) => {
             <Text style={styles.date}>  Course Code</Text>
         </View>
         <View style={styles.center}>
-           <Text style={styles.contentText}> {`${title}(${courseCode})`}</Text>
+           <Text  numberOfLines={1}   allowFontScaling={true} style={styles.contentText}> {`${title}(${courseCode})`}</Text>
         </View>
       </View>
   );
@@ -46,6 +46,8 @@ const styles = EStyleSheet.create({
     fontSize:'12rem',
     lineHeight:'20rem',
     textAlign:'center',
+    flexWrap: 'wrap',
+    textAlign:'center'
   }
 });
  

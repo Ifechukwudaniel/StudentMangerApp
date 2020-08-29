@@ -1,6 +1,6 @@
 import React, {forwardRef,useImperativeHandle, useState, useEffect} from 'react';
 import {  Header, Left, Body, Right, Button, Icon, Segment,  } from 'native-base'
-import {Image, StatusBar, Dimensions, Text, TouchableOpacity, Animated, Easing} from 'react-native'
+import { Dimensions, Text, TouchableOpacity, Animated, Easing, StatusBar} from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import HandBugger from '../../assets/svg/handBugger.svg' 
 import Setting from '../../assets/svg/setting.svg'
@@ -49,7 +49,8 @@ useImperativeHandle(ref, () => {
          }
        ]
      }}>
-      <Header  style={styles.header}>
+      <Header transparent  style={styles.header}>
+      <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
           <Left>
             <Button onPress={()=>props.navigation.openDrawer()} transparent>
               <HandBugger width={30*rem} height={30*rem}/>
@@ -92,7 +93,7 @@ const styles = EStyleSheet.create({
        paddingBottom: '20rem',
        paddingLeft: '20rem',
        height:"90rem",
-       borderWidth:'0rem',
+       borderWidth:1,
        borderColor:'#0c0c0e'
     },
     userImage:{
