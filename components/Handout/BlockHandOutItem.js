@@ -53,16 +53,23 @@ const BlockHandOutItem = (props) => {
                   renderLoading={
                   ()=>(
                     <View style={styles.mainLoading}>
-                        <Progress.Circle animated showsText  color={'#FF912C'} style={styles.loading} progress={0.4} size={60*rem} />
+                         <Progress.CircleSnail  color={'#FF912C'} style={styles.loader} size={100*rem} />
                     </View>
                   )
                   }
                   renderError={
-                    ()=>(
-                   <View style={styles.mainError}>
-                         
+                    (props)=>{
+                  return ( <View style={styles.mainError}>
+                            <View style={styles.errorHead}>
+                              <Text style={styles.textError}> Please an error occured</Text>
+                           </View> 
+                           <View>
+                               
+                              <Text style={styles.errorMessage}> Please check your internet connection </Text>
+                           </View>
                   </View>
                   )
+                    }
                   }
               />
           </View>
@@ -266,7 +273,39 @@ const styles = EStyleSheet.create({
  },
  addButton :{
    backgroundColor:'#18181D'
- }
+ },
+ mainLoading:{
+  width:'100%',
+  height:'100%',
+  backgroundColor:'#fff',
+  justifyContent: 'center',
+ },
+ loader:{
+  alignSelf: 'center',
+ },
+ errorHead:{
+  width:'100%',
+  height:'60rem',
+  backgroundColor: '#d3d3d3',
+  justifyContent: 'center',
+},
+textError:{
+  alignSelf: 'center',
+  fontWeight: 'bold',
+  fontSize: '22rem',
+  color:'red'
+},
+errorMessage:{
+  textAlign:'center',
+  fontSize:'20rem',
+  color:'#FF912c',
+  fontWeight: 'bold',
+},
+mainError:{
+  width:'100%',
+  height:'100%',
+  backgroundColor:'#fff',
+},
 })
  
 export default BlockHandOutItem;

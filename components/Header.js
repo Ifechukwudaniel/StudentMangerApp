@@ -46,11 +46,8 @@ const HeaderComponent = forwardRef((props, ref)=> {
     return (
       <Animated.View style={Platform.select({
         android:{
-          marginTop:statusBarHeight
+          marginTop:statusBarHeight*rem
         },
-        ios:{
-          marginTop:0
-        }
       }),{
         transform:[
           {
@@ -58,7 +55,7 @@ const HeaderComponent = forwardRef((props, ref)=> {
           }
         ]
       }}>
-      <View transparent  style={[styles.header]}>
+      <View transparent  style={[{marginTop:statusBarHeight*rem},styles.header]}>
        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
          <View style={styles.Left}>
            <Button style={styles.HandBugger} onPress={()=>props.navigation.openDrawer()} transparent>
@@ -130,8 +127,8 @@ const styles = EStyleSheet.create(
    Platform.select({
      android:{
       userImage:{
-        height: '45rem',
-        width:'45rem',
+        height: '35rem',
+        width:'35rem',
         borderRadius: '45rem',
         borderWidth: '2rem',
         borderColor: "#FF912C",
@@ -148,7 +145,7 @@ const styles = EStyleSheet.create(
       flexDirection: 'row',
       width:'100%',
       backgroundColor: "#0C0C0E",
-      height:"65rem",
+      height:"50rem",
       borderWidth:'0rem',
       borderColor:'#0c0c0e',
       alignSelf: 'center',
