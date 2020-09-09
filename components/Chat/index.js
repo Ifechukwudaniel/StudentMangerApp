@@ -8,9 +8,11 @@ import GroupItem from './GroupItem';
 import firebase from '../../firebase'
 import {snapshotToArray} from '../../util/index'
 import Keys from '../../constants/Keys';
- 
+import { ActivityIndicator } from 'react-native-paper';
 const Chat = ({navigation}) => {
     const [groupList, setGroupList] = useState([])
+    const [loading, setLoading] = useState(true)
+
     
     useEffect(()=>{
         AsyncStorage.getItem(Keys.department)
@@ -20,9 +22,13 @@ const Chat = ({navigation}) => {
             .equalTo(JSON.parse(value)._id)
             .once('value')
             .then((snapShot)=>{
-                 setGroupList(snapshotToArray(snapShot))
+                 alert('jj')
+                 setLoading(false)
+                  console.log((snapshotToArray(snapShot)))
+                //  setGroupList(snapshotToArray(snapShot))
             })
             .catch(err=>{
+                 alert(err)
                 console.log(err)
             })
         })
@@ -32,7 +38,7 @@ const Chat = ({navigation}) => {
     })
 
     
-    renderGroups=(loading, materials, error, searchEmpty)=>{
+    renderGroups=(loading)=>{
         if(loading){
           return   <ActivityIndicator   style={[styles.spinner]} color="#FF912C"  size="large"/>
         }
@@ -51,7 +57,7 @@ const Chat = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.previousChat}>
                 <View style={styles.messageView}>
-                    {renderGroups()}
+                    {renderGroups(loading)}
                 </View>
             </View>
         </View>
