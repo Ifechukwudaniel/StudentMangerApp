@@ -57,7 +57,10 @@ const Chat = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.previousChat}>
                 <View style={styles.messageView}>
-                    {renderGroups(loading)}
+                    <GroupItem navigation= {navigation} />
+                    <GroupItem navigation= {navigation} />
+                    <GroupItem navigation= {navigation} />
+                    <GroupItem navigation= {navigation} />
                 </View>
             </View>
         </View>
