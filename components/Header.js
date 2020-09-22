@@ -44,17 +44,7 @@ const HeaderComponent = forwardRef((props, ref)=> {
    
   if (Platform.OS=="android") {
     return (
-      <Animated.View style={Platform.select({
-        android:{
-          marginTop:statusBarHeight*rem
-        },
-      }),{
-        transform:[
-          {
-            translateY:height,
-          }
-        ]
-      }}>
+      <Animated.View>
       <View transparent  style={[{marginTop:statusBarHeight*rem},styles.header]}>
        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
          <View style={styles.Left}>
@@ -149,6 +139,7 @@ const styles = EStyleSheet.create(
       borderWidth:'0rem',
       borderColor:'#0c0c0e',
       alignSelf: 'center',
+      marginTop: '0rem',
     },
     left:{
       width:'15%',
