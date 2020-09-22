@@ -1,3 +1,4 @@
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification'
 
 // Must be outside of any component LifeCycle (such as `componentDidMount`).
@@ -39,8 +40,7 @@ PushNotification.configure({
 export const LocalNotification = () => {
   PushNotification.localNotification({
     autoCancel: true,
-    bigText:
-      'This is local notification demo in React Native app. Only shown, when expanded.',
+    bigText:'This is local notification demo in React Native app. Only shown, when expanded.',
     subText: 'Local Notification Demo',
     title: 'Local Notification Title',
     message: 'Expand me to see more',
