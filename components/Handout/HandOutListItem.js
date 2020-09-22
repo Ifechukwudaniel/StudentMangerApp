@@ -12,7 +12,8 @@ import { Icon } from 'native-base'
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
-// import {LocalNotification} from '../../services/NotifService'
+import {LocalNotification} from '../../services/NotifService'
+import { Platform } from 'react-native';
 
 const HandOuListItem = (props) => {
   const [loading,setLoading] = useState(true)
@@ -37,7 +38,11 @@ const HandOuListItem = (props) => {
 
 
   return (
-    <TouchableOpacity  onPress= {()=>setModal(false)} style={styles.handOutItem}>
+    <TouchableOpacity  onPress= {()=>{
+      if(Platform.OS="android"){
+        LocalNotification()
+      }
+    }} style={styles.handOutItem}>
      <View style={styles.BookSvg}>
         <BookSvg width={130*rem} height={130*rem}/>
      </View>

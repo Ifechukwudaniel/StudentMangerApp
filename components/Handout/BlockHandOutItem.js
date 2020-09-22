@@ -11,7 +11,7 @@ const rem = entireScreenWidth/380
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
-// import {LocalNotification} from '../../services/NotifService'
+import {LocalNotification} from '../../services/NotifService'
 import { Platform } from 'react-native';
 
 
@@ -40,7 +40,7 @@ const BlockHandOutItem = (props) => {
   return (
     <TouchableOpacity onPress= {()=>{
        if(Platform.OS="android"){
-        // LocalNotification()
+        LocalNotification()
       }
     }} style={styles.handOutItem}>
        <View style={styles.BookSvg}>
