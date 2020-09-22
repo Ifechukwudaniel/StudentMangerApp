@@ -11,6 +11,8 @@ const rem = entireScreenWidth/380
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
+// import {LocalNotification} from '../../services/NotifService'
+import { Platform } from 'react-native';
 
 
 const BlockHandOutItem = (props) => {
@@ -36,14 +38,18 @@ const BlockHandOutItem = (props) => {
     RBSheetOrder.current.close()
  }
   return (
-    <TouchableOpacity onPress= {()=>setModal(true)} style={styles.handOutItem}>
+    <TouchableOpacity onPress= {()=>{
+       if(Platform.OS="android"){
+        // LocalNotification()
+      }
+    }} style={styles.handOutItem}>
        <View style={styles.BookSvg}>
         <BookSvg width={100*rem} height={120*rem}/>
      </View>
-      <Text style={[styles.textStyle,styles.courseCode]}>{props.course.courseCode}</Text>
-      <Text style={styles.textStyle}> {props.course.title} </Text>
+      <Text style={[styles.textStyle,styles.courseCode]}>{props.courseCode}</Text>
+      <Text style={styles.textStyle}> {props.title} </Text>
       <Text style={[styles.textStyle, styles.postedBy]}> By:{props.lecturer}</Text>
-      <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
+      {/* <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
           <View style={styles.modalPdf}>
             <HandOutHeader openDownloads= {openDownloads} openOrders= {openOrder} courseCode={props.course.courseCode} closeModal= {()=>setModal(false)}/>
             <WebView
@@ -137,7 +143,7 @@ const BlockHandOutItem = (props) => {
               </TouchableOpacity>
               </View>
           </RBSheet>
-      </Modal>
+      </Modal> */}
     </TouchableOpacity>
   );
 }

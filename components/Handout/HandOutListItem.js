@@ -12,13 +12,13 @@ import { Icon } from 'native-base'
 import * as Progress from 'react-native-progress';
 import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
+// import {LocalNotification} from '../../services/NotifService'
 
 const HandOuListItem = (props) => {
   const [loading,setLoading] = useState(true)
   const [modal , setModal] = useState(false)
   const  RBSheetDownload  = useRef(null);
   const  RBSheetOrder = useRef(null)
-
   const openDownloads = ()=>{
     RBSheetDownload.current.open()
  }
@@ -37,14 +37,14 @@ const HandOuListItem = (props) => {
 
 
   return (
-    <TouchableOpacity  onPress= {()=>setModal(true)} style={styles.handOutItem}>
+    <TouchableOpacity  onPress= {()=>setModal(false)} style={styles.handOutItem}>
      <View style={styles.BookSvg}>
         <BookSvg width={130*rem} height={130*rem}/>
      </View>
-      <Text style={[styles.textStyle,styles.courseCode]}> {props.course.courseCode}</Text>
-      <Text numberOfLines={1} allowFontScaling  style={[styles.textStyle, styles.description]}>{props.course.title}</Text>
+      <Text style={[styles.textStyle,styles.courseCode]}> {props.courseCode}</Text>
+      <Text numberOfLines={1} allowFontScaling  style={[styles.textStyle, styles.description]}>{props.title}</Text>
       <Text style={[styles.textStyle, styles.postedBy]}> By: {props.lecturer}</Text>
-      <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
+      {/* <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
           <View style={styles.modalPdf}>
             <HandOutHeader openDownloads= {openDownloads} openOrders= {openOrder} courseCode={props.course.courseCode} closeModal= {()=>setModal(false)}/>
             <WebView
@@ -137,7 +137,7 @@ const HandOuListItem = (props) => {
               </TouchableOpacity>
               </View>
           </RBSheet>
-      </Modal>
+      </Modal> */}
     </TouchableOpacity>
   );
 }
