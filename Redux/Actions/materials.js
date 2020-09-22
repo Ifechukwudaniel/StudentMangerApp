@@ -21,7 +21,7 @@ import Keys from '../../constants/Keys';
           console.log(value)
             let departmentId =JSON.parse(value[0][1])._id
             let levelId =JSON.parse(value[1][1])._id
-            axios.get(`http://${url}:3000/material/${departmentId}/${levelId}`)
+            axios.get(`http://${url}:3000/${levelId}/course`)  // please in the name of god i made a  some bad stuff here
             .then(({data})=>setTimeout(()=>dispatch(getMaterialSuccess(data)), 1000))
             .catch(error=>dispatch(getMaterialError(error)))
         })
