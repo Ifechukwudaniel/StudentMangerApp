@@ -29,7 +29,7 @@ userImage:{
   marginTop: '6rem',
 },
 groupItem:{
-   height:'13%',
+   height:'80rem',
    backgroundColor:'rgba(255,255,255,0.08)',
    marginTop: '3rem',
    flexDirection: 'row',
