@@ -15,6 +15,7 @@ import {ActivityIndicator} from 'react-native-paper'
 import HandOuListItem from '../Handout/HandOutListItem';
 import BlockHandOutItem from '../Handout/BlockHandOutItem';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import { Modal } from 'react-native';
 
 
 
@@ -25,6 +26,7 @@ class Home extends Component {
     searchKeyWord:'',
     listTypeList:true,
     animation:false,
+    openModal:false,
     value:new Animated.Value(0)
   }
 
@@ -176,7 +178,12 @@ class Home extends Component {
                     <Text style={styles.handText} > Hand-outs</Text>
                   </Left>
                   <Right style={styles.rightIcon}>
-                  <TouchableOpacity  style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
+                   <Modal visible={this.state.openModal}>
+                       <View style={styles.backgroundSearch}>
+
+                       </View>
+                   </Modal>
+                  <TouchableOpacity onPress={()=>this.setState({openModal:true})} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
                         <Icon style={styles.font} type="FontAwesome5"  name="search"/>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={()=>this.RBSheetListType.open()} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
@@ -222,6 +229,10 @@ class Home extends Component {
 
 
 const styles = EStyleSheet.create({
+  backgroundSearch :{
+      backgroundColor:'red',
+      flex:1
+  },
   container :{
       flex:1
   },
