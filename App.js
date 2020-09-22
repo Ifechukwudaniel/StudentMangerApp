@@ -14,6 +14,7 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
+
 const theme = {...dark, ...appTheme}
 
 EStyleSheet.build({
