@@ -16,7 +16,7 @@ import HandOuListItem from '../Handout/HandOutListItem';
 import BlockHandOutItem from '../Handout/BlockHandOutItem';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { Modal } from 'react-native';
-
+import IconListType from '../../assets/svg/iconlisttype.svg'
 
 
 class Home extends Component {
@@ -135,28 +135,28 @@ class Home extends Component {
  }
 
  animateSlideUp = ()=> {
-  this.setState({animation:true}, ()=>{
-    Animated.timing(this.state.value, {
-      toValue: this.state.animation? 1 : 0,
-      easing:Easing.ease,
-      duration: Platform.select({
-        ios:150,
-        android:50 
-      }),
-  }).start()
-  })
+  // this.setState({animation:true}, ()=>{
+  //   Animated.timing(this.state.value, {
+  //     toValue: this.state.animation? 1 : 0,
+  //     easing:Easing.ease,
+  //     duration: Platform.select({
+  //       ios:150,
+  //       android:50 
+  //     }),
+  // }).start()
+  // })
  }
 
  animateSlideDown = ()=> {
-  this.setState({animation:false}, ()=>{
-    Animated.timing(this.state.value, {
-      toValue: this.state.animation? 1 : 0,
-      duration: Platform.select({
-        ios:150,
-        android:50 
-      }),
-  }).start()
-  })
+  // this.setState({animation:false}, ()=>{
+  //   Animated.timing(this.state.value, {
+  //     toValue: this.state.animation? 1 : 0,
+  //     duration: Platform.select({
+  //       ios:150,
+  //       android:50 
+  //     }),
+  // }).start()
+  // })
  }
 
  render(){
@@ -180,7 +180,14 @@ class Home extends Component {
                   <Right style={styles.rightIcon}>
                    <Modal visible={this.state.openModal}>
                        <View style={styles.backgroundSearch}>
-
+                         <View style={[styles.row, styles.searchHeader]}>
+                             <TouchableOpacity onPress={()=>this.setState({openModal:false})} style={styles.backPart}>
+                                   <Icon style={styles.backButton} type="FontAwesome5"  name="arrow-left"/>
+                             </TouchableOpacity>
+                             <View style={styles.searchPart}>
+                                <TextInput selectionColor={'red'} style={styles.searchBox}/>
+                             </View>
+                         </View>
                        </View>
                    </Modal>
                   <TouchableOpacity onPress={()=>this.setState({openModal:true})} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
@@ -194,18 +201,26 @@ class Home extends Component {
                   ref={ref => {
                   this.RBSheetListType = ref;
                    }}
-                   height={200*rem}
+                   height={190*rem}
                    openDuration={250}
                   customStyles={{
                    container: {
-                    backgroundColor:'#0C0C0E'
+                    backgroundColor:'#0C0C0E',
                     }
                    }}>
+                     <Text style={styles.listTypesText}> Display Options </Text>
                       <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:true})}>
-
+                      <View style={styles.listGroup}>
+                      <IconListType style={styles.listStyleIcon}  />
+                      <IconListType style={styles.listStyleIcon}/>
+                          <Text style={styles.listTypesTextCon}> Double Row Large Icon </Text>
+                      </View>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:false})} >
-
+                       <View style={styles.listGroup}>
+                        <IconListType style={[styles.listStyleIcon,{marginLeft:24*rem}]} />
+                        <Text style={styles.listTypesTextCon}> Single Row Large Icon </Text>   
+                       </View>
                       </TouchableOpacity>
                   </RBSheet>
                   </Right>
@@ -229,8 +244,29 @@ class Home extends Component {
 
 
 const styles = EStyleSheet.create({
+  row:{
+    flexDirection: 'row',
+  },
+  searchHeader:{
+    height:'10%',
+    backgroundColor: '#0c0c0c',
+    borderWidth:'1rem',
+    borderColor:'#0c0c0e',
+  },
+  searchPart:{
+    width:'85%',
+  },
+  backPart:{
+    width:'15%',
+  },
+  backButton :{
+    alignSelf: 'center',
+    color:'#FF912C',
+    fontSize:'22rem',
+    marginTop:'5rem',
+  },
   backgroundSearch :{
-      backgroundColor:'red',
+      backgroundColor:'#000',
       flex:1
   },
   container :{
@@ -252,27 +288,15 @@ const styles = EStyleSheet.create({
   },
   searchBox:{
       backgroundColor: "rgba(254,254,255,0.07)",
-      marginLeft: '15rem',
+      marginLeft: '0rem',
       marginRight: '15rem',
-      marginTop:'14rem',
-      height:'50rem',
+      marginTop:'0rem',
+      height:'40rem',
       borderRadius: '5rem',
-      fontSize: '18rem',
+      fontSize: '16rem',
       color:"#fff",
       paddingLeft: "20rem",
   },
-   listTypes:{
-     flexDirection: 'row',
-     flexWrap: 'wrap',
-     marginLeft:'15rem',
-     marginTop:'5rem'
-   },
-   listTypesItem:{
-      backgroundColor:"rgba(255,252,252,0.07)",
-      margin: '2rem',
-      marginRight:'7rem',
-      borderRadius:'2rem'
-   },
    HandOuSlideView:{
      flexDirection: 'row',
      height:'50rem'
@@ -316,10 +340,41 @@ const styles = EStyleSheet.create({
     letterSpacing: 1.3,
   },
   listTypes:{
-     height:'70rem',
-     width:'100%',
-     borderBottomWidth: '2rem',
-     borderColor: 'rgba(255,255,255,0.4)',
+     height:'50rem',
+     width:'90%',
+     borderBottomWidth: '0.6rem',
+     borderColor: 'rgba(255,255,255,0.2)',
+     alignSelf:'center',
+     marginTop: '13rem',
+  },
+  listTypesText:{
+    color:'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    fontSize: '13rem',
+    marginTop: '13rem',
+    letterSpacing: 1.3,
+  },
+   listTypesText:{
+    color:'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    fontSize: '13rem',
+    marginTop: '0rem',
+    letterSpacing: 1.3,
+  },
+  listTypesTextCon:{
+    color:'rgba(255,255,255,0.7)',
+    alignSelf: 'flex-start',
+    fontSize: '13rem',
+    fontWeight: 'bold',
+    marginTop: '13rem',
+    letterSpacing: 1.3,
+  },
+  listGroup:{
+    flexDirection:'row'
+  },
+  listStyleIcon:{
+     marginLeft: '5rem',
+     marginTop: '13rem',
   }
 })
 function mapStateToProps(state) {
