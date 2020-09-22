@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1071000431108",
+    "firebase_url": "https://biuapp-483f9.firebaseio.com",
+    "project_id": "biuapp-483f9",
+    "storage_bucket": "biuapp-483f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071000431108:android:0e581d25d3451314b0e351",
+        "android_client_info": {
+          "package_name": "com.biuassist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071000431108-v55vdhopc2gg5l8lkiij1oe4rfqp52af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE9FOOYDObS5JW2My5sCHDKL0kljSmEDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071000431108-v55vdhopc2gg5l8lkiij1oe4rfqp52af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
