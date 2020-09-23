@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions, ActivityIndicator, TextInput } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions, ActivityIndicator, TextInput, StatusBar } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import YouTube from 'react-native-youtube-iframe';
 
@@ -28,7 +28,7 @@ const styles = EStyleSheet.create({
     flex: 1,
   },
   video:{
-    width:width-40,
+    width:width,
     height:'209rem',
     alignSelf: 'center',
     borderRadius: '10rem',
@@ -168,7 +168,7 @@ class GuestHome  extends Component {
   render() { 
     return (
       <View style={styles.container}>
-         <GuestHeader screenName="HOME"  {...this.props}  back={true} />
+        <GuestHeader screenName="HOME"  {...this.props}  back={true} />
         <ScrollView style={styles.innerView}>
         <View style={styles.videoWrapper}>
         <View style={styles.video}>
@@ -195,8 +195,11 @@ class GuestHome  extends Component {
                 </View>
                 <Text style={styles.menuItemText}> Tuition </Text>
                </TouchableOpacity>
-               <TouchableOpacity style={styles.menuItem}>
-               <View style={[styles.menuItemImage, {backgroundColor:'rgba(255, 226, 188, 0.29)'}]}>
+               <TouchableOpacity onPress={()=>{
+                  alert("hhshshhshshhshshshsh")
+                //  StatusBar.setBackgroundColor("red")
+               }} style={styles.menuItem}>
+               <View style={[styles.menuItemImage, {backgroundColor:'rgba(255, 226, 188, 0)'}]}>
                       <UniCalender style={styles.imageSvg}/>
                     </View>
                     <Text style={styles.menuItemText}> calender </Text>
