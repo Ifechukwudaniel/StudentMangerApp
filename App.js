@@ -37,23 +37,25 @@ EStyleSheet.build({
 };
 
 
-export default function App(props) {
-  example()
-  useEffect(()=>{
-     SplashScreen.hide()
-  })
-    return (
-      <>
-       <Provider store={store}>
-       <Root>
-        <IconRegistry icons={EvaIconsPack}/>
-        <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
-          <ApplicationProvider mapping={mapping} theme={theme}   >
-                <AppNavigator />
-                <FlashMessage position="top" /> 
-          </ApplicationProvider>
-        </Root>
-      </Provider>
-      </>
-    );
+export default class App extends Component {
+   componentDidMount(){
+    SplashScreen.hide();
+   }
+    render(){
+      return (
+        <>
+         <Provider store={store}>
+         <Root>
+          <IconRegistry icons={EvaIconsPack}/>
+          <StatusBar hidden={false} backgroundColor="#0C0C0E" barStyle="light-content" />
+            <ApplicationProvider mapping={mapping} theme={theme}   >
+                  <AppNavigator />
+                  <FlashMessage position="top" /> 
+            </ApplicationProvider>
+          </Root>
+        </Provider>
+        </>
+      );
+
+    }
 }

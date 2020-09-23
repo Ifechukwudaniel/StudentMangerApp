@@ -2,4 +2,5 @@
     <color name="white">#FFF</color>
     <color name="splashscreen_bg">#0c0c0c</color>
      <color name="background">#282c33</color>
+      <color name="status_bar_color">#0c0c0c </color>
 </resources>
