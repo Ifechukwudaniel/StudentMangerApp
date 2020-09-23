@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component, useEffect } from 'react';
 import { Platform, StatusBar, StyleSheet, View, AppRegistry, Dimensions } from 'react-native';
 import { ApplicationProvider,IconRegistry } from '@ui-kitten/components';
 import { mapping, light as lightTheme, dark ,  } from '@eva-design/eva';
@@ -13,6 +13,8 @@ import FlashMessage from "react-native-flash-message";
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
+import SplashScreen from 'react-native-splash-screen';
+
 
 
 const theme = {...dark, ...appTheme}
@@ -37,6 +39,9 @@ EStyleSheet.build({
 
 export default function App(props) {
   example()
+  useEffect(()=>{
+     SplashScreen.hide()
+  })
     return (
       <>
        <Provider store={store}>
