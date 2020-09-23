@@ -9,44 +9,31 @@ const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
 import FastImage from 'react-native-fast-image';
 const PostListItem = (props) => {
-    const {image} = props
+    const {image, content} = props
   return (
-     <View style={styles.postItem}>
-     <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
-        <Image defaultSource= {require('../../assets/images/preloaded.png')}  resizeMode={FastImage.resizeMode.cover} style={styles.postImage} source={{url:image,  priority: FastImage.priority.high}}/>
-     </TouchableOpacity>
+     <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})} style={styles.postItem}>
         <View>
-          <TouchableOpacity onPress={()=>props.navigation.navigate("PostItem",{data:props})}>
-             <Text style={styles.postTitle} >{props.title}</Text>
-          </TouchableOpacity>
+          <View>
+             <Text numberOfLines={1} style={styles.postTitle} >{props.title}</Text>
+          </View>
           <View style={styles.actionList}>
-              <TouchableOpacity style={styles.action}>
-                 <Like width={20*rem} height={20*rem} style={styles.actionIcon}/>
-                 <Text style={styles.actionCount}>12920</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.action}>
-                 <Dislike width={20*rem} height={20*rem} style={styles.actionIcon}/>
-                 <Text style={styles.actionCount}>12920</Text>
-              </TouchableOpacity>
-              <View style={styles.action}>
-                 <Chat width={20*rem} height={20*rem} style={styles.actionIcon}/>
-                 <Text style={styles.actionCount}>12920</Text>
-              </View>
+             <Text numberOfLines={1} style={styles.postContent} >{props.content}</Text>
+             <Text numberOfLines={1}  style={styles.readMore} >...Read more</Text>
           </View>
         </View>
-     </View>
+     </TouchableOpacity>
   );
 }
 
 const styles =  EStyleSheet.create({
  postItem:{
-   width:'90%',
-   height:"340rem",
+   width:'100%',
+   height:"100rem",
    backgroundColor:"rgba(255, 252, 252, 0.04)",
    alignSelf: 'center',
    borderRadius: '8rem',
    padding: '10rem',
-   marginTop:'20rem'
+   marginTop:'10rem'
  },
  postImage :{
    width:'300rem',
@@ -65,10 +52,10 @@ const styles =  EStyleSheet.create({
  },
  actionList:{
    alignSelf: 'center',
-   flexDirection: 'row',
+  //  flexDirection: 'row',
    justifyContent: 'space-around',
    width:'100%',
-   marginTop: '15rem',
+   marginTop: '10rem',
  },
  action:{
  
@@ -81,6 +68,23 @@ const styles =  EStyleSheet.create({
  actionCount:{
    color:'rgba(204, 204, 204, 0.56);',
    marginTop:'5rem'
+ },
+ postContent:{
+  color:'rgba(255, 252, 252, 0.7);',
+  fontSize:'16rem',
+  lineHeight:'15rem',
+  fontSize: '15rem',
+  width:'320rem',
+  marginLeft: '20rem',
+  marginTop:'5rem'
+ },
+ readMore:{
+  color:'#448CF8',
+  fontSize:'16rem',
+  lineHeight:'15rem',
+  fontSize: '15rem',
+  width:'320rem',
+  marginLeft: '20rem',
  }
 })
 

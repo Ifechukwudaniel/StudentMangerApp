@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Image, TouchableOpacity, Text , Dimensions } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet' 
 import Views from '../../assets/svg/view.svg'
@@ -8,26 +8,35 @@ import Chat from '../../assets/svg/chat.svg'
 import { ScrollView } from 'react-native-gesture-handler';
 const entireScreenWidth = Dimensions.get('window').width;
 const rem = entireScreenWidth/380
+import { Left, Right, Icon } from 'native-base';
 
 const PostItem = (props) => {
    const {title, content, image} = props.navigation.state.params.data
+   const [like, setLike ] = useState(false)
+   const [dislike, setDisLike ] = useState(false)
+   const [comment, setComment] = useState(false)
   return (
      <ScrollView>
      <View style={styles.postItem}>
-        <Image defaultSource= {require('../../assets/images/preloaded.png')} resizeMode='cover' style={styles.postImage} source={{uri:image}}/>
         <View>
              <Text style={styles.postTitle} >{title}</Text>
           <View style={styles.actionList}>
-              <TouchableOpacity style={styles.action}>
-                 <Like color="rgba(254, 254, 254, 0.56);" width={25*rem} height={25*rem} style={styles.actionIcon}/>
+              <TouchableOpacity onPress={()=>{
+                     setDisLike(false)
+                     setLike(!like)
+                 }} style={styles.action}>
+                 <Icon style={[styles.font,{color:like? "#FF3051":"#fff"}]} type="FontAwesome"  name="thumbs-up"/>
                  <Text style={styles.actionCount}>12925</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.action}>
-                 <Dislike width={25*rem} height={25*rem} style={styles.actionIcon}/>
+              <TouchableOpacity onPress={()=>{
+                  setLike(false)
+                 setDisLike(!dislike)
+              }}  style={styles.action}>
+                 <Icon style={[styles.font, {color:dislike? "#FDAB60":"#fff"}]} type="FontAwesome"  name="thumbs-down"/>
                  <Text style={styles.actionCount}>12925</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.action}>
-                 <Chat width={25*rem} height={25*rem} style={styles.actionIcon}/>
+              <TouchableOpacity onPress={()=>setComment(!comment)}  style={styles.action}>
+                  <Icon style={[styles.font, {color:comment? "#5DDA80":"#fff"}]} type="FontAwesome"  name="comments"/>
                  <Text style={styles.actionCount}>12925</Text>
               </TouchableOpacity>
           </View>
@@ -44,8 +53,9 @@ const PostItem = (props) => {
 
 const styles =  EStyleSheet.create({
  postItem:{
+   flex: 1,
    width:'100%',
-   // height:"100%",
+   height:"100%",
    backgroundColor:"rgba(255, 252, 252, 0.04)",
    alignSelf: 'center',
    borderRadius: '8rem',
@@ -53,7 +63,7 @@ const styles =  EStyleSheet.create({
  },
  postImage :{
    width:'95%',
-   height:'300rem',
+   height:'100%',
    alignSelf:'center',
    borderRadius: '10rem',
  },
@@ -65,6 +75,7 @@ const styles =  EStyleSheet.create({
    width:'330rem',
    paddingLeft: "10rem",
    marginTop: '10rem',
+   marginBottom: '30rem',
  },
  actionList:{
    alignSelf: 'center',
@@ -72,6 +83,7 @@ const styles =  EStyleSheet.create({
    justifyContent: 'space-around',
    width:'100%',
    marginTop: '15rem',
+   marginBottom: '30rem',
  },
  action:{
  
@@ -92,6 +104,9 @@ const styles =  EStyleSheet.create({
  },
  postWrapper:{
      padding:'13rem'
+ }, font:{
+    color:"#fff",
+    alignSelf: 'center',
  }
 })
 
