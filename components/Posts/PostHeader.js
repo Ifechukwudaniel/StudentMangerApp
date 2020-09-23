@@ -39,14 +39,14 @@ const PostsHeader = forwardRef((props, ref)=> {
           <View style={styles.Right}>
           {
             !props.back ? 
-            <Button onPress={()=> 
+            <Button style={styles.settingButton}  onPress={()=> 
                   props.navigation.navigate('Settings')
             }  transparent>
-               <Setting width={20*rem} height={25*rem}/>
+               <Setting style={{marginLeft:20*rem}} width={20*rem} height={25*rem}/>
             </Button>
             :
-            <Button onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
-            <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>  
+            <Button style={styles.settingButton} onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
+            <Icon style={{color:'#FF912C',}} type="FontAwesome5"  name="arrow-left"/>  
             </Button>
           }
           </View>
@@ -77,14 +77,14 @@ else{
         <Right>
         {
           !props.back ? 
-          <Button onPress={()=> 
+          <Button style={styles.settingButton} onPress={()=> 
                 props.navigation.navigate('Settings')
           }  transparent>
              <Setting width={20*rem} height={25*rem}/>
           </Button>
           :
-          <Button onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
-          <Icon style={{color:'#FF912C'}} type="FontAwesome5"  name="arrow-left"/>  
+          <Button  onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
+          <Icon style={{color:'#FF912C'}, styles.settingButton} type="FontAwesome5"  name="arrow-left"/>  
           </Button>
         }
         </Right>
@@ -126,6 +126,10 @@ const styles = EStyleSheet.create(
    left:{
      width:'15%',
    },
+
+   settingButton:{
+     marginRight: '20rem',
+   },
    HandBugger:{
      marginLeft:'20rem',
      marginTop: '5rem',
@@ -139,11 +143,12 @@ const styles = EStyleSheet.create(
    right:{
      width:'15%',
      marginTop:'6rem',
-     marginRight:'5rem'
+     marginRight:'70rem'
    },
    center:{
      width:'70%',
-     marginLeft:'3rem'
+     marginLeft:'3rem',
+     marginTop: '5rem',
    },
    textStyle:{
     color:"#fff",
@@ -158,7 +163,7 @@ buttonStyle:{
   width:"90rem",
   color:"#fff",
   height:"40rem",
-  marginLeft: '3rem',
+  marginLeft: '20rem',
 },
 buttonText:{
   alignSelf:'center',

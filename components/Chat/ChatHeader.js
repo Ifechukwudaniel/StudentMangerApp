@@ -38,7 +38,7 @@ const ChatHeader = (props) => {
            <Button onPress={()=> 
                  props.navigation.navigate('Settings')
            }  transparent>
-              <Setting width={20*rem} height={25*rem}/>
+              <Setting style={{marginLeft:20*rem}} width={20*rem} height={25*rem}/>
            </Button>
            :
            <Button onPress={()=> props.navigation.navigate(props.backScreen)}  transparent>
@@ -160,6 +160,7 @@ width:"90rem",
 color:"#fff",
 height:"40rem",
 marginLeft: '3rem',
+marginTop: '5rem',
 },
 buttonText:{
 alignSelf:'center',
@@ -178,7 +179,8 @@ borderWidth:0
   width:"90rem",
   color:"#fff",
   height:"40rem",
-  marginLeft: '3rem',
+  marginLeft: '20rem',
+  marginTop: '5rem',
  },
  buttonTextNotActive:{
   alignSelf:'center',
