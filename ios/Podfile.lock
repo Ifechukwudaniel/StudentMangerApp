@@ -241,6 +241,8 @@ PODS:
     - React
   - react-native-sms (1.11.0):
     - React
+  - react-native-splash-screen (3.2.0):
+    - React
   - react-native-webview (9.0.2):
     - React
   - React-RCTActionSheet (0.61.5):
@@ -356,6 +358,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-sms (from `../node_modules/react-native-sms`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -475,6 +478,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-image-picker"
   react-native-sms:
     :path: "../node_modules/react-native-sms"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -589,6 +594,7 @@ SPEC CHECKSUMS:
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-image-picker: 6a850c41f57f0848d918c2a77aedd7aa272ffa30
   react-native-sms: 31fbb9d6ebb565ad32e409eaf9dc70329936a129
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 53d0b4e398e8f59a1e9870685d079ace9228db70
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -626,6 +632,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: a9d698bd38bc3d35ce42050339e8a8cc3c946e3c
+PODFILE CHECKSUM: 87df837f126522c953678d7dbae7a0805dbf84be
 
 COCOAPODS: 1.7.5

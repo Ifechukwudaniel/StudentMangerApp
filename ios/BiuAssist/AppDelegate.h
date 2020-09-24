@@ -9,6 +9,7 @@
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 #import <React/RCTBridgeDelegate.h>
 #import <UMCore/UMAppDelegateWrapper.h>
+#import <UserNotifications/UNUserNotificationCenter.h>
 
 @interface AppDelegate : UMAppDelegateWrapper <RCTBridgeDelegate,  UNUserNotificationCenterDelegate>
 
