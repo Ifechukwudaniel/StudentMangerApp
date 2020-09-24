@@ -196,10 +196,8 @@ class GuestHome  extends Component {
                 <Text style={styles.menuItemText}> Tuition </Text>
                </TouchableOpacity>
                <TouchableOpacity onPress={()=>{
-                  alert("hhshshhshshhshshshsh")
-                //  StatusBar.setBackgroundColor("red")
                }} style={styles.menuItem}>
-               <View style={[styles.menuItemImage, {backgroundColor:'rgba(255, 226, 188, 0)'}]}>
+               <View style={[styles.menuItemImage, {backgroundColor:'rgba(255, 226, 188, 0.29)'}]}>
                       <UniCalender style={styles.imageSvg}/>
                     </View>
                     <Text style={styles.menuItemText}> calender </Text>
