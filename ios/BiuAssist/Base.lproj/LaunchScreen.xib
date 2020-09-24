@@ -14,11 +14,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" colorLabel="IBBuiltInLabel-Gray">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="laJ-g4-bAE">
+                    <rect key="frame" x="178" y="150.5" width="124" height="179"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <color key="tintColor" red="0.083346404135227203" green="0.14686861634254456" blue="0.24647915363311768" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="laJ-g4-bAE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qQe-dA-ige"/>
+                <constraint firstItem="laJ-g4-bAE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vIL-Tn-Eeo"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="520" y="444"/>
+            <point key="canvasLocation" x="518.84057971014499" y="443.97321428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="Image" width="124" height="179"/>
+    </resources>
 </document>
