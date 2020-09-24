@@ -49,6 +49,6 @@ export const LocalNotification = () => {
     playSound: true,
     soundName: 'default',
     color: "red",
-    // actions: '["Yes", "No"]'
+    actions: '["Yes", "No"]'
   })
 }

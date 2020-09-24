@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Modal} from 'react-native';
+import { ScrollView, StyleSheet, Modal, StatusBar} from 'react-native';
 import {  Layout } from '@ui-kitten/components';
 import { View } from 'react-native-animatable';
 import GuestHome from '../../components/Guest/GuestHome';
