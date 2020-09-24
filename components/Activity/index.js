@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StatusBar, ScrollView, FlatList, TouchableOpacity} from 'react-native';
 import { getBlogs } from '../../Redux/Actions/blogs';
+import { getTodayActivity, getWeekActivity} from '../../Redux/Actions/activity'
 import {connect} from 'react-redux'
 import {ActivityIndicator} from 'react-native-paper'
 import EStyleSheet from 'react-native-extended-stylesheet'
@@ -53,7 +54,8 @@ class Activity extends Component {
 
     UNSAFE_componentWillMount(){
         // StatusBar.setHidden(true)
-        this.props.getBlogs()
+        this.props.getTodayActivity()
+        this.props.getWeekActivity()
     }
     state={
        activeDay:true,
@@ -88,9 +90,11 @@ class Activity extends Component {
       )
 
     renderTodayActivity=()=>(
-    this.data[0].activity.map((data)=>(
-        <ActivityItem activityType={data.type} time={data.startTime} courseCode={data.name} />
-      ))
+    this.props.todayActivities.map((data)=>{
+       console.log(data)
+       return (
+        <ActivityItem activityType={data.type} time={data.startTime} courseCode={data.course.courseCode} />
+      )})
     )
 
     render() { 
@@ -107,14 +111,14 @@ class Activity extends Component {
                 <View style={styles.activityHeader}>
                    <Text style={styles.activity}> Activities </Text>
                    <View style={styles.buttonGroup}>
-                      <TouchableOpacity onPress= {()=>this.setState({activeDay:!this.state.activeDay, activeWeek:!this.state.activeWeek, loading:true},()=>{
+                      <TouchableOpacity onPress= {()=>this.setState({activeDay:!this.state.activeDay, activeWeek:!this.state.activeWeek},()=>{
                         setTimeout(()=>{
                             this.setState({loading:false})
                         }, 500)
                       })} style={[styles.button,this.state.activeDay ?styles.buttonActive:{} ]}>
                          <Text style={styles.buttonText}>   Daily </Text>
                       </TouchableOpacity>
-                      <TouchableOpacity onPress= {()=>this.setState({activeDay:!this.state.activeDay, activeWeek:!this.state.activeWeek, loading:true},
+                      <TouchableOpacity onPress= {()=>this.setState({activeDay:!this.state.activeDay, activeWeek:!this.state.activeWeek},
                       ()=>{
                          setTimeout(()=>{
                           this.setState({loading:false})  
@@ -183,17 +187,21 @@ const styles = EStyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-      blogs: state.blogs.blogs,
-      loading:state.blogs.loading,
-      error:state.blogs.error,
+      todayActivities: state.activity.todayActivities,
+      weeklyActivities:state.activity.weeklyActivities,
+      loading:state.activity.loading,
+      error:state.activity.error,
     }
   }
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      getBlogs:()=>{
-        dispatch(getBlogs())
+      getWeekActivity:()=>{
+        dispatch(getWeekActivity())
       },
+      getTodayActivity:()=>{
+        dispatch(getTodayActivity())
+      }
     }
   }
   export default connect(mapStateToProps, mapDispatchToProps)(Activity)

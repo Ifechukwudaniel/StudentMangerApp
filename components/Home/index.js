@@ -179,13 +179,13 @@ class Home extends Component {
                   </Left>
                   <Right style={styles.rightIcon}>
                    <Modal visible={this.state.openModal}>
-                       <View style={styles.backgroundSearch}>
-                         <View style={[styles.row, styles.searchHeader]}>
+                       <View style={[styles.backgroundSearch]}>
+                         <View style={[styles.row, styles.searchHeader,{marginTop:40}]}>
                              <TouchableOpacity onPress={()=>this.setState({openModal:false})} style={styles.backPart}>
                                    <Icon style={styles.backButton} type="FontAwesome5"  name="arrow-left"/>
                              </TouchableOpacity>
                              <View style={styles.searchPart}>
-                                <TextInput selectionColor={'red'} style={styles.searchBox}/>
+                                <TextInput style={styles.searchBox}/>
                              </View>
                          </View>
                        </View>
@@ -248,7 +248,7 @@ const styles = EStyleSheet.create({
     flexDirection: 'row',
   },
   searchHeader:{
-    height:'10%',
+    height:'50rem',
     backgroundColor: '#0c0c0c',
     borderWidth:'1rem',
     borderColor:'#0c0c0e',

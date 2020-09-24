@@ -50,6 +50,16 @@
 		FBB08268A70F4A17B0EA0BAB /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C687C4C09C7458B99770A63 /* Montserrat-Thin.ttf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A1521B05251CC30300BB35FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1521B01251CC30300BB35FE /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		00532AF141F441829F0B01C3 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../assets/fontsCopy/Montserrat/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		005A9F367B23D12A8E523F48 /* Pods-BiuAssist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiuAssist.release.xcconfig"; path = "Target Support Files/Pods-BiuAssist/Pods-BiuAssist.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +101,7 @@
 		9067CD26101C4B5D9812B535 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		91703BD79D7C49C19BE22EF9 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLight.ttf"; path = "../assets/fontsCopy/Montserrat/Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		9C687C4C09C7458B99770A63 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Thin.ttf"; path = "../assets/fontsCopy/Montserrat/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		A1521B01251CC30300BB35FE /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		A1898AB32519268E00563E82 /* BiuAssist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = BiuAssist.entitlements; path = BiuAssist/BiuAssist.entitlements; sourceTree = "<group>"; };
 		A29C9B87EFAC45F2A1917138 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		A40F431AA35542BC99D7FA0B /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fontsCopy/Montserrat/Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -170,6 +181,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A1521B01251CC30300BB35FE /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -193,6 +205,14 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* BiuAssist.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1521B02251CC30300BB35FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1521B06251CC30300BB35FE /* libSplashScreen.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,12 +337,28 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A1521B02251CC30300BB35FE /* Products */;
+					ProjectRef = A1521B01251CC30300BB35FE /* SplashScreen.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* BiuAssist */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A1521B06251CC30300BB35FE /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = A1521B05251CC30300BB35FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
@@ -520,7 +556,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = quantum.cube.BiuAssist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cube.BiuAssist;
 				PRODUCT_NAME = BiuAssist;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -541,7 +577,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = quantum.cube.BiuAssist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cube.BiuAssist;
 				PRODUCT_NAME = BiuAssist;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";

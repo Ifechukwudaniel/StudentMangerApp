@@ -39,6 +39,7 @@ EStyleSheet.build({
 
 export default class App extends Component {
    componentDidMount(){
+     example()
     SplashScreen.hide();
    }
     render(){
