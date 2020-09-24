@@ -10,6 +10,7 @@ const GuestHeader = (props) => {
   console.log(props.navigation)
     return (
        <Header transparent  style={styles.header}>
+         <StatusBar backgroundColor="#0c0c0c" hidden={false} barStyle="light-content"/>
           <Left style={{flex:1}}>
           { !props.back ?   
             <Button     transparent>
