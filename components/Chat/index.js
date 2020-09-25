@@ -22,10 +22,8 @@ const Chat = ({navigation}) => {
             .equalTo(JSON.parse(value)._id)
             .once('value')
             .then((snapShot)=>{
-                 alert('jj')
                  setLoading(false)
-                  console.log((snapshotToArray(snapShot)))
-                //  setGroupList(snapshotToArray(snapShot))
+                 setGroupList(snapshotToArray(snapShot))
             })
             .catch(err=>{
                  alert(err)
@@ -33,7 +31,7 @@ const Chat = ({navigation}) => {
             })
         })
         .catch(err=>{
-            alert('err')
+            alert('please an error occurred ')
         })
     })
 

@@ -209,14 +209,20 @@ class Home extends Component {
                     }
                    }}>
                      <Text style={styles.listTypesText}> Display Options </Text>
-                      <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:true})}>
+                      <TouchableOpacity style={styles.listTypes} onPress={()=> {
+                        this.RBSheetListType.close()
+                        this.setState({listTypeList:true})
+                      }}>
                       <View style={styles.listGroup}>
                       <IconListType style={styles.listStyleIcon}  />
                       <IconListType style={styles.listStyleIcon}/>
                           <Text style={styles.listTypesTextCon}> Double Row Large Icon </Text>
                       </View>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.listTypes} onPress={()=>this.setState({listTypeList:false})} >
+                      <TouchableOpacity style={styles.listTypes} onPress={()=>{
+                        this.RBSheetListType.close()
+                        this.setState({listTypeList:false})
+                      }} >
                        <View style={styles.listGroup}>
                         <IconListType style={[styles.listStyleIcon,{marginLeft:24*rem}]} />
                         <Text style={styles.listTypesTextCon}> Single Row Large Icon </Text>   

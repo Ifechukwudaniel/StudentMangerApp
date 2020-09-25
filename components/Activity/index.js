@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import {ActivityIndicator} from 'react-native-paper'
 import EStyleSheet from 'react-native-extended-stylesheet'
 import ActivityItem from './ActivityItem';
+import ActivityAccording from './ActivityAccording';
+
 
  
 class Activity extends Component {
@@ -83,15 +85,14 @@ class Activity extends Component {
     }
 
     
-    renderWeakActivity=()=>(
-      this.data[1].activity.map((data)=>(
-          <ActivityItem activityType={data.type} time={data.startTime} courseCode={data.name} />
-        ))
+    renderWeakActivity=()=>{
+        return (
+          <ActivityAccording/>
       )
+      }
 
     renderTodayActivity=()=>(
     this.props.todayActivities.map((data)=>{
-       console.log(data)
        return (
         <ActivityItem activityType={data.type} time={data.startTime} courseCode={data.course.courseCode} />
       )})
@@ -188,7 +189,7 @@ const styles = EStyleSheet.create({
 function mapStateToProps(state) {
     return {
       todayActivities: state.activity.todayActivities,
-      weeklyActivities:state.activity.weeklyActivities,
+      weekActivities:state.activity.weekActivities,
       loading:state.activity.loading,
       error:state.activity.error,
     }
