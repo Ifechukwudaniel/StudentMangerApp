@@ -58,6 +58,7 @@ class Activity extends Component {
         // StatusBar.setHidden(true)
         this.props.getTodayActivity()
         this.props.getWeekActivity()
+        console.log(this.props.weekActivities)
     }
     state={
        activeDay:true,
@@ -87,7 +88,15 @@ class Activity extends Component {
     
     renderWeakActivity=()=>{
         return (
-          <ActivityAccording/>
+          <ScrollView>
+          {  
+            this.props.weekActivities.map((activity)=>{
+              return(
+                <ActivityAccording day={activity}/>
+              )
+            })
+          }
+          </ScrollView>
       )
       }
 
