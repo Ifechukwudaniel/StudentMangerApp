@@ -29,7 +29,7 @@ const styles =  EStyleSheet.create({
  postItem:{
    width:'100%',
    height:"100rem",
-   backgroundColor:"rgba(255, 252, 252, 0.04)",
+   backgroundColor:"rgba(36, 35, 35, 1)",
    alignSelf: 'center',
    borderRadius: '8rem',
    padding: '10rem',
