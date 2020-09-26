@@ -152,7 +152,7 @@ const styles = EStyleSheet.create({
   handOutItem:{
     width:"340rem",
     height:"250rem",
-    backgroundColor:"rgba(66,89,133,0.07)",
+    backgroundColor:"rgba(36,35,35,0.71)",
     alignSelf: 'center',
     borderRadius:'10rem',
     marginTop:'20rem',

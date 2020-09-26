@@ -175,7 +175,7 @@ class Home extends Component {
                 ]
               }]}>
                   <Left>
-                    <Text style={styles.handText} > Hand-outs</Text>
+                    <Text style={styles.handText} > Courses</Text>
                   </Left>
                   <Right style={styles.rightIcon}>
                    <Modal visible={this.state.openModal}>
