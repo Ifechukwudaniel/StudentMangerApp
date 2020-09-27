@@ -8,6 +8,7 @@ const rem = entireScreenWidth/380
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const statusBarHeight = Constants.statusBarHeight
+import Setting from '../assets/svg/setting.svg'
 
 
 const HeaderComponent = forwardRef((props, ref)=> {
@@ -60,7 +61,7 @@ const HeaderComponent = forwardRef((props, ref)=> {
            <Button   onPress={()=>{
            props.navigation.navigate('Settings')
            }}   transparent>
-             <Image resizeMode="cover" style={styles.userImage} source={require('../assets/images/image.jpeg')}/>
+             <Setting style={{marginLeft:20*rem}} width={20*rem} height={25*rem}/>
            </Button>
            : 
            <Button  onPress={()=>props.navigation.navigate(props.backScreen ? props.backScreen :'Home' )}   transparent>
@@ -140,6 +141,7 @@ const styles = EStyleSheet.create(
       borderColor:'#0c0c0e',
       alignSelf: 'center',
       marginTop: '0rem',
+      paddingBottom:'50rem'
     },
     left:{
       width:'15%',

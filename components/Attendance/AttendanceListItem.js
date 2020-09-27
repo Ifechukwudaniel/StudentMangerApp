@@ -25,7 +25,7 @@ const AttendanceListItem = ({ id, present , absent ,courseCode , navigation, att
 const styles = EStyleSheet.create({
     container:{
       width:'100%',
-      backgroundColor: " rgba(255, 255, 255, 0.1)",
+      backgroundColor: " rgba(36,35,35,1)",
       height:'80rem',
       flexDirection:'row',
       marginTop: '10rem',

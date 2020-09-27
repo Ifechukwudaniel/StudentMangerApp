@@ -33,7 +33,9 @@ class Home extends Component {
   offset= 0
 
   UNSAFE_componentWillMount(){
-    this.props.getMaterials()
+    if(this.props.materials.length===0){
+      this.props.getMaterials()
+    }
   }
 
   renderHandouts=(loading, materials, error, searchEmpty)=>{
@@ -194,7 +196,7 @@ class Home extends Component {
                         <Icon style={styles.font} type="FontAwesome5"  name="search"/>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={()=>this.RBSheetListType.open()} style={[styles.showAllSvg, { alignSelf:'flex-end', opacity:0.9}]} >
-                        <BlockIcon/>
+                        <BlockIcon color="#fff" style={{color:'#fff'}}/>
                   </TouchableOpacity>
                   <RBSheet
                   closeOnDragDown
@@ -322,7 +324,7 @@ const styles = EStyleSheet.create({
      justifyContent: 'flex-end',
    },
    font:{
-    color:'#FF912C',
+    color:'#Fff',
     fontSize:'22rem',
   },
   errorText:{

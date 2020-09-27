@@ -30,9 +30,10 @@ const styles = EStyleSheet.create({
     flexDirection:'row',
     marginBottom: '10rem',
     alignSelf: 'center',
+    backgroundColor:"rgba(36,36,36,0.3)"
   },
   left:{
-    backgroundColor:' rgba(107, 105, 105, 0.11);',
+    backgroundColor:' rgba(107, 105, 105, 0.3);',
     width:'30%'
   },
   center:{
