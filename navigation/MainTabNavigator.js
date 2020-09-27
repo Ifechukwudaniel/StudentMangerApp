@@ -35,11 +35,13 @@ import TimeTable from '../assets/svg/Clock.svg'
 import TimeTableScreen from '../screens/Home/TimeTableScreen';
 import Transition from 'react-navigation-transitions'
 import ChatGroupScreen from '../screens/ChatGroupScreen';
+import MaterialScreen from '../screens/MaterialScreen';
 
  const HomeStack  = createSwitchNavigator({
   Home:HomeScreen,
   Settings:SettingsScreen,
-  Purchase:PurchaseScreen
+  Purchase:PurchaseScreen,
+  Material:MaterialScreen
  }, {
   transitionConfig : () => ({
     transitionSpec: {

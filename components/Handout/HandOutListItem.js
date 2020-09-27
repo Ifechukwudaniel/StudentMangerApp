@@ -40,7 +40,9 @@ const HandOuListItem = (props) => {
   return (
     <TouchableOpacity  onPress= {()=>{
       if(Platform.OS="android"){
-        LocalNotification()
+        // LocalNotification()
+        //props.navigation.navigation("Material")
+        props.navigation.navigate("Material",props)
       }
     }} style={styles.handOutItem}>
      <View style={styles.BookSvg}>
