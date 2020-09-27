@@ -160,7 +160,7 @@ const styles = EStyleSheet.create({
     shadowColor: '#000000',
     elevation:10,
     borderWidth: '1rem',
-    borderColor:'rgba(66,89,133,0.29)'
+    // borderColor:'rgba(66,89,133,0.29)'
   },
   BookSvg:{
     alignSelf:"center",

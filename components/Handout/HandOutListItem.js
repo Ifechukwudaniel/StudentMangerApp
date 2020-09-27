@@ -160,7 +160,7 @@ const styles = EStyleSheet.create({
     elevation:10,
     borderWidth: '1rem',
     margin: '10rem',
-    borderColor:'rgba(66,89,133,0.29)'
+    // borderColor:'rgba(66,89,133,0.29)'
   },
    textStyle:{
      alignSelf: 'center',
