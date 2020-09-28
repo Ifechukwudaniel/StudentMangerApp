@@ -76,12 +76,6 @@ class Setting extends Component {
                         </View>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.settingItem}>
-                        <Text style={styles.settingText}>  Change Phone Number </Text>
-                        <View style={[styles.settingView, {marginLeft:40*rem}]}>
-                            <Text numberOfLines={1} style={styles.locationText}>08034055074</Text>
-                        </View>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={styles.settingItem}>
                         <Text style={styles.settingText}> Department </Text>
                         <View style={[styles.settingView, {width:'100%', marginLeft:0*rem}]}>
                             <Text  style={styles.locationText}> Computer science</Text>

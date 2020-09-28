@@ -25,7 +25,7 @@ const ChatHeader = (props) => {
          <View style={styles.center}>
            <Segment    style={{backgroundColor:"#0c0c0c", borderWidth:0}}>
              <TouchableOpacity  onPress={()=>props.navigation.navigate('Post')} style={styles.buttonStyleNotActive}>
-                <Text style={styles.buttonText}>Posts</Text>
+                <Text style={styles.buttonText}>Notifications</Text>
              </TouchableOpacity>
              <TouchableOpacity  style={styles.buttonStyle}>
                <Text style={styles.buttonText}>Messages</Text>
@@ -166,7 +166,7 @@ buttonText:{
 alignSelf:'center',
 color:'#fff',
 marginTop: '10rem',
-fontSize: '15rem',
+fontSize: '14rem',
 },
 segmentStyle:{
 backgroundColor:"transparent", 
