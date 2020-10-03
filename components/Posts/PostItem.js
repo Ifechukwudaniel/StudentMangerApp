@@ -20,26 +20,6 @@ const PostItem = (props) => {
      <View style={styles.postItem}>
         <View>
              <Text style={styles.postTitle} >{title}</Text>
-          <View style={styles.actionList}>
-              <TouchableOpacity onPress={()=>{
-                     setDisLike(false)
-                     setLike(!like)
-                 }} style={styles.action}>
-                 <Icon style={[styles.font,{color:like? "#FF3051":"#fff"}]} type="FontAwesome"  name="thumbs-up"/>
-                 <Text style={styles.actionCount}>12925</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{
-                  setLike(false)
-                 setDisLike(!dislike)
-              }}  style={styles.action}>
-                 <Icon style={[styles.font, {color:dislike? "#FDAB60":"#fff"}]} type="FontAwesome"  name="thumbs-down"/>
-                 <Text style={styles.actionCount}>12925</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>setComment(!comment)}  style={styles.action}>
-                  <Icon style={[styles.font, {color:comment? "#5DDA80":"#fff"}]} type="FontAwesome"  name="comments"/>
-                 <Text style={styles.actionCount}>12925</Text>
-              </TouchableOpacity>
-          </View>
           <View style={styles.postWrapper}>
              <Text style={styles.postContent}>
                 {content}

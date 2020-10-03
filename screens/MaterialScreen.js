@@ -4,6 +4,7 @@ import {  Layout } from '@ui-kitten/components';
 import Level from '../components/Level'
 import Home from '../components/Home';
 import HeaderComponent from '../components/Header';
+import HandOutItem from '../components/Handout/HandOutItem';
 
 const  MaterialScreen = (props)=>{
   const headerRef = useRef();
@@ -13,6 +14,9 @@ const  MaterialScreen = (props)=>{
       <View style={styles.container}>
          <HeaderComponent  ref= {headerRef} {...props} screenName={props.navigation.state.params.courseCode} back/>
          {/* <Home header= {headerRef} {...props}/> */}
+         <HandOutItem/>
+         <HandOutItem/>
+         <HandOutItem/>
       </View>
     </Layout>
     );
