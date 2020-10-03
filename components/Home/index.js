@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated, FlatList, Easing} from 'react-native';
+import { View,TextInput, TouchableOpacity, Dimensions, Text, Animated, FlatList, Easing, ScrollView} from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet'
 import BlockIcon from '../../assets/svg/BlockIcon.svg'
 import ListIcon from '../../assets/svg/ListIcon.svg'
@@ -165,7 +165,7 @@ class Home extends Component {
           const {openFilter}= this.state
           const {loading, materials,searchEmpty, error} = this.props
           return (
-          <View style={styles.container}>
+          <ScrollView style={styles.container}>
               {/* <Animated.View style={{overflow:1}}>
                  <TextInput onChangeText={(value)=>this.props.searchMaterials(value)}  placeholderTextColor="rgba(255,255,255,0.16)" placeholder="Search" style={styles.searchBox}/>
               </Animated.View> */}
@@ -245,7 +245,7 @@ class Home extends Component {
                     this.renderHandoutsBlock(loading,materials,error)
                   }
               </Animated.View>
-          </View>
+          </ScrollView>
         )
       }
   }
