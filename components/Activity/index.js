@@ -88,7 +88,7 @@ class Activity extends Component {
     
     renderWeakActivity=()=>{
         return (
-          <ScrollView>
+          <View>
           {  
             this.props.weekActivities.map((activity)=>{
               return(
@@ -96,7 +96,7 @@ class Activity extends Component {
               )
             })
           }
-          </ScrollView>
+          </View>
       )
       }
 
@@ -117,7 +117,7 @@ class Activity extends Component {
          )
         }
        return (
-            <View style={{flex:1}}>
+            <ScrollView style={{flex:1}}>
                 <View style={styles.activityHeader}>
                    <Text style={styles.activity}> Activities </Text>
                    <View style={styles.buttonGroup}>
@@ -142,7 +142,7 @@ class Activity extends Component {
                   this.renderActivity()
                }
 
-            </View>
+            </ScrollView>
         );
     }
 }
