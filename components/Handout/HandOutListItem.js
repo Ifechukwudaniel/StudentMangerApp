@@ -14,6 +14,7 @@ import NumericInput from 'react-native-numeric-input'
 import BookSvg from '../../assets/svg/Book.svg'
 import {LocalNotification} from '../../services/NotifService'
 import { Platform } from 'react-native';
+import { Card, CardItem, Body, }  from "native-base"
 
 const HandOuListItem = (props) => {
   const [loading,setLoading] = useState(true)
@@ -51,100 +52,6 @@ const HandOuListItem = (props) => {
       <Text style={[styles.textStyle,styles.courseCode]}> {props.courseCode}</Text>
       <Text numberOfLines={1} allowFontScaling  style={[styles.textStyle, styles.description]}>{props.title}</Text>
       <Text style={[styles.textStyle, styles.postedBy]}> By: {props.lecturer}</Text>
-      {/* <Modal presentationStyle="fullScreen" animationType="slide" visible={modal}>
-          <View style={styles.modalPdf}>
-            <HandOutHeader openDownloads= {openDownloads} openOrders= {openOrder} courseCode={props.course.courseCode} closeModal= {()=>setModal(false)}/>
-            <WebView
-                  startInLoadingState
-                  source={{ uri: `${props.file}` }}
-                  style={{flex:1}}
-                  renderLoading={
-                  ()=>(
-                    <View style={styles.mainLoading}>
-                         <Progress.CircleSnail  color={'#FF912C'} style={styles.loader} size={100*rem} />
-                    </View>
-                  )
-                  }
-                  renderError={
-                    (props)=>{
-                  return ( <View style={styles.mainError}>
-                            <View style={styles.errorHead}>
-                              <Text style={styles.textError}> Please an error occured</Text>
-                           </View> 
-                           <View>
-                               
-                              <Text style={styles.errorMessage}> Please check your internet connection </Text>
-                           </View>
-                  </View>
-                  )
-                    }
-                  }
-              />
-          </View>
-          <RBSheet
-             closeOnDragDown
-               ref={ RBSheetDownload}
-               height={200*rem}
-              openDuration={250}
-              customStyles={{
-              container: {
-                backgroundColor:'#0C0C0E'
-              }
-              }}>
-              <View>
-               <Progress.Circle animated showsText  color={'#FF912C'} style={styles.downloader} progress={0.4} size={60*rem} />
-              <TouchableOpacity onPress={closeOrder} style={styles.downloadButton}>
-                  <Text style={styles.downloadButtonText}> Cancel</Text>
-              </TouchableOpacity>
-              </View>
-          </RBSheet>
-          <RBSheet
-          closeOnDragDown
-               ref={RBSheetOrder}
-               height={650*rem}
-              openDuration={250}
-              customStyles={{
-              container: {
-                backgroundColor:'#0C0C0E'
-              }
-              }}>
-              <View>
-                   <Text style={styles.headerText}> Order Hard Copy  </Text>
-                   <View style={[styles.listItem, {flexDirection:'row', width:'80%', justifyContent:'center'}]}>
-                    <Text style={styles.orderText}> COPIES: </Text>
-                   <NumericInput 
-                      totalWidth={240*rem} 
-                      totalHeight={50*rem} 
-                      iconSize={25*rem}
-                      step={1}
-                      valueType='decimal'
-                      rounded 
-                      inputStyle={styles.addButton}
-                      textColor='#fff' 
-                      borderColor="#18181D"
-                      iconStyle={{ color: 'white' }} 
-                      rightButtonBackgroundColor='#FF912c' 
-                      leftButtonBackgroundColor='#ff912c'/>
-                   </View>
-                   <View style={styles.listItem}>
-                       <TextInput placeholderTextColor="#fff" placeholder="Location"   style={ styles.orderTextInput}/>
-                   </View>
-                   <View style={styles.listItem}>
-                       <TextInput placeholderTextColor="#fff"  placeholder="Phone Number" keyboardType="number-pad" style={ styles.orderTextInput}/>
-                   </View>
-                   <Text style={styles.textDivider}> ALTERNATIVE RECEIVER </Text>
-                   <View style={styles.listItem}>
-                       <TextInput  placeholderTextColor="#fff" placeholder="Location"  style={ styles.orderTextInput}/>
-                   </View>
-                   <View style={styles.listItem}>
-                       <TextInput placeholderTextColor="#fff"  placeholder="Phone Number" style={ styles.orderTextInput}/>
-                   </View>
-                   <TouchableOpacity  onPress={closeDownloads} style={[styles.downloadButton, styles.orderButton]}>
-                     <Text style={styles.downloadButtonText}>  PLACE ORDER </Text>
-              </TouchableOpacity>
-              </View>
-          </RBSheet>
-      </Modal> */}
     </TouchableOpacity>
   );
 }
